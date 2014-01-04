@@ -1,7 +1,7 @@
 name: TDMGame
 main: com.caved_in.teamdeathmatch.TDMGame
 version: 1.0
-description: KABOOM BITCH
+description: KABOOM
 author: Brandon_TGC
 depend: [Multiverse-Core,TagAPI,PopupMenuAPI,CrackShot,WorldManager,ForceRespawn,Tunnels-Common]
 commands:
