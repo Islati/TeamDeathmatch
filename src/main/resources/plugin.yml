@@ -1,0 +1,28 @@
+name: TDMGame
+main: com.caved_in.teamdeathmatch.TDMGame
+version: 1.0
+description: KABOOM BITCH
+author: Brandon_TGC
+depend: [Multiverse-Core,TagAPI,PopupMenuAPI,CrackShot,WorldManager,ForceRespawn,Tunnels-Common]
+commands:
+   setteamspawn:
+      usage: /<command> <Tagger/Player>
+      permission: op
+   forcemap:
+      usage: /<command> <MAP>
+      permission: op
+   forcewin:
+      usage: /<command>
+      permission: op
+   kit:
+      usage: /<command>
+   loadout:
+      usage: /<command>
+   afk:
+      usage: /<command>
+   vote:
+      usage: /<command>
+   gungame:
+      usage: /<command>
+   xp:
+      usage: /<command>

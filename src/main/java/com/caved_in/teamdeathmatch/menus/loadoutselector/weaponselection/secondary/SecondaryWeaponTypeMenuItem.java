@@ -1,0 +1,23 @@
+package com.caved_in.teamdeathmatch.menus.loadoutselector.weaponselection.secondary;
+
+import com.caved_in.teamdeathmatch.guns.GunType;
+import me.xhawk87.PopupMenuAPI.MenuItem;
+import org.bukkit.entity.Player;
+import org.bukkit.material.MaterialData;
+
+public class SecondaryWeaponTypeMenuItem extends MenuItem {
+
+	private com.caved_in.teamdeathmatch.guns.GunType GunType;
+	private int LoadoutNumber = 0;
+
+	public SecondaryWeaponTypeMenuItem(String text, MaterialData icon, GunType Type, int LoadoutNumber) {
+		super(text, icon);
+		this.GunType = Type;
+		this.LoadoutNumber = LoadoutNumber;
+	}
+
+	@Override
+	public void onClick(Player Player) {
+		this.getMenu().switchMenu(Player, SecondarySelectionMenu.getMenu(SecondaryWeaponRender.getSecondaryWeapons(this.GunType, this.LoadoutNumber, Player)));
+	}
+}
