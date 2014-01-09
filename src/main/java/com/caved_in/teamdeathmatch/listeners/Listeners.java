@@ -2,18 +2,20 @@ package com.caved_in.teamdeathmatch.listeners;
 
 //Commons Imports
 
+import com.caved_in.commons.chat.ChatHandler;
 import com.caved_in.commons.items.ItemHandler;
 import com.caved_in.commons.player.PlayerHandler;
 import com.caved_in.commons.time.Cooldown;
 import com.caved_in.teamdeathmatch.TDMGame;
-import com.caved_in.teamdeathmatch.assists.AssistHandler;
-import com.caved_in.teamdeathmatch.chatvote.ChatHandler;
+import com.caved_in.teamdeathmatch.TeamType;
 import com.caved_in.teamdeathmatch.fakeboard.FakeboardHandler;
 import com.caved_in.teamdeathmatch.fakeboard.Team;
 import com.caved_in.teamdeathmatch.fakeboard.fPlayer;
+import com.caved_in.teamdeathmatch.gamehandler.GameSetupHandler;
 import com.caved_in.teamdeathmatch.gamehandler.KillstreakHandler;
+import com.caved_in.teamdeathmatch.runnables.AssistAggregator;
 import com.caved_in.teamdeathmatch.runnables.RestoreInventory;
-import com.chaseoes.forcerespawn.event.ForceRespawnEvent;
+import com.caved_in.teamdeathmatch.assists.*;
 import com.mysql.jdbc.StringUtils;
 import com.shampaggon.crackshot.events.WeaponDamageEntityEvent;
 import org.bukkit.Bukkit;
@@ -36,7 +38,7 @@ import org.kitteh.tag.PlayerReceiveNameTagEvent;
 
 
 public class Listeners implements Listener {
-	private Cooldown Cooldown = new Cooldown(2);
+	private Cooldown playerCooldown = new Cooldown(2);
 	private Cooldown moveCooldown = new Cooldown(3);
 	private Cooldown respawnInvincibilityCooldown = new Cooldown(6);
 
@@ -49,88 +51,69 @@ public class Listeners implements Listener {
 		fPlayer fPlayer = FakeboardHandler.getPlayer(Event.getPlayer());
 		String playerName = fPlayer.getPlayerName();
 
-		if (!this.moveCooldown.isOnCooldown(playerName)) {
-			if (TDMGame.gameInProgress) {
+		if (!moveCooldown.isOnCooldown(playerName)) {
+			if (GameSetupHandler.isGameInProgress()) {
 				if (fPlayer != null && fPlayer.isAfk()) //TODO prevent the null check from being needed
 				{
 					fPlayer.setAfk(false);
 				}
 			}
-			this.moveCooldown.setOnCooldown(playerName);
+			moveCooldown.setOnCooldown(playerName);
 		}
 	}
 
 	@EventHandler
-	public void onPlayerInteract(PlayerInteractEvent Event) {
-		fPlayer fPlayer = FakeboardHandler.getPlayer(Event.getPlayer());
+	public void onPlayerInteract(PlayerInteractEvent event) {
+		fPlayer fPlayer = FakeboardHandler.getPlayer(event.getPlayer());
 		String playerName = fPlayer.getPlayerName();
 
-		if (TDMGame.gameInProgress) {
-			if (!this.Cooldown.isOnCooldown(playerName)) {
+		if (GameSetupHandler.isGameInProgress()) {
+			if (!playerCooldown.isOnCooldown(playerName)) {
 				if (fPlayer.isAfk()) {
 					fPlayer.setAfk(false);
 				}
-				this.Cooldown.setOnCooldown(playerName);
+				playerCooldown.setOnCooldown(playerName);
 			}
 		}
 	}
 
 	@EventHandler(priority = EventPriority.HIGHEST)
-	public void PlayerDied(final PlayerDeathEvent Event) {
-		Player player = Event.getEntity();
-		if (TDMGame.gameInProgress) {
+	public void onPlayerDied(final PlayerDeathEvent event) {
+		//Get the player who died
+		Player player = event.getEntity();
+		//Check if there's a game in profeess
+		if (GameSetupHandler.isGameInProgress()) {
+			//Get the fPlayer data for the player who was killed, and set their inventory contents
 			fPlayer fPlayerKilled = FakeboardHandler.getPlayer(player);
 			fPlayerKilled.setDeathInventory(player.getInventory().getContents());
-			if (player.getKiller() instanceof Player) {
-				fPlayer Killer = FakeboardHandler.getPlayer(player.getKiller());
-				if (Killer != null && fPlayerKilled != null) {
-					Team KillTeam = FakeboardHandler.getTeam(Killer.getTeam());
-					KillTeam.addTeamScore(1);
+			//Get the player who killed this player
+			Player playerKiller = player.getKiller();
+			if (playerKiller != null) {
+				fPlayer killingPlayer = FakeboardHandler.getPlayer(playerKiller);
+				if (killingPlayer != null && fPlayerKilled != null) {
+					//Get the team of the killing player
+					Team killerTeam = FakeboardHandler.getTeam(killingPlayer.getTeam());
+					//Add score to the killing team
+					killerTeam.addTeamScore(1);
+					//Add a death to the player who was killed
 					fPlayerKilled.addDeath();
-					Killer.addScore(1);
-					
-					/*
-					if (KillTeam.getName().equalsIgnoreCase("T"))
-					{
-						TDMGame.SBMan.setScore(TeamType.Terrorist, KillTeam.getTeamScore());
-					}
-					else
-					{
-						TDMGame.SBMan.setScore(TeamType.CounterTerrorist, KillTeam.getTeamScore());
-					}
-					*/
-					Killer.addKillstreak(1);
-					KillstreakHandler.HandleKillStreak(Killer);
+					//Add +1 score to the player who killed
+					killingPlayer.addScore(1);
+					//Add killstreak progress to the player who killed
+					killingPlayer.addKillstreak(1);
+					KillstreakHandler.HandleKillStreak(killingPlayer);
 					fPlayerKilled.resetKillstreak();
 
-					final String killerName = Killer.getPlayerName();
+					final String killerName = killingPlayer.getPlayerName();
 					final String killedName = fPlayerKilled.getPlayerName();
 
-					TDMGame.runnableManager.runTaskLater(new Runnable() {
-						@Override
-						public void run() {
-							if (AssistHandler.hasData(killedName)) {
-								for (String playersWhoAssisted : AssistHandler.getData(killedName).getAttackers()) {
-									if (!playersWhoAssisted.equalsIgnoreCase(killerName)) {
-										if (Bukkit.getPlayer(playersWhoAssisted) != null) {
-											TDMGame.givePlayerTunnelsXP(playersWhoAssisted, 1, true);
-										}
-									}
-								}
-								AssistHandler.removeData(killedName);
-								TDMGame.givePlayerTunnelsXP(Bukkit.getPlayer(killerName), 4);
-							}
-						}
-					}, 5);
-
-					//TDMGame.Console("Added 1 Killcount to [" + Killer.getPlayerName() + "] for killing [" + fPlayerKilled.getPlayerName() + "]; Total KS ==
-					// " + Killer.getKillStreak());
+					TDMGame.runnableManager.runTaskLater(new AssistAggregator(killedName,killerName), 5);
 				}
 			}
 			PlayerHandler.clearInventory(player);
 			player.setScoreboard(fPlayerKilled.getPlayerScoreboard().getScoreboard());
 		}
-		Event.getDrops().clear();
+		event.getDrops().clear();
 	}
 
 
@@ -141,38 +124,37 @@ public class Listeners implements Listener {
 			fPlayer playerShot = FakeboardHandler.getPlayer((Player) event.getVictim());
 			String shooterName = playerShooter.getPlayerName();
 			String shotName = playerShot.getPlayerName();
-			if (playerShooter.getTeam().equalsIgnoreCase(playerShot.getTeam()) || this.respawnInvincibilityCooldown.isOnCooldown(shooterName) || this
-					.respawnInvincibilityCooldown.isOnCooldown(shotName) || playerShooter.isAfk() || playerShot.isAfk()) {
+			if (playerShooter.getTeam().equalsIgnoreCase(playerShot.getTeam()) || this.respawnInvincibilityCooldown.isOnCooldown(shooterName) || this.respawnInvincibilityCooldown.isOnCooldown(shotName) || playerShooter.isAfk() || playerShot.isAfk()) {
 				event.setCancelled(true);
 				return;
 			} else {
-				AssistHandler.addData(shotName, shooterName);
+				AssistManager.addData(shotName, shooterName);
 			}
 		}
 	}
 
 	@EventHandler
-	public void onEntityDamage(EntityDamageByEntityEvent Event) {
-		if (!TDMGame.gameInProgress) {
-			Event.setCancelled(true);
+	public void onEntityDamage(EntityDamageByEntityEvent event) {
+		if (!GameSetupHandler.isGameInProgress()) {
+			event.setCancelled(true);
 		}
 	}
 
 	@EventHandler
-	public void forceRespawn(final ForceRespawnEvent Event) {
-		Player player = Event.getPlayer();
+	public void forceRespawn(final ForceRespawnEvent event) {
+		Player player = event.getPlayer();
 		String playerName = player.getName();
 		fPlayer fPlayer = FakeboardHandler.getPlayer(playerName);
 		if (TDMGame.gameInProgress) {
-			Event.setForcedRespawn(true);
+			event.setForcedRespawn(true);
 			if (fPlayer.getTeam().equalsIgnoreCase("T")) {
-				player.teleport(new SpawnpointConfig(player.getWorld().getName(), TDMGame.TeamType.Terrorist).getSpawn());
+				player.teleport(new SpawnpointConfig(player.getWorld().getName(), TeamType.Terrorist).getSpawn());
 			} else {
-				Event.getPlayer().teleport(new SpawnpointConfig(player.getWorld().getName(), TDMGame.TeamType.CounterTerrorist).getSpawn());
+				event.getPlayer().teleport(new SpawnpointConfig(player.getWorld().getName(), TeamType.CounterTerrorist).getSpawn());
 			}
 			TDMGame.runnableManager.runTaskLater(new RestoreInventory(playerName), 20);
 		}
-		this.respawnInvincibilityCooldown.setOnCooldown(Event.getPlayer().getName());
+		this.respawnInvincibilityCooldown.setOnCooldown(event.getPlayer().getName());
 
 		if (fPlayer.isAfk()) {
 			fPlayer.setAfk(false);
@@ -183,12 +165,12 @@ public class Listeners implements Listener {
 	public void RespawnEvent(PlayerRespawnEvent Event) {
 		if (TDMGame.gameInProgress) {
 			if (FakeboardHandler.getPlayer(Event.getPlayer()).getTeam().equalsIgnoreCase("T")) {
-				Event.setRespawnLocation(new SpawnpointConfig(Event.getPlayer().getWorld().getName(), TDMGame.TeamType.Terrorist).getSpawn());
+				Event.setRespawnLocation(new SpawnpointConfig(Event.getPlayer().getWorld().getName(), TeamType.Terrorist).getSpawn());
 				Event.getPlayer().getInventory().setArmorContents(new ItemStack[]{ItemHandler.makeLeatherItemStack(Material.LEATHER_HELMET, Color.BLUE),
 						ItemHandler.makeLeatherItemStack(Material.LEATHER_CHESTPLATE, Color.BLUE), ItemHandler.makeLeatherItemStack(Material.LEATHER_LEGGINGS,
 						Color.BLUE), ItemHandler.makeLeatherItemStack(Material.LEATHER_BOOTS, Color.BLUE)});
 			} else {
-				Event.setRespawnLocation(new SpawnpointConfig(Event.getPlayer().getWorld().getName(), TDMGame.TeamType.CounterTerrorist).getSpawn());
+				Event.setRespawnLocation(new SpawnpointConfig(Event.getPlayer().getWorld().getName(), TeamType.CounterTerrorist).getSpawn());
 				Event.getPlayer().getInventory().setArmorContents(new ItemStack[]{ItemHandler.makeLeatherItemStack(Material.LEATHER_HELMET, Color.RED),
 						ItemHandler.makeLeatherItemStack(Material.LEATHER_CHESTPLATE, Color.RED), ItemHandler.makeLeatherItemStack(Material.LEATHER_LEGGINGS,
 						Color.RED), ItemHandler.makeLeatherItemStack(Material.LEATHER_BOOTS, Color.RED)});
@@ -316,9 +298,9 @@ public class Listeners implements Listener {
 							String Team = FakeboardHandler.getPlayer(player).getTeam();
 							//TDMGame.Console(event.getPlayer().getName() + " joined game --> Assigned to [" + Team + "]");
 							if (Team.equalsIgnoreCase("T")) {
-								player.teleport(new SpawnpointConfig(player.getWorld().getName(), TDMGame.TeamType.Terrorist).getSpawn());
+								player.teleport(new SpawnpointConfig(player.getWorld().getName(), TeamType.Terrorist).getSpawn());
 							} else {
-								player.teleport(new SpawnpointConfig(player.getWorld().getName(), TDMGame.TeamType.CounterTerrorist).getSpawn());
+								player.teleport(new SpawnpointConfig(player.getWorld().getName(), TeamType.CounterTerrorist).getSpawn());
 							}
 							player.chat("/kit");
 							player.sendMessage(ChatColor.GREEN + "To select a loadout, use /kit");
@@ -366,6 +348,6 @@ public class Listeners implements Listener {
 	public void onPlayerQuit(PlayerQuitEvent Event) {
 		Player player = Event.getPlayer();
 		PlayerHandler.clearInventory(player);
-		FakeboardHandler.removePlayerr(player);
+		FakeboardHandler.removePlayer(player);
 	}
 }

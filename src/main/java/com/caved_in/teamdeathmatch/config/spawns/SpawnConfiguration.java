@@ -45,6 +45,10 @@ public class SpawnConfiguration {
 		}
 	}
 
+	public WorldSpawns getWorldSpawns(String worldName) {
+		return worldSpawnLocations.get(worldName);
+	}
+
 	public List<XMLSpawnPoint> getSpawnPoints() {
 		return this.spawnPoints;
 	}

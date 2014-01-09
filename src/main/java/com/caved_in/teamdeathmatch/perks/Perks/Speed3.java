@@ -1,5 +1,6 @@
 package com.caved_in.teamdeathmatch.perks.Perks;
 
+import com.caved_in.commons.time.TimeHandler;
 import com.caved_in.teamdeathmatch.perks.Perk;
 import org.bukkit.ChatColor;
 import org.bukkit.potion.PotionEffect;
@@ -17,7 +18,7 @@ public class Speed3 extends Perk {
 
 	@Override
 	public List<PotionEffect> getEffects() {
-		return Arrays.asList(new PotionEffect[]{new PotionEffect(PotionEffectType.SPEED, TimeUtils.getTimeInTicks(25, TimeUtils.TimeType.Minute), 3)});
+		return Arrays.asList(new PotionEffect(PotionEffectType.SPEED, (int) TimeHandler.getTimeInTicks(25, TimeHandler.TimeType.Minutes), 3));
 	}
 
 }

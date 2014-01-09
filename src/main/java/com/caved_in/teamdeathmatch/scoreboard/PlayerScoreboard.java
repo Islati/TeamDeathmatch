@@ -1,6 +1,7 @@
 package com.caved_in.teamdeathmatch.scoreboard;
 
 import com.caved_in.commons.player.PlayerHandler;
+import com.caved_in.teamdeathmatch.TeamType;
 import com.caved_in.teamdeathmatch.fakeboard.FakeboardHandler;
 import com.caved_in.teamdeathmatch.fakeboard.fPlayer;
 import org.bukkit.Bukkit;
@@ -12,16 +13,16 @@ import org.bukkit.scoreboard.Score;
 import org.bukkit.scoreboard.Scoreboard;
 
 public class PlayerScoreboard {
-	private String dummyObjectiveName = ChatColor.RESET.toString();
+	private static String dummyObjectiveName = ChatColor.RESET.toString();
 	private Objective objective;
 	private Scoreboard scoreboard;
 
-	private String terroristScore = ChatColor.GOLD + "Terrorist:";
-	private String counterTerroristScore = ChatColor.GOLD + "CTerrorist:";
-	private String killsScore = ChatColor.AQUA + "Kills:";
-	private String deathsScore = ChatColor.RED + "Deaths:";
-	private String killsStreak = ChatColor.YELLOW + "Kill Streak:";
-	private String XP = ChatColor.GREEN + "XP:";
+	private static String terroristScore = ChatColor.GOLD + "Terrorist:";
+	private static String counterTerroristScore = ChatColor.GOLD + "CTerrorist:";
+	private static String killsScore = ChatColor.AQUA + "Kills:";
+	private static String deathsScore = ChatColor.RED + "Deaths:";
+	private static String killsStreak = ChatColor.YELLOW + "Kill Streak:";
+	private static String XP = ChatColor.GREEN + "XP:";
 
 
 	public PlayerScoreboard() {
@@ -52,8 +53,8 @@ public class PlayerScoreboard {
 		Score playerDeathScore = objective.getScore(getName(deathsScore));
 		Score playerKillStreak = objective.getScore(getName(killsStreak));
 		Score playerXPScore = objective.getScore(getName(XP));
-		terroristScore.setScore(FakeboardHandler.getTeam("T").getTeamScore());
-		counterTerroristScore.setScore(FakeboardHandler.getTeam("CT").getTeamScore());
+		terroristScore.setScore(FakeboardHandler.getTeam(TeamType.TERRORIST.toString()).getTeamScore());
+		counterTerroristScore.setScore(FakeboardHandler.getTeam(TeamType.COUNTER_TERRORIST.toString()).getTeamScore());
 		playerKillScore.setScore(player.getPlayerScore());
 		playerDeathScore.setScore(player.getPlayerDeaths());
 		playerKillStreak.setScore(player.getKillStreak());
@@ -68,7 +69,7 @@ public class PlayerScoreboard {
 		switch (score) {
 			case CounterTerrorist:
 				Score ctScore = this.objective.getScore(getName(counterTerroristScore));
-				ctScore.setScore(FakeboardHandler.getTeam("CT").getTeamScore());
+				ctScore.setScore(FakeboardHandler.getTeam(TeamType.COUNTER_TERRORIST.toString()).getTeamScore());
 				break;
 			case Deaths:
 				Score dScore = objective.getScore(getName(deathsScore));
@@ -84,7 +85,7 @@ public class PlayerScoreboard {
 				break;
 			case Terrorist:
 				Score tScore = objective.getScore(getName(terroristScore));
-				tScore.setScore(FakeboardHandler.getTeam("T").getTeamScore());
+				tScore.setScore(FakeboardHandler.getTeam(TeamType.TERRORIST.toString()).getTeamScore());
 				break;
 			default:
 				break;

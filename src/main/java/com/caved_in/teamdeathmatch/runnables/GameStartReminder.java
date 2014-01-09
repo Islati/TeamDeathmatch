@@ -1,6 +1,7 @@
 package com.caved_in.teamdeathmatch.runnables;
 
 import com.caved_in.teamdeathmatch.TDMGame;
+import com.caved_in.teamdeathmatch.gamehandler.GameSetupHandler;
 import org.bukkit.Bukkit;
 
 public class GameStartReminder implements Runnable {
@@ -11,7 +12,7 @@ public class GameStartReminder implements Runnable {
 	@Override
 	public void run() {
 		if (currentTicks >= 6) {
-			TDMGame.setupHandler.doSetup();
+			GameSetupHandler.doSetup();
 			TDMGame.runnableManager.cancelTask("GameStart");
 			TDMGame.runnableManager.registerSynchRepeatTask("GameEndCheck", new GameOverRunnable(), 40L, 40L);
 			TDMGame.runnableManager.registerSynchRepeatTask("ValidateMap", new ValidateMap(), 120L, 60L);

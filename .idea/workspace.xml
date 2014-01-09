@@ -4,7 +4,51 @@
     <bookmark url="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/soundhandler/SoundHandler.java" line="50" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8037c4d4-8963-4502-a6f5-9863e0620a91" name="Default" comment="" />
+    <list default="true" id="8037c4d4-8963-4502-a6f5-9863e0620a91" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/AssistAggregator.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/SqlConfiguration.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/commands/CommandController.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/shop/GunShopConfig.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/commands/admin/AdminCommands.java" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/commands/admin/AdminCommands.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/Configuration.java" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/Configuration.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/fakeboard/FakeboardHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/fakeboard/FakeboardHandler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/GameOverRunnable.java" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/GameOverRunnable.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/gamehandler/GameSetupHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/gamehandler/GameSetupHandler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/GameStartReminder.java" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/GameStartReminder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/guns/GunHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/guns/GunHandler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/shop/GunShopConfiguration.java" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/shop/GunShopConfiguration.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/GunsSQL.java" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/GunsSQL.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/menus/help/HelpMenus.java" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/menus/help/HelpMenus.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/perks/Perks/Jump1.java" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/perks/Perks/Jump1.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/listeners/Listeners.java" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/listeners/Listeners.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/menus/loadoutselector/LoadoutCreationMenu.java" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/menus/loadoutselector/LoadoutCreationMenu.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/LoadoutSQL.java" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/LoadoutSQL.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/menus/loadoutselector/LoadoutSelectionItem.java" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/menus/loadoutselector/LoadoutSelectionItem.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/menus/loadoutselector/LoadoutSelectionMenu.java" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/menus/loadoutselector/LoadoutSelectionMenu.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_bukkit_craftbukkit_1_7_2_R0_3_SNAPSHOT.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_bukkit_craftbukkit_1_7_2_R0_3_SNAPSHOT.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/MessageRunnable.java" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/MessageRunnable.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/perks/PerkHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/perks/PerkHandler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/PerksSQL.java" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/PerksSQL.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/scoreboard/PlayerScoreboard.java" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/scoreboard/PlayerScoreboard.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/perks/Perks/Regen1.java" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/perks/Perks/Regen1.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/RestoreInventory.java" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/RestoreInventory.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/ScoreboardRunnable.java" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/ScoreboardRunnable.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/spawns/SpawnConfiguration.java" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/spawns/SpawnConfiguration.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/perks/Perks/Speed1.java" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/perks/Perks/Speed1.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/perks/Perks/Speed2.java" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/perks/Perks/Speed2.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/perks/Perks/Speed3.java" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/perks/Perks/Speed3.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/TDMGame.java" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/TDMGame.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Team Deathmatch.iml" afterPath="$PROJECT_DIR$/Team Deathmatch.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/fakeboard/Team.java" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/fakeboard/Team.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/TeleportCT.java" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/TeleportCT.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/TeleportTerrorist.java" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/TeleportTerrorist.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/perks/Perks/ThunderThighs_One.java" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/perks/Perks/ThunderThighs_One.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/ValidateMap.java" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/ValidateMap.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/spawns/WorldSpawns.java" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/spawns/WorldSpawns.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/shop/XMLGun.java" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/shop/XMLGun.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="Team Deathmatch.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -73,91 +117,94 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="pom.xml" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="pom.xml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="99" column="25" selection-start="3452" selection-end="3452" vertical-scroll-proportion="0.0" vertical-offset="1402" max-vertical-offset="2142">
+            <state line="109" column="24" selection-start="3805" selection-end="3805" vertical-scroll-proportion="0.38025594" vertical-offset="1536" max-vertical-offset="2160">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GameSetupHandler.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/gamehandler/GameSetupHandler.java">
+      <file leaf-file-name="GameStartReminder.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/GameStartReminder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="173" column="0" selection-start="6143" selection-end="6143" vertical-scroll-proportion="0.0" vertical-offset="2057" max-vertical-offset="2788">
+            <state line="14" column="30" selection-start="393" selection-end="393" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="496">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GunsSQL.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/GunsSQL.java">
+      <file leaf-file-name="GameOverRunnable.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/GameOverRunnable.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="8" selection-start="302" selection-end="374" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="1037">
+            <state line="51" column="13" selection-start="1845" selection-end="1845" vertical-scroll-proportion="0.0" vertical-offset="97" max-vertical-offset="1312">
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#709#804#0" expanded="true" />
+                <element signature="e#798#799#0" expanded="true" />
+                <element signature="e#1676#1776#0" expanded="true" />
+                <element signature="e#1769#1770#0" expanded="true" />
+                <element signature="e#2486#2581#0" expanded="true" />
+                <element signature="e#2575#2576#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PlayerOpenKits.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/PlayerOpenKits.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="23" selection-start="180" selection-end="180" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="256">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LoadoutSQL.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/LoadoutSQL.java">
+      <file leaf-file-name="RestoreInventory.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/RestoreInventory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="80" selection-start="476" selection-end="476" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="935">
+            <state line="42" column="9" selection-start="1433" selection-end="1433" vertical-scroll-proportion="0.0" vertical-offset="132" max-vertical-offset="736">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PerksSQL.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/PerksSQL.java">
+      <file leaf-file-name="Loadout.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/loadout/Loadout.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="80" selection-start="794" selection-end="794" vertical-scroll-proportion="0.42323652" vertical-offset="0" max-vertical-offset="952">
+            <state line="6" column="13" selection-start="207" selection-end="207" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="928">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TDMGame.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/TDMGame.java">
+      <file leaf-file-name="Listeners.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/listeners/Listeners.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="155" column="33" selection-start="5273" selection-end="5273" vertical-scroll-proportion="0.0" vertical-offset="2635" max-vertical-offset="4199">
-              <folding />
+            <state line="157" column="0" selection-start="5929" selection-end="5929" vertical-scroll-proportion="0.0" vertical-offset="1872" max-vertical-offset="5504">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AdminCommands.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/commands/admin/AdminCommands.java">
+      <file leaf-file-name="AssistAggregator.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/AssistAggregator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="109" column="0" selection-start="4087" selection-end="4087" vertical-scroll-proportion="0.0" vertical-offset="1853" max-vertical-offset="2805">
-              <folding />
+            <state line="28" column="65" selection-start="896" selection-end="896" vertical-scroll-proportion="0.0" vertical-offset="87" max-vertical-offset="704">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Configuration.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/Configuration.java">
+      <file leaf-file-name="AssistManager.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/assists/AssistManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="21" selection-start="571" selection-end="571" vertical-scroll-proportion="0.0" vertical-offset="4" max-vertical-offset="918">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SpawnConfiguration.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/spawns/SpawnConfiguration.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="48" column="32" selection-start="1718" selection-end="1718" vertical-scroll-proportion="0.0" vertical-offset="816" max-vertical-offset="969">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="plugin.yml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/plugin.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="67" selection-start="182" selection-end="182" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="561">
+            <state line="23" column="50" selection-start="745" selection-end="745" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="512">
               <folding />
             </state>
           </provider>
@@ -170,56 +217,63 @@
       <setting name="OPEN_NEW_TAB" value="false" />
     </FindUsagesManager>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/Handlers/Menus/LoadoutSelector/WeaponSelection/Primary/PrimarySelectionItem.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/Handlers/GameHandler/KillstreakHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/Handlers/GameHandler/GameSetupHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/Handlers/Fakeboard/Team.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/Handlers/Assists/Assist.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/Config/GunShopConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/Commands/Player/PlayerCommands.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/Handlers/Menus/LoadoutSelector/WeaponSelection/Primary/PrimarySelectionMenu.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/Runnables/GameRunnable/GameOverRunnable.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/Runnables/StartCheckRunnable.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/Handlers/Fakeboard/FakeboardHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/Listeners/Listeners.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/Commands/Admin/AdminCommands.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/Commands/admin/AdminCommands.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/handlers/menus/closebehaviours/LoadoutCreationClose.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/handlers/fakeboard/FakeboardHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/handlers/menus/help/HelpMenus.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/commands/admin/AdminCommands.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/SpawnpointConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/teamspawns/SpawnConfiguration.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/TeamType.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/spawns/WrappedLocation.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/spawns/WorldSpawns.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/spawns/XMLSpawnPoint.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/spawns/TeamSpawnLocation.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/handlers/scoreboard/ScoreboardHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/handlers/scoreboard/PlayerScoreboard.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/GameOverRunnable.java" />
         <option value="$PROJECT_DIR$/src/main/resources/plugin.yml" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/PlayerOpenKits.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/handlers/gamehandler/GameSetupHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/handlers/fakeboard/Team.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/chatvote/ChatManager.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/assists/AssistManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/assists/Assist.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/guns/GunType.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/guns/GunWrap.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/shop/XMLGun.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/guns/GunHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/spawns/SpawnConfiguration.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/SqlConfiguration.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/Configuration.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/TDMGame.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/gamehandler/GameSetupHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/GunsSQL.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/perks/PerkHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/LoadoutSQL.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/GunsSQL.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/PerksSQL.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/menus/help/HelpMenus.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/shop/XMLGun.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/shop/GunShopConfiguration.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/guns/GunHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/fakeboard/FakeboardHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/perks/Perks/Jump1.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/perks/Perks/Regen1.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/perks/Perks/Speed1.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/perks/Perks/Speed2.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/perks/Perks/Speed3.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/perks/Perks/ThunderThighs_One.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/menus/loadoutselector/LoadoutSelectionMenu.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/menus/loadoutselector/LoadoutSelectionItem.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/menus/loadoutselector/LoadoutCreationMenu.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/fakeboard/Team.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/spawns/SpawnConfiguration.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/commands/admin/AdminCommands.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/TDMGame.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/scoreboard/PlayerScoreboard.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/ValidateMap.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/spawns/WorldSpawns.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/TeleportTerrorist.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/TeleportCT.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/ScoreboardRunnable.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/gamehandler/GameSetupHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/RestoreInventory.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/MessageRunnable.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/GameStartReminder.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/GameOverRunnable.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/assists/AssistManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/AssistAggregator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/listeners/Listeners.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>
@@ -279,10 +333,10 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1616" />
-    <option name="height" value="876" />
+    <option name="x" value="-1" />
+    <option name="y" value="24" />
+    <option name="width" value="1368" />
+    <option name="height" value="745" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -310,7 +364,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -326,20 +379,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="TeamDeathmatch" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Team Deathmatch" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TeamDeathmatch" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -509,7 +548,599 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="runnables" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Team Deathmatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TeamDeathmatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="caved_in" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="teamdeathmatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="perks" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Team Deathmatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TeamDeathmatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="caved_in" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="teamdeathmatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="perks" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Perks" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Team Deathmatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TeamDeathmatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="caved_in" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="teamdeathmatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="menus" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="loadoutselector" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Team Deathmatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TeamDeathmatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="caved_in" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="teamdeathmatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="menus" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="loadoutselector" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="weaponselection" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tertiary" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Team Deathmatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TeamDeathmatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="caved_in" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="teamdeathmatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="menus" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="loadoutselector" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="weaponselection" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="selectiontypemenu" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Team Deathmatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TeamDeathmatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="caved_in" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="teamdeathmatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="menus" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="loadoutselector" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="weaponselection" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="secondary" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Team Deathmatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TeamDeathmatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="caved_in" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="teamdeathmatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="menus" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="loadoutselector" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="weaponselection" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="primary" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Team Deathmatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TeamDeathmatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="caved_in" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="teamdeathmatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="menus" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="help" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Team Deathmatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TeamDeathmatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="caved_in" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="teamdeathmatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="menus" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Team Deathmatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TeamDeathmatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="caved_in" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="teamdeathmatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="loadout" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Team Deathmatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TeamDeathmatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="caved_in" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="teamdeathmatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="listeners" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Team Deathmatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TeamDeathmatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="caved_in" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="teamdeathmatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="guns" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Team Deathmatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TeamDeathmatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="caved_in" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="teamdeathmatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="gamehandler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Team Deathmatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TeamDeathmatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="caved_in" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="teamdeathmatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fakeboard" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -590,6 +1221,48 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="spawns" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Team Deathmatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TeamDeathmatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="caved_in" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="teamdeathmatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="shop" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -794,6 +1467,7 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -822,6 +1496,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.caved_in.teamdeathmatch.config" />
       <recent name="com.caved_in.teamdeathmatch.Handlers.FileHandlers" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -834,26 +1509,6 @@
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m" />
       <option name="PROGRAM_PARAMETERS" />
-      <method />
-    </configuration>
-    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
-      <module name="" />
-      <option name="TESTING_TYPE" value="0" />
-      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="USE_COMMAND_LINE" value="true" />
-      <option name="COMMAND_LINE" value="" />
-      <option name="WIPE_USER_DATA" value="false" />
-      <option name="DISABLE_BOOT_ANIMATION" value="false" />
-      <option name="NETWORK_SPEED" value="full" />
-      <option name="NETWORK_LATENCY" value="none" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
       <method />
     </configuration>
     <configuration default="true" type="MavenRunConfiguration" factoryName="Maven">
@@ -881,25 +1536,32 @@
       </MavenSettings>
       <method />
     </configuration>
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
+      <module name="" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="USE_COMMAND_LINE" value="true" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <method />
+    </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
       <option name="SHMEM_ADDRESS" value="javadebug" />
       <option name="HOST" value="localhost" />
       <option name="PORT" value="5005" />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
@@ -927,6 +1589,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -1015,9 +1690,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
-    <editor active="true" />
+    <frame x="-1" y="24" width="1368" height="745" extended-state="6" />
+    <editor active="false" />
     <layout>
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" x="1096" y="516" width="278" height="193" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1030,11 +1706,11 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.103125" sideWeight="0.6675939" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18333334" sideWeight="0.6675939" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.6675939" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33240613" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2530303" sideWeight="0.6675939" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3312203" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1065,347 +1741,402 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/scoreboard/ScoreboardHandler.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/perks/PerkHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="27" selection-start="1189" selection-end="1189" vertical-scroll-proportion="0.0" vertical-offset="595" max-vertical-offset="850">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/scoreboard/PlayerScoreboard.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="66" column="65" selection-start="2759" selection-end="2759" vertical-scroll-proportion="0.0" vertical-offset="1122" max-vertical-offset="1751">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/GameOverRunnable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="25" selection-start="736" selection-end="736" vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="1326">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/StartCheckRunnable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="23" selection-start="179" selection-end="179" vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="357">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/listeners/Listeners.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="277" column="10" selection-start="9426" selection-end="9426" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="8908" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/commands/admin/AdminCommands.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="104" column="5" selection-start="3545" selection-end="3545" vertical-scroll-proportion="0.0" vertical-offset="1768" max-vertical-offset="2482">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/commands/player/PlayerCommands.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="13" selection-start="808" selection-end="808" vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="1836">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/shop/GunShopConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="13" selection-start="459" selection-end="459" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="1751" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/GunsSQL.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="13" selection-start="278" selection-end="278" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="1394">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/LoadoutSQL.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="13" selection-start="383" selection-end="383" vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="1190">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="130" column="28" selection-start="4675" selection-end="4675" vertical-scroll-proportion="0.0" vertical-offset="2210" max-vertical-offset="2788">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/plugin.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="93" selection-start="208" selection-end="208" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="561">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/StartCheckRunnable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="5" selection-start="257" selection-end="257" vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="425">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/menus/loadoutselector/LoadoutSelectionItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="13" selection-start="477" selection-end="477" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/menus/loadoutselector/LoadoutSelectionMenu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="13" selection-start="583" selection-end="583" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/StartCheckRunnable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="23" selection-start="179" selection-end="179" vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="357">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/commands/player/PlayerCommands.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="13" selection-start="808" selection-end="808" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/soundhandler/SoundHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="13" selection-start="157" selection-end="157" vertical-scroll-proportion="-0.2461964" vertical-offset="246" max-vertical-offset="1377">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/menus/closebehaviours/LoadoutCreationClose.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="13" selection-start="196" selection-end="196" vertical-scroll-proportion="0.09405256" vertical-offset="0" max-vertical-offset="723" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/listeners/Listeners.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="13" selection-start="1493" selection-end="1493" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5661" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/spawns/TeamSpawnLocation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="52" selection-start="492" selection-end="492" vertical-scroll-proportion="0.37621024" vertical-offset="0" max-vertical-offset="723">
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/spawns/XMLSpawnPoint.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="25" selection-start="426" selection-end="426" vertical-scroll-proportion="0.32918397" vertical-offset="0" max-vertical-offset="1241">
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1520#1521#0" expanded="false" />
-            <element signature="e#1547#1548#0" expanded="false" />
-            <element signature="e#1581#1582#0" expanded="false" />
-            <element signature="e#1603#1604#0" expanded="false" />
-            <element signature="e#1636#1637#0" expanded="false" />
-            <element signature="e#1659#1660#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/TeamType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="36" selection-start="608" selection-end="608" vertical-scroll-proportion="0.59408605" vertical-offset="0" max-vertical-offset="744">
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/menus/help/HelpMenus.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="9" selection-start="2094" selection-end="2094" vertical-scroll-proportion="1.2093023" vertical-offset="204" max-vertical-offset="1275" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/fakeboard/FakeboardHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="166" column="13" selection-start="4238" selection-end="4238" vertical-scroll-proportion="0.0" vertical-offset="2473" max-vertical-offset="3196" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/scoreboard/ScoreboardHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="27" selection-start="1189" selection-end="1189" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="816">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/scoreboard/PlayerScoreboard.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="66" column="65" selection-start="2759" selection-end="2759" vertical-scroll-proportion="0.0" vertical-offset="935" max-vertical-offset="1717">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/plugin.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="67" selection-start="182" selection-end="182" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="561">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/GameOverRunnable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="26" selection-start="1166" selection-end="1166" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1156">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="99" column="25" selection-start="3452" selection-end="3452" vertical-scroll-proportion="0.0" vertical-offset="1402" max-vertical-offset="2142">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/PlayerOpenKits.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="23" selection-start="180" selection-end="180" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="272" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/fakeboard/fPlayer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="13" selection-start="747" selection-end="747" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6086">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/spawns/WorldSpawns.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="53" selection-start="914" selection-end="914" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="901">
+        <state line="30" column="35" selection-start="781" selection-end="781" vertical-scroll-proportion="0.71477664" vertical-offset="0" max-vertical-offset="582">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/chatvote/ChatManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="5" selection-start="483" selection-end="483" vertical-scroll-proportion="-0.2690141" vertical-offset="514" max-vertical-offset="1751">
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/assists/Assist.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="39" selection-start="520" selection-end="520" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="476">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/assists/AssistManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="50" selection-start="745" selection-end="745" vertical-scroll-proportion="0.54080224" vertical-offset="0" max-vertical-offset="723">
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/shop/GunShopConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="33" selection-start="1666" selection-end="1666" vertical-scroll-proportion="0.0" vertical-offset="599" max-vertical-offset="1309" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/shop/GunShopConfiguration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="35" selection-start="85" selection-end="85" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="170" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/shop/XMLGun.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="28" selection-start="545" selection-end="545" vertical-scroll-proportion="0.5172891" vertical-offset="0" max-vertical-offset="1207" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/fakeboard/Team.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="0" selection-start="727" selection-end="727" vertical-scroll-proportion="0.0" vertical-offset="1109" max-vertical-offset="1853" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/guns/GunType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="5" selection-start="318" selection-end="318" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="425" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/guns/GunWrap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="0" selection-start="150" selection-end="150" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="612" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/guns/GunHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="62" selection-start="522" selection-end="552" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1632">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/spawns/SpawnConfiguration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="32" selection-start="1718" selection-end="1718" vertical-scroll-proportion="0.0" vertical-offset="21" max-vertical-offset="884">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/Configuration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="21" selection-start="571" selection-end="571" vertical-scroll-proportion="0.0" vertical-offset="4" max-vertical-offset="918">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/commands/admin/AdminCommands.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="109" column="0" selection-start="4087" selection-end="4087" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="2584">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/TDMGame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="155" column="33" selection-start="5273" selection-end="5273" vertical-scroll-proportion="0.0" vertical-offset="1751" max-vertical-offset="3468">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/gamehandler/GameSetupHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="173" column="0" selection-start="6143" selection-end="6143" vertical-scroll-proportion="0.0" vertical-offset="2057" max-vertical-offset="2788">
+        <state line="19" column="5" selection-start="483" selection-end="483" vertical-scroll-proportion="-0.16871704" vertical-offset="336" max-vertical-offset="1584">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/GunsSQL.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="8" selection-start="302" selection-end="374" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="1037">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/LoadoutSQL.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="80" selection-start="476" selection-end="476" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="935">
-          <folding />
+        <state line="19" column="8" selection-start="708" selection-end="1025" vertical-scroll-proportion="0.0" vertical-offset="192" max-vertical-offset="1120">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/PerksSQL.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="80" selection-start="794" selection-end="794" vertical-scroll-proportion="0.42323652" vertical-offset="0" max-vertical-offset="952">
+        <state line="61" column="9" selection-start="2098" selection-end="2098" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1120">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1280#1286#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/menus/help/HelpMenus.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="28" selection-start="77" selection-end="77" vertical-scroll-proportion="0.054145515" vertical-offset="0" max-vertical-offset="1184">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/shop/XMLGun.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="25" selection-start="1002" selection-end="1002" vertical-scroll-proportion="0.0" vertical-offset="144" max-vertical-offset="960">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/shop/GunShopConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="15" selection-start="716" selection-end="716" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="608">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#332#340#0" expanded="true" />
+            <element signature="e#739#740#0" expanded="true" />
+            <element signature="e#761#762#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/guns/GunHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="75" column="5" selection-start="1549" selection-end="1549" vertical-scroll-proportion="0.0" vertical-offset="791" max-vertical-offset="1360">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/spawns/TeamSpawnLocation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="52" selection-start="492" selection-end="492" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="512">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/fakeboard/FakeboardHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="122" column="76" selection-start="3299" selection-end="3299" vertical-scroll-proportion="3.2857144" vertical-offset="0" max-vertical-offset="2304">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/perks/Perks/Jump1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="29" selection-start="667" selection-end="667" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="480">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/perks/Perks/Regen1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="142" selection-start="780" selection-end="780" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="368">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/perks/Perks/Speed1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="135" selection-start="765" selection-end="765" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="368">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/perks/Perks/Speed2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="136" selection-start="802" selection-end="802" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="368">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/perks/Perks/Speed3.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="0" selection-start="675" selection-end="675" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="480">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/perks/Perks/ThunderThighs_One.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="135" selection-start="717" selection-end="717" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="368">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/perks/Perks/Nothing.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="13" selection-start="199" selection-end="199" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="352">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/menus/loadoutselector/LoadoutSelectionMenu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="12" selection-start="1230" selection-end="1230" vertical-scroll-proportion="0.0" vertical-offset="48" max-vertical-offset="640">
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/menus/loadoutselector/LoadoutSelectionItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="5" selection-start="660" selection-end="660" vertical-scroll-proportion="0.0" vertical-offset="13" max-vertical-offset="560">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/menus/loadoutselector/LoadoutCreationMenu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="70" selection-start="1152" selection-end="1152" vertical-scroll-proportion="0.0" vertical-offset="16" max-vertical-offset="720">
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/menus/loadoutselector/LoadoutCreationItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="13" selection-start="324" selection-end="324" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="400">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/guns/GunType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="5" selection-start="318" selection-end="318" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="400">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/guns/GunWrap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="0" selection-start="150" selection-end="150" vertical-scroll-proportion="0.0" vertical-offset="16" max-vertical-offset="576">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/gamehandler/KillstreakHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="7" selection-start="57" selection-end="57" vertical-scroll-proportion="0.0" vertical-offset="301" max-vertical-offset="848">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/fakeboard/Team.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="83" column="34" selection-start="1845" selection-end="1845" vertical-scroll-proportion="0.0" vertical-offset="816" max-vertical-offset="1776">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/spawns/XMLSpawnPoint.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="25" selection-start="426" selection-end="426" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="992">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/spawns/SpawnConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="48" column="50" selection-start="1744" selection-end="1744" vertical-scroll-proportion="0.0" vertical-offset="173" max-vertical-offset="864">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/Configuration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="50" column="106" selection-start="1546" selection-end="1546" vertical-scroll-proportion="0.0" vertical-offset="109" max-vertical-offset="800">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/TeamType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="36" selection-start="608" selection-end="608" vertical-scroll-proportion="0.0" vertical-offset="48" max-vertical-offset="608">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/commands/admin/AdminCommands.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="143" column="46" selection-start="6278" selection-end="6278" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2496">
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/TDMGame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="166" column="0" selection-start="5548" selection-end="5548" vertical-scroll-proportion="0.0" vertical-offset="541" max-vertical-offset="3008">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/soundhandler/SoundHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="13" selection-start="215" selection-end="215" vertical-scroll-proportion="0.0" vertical-offset="416" max-vertical-offset="1216">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/scoreboard/ScoreboardHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="27" selection-start="1180" selection-end="1180" vertical-scroll-proportion="0.0" vertical-offset="173" max-vertical-offset="720">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/scoreboard/PlayerScoreboard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="19" selection-start="1041" selection-end="1041" vertical-scroll-proportion="0.0" vertical-offset="829" max-vertical-offset="1472">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/ValidateMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="49" selection-start="510" selection-end="510" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="384">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/MessageRunnable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="9" selection-start="1062" selection-end="1062" vertical-scroll-proportion="1.0530164" vertical-offset="0" max-vertical-offset="720">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/StartCheckRunnable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="13" selection-start="106" selection-end="106" vertical-scroll-proportion="0.11700183" vertical-offset="0" max-vertical-offset="547">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/TeleportCT.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="81" selection-start="653" selection-end="653" vertical-scroll-proportion="0.25307557" vertical-offset="0" max-vertical-offset="569">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/TeleportTerrorist.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="0" selection-start="381" selection-end="665" vertical-scroll-proportion="0.19683656" vertical-offset="0" max-vertical-offset="569">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/gamehandler/GameSetupHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="73" column="18" selection-start="2684" selection-end="2684" vertical-scroll-proportion="0.84358525" vertical-offset="400" max-vertical-offset="2864">
+          <folding>
+            <element signature="e#2595#2596#0" expanded="true" />
+            <element signature="e#2622#2623#0" expanded="true" />
+            <element signature="e#2670#2671#0" expanded="true" />
+            <element signature="e#2696#2697#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/ScoreboardRunnable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="47" selection-start="509" selection-end="509" vertical-scroll-proportion="0.24365482" vertical-offset="0" max-vertical-offset="591">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/spawns/WorldSpawns.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="44" column="80" selection-start="1416" selection-end="1416" vertical-scroll-proportion="0.6497462" vertical-offset="288" max-vertical-offset="928">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/GameStartReminder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="30" selection-start="393" selection-end="393" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="496">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/GameOverRunnable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="51" column="13" selection-start="1845" selection-end="1845" vertical-scroll-proportion="0.0" vertical-offset="97" max-vertical-offset="1312">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#709#804#0" expanded="true" />
+            <element signature="e#798#799#0" expanded="true" />
+            <element signature="e#1676#1776#0" expanded="true" />
+            <element signature="e#1769#1770#0" expanded="true" />
+            <element signature="e#2486#2581#0" expanded="true" />
+            <element signature="e#2575#2576#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/PlayerOpenKits.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="23" selection-start="180" selection-end="180" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="256">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/RestoreInventory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="9" selection-start="1433" selection-end="1433" vertical-scroll-proportion="0.0" vertical-offset="132" max-vertical-offset="736">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/loadout/Loadout.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="13" selection-start="207" selection-end="207" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="928">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/assists/AssistManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="50" selection-start="745" selection-end="745" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="512">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/AssistAggregator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="65" selection-start="896" selection-end="896" vertical-scroll-proportion="0.0" vertical-offset="87" max-vertical-offset="704">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/listeners/Listeners.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="157" column="0" selection-start="5929" selection-end="5929" vertical-scroll-proportion="0.0" vertical-offset="1872" max-vertical-offset="5504">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="109" column="24" selection-start="3805" selection-end="3805" vertical-scroll-proportion="0.38025594" vertical-offset="1536" max-vertical-offset="2160">
           <folding />
         </state>
       </provider>

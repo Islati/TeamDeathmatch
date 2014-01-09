@@ -1,10 +1,13 @@
 package com.caved_in.teamdeathmatch.commands.admin;
 
 import com.caved_in.commons.Messages;
-import com.caved_in.commons.data.menu.HelpScreen;
+import com.caved_in.commons.commands.CommandController;
+import com.caved_in.commons.menu.HelpScreen;
 import com.caved_in.commons.player.PlayerHandler;
 import com.caved_in.teamdeathmatch.TDMGame;
-import com.caved_in.teamdeathmatch.commands.CommandController;
+import com.caved_in.teamdeathmatch.TeamType;
+import com.caved_in.teamdeathmatch.config.spawns.TeamSpawnLocation;
+import com.caved_in.teamdeathmatch.config.spawns.WorldSpawns;
 import com.caved_in.teamdeathmatch.fakeboard.FakeboardHandler;
 import com.caved_in.teamdeathmatch.menus.help.HelpMenus;
 import org.apache.commons.lang.StringUtils;
@@ -89,34 +92,25 @@ public class AdminCommands {
 	}
 
 	@CommandController.CommandHandler(name = "setteamspawn", description = "Used to add spawn locations for teams", permission = "gungame.admin",
-			usage = "/setteamspawn [Team]")
+			usage = "/setteamspawn [team]")
 	public void SetTeamSpawn(Player sender, String[] args) {
-		String teamName = args[0];
-		TDMGame.TeamType teamType = null;
-		switch (teamName.toLowerCase()) {
-			case "t":
-				teamType = TDMGame.TeamType.Terrorist;
-				break;
-			case "ct":
-				teamType = TDMGame.TeamType.CounterTerrorist;
-				break;
-			default:
-				PlayerHandler.sendMessage(sender, "&cThe available teams are &eT&c and &eCT");
-				break;
-		}
-
-		if (teamType != null) {
-
-		}
-
-		if (teamName.equalsIgnoreCase("t")) {
-			new SpawnpointConfig().saveSpawnpoint(TDMGame.TeamType.Terrorist, sender.getLocation());
-			sender.sendMessage(ChatColor.GREEN + "Spawn point for terrorists has been set for the world " + sender.getWorld().getName());
-		} else if (teamName.equalsIgnoreCase("ct")) {
-			new SpawnpointConfig().saveSpawnpoint(TDMGame.TeamType.CounterTerrorist, sender.getLocation());
-			sender.sendMessage(ChatColor.GREEN + "Spawn point for counterterrorists has been set for the world " + sender.getWorld().getName());
+		if (args.length > 0) {
+			String teamName = args[0];
+			//Get the world spawns for the player issueing the command
+			String playerWorldName = sender.getWorld().getName();
+			WorldSpawns worldSpawns = TDMGame.configuration.getSpawnConfiguration().getWorldSpawns(playerWorldName);
+			switch (teamName.toLowerCase()) {
+				case "t":
+				case "ct":
+					worldSpawns.add(new TeamSpawnLocation(sender.getLocation(), TeamType.getTeamByInitials(teamName)));
+					PlayerHandler.sendMessage(sender, "&aSpawn point for &e" + teamName + "&a has been added for the world &e" + playerWorldName);
+					break;
+				default:
+					PlayerHandler.sendMessage(sender, "&cThe available teams are &eT&c and &eCT");
+					break;
+			}
 		} else {
-			sender.sendMessage(ChatColor.RED + "The available teams are " + ChatColor.GREEN + "T" + ChatColor.RED + " and " + ChatColor.GREEN + "CT");
+			PlayerHandler.sendMessage(sender, Messages.INVALID_COMMAND_USAGE("team"));
 		}
 	}
 
@@ -127,7 +121,7 @@ public class AdminCommands {
 	}
 
 	@CommandController.SubCommandHandler(parent = "gungame", name = "help", permission = "gungame.admin")
-	public void TotalWarHelpCommand(CommandSender Sender, String[] Args) {
+	public void TotalWarHelpCommand(CommandSender sender, String[] args) {
 		HelpScreen HelpScreen = new HelpScreen("GunGame Admin Menu");
 		HelpScreen.setHeader(ChatColor.BLUE + "<name> Page <page> of <maxpage>");
 		HelpScreen.setFormat("<name> --> <desc>");
@@ -139,21 +133,18 @@ public class AdminCommands {
 		HelpScreen.setEntry("/forcewin [T/CT]", "Force a team to win so the round will re-start");
 		HelpScreen.setEntry("/forcemap <Map>", "Forces a map change to the given map");
 		HelpScreen.setEntry("/forcemap list", "List all available maps");
-		if (Args.length == 1) {
-			HelpScreen.sendTo(Sender, 1, 5);
-		} else {
-			if (Args[1] != null && StringUtils.isNumeric(Args[1])) {
-				int Page = Integer.parseInt(Args[1]);
-				HelpScreen.sendTo(Sender, Page, 5);
-			}
+		int Page = 1;
+		if (args.length > 1 && StringUtils.isNumeric(args[1])) {
+			Page = Integer.parseInt(args[1]);
 		}
+		HelpScreen.sendTo(sender, Page, 6);
 	}
 
 	@CommandController.SubCommandHandler(parent = "gungame", name = "reload", permission = "gungame.admin")
-	public void TDMReload(CommandSender Sender, String[] Args) {
-		TDMGame.gunHandler.LoadGunData();
+	public void TDMReload(CommandSender sender, String[] args) {
+		TDMGame.gunHandler.initData();
 		TDMGame.reloadMessages();
 		Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "shot config reload");
-		Sender.sendMessage(ChatColor.GREEN + "[Tunnels] GunData and ShopData reloaded");
+		sender.sendMessage(ChatColor.GREEN + "[Tunnels] GunData and ShopData reloaded");
 	}
 }

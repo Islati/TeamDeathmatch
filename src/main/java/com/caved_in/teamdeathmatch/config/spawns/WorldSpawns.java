@@ -2,9 +2,7 @@ package com.caved_in.teamdeathmatch.config.spawns;
 
 import com.caved_in.teamdeathmatch.TeamType;
 
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
+import java.util.*;
 
 public class WorldSpawns implements Iterable<TeamSpawnLocation> {
 	private String worldName;
@@ -40,6 +38,11 @@ public class WorldSpawns implements Iterable<TeamSpawnLocation> {
 			}
 		}
 		return returnLocations;
+	}
+
+	public TeamSpawnLocation getRandomSpawn(TeamType teamType) {
+		ArrayList<TeamSpawnLocation> spawns = new ArrayList<>(getSpawnLocations(teamType));
+		return spawns.get(new Random(System.nanoTime()).nextInt(spawns.size()));
 	}
 
 	@Override

@@ -6,11 +6,7 @@ import com.caved_in.commons.player.PlayerWrapper;
 import com.caved_in.commons.threading.RunnableManager;
 import com.caved_in.commons.time.Cooldown;
 import com.caved_in.teamdeathmatch.commands.CommandRegister;
-import com.caved_in.teamdeathmatch.config.Configuration;
-import com.caved_in.teamdeathmatch.config.shop.GunShopConfig;
-import com.caved_in.teamdeathmatch.config.GunsSQL;
-import com.caved_in.teamdeathmatch.config.LoadoutSQL;
-import com.caved_in.teamdeathmatch.config.PerksSQL;
+import com.caved_in.teamdeathmatch.config.*;
 import com.caved_in.teamdeathmatch.config.shop.GunShopConfiguration;
 import com.caved_in.teamdeathmatch.config.spawns.SpawnConfiguration;
 import com.caved_in.teamdeathmatch.fakeboard.FakeboardHandler;
@@ -63,6 +59,8 @@ public class TDMGame extends JavaPlugin {
 
 	public static String GUN_CONFIG_FILE;
 
+	public static String SQL_CONFIG_FILE;
+
 	public static Configuration configuration;
 
 	private static Serializer serializer = new Persister();
@@ -75,7 +73,7 @@ public class TDMGame extends JavaPlugin {
 		GUN_CONFIG_FILE = DATA_FOLDER + "GunConfig.xml";
 		//Spawn config file
 		SPAWN_CONFIG_FILE = DATA_FOLDER + "SpawnConfig.xml";
-
+		SQL_CONFIG_FILE = DATA_FOLDER + "Database.xml";
 		//Init our config
 		initConfig();
 		//Initialize the configuration
@@ -119,6 +117,12 @@ public class TDMGame extends JavaPlugin {
 		}
 	}
 
+	@Override
+	public void onDisable() {
+		HandlerList.unregisterAll(this);
+		Bukkit.getScheduler().cancelTasks(this);
+	}
+
 	public static Serializer getPersister() {
 		return serializer;
 	}
@@ -126,11 +130,13 @@ public class TDMGame extends JavaPlugin {
 	public void initConfig() {
 		File gunConfig = new File(GUN_CONFIG_FILE);
 		File spawnConfig = new File(SPAWN_CONFIG_FILE);
+		File sqlConfig = new File(SQL_CONFIG_FILE);
 		try {
 			if (!gunConfig.exists()) {
 				//This saves the configurations
 				getPersister().write(new GunShopConfiguration(), gunConfig);
 				getPersister().write(new SpawnConfiguration(), spawnConfig);
+				getPersister().write(new SqlConfiguration(), sqlConfig);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -151,24 +157,14 @@ public class TDMGame extends JavaPlugin {
 	}
 
 	public static void rotateMap(boolean rollback) {
-		if (rollback) {
-			FakeboardHandler.cleanTeams();
-			if (GameSetupHandler.) {
-				gameMap = getGameWorld();
-				isForceMap = false;
-			}
-			runnableManager.registerSynchRepeatTask("SetupCheck", new StartCheckRunnable(), 200L, 40L);
-			cleanActiveMap();
-			resetLastMap = true;
-		} else {
-			FakeboardHandler.cleanTeams();
-			if (!isForceMap) {
-				gameMap = getGameWorld();
-				isForceMap = false;
-			}
-			runnableManager.registerSynchRepeatTask("SetupCheck", new StartCheckRunnable(), 200L, 40L);
-			cleanActiveMap();
+		FakeboardHandler.cleanTeams();
+		if (!GameSetupHandler.isForceMap()) {
+			gameMap = getGameWorld();
 		}
+		runnableManager.registerSynchRepeatTask("SetupCheck", new StartCheckRunnable(), 200L, 40L);
+		cleanActiveMap();
+		GameSetupHandler.setResetLastMap(rollback);
+
 
 		for (Player Player : Bukkit.getOnlinePlayers()) {
 			fPlayer fPlayer = FakeboardHandler.getPlayer(Player);
@@ -219,23 +215,7 @@ public class TDMGame extends JavaPlugin {
 		return World;
 	}
 
-	@Override
-	public void onDisable() {
-		HandlerList.unregisterAll(this);
-		Bukkit.getScheduler().cancelTasks(this);
-	}
-
 	public enum LoadoutSlot {
 		Primary, Secondary, Tertiary
-	}
-
-	public static void Console(String Message) {
-		Bukkit.getLogger().info(Message);
-	}
-
-	public static void SendMessageToAll(String Message) {
-		for (Player P : Bukkit.getOnlinePlayers()) {
-			P.sendMessage(Message);
-		}
 	}
 }

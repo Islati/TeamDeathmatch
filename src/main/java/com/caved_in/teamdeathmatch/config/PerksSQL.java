@@ -1,58 +1,64 @@
 package com.caved_in.teamdeathmatch.config;
 
 import com.caved_in.commons.Commons;
-import com.caved_in.commons.handlers.SQL.SQL;
+import com.caved_in.commons.sql.SQL;
 import com.caved_in.teamdeathmatch.TDMGame;
 import com.caved_in.teamdeathmatch.perks.Perk;
+import com.caved_in.teamdeathmatch.perks.PerkHandler;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
-public class PerksSQL {
-	private SQL SQL;
+public class PerksSQL extends SQL {
 
-	private String Table = "Bans";
-	private String IDTag = "ID";
-	private String TypeTag = "Type";
-	private String NameTag = "Name";
-	private String ReasonTag = "Reason";
-	private String IssuedByTag = "IssuedBy";
-	private String IssuedTag = "Issued";
-	private String ExpiresTag = "Expires";
-	private String ActiveTag = "Active";
+	private static String perkTable = "Guns_Perks";
+	private static String playerColumn = "Player";
+	private static String perkColumn = "Perk";
+
+	private static String getDataStatement = "SELECT * FROM " + perkTable + " WHERE " + playerColumn + "=?";
+	private static String insertDataStatement = "INSERT INTO " + perkTable + " (" + playerColumn + ", " + perkColumn + ") VALUES (?, ?)";
 
 	public PerksSQL() {
-		this.SQL = new SQL("localhost", "3306", "DATABASE", "username", "PASS");
+		super(
+				TDMGame.configuration.getSqlConfiguration().getHost(),
+				TDMGame.configuration.getSqlConfiguration().getPort(),
+				TDMGame.configuration.getSqlConfiguration().getDatabase(),
+				TDMGame.configuration.getSqlConfiguration().getUsername(),
+				TDMGame.configuration.getSqlConfiguration().getPassword()
+		);
 	}
 
-	/**
-	 * Gets the data for a player via ResultSet
-	 *
-	 * @param PlayerName Name to get data of
-	 * @return ResultSet of Data
-	 */
-	public ResultSet getPlayerData(String PlayerName) {
-		return this.SQL.executeQueryOpen("SELECT * FROM Guns_Perks WHERE Player= '" + PlayerName + "';");
-	}
-
-	public List<Perk> getPerks(String PlayerName) {
-		List<Perk> Perks = new ArrayList<Perk>();
-		ResultSet PlayerData = this.getPlayerData(PlayerName);
+	public Set<Perk> getPerks(String playerName) {
+		Set<Perk> playerPerks = new HashSet<Perk>();
+		PreparedStatement preparedStatement = prepareStatement(getDataStatement);
 		try {
-			while (PlayerData.next()) {
-				Perks.add(TDMGame.perkHandler.getPerk(PlayerData.getString("Perk")));
+			preparedStatement.setString(1, playerName);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				playerPerks.add(PerkHandler.getPerk(resultSet.getString(perkColumn)));
 			}
-			PlayerData.close();
-		} catch (SQLException Ex) {
-			Ex.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(preparedStatement);
 		}
-		return Perks;
+		return playerPerks;
 	}
 
-	public void insertPerk(Perk Perk, String PlayerName) {
-		this.SQL.executeUpdate("INSERT INTO Guns_Perks (Player, Perk) VALUES ('" + PlayerName + "','" + Perk.getPerkName() + "');");
-		Commons.messageConsole("Added perk " + Perk.getPerkName() + " to player " + PlayerName);
+	public void insertPerk(Perk perk, String playerName) {
+		PreparedStatement preparedStatement = prepareStatement(insertDataStatement);
+		try {
+			preparedStatement.setString(1, playerName);
+			preparedStatement.setString(2, perk.getPerkName());
+			preparedStatement.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(preparedStatement);
+		}
 	}
 }

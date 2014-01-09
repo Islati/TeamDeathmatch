@@ -1,9 +1,9 @@
 package com.caved_in.teamdeathmatch.gamehandler;
 
 //Commons imports
+
 import com.caved_in.commons.Commons;
 import com.caved_in.commons.items.ItemHandler;
-//Team Deathmatch imports
 import com.caved_in.teamdeathmatch.TDMGame;
 import com.caved_in.teamdeathmatch.TeamType;
 import com.caved_in.teamdeathmatch.fakeboard.FakeboardHandler;
@@ -12,9 +12,7 @@ import com.caved_in.teamdeathmatch.fakeboard.fPlayer;
 import com.caved_in.teamdeathmatch.runnables.PlayerOpenKits;
 import com.caved_in.teamdeathmatch.runnables.TeleportCT;
 import com.caved_in.teamdeathmatch.runnables.TeleportTerrorist;
-//World Manager Imports
 import com.caved_in.worldmanager.WorldManager;
-//Bukkit imports
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.Material;
@@ -23,6 +21,10 @@ import org.bukkit.inventory.ItemStack;
 import org.kitteh.tag.TagAPI;
 
 import java.util.Random;
+
+//Team Deathmatch imports
+//World Manager Imports
+//Bukkit imports
 
 public class GameSetupHandler {
 	//Initials for both of the teams
@@ -64,6 +66,14 @@ public class GameSetupHandler {
 
 	}
 
+	public static ItemStack[] getBlueTeamArmor() {
+		return blueTeamArmor;
+	}
+
+	public static ItemStack[] getRedTeamArmor() {
+		return redTeamArmor;
+	}
+
 	public static void doSetup() {
 		//Teleport players to the spawn
 		teleportPlayersToSpawn();
@@ -99,48 +109,50 @@ public class GameSetupHandler {
 		}
 	}
 
-	public static void assignPlayerTeam(Player Player) {
+	//TODO Optimize the fuck out of this
+	public static void assignPlayerTeam(Player player) {
 		//Our two teams, the terrorists and counter terrorists
 		Team terroristTeam = FakeboardHandler.getTeam(teamTerrorist);
 		Team counterTerroristTeam = FakeboardHandler.getTeam(teamCounterTerrorist);
 		//The size of each team
-		int terroristCount = terroristTeam.get
-		int counterTerroristCount = FakeboardHandler.getTeam("CT").getTeamMembers().size();
-		fPlayer fPlayer = FakeboardHandler.getPlayer(Player);
+		int terroristCount = terroristTeam.getTeamSize();
+		int counterTerroristCount = counterTerroristTeam.getTeamSize();
+		//Get our fPlayer
+		fPlayer fPlayer = FakeboardHandler.getPlayer(player);
 		if (terroristCount != counterTerroristCount) {
 			if (terroristCount > counterTerroristCount) {
-				FakeboardHandler.addToTeam("CT", fPlayer);
-				fPlayer.setTeam("CT");
-				Player.getInventory().setArmorContents(new ItemStack[]{ItemHandler.makeLeatherItemStack(Material.LEATHER_HELMET, Color.RED),
-						ItemHandler.makeLeatherItemStack(Material.LEATHER_CHESTPLATE, Color.RED), ItemHandler.makeLeatherItemStack(Material.LEATHER_LEGGINGS,
-						Color.RED), ItemHandler.makeLeatherItemStack(Material.LEATHER_BOOTS, Color.RED)});
+				//Add the player to CT
+				FakeboardHandler.addToTeam(teamCounterTerrorist, fPlayer);
+				//Set their team to CT
+				fPlayer.setTeam(teamCounterTerrorist);
+				player.getInventory().setArmorContents(redTeamArmor);
 			} else {
-				FakeboardHandler.addToTeam("T", Player);
-				fPlayer.setTeam("T");
-				Player.getInventory().setArmorContents(new ItemStack[]{ItemHandler.makeLeatherItemStack(Material.LEATHER_HELMET, Color.BLUE),
-						ItemHandler.makeLeatherItemStack(Material.LEATHER_CHESTPLATE, Color.BLUE), ItemHandler.makeLeatherItemStack(Material.LEATHER_LEGGINGS,
-						Color.BLUE), ItemHandler.makeLeatherItemStack(Material.LEATHER_BOOTS, Color.BLUE)});
+				FakeboardHandler.addToTeam(teamTerrorist, player);
+				fPlayer.setTeam(teamTerrorist);
+				player.getInventory().setArmorContents(blueTeamArmor);
 			}
 		} else {
 			switch (new Random().nextInt(2)) {
 				case 0:
-					FakeboardHandler.addToTeam("CT", Player);
-					fPlayer.setTeam("CT");
+					FakeboardHandler.addToTeam(teamCounterTerrorist, player);
+					fPlayer.setTeam(teamCounterTerrorist);
+					player.getInventory().setArmorContents(redTeamArmor);
 					break;
 				case 1:
-					FakeboardHandler.addToTeam("T", Player);
-					fPlayer.setTeam("T");
+					FakeboardHandler.addToTeam(teamTerrorist, player);
+					fPlayer.setTeam(teamTerrorist);
+					player.getInventory().setArmorContents(blueTeamArmor);
 					break;
 				default:
 					break;
 			}
 		}
-		TagAPI.refreshPlayer(Player);
+		TagAPI.refreshPlayer(player);
 	}
 
 	public static void teleportPlayersToSpawn() {
 		for (Player player : Bukkit.getOnlinePlayers()) {
-			player.teleport(WorldHandler.WorldHandler.getWorldSpawn(TDMGame.gameMap));
+			player.teleport(WorldManager.getWorldSpawn(TDMGame.getGameWorld()));
 		}
 	}
 

@@ -7,9 +7,9 @@ import java.util.HashMap;
 import java.util.List;
 
 public class PerkHandler {
-	private HashMap<String, Perk> perks = new HashMap<String, Perk>();
+	private static HashMap<String, Perk> perks = new HashMap<String, Perk>();
 
-	public PerkHandler() {
+	static {
 		initializePerk(new Jump1());
 		initializePerk(new Speed1());
 		initializePerk(new Speed2());
@@ -19,16 +19,16 @@ public class PerkHandler {
 		initializePerk(new Regen1());
 	}
 
-	public void initializePerk(Perk perk) {
+	public static void initializePerk(Perk perk) {
 		perks.put(perk.getPerkName(), perk);
 	}
 
-	public List<Perk> getPerks() {
+	public static List<Perk> getPerks() {
 		return new ArrayList<Perk>(perks.values());
 	}
 
-	public Perk getPerk(String perkName) {
-		return (perks.containsKey(perkName) ? perks.get(perkName) : null);
+	public static Perk getPerk(String perkName) {
+		return perks.get(perkName);
 	}
 
 }

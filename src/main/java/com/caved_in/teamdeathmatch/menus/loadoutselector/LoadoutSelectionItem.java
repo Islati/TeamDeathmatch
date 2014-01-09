@@ -20,7 +20,7 @@ public class LoadoutSelectionItem extends MenuItem {
 	@Override
 	public void onClick(Player player) {
 		fPlayer fPlayer = FakeboardHandler.getPlayer(player);
-		fPlayer.setActiveLoadout(this.selectedLoadout);
+		fPlayer.setActiveLoadout(selectedLoadout);
 		TDMGame.crackShotAPI.giveWeapon(player, fPlayer.getPrimaryGunID(), 1);
 		TDMGame.crackShotAPI.giveWeapon(player, fPlayer.getSecondaryGunID(), 1);
 		if (fPlayer.getActivePerk() != null && !fPlayer.getActivePerk().getPerkName().equalsIgnoreCase("Nothing")) {
@@ -30,7 +30,7 @@ public class LoadoutSelectionItem extends MenuItem {
 		}
 		Team playersTeam = FakeboardHandler.getTeamByPlayer(player); //TODO not sure if this needs to actually be here or not.
 		playersTeam.addPlayer(fPlayer);
-		this.getMenu().closeMenu(player);
+		getMenu().closeMenu(player);
 	}
 
 }

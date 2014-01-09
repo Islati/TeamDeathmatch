@@ -74,6 +74,10 @@
             <artifactId>worldmanager</artifactId>
         </dependency>
         <dependency>
+            <groupId>com.caved_in</groupId>
+            <artifactId>forcerespawn</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.shampaggon</groupId>
             <artifactId>crackshot</artifactId>
             <scope>system</scope>
@@ -101,12 +105,17 @@
             <dependency>
                 <groupId>com.caved_in</groupId>
                 <artifactId>commons</artifactId>
-                <version>LATEST</version>
+                <version>RELEASE</version>
             </dependency>
             <dependency>
                 <groupId>com.caved_in</groupId>
                 <artifactId>worldmanager</artifactId>
-                <version>1.0-RELEASE</version>
+                <version>RELEASE</version>
+            </dependency>
+            <dependency>
+                <groupId>com.caved_in</groupId>
+                <artifactId>forcerespawn</artifactId>
+                <version>RELEASE</version>
             </dependency>
             <dependency>
                 <groupId>com.shampaggon</groupId>

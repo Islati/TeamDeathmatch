@@ -1,6 +1,6 @@
 package com.caved_in.teamdeathmatch.menus.loadoutselector;
 
-import com.caved_in.commons.handlers.Items.ItemHandler;
+import com.caved_in.commons.items.ItemHandler;
 import com.caved_in.teamdeathmatch.TDMGame;
 import com.caved_in.teamdeathmatch.fakeboard.FakeboardHandler;
 import com.caved_in.teamdeathmatch.fakeboard.fPlayer;

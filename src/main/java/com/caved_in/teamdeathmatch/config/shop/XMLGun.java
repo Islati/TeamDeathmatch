@@ -31,9 +31,12 @@ public class XMLGun {
 		this.gunPrice = gunPrice;
 		this.defaultGun = defaultGun;
 		this.gunType = GunType.valueOf(gunCategory.toUpperCase());
+		initGunWrapper();
 	}
 
-	public XMLGun() { }
+	public XMLGun() {
+		initGunWrapper();
+	}
 
 	private void initGunWrapper() {
 		this.gunWrapper = new GunWrap(gunName,gunPrice,defaultGun,gunType);

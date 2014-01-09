@@ -43,18 +43,16 @@ public class Team {
 		return hasPlayer(player.getPlayerName());
 	}
 
-	public void removePlayer(String playerName) {
-		if (hasPlayer(playerName)) {
-			teamMembers.remove(playerName);
-		}
+	public boolean removePlayer(String playerName) {
+		return teamMembers.remove(playerName) != null;
 	}
 
-	public void removePlayer(Player player) {
-		removePlayer(player.getName());
+	public boolean removePlayer(Player player) {
+		return removePlayer(player.getName());
 	}
 
-	public void removePlayer(fPlayer player) {
-		removePlayer(player.getPlayerName());
+	public boolean removePlayer(fPlayer player) {
+		return removePlayer(player.getPlayerName());
 	}
 
 	public void addPlayer(String playerName) {
@@ -80,6 +78,10 @@ public class Team {
 
 	public List<fPlayer> getTeamMembers() {
 		return new ArrayList<fPlayer>(teamMembers.values());
+	}
+
+	public int getTeamSize() {
+		return teamMembers.size();
 	}
 
 	public void setScore(Player player, int score) {

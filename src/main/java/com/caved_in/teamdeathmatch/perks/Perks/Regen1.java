@@ -1,6 +1,6 @@
 package com.caved_in.teamdeathmatch.perks.Perks;
 
-import com.caved_in.teamdeathmatch.handlers.misc.TimeUtils.TimeType;
+import com.caved_in.commons.time.TimeHandler;
 import com.caved_in.teamdeathmatch.perks.Perk;
 import org.bukkit.ChatColor;
 import org.bukkit.potion.PotionEffect;
@@ -18,7 +18,7 @@ public class Regen1 extends Perk {
 
 	@Override
 	public List<PotionEffect> getEffects() {
-		return Arrays.asList(new PotionEffect[]{new PotionEffect(PotionEffectType.REGENERATION, TimeUtils.getTimeInTicks(20, TimeType.Minute), 1)});
+		return Arrays.asList(new PotionEffect(PotionEffectType.REGENERATION, (int) TimeHandler.getTimeInTicks(20, TimeHandler.TimeType.Minutes), 1));
 	}
 
 }

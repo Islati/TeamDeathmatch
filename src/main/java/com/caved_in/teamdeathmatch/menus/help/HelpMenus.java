@@ -1,6 +1,6 @@
 package com.caved_in.teamdeathmatch.menus.help;
 
-import com.caved_in.commons.data.menu.HelpScreen;
+import com.caved_in.commons.menu.HelpScreen;
 import com.caved_in.teamdeathmatch.TDMGame;
 import org.bukkit.ChatColor;
 

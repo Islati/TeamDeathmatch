@@ -14,6 +14,8 @@ public class Configuration {
 
 	private GunShopConfiguration gunShopConfiguration;
 
+	private SqlConfiguration sqlConfiguration;
+
 	private static Serializer serializer = new Persister();
 
 	public Configuration() {
@@ -28,10 +30,15 @@ public class Configuration {
 		return gunShopConfiguration;
 	}
 
+	public SqlConfiguration getSqlConfiguration() {
+		return sqlConfiguration;
+	}
+
 	public void saveConfig() {
 		try {
 			serializer.write(spawnConfiguration, new File(TDMGame.SPAWN_CONFIG_FILE));
 			serializer.write(gunShopConfiguration, new File(TDMGame.GUN_CONFIG_FILE));
+			serializer.write(sqlConfiguration, new File(TDMGame.SQL_CONFIG_FILE));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -41,6 +48,7 @@ public class Configuration {
 		try {
 			spawnConfiguration = serializer.read(SpawnConfiguration.class, new File(TDMGame.SPAWN_CONFIG_FILE));
 			gunShopConfiguration = serializer.read(GunShopConfiguration.class, new File(TDMGame.GUN_CONFIG_FILE));
+			sqlConfiguration = serializer.read(SqlConfiguration.class, new File(TDMGame.SQL_CONFIG_FILE));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
