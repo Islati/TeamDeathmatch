@@ -9,26 +9,26 @@ import org.simpleframework.xml.Element;
 
 public class XMLSpawnPoint {
 	@Attribute(name="team_name")
-	private String teamName;
+	private String teamName = "t";
 
 	@Element(name = "worldName")
-	private String worldName;
+	private String worldName = "world";
 
 	@Element(name = "locX")
-	private double locX;
+	private double locX = 0;
 
 	@Element(name="locY")
-	private double locY;
+	private double locY = 0;
 
 	@Element(name="locZ")
-	private double locZ;
+	private double locZ = 0;
 
 	private TeamType teamType;
 
 	private Location spawnLocation;
 
 	public XMLSpawnPoint(@Attribute(name="team_name")String teamName,
-						 @Element(name = "worlName")String worldName,
+						 @Element(name = "worldName")String worldName,
 						 @Element(name="locX")double locX,
 						 @Element(name="locY")double locY,
 						 @Element(name="locZ")double locZ
@@ -52,6 +52,12 @@ public class XMLSpawnPoint {
 		this.teamType = teamType;
 		this.teamName = teamType.toString();
 	}
+
+	public XMLSpawnPoint(TeamSpawnLocation teamSpawnLocation) {
+		this(teamSpawnLocation.getTeamType(),teamSpawnLocation.getLocation());
+	}
+
+	public XMLSpawnPoint() {}
 
 	public Location getLocation() {
 		return spawnLocation;

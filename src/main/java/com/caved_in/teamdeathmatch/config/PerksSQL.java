@@ -1,6 +1,5 @@
 package com.caved_in.teamdeathmatch.config;
 
-import com.caved_in.commons.Commons;
 import com.caved_in.commons.sql.SQL;
 import com.caved_in.teamdeathmatch.TDMGame;
 import com.caved_in.teamdeathmatch.perks.Perk;
@@ -31,6 +30,20 @@ public class PerksSQL extends SQL {
 				TDMGame.configuration.getSqlConfiguration().getPassword()
 		);
 	}
+	public boolean hasData(String playerName) {
+		PreparedStatement preparedStatement = prepareStatement(getDataStatement);
+		boolean hasData = false;
+		try {
+			preparedStatement.setString(1, playerName);
+			hasData = preparedStatement.executeQuery().next();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(preparedStatement);
+		}
+		return hasData;
+	}
+
 
 	public Set<Perk> getPerks(String playerName) {
 		Set<Perk> playerPerks = new HashSet<Perk>();
@@ -47,6 +60,22 @@ public class PerksSQL extends SQL {
 			close(preparedStatement);
 		}
 		return playerPerks;
+	}
+
+	public void insertPerks(String playerName, List<Perk> perks) {
+		PreparedStatement preparedStatement = prepareStatement(insertDataStatement);
+		try {
+			for (Perk perk : perks) {
+				preparedStatement.setString(1, playerName);
+				preparedStatement.setString(2, perk.getPerkName());
+				preparedStatement.addBatch();
+			}
+			preparedStatement.executeBatch();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(preparedStatement);
+		}
 	}
 
 	public void insertPerk(Perk perk, String playerName) {

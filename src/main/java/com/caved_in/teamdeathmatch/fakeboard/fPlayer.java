@@ -72,21 +72,27 @@ public class fPlayer {
 	}
 
 	public void defaultPlayerData() {
-		if (TDMGame.loadoutSQL.getLoadouts(this.playerName).size() <= 0 || TDMGame.loadoutSQL.getLoadouts(this.playerName).size() < this.getLoadoutLimit()) {
-			for (int I = 0; I < this.getLoadoutLimit(); I++) {
-				TDMGame.loadoutSQL.insertLoadout(this.playerName, (I + 1), this.primaryGunID, this.secondaryGunID, this.activePerk.getPerkName());
+		if (!TDMGame.loadoutSQL.hasData(playerName)) {
+			List<Loadout> loadouts = new ArrayList<>();
+			for (int i = 0; i < getLoadoutLimit(); i++) {
+				loadouts.add(new Loadout(playerName, i + 1, primaryGunID, secondaryGunID, activePerk));
 			}
+			TDMGame.loadoutSQL.insertLoadouts(loadouts);
 		}
 
-		if (TDMGame.gunsSQL.getGuns(this.playerName).size() < TDMGame.gunHandler.getDefaultGuns().size()) {
-			for (GunWrap Gun : TDMGame.gunHandler.getDefaultGuns()) {
-				TDMGame.gunsSQL.insertGun(this.playerName, Gun.getGunName());
-			}
+		if (!TDMGame.perksSQL.hasData(playerName)) {
+			TDMGame.perksSQL.insertPerk(new Nothing(), playerName);
 		}
 
-		if (TDMGame.perksSQL.getPerks(this.playerName).size() <= 0) {
-			TDMGame.perksSQL.insertPerk(new Nothing(), this.playerName);
+
+		List<String> guns = new ArrayList<String>();
+		for (GunWrap Gun : TDMGame.gunHandler.getDefaultGuns()) {
+			guns.add(Gun.getGunName());
 		}
+		TDMGame.gunsSQL.insertGuns(playerName, guns);
+
+
+		//TODO else if they have data, load that shit
 	}
 
 	public void setupPlayerData() {

@@ -14,10 +14,12 @@ public class GunShopConfiguration {
 
 	public GunShopConfiguration(@ElementList(name = "guns_data", type = XMLGun.class)List<XMLGun> gunData) {
 		this.gunData = gunData;
+		initData();
 	}
 
 	public GunShopConfiguration() {
 		gunData.add(new XMLGun());
+		initData();
 	}
 
 	private void initData() {

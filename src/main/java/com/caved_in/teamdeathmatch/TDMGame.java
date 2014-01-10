@@ -13,8 +13,8 @@ import com.caved_in.teamdeathmatch.fakeboard.FakeboardHandler;
 import com.caved_in.teamdeathmatch.fakeboard.fPlayer;
 import com.caved_in.teamdeathmatch.gamehandler.GameSetupHandler;
 import com.caved_in.teamdeathmatch.guns.GunHandler;
-import com.caved_in.teamdeathmatch.perks.PerkHandler;
 import com.caved_in.teamdeathmatch.listeners.Listeners;
+import com.caved_in.teamdeathmatch.perks.PerkHandler;
 import com.caved_in.teamdeathmatch.runnables.MessageRunnable;
 import com.caved_in.teamdeathmatch.runnables.ScoreboardRunnable;
 import com.caved_in.teamdeathmatch.runnables.StartCheckRunnable;
@@ -67,6 +67,10 @@ public class TDMGame extends JavaPlugin {
 
 	@Override
 	public void onEnable() {
+		if (!getDataFolder().exists()) {
+			getDataFolder().mkdirs();
+		}
+
 		//Get the location of our data folder
 		DATA_FOLDER = this.getDataFolder() + File.separator;
 		//Gun config file
@@ -119,6 +123,8 @@ public class TDMGame extends JavaPlugin {
 
 	@Override
 	public void onDisable() {
+		//Save config
+		configuration.saveConfig();
 		HandlerList.unregisterAll(this);
 		Bukkit.getScheduler().cancelTasks(this);
 	}
@@ -135,7 +141,13 @@ public class TDMGame extends JavaPlugin {
 			if (!gunConfig.exists()) {
 				//This saves the configurations
 				getPersister().write(new GunShopConfiguration(), gunConfig);
+			}
+
+			if (!spawnConfig.exists()) {
 				getPersister().write(new SpawnConfiguration(), spawnConfig);
+			}
+
+			if (!sqlConfig.exists()) {
 				getPersister().write(new SqlConfiguration(), sqlConfig);
 			}
 		} catch (Exception e) {

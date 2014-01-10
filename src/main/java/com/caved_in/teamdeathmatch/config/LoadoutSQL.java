@@ -33,6 +33,20 @@ public class LoadoutSQL extends SQL{
 		);
 	}
 
+	public boolean hasData(String playerName) {
+		PreparedStatement preparedStatement = prepareStatement(getDataStatement);
+		boolean hasData = false;
+		try {
+			preparedStatement.setString(1, playerName);
+			hasData = preparedStatement.executeQuery().next();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(preparedStatement);
+		}
+		return hasData;
+	}
+
 	public List<Loadout> getLoadouts(String playerName) {
 		List<Loadout> playerLoadouts = new ArrayList<Loadout>();
 		PreparedStatement preparedStatement = prepareStatement(getDataStatement);
@@ -48,6 +62,25 @@ public class LoadoutSQL extends SQL{
 			close(preparedStatement);
 		}
 		return playerLoadouts;
+	}
+
+	public void insertLoadouts(List<Loadout> loadouts) {
+		PreparedStatement preparedStatement = prepareStatement(insertLoadoutStatement);
+		try {
+			for (Loadout loadout : loadouts) {
+				preparedStatement.setString(1, loadout.getPlayerName());
+				preparedStatement.setInt(2,loadout.getNumber());
+				preparedStatement.setString(3, loadout.getPrimary());
+				preparedStatement.setString(4, loadout.getSecondary());
+				preparedStatement.setString(5, loadout.getPerk().getPerkName());
+				preparedStatement.addBatch();
+			}
+			preparedStatement.executeBatch();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(preparedStatement);
+		}
 	}
 
 	public void insertLoadout(String playerName, int loadout, String primary, String secondary, String perk) {

@@ -2,21 +2,22 @@ package com.caved_in.teamdeathmatch.guns;
 
 import com.caved_in.teamdeathmatch.TDMGame;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 public class GunHandler {
-	private List<GunWrap> gunPistols;
+	private List<GunWrap> gunPistols = new ArrayList<>();
 
-	private List<GunWrap> gunAssaultRifles;
+	private List<GunWrap> gunAssaultRifles = new ArrayList<>();
 
-	private List<GunWrap> gunSniperRifles;
+	private List<GunWrap> gunSniperRifles = new ArrayList<>();
 
-	private List<GunWrap> gunSpecial;
+	private List<GunWrap> gunSpecial = new ArrayList<>();
 
-	private List<GunWrap> gunShotgun;
+	private List<GunWrap> gunShotgun = new ArrayList<>();
 
-	private List<GunWrap> gunDefault;
+	private List<GunWrap> gunDefault = new ArrayList<>();
 
 	public GunHandler() {
 		initData();
@@ -70,9 +71,8 @@ public class GunHandler {
 			case SPECIAL:
 				return gunSpecial;
 			default:
-				break;
+				return null;
 		}
-		return null;
 	}
 
 	private GunWrap getRandomFromList(List<GunWrap> input) {

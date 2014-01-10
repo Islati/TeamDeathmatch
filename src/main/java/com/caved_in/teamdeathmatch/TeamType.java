@@ -1,6 +1,7 @@
 package com.caved_in.teamdeathmatch;
 
 import java.util.EnumSet;
+import java.util.HashMap;
 import java.util.Map;
 
 public enum TeamType {
@@ -8,7 +9,7 @@ public enum TeamType {
 	COUNTER_TERRORIST("ct", "counterterrorist", "counter_terrorist", "c_t");
 
 	private String[] teamInitials;
-	private static Map<String, TeamType> teamMap;
+	private static Map<String, TeamType> teamMap = new HashMap<String, TeamType>();
 
 	static {
 		for(TeamType teamType : EnumSet.allOf(TeamType.class)) {

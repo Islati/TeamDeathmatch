@@ -98,11 +98,10 @@ public class AdminCommands {
 			String teamName = args[0];
 			//Get the world spawns for the player issueing the command
 			String playerWorldName = sender.getWorld().getName();
-			WorldSpawns worldSpawns = TDMGame.configuration.getSpawnConfiguration().getWorldSpawns(playerWorldName);
 			switch (teamName.toLowerCase()) {
 				case "t":
 				case "ct":
-					worldSpawns.add(new TeamSpawnLocation(sender.getLocation(), TeamType.getTeamByInitials(teamName)));
+					TDMGame.configuration.getSpawnConfiguration().addSpawn(new TeamSpawnLocation(sender.getLocation(), TeamType.getTeamByInitials(teamName)));
 					PlayerHandler.sendMessage(sender, "&aSpawn point for &e" + teamName + "&a has been added for the world &e" + playerWorldName);
 					break;
 				default:

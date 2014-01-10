@@ -45,19 +45,23 @@ public class Listeners implements Listener {
 		Plugin.getServer().getPluginManager().registerEvents(this, Plugin);
 	}
 
-	@EventHandler
-	public void onPlayerMove(PlayerMoveEvent Event) {
-		fPlayer fPlayer = FakeboardHandler.getPlayer(Event.getPlayer());
-		String playerName = fPlayer.getPlayerName();
+//	@EventHandler
+	public void onPlayerMove(PlayerMoveEvent event) {
+		try {
+			fPlayer fPlayer = FakeboardHandler.getPlayer(event.getPlayer());
+			String playerName = fPlayer.getPlayerName();
 
-		if (!moveCooldown.isOnCooldown(playerName)) {
-			if (GameSetupHandler.isGameInProgress()) {
-				if (fPlayer != null && fPlayer.isAfk()) //TODO prevent the null check from being needed
-				{
-					fPlayer.setAfk(false);
+			if (!moveCooldown.isOnCooldown(playerName)) {
+				if (GameSetupHandler.isGameInProgress()) {
+					if (fPlayer != null && fPlayer.isAfk()) //TODO prevent the null check from being needed
+					{
+						fPlayer.setAfk(false);
+					}
 				}
+				moveCooldown.setOnCooldown(playerName);
 			}
-			moveCooldown.setOnCooldown(playerName);
+		} catch (Exception ex) {
+			//Error on join
 		}
 	}
 
@@ -106,7 +110,7 @@ public class Listeners implements Listener {
 					final String killerName = killingPlayer.getPlayerName();
 					final String killedName = fPlayerKilled.getPlayerName();
 
-					TDMGame.runnableManager.runTaskLater(new AssistAggregator(killedName,killerName), 5);
+					TDMGame.runnableManager.runTaskLater(new AssistAggregator(killedName, killerName), 5);
 				}
 			}
 			PlayerHandler.clearInventory(player);

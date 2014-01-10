@@ -6,7 +6,7 @@ import java.util.*;
 
 public class WorldSpawns implements Iterable<TeamSpawnLocation> {
 	private String worldName;
-	private Set<TeamSpawnLocation> spawnLocations;
+	private Set<TeamSpawnLocation> spawnLocations = new HashSet<>();
 
 	public WorldSpawns(String worldName) {
 		this.worldName = worldName;

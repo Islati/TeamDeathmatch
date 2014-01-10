@@ -1,9 +1,7 @@
 package com.caved_in.teamdeathmatch.config;
 
 import org.simpleframework.xml.Element;
-import org.simpleframework.xml.Root;
 
-@Root
 public class SqlConfiguration {
 	@Element(name = "MySqlHost")
 	private String mySqlHost = "localhost";

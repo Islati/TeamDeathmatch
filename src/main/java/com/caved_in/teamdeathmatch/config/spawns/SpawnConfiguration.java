@@ -9,12 +9,12 @@ import java.util.Map;
 
 public class SpawnConfiguration {
 
-	@ElementList(name = "spawnpoints", type = XMLSpawnPoint.class, inline = true)
+	@ElementList(name = "spawnpoints", type = XMLSpawnPoint.class)
 	private List<XMLSpawnPoint> spawnPoints = new ArrayList<XMLSpawnPoint>();
 
 	private Map<String, WorldSpawns> worldSpawnLocations = new HashMap<>();
 
-	public SpawnConfiguration(@ElementList(name = "spawnpoints", type = XMLSpawnPoint.class, inline = true)
+	public SpawnConfiguration(@ElementList(name = "spawnpoints", type = XMLSpawnPoint.class)
 							  List<XMLSpawnPoint> spawnPoints) {
 		this.spawnPoints = spawnPoints;
 		//Initialize our team spawns
@@ -23,6 +23,7 @@ public class SpawnConfiguration {
 
 	public SpawnConfiguration() {
 		initializeTeamSpawns();
+		spawnPoints.add(new XMLSpawnPoint());
 	}
 
 	private void initializeTeamSpawns() {
@@ -46,7 +47,17 @@ public class SpawnConfiguration {
 	}
 
 	public WorldSpawns getWorldSpawns(String worldName) {
+		if (!worldSpawnLocations.containsKey(worldName)) {
+			worldSpawnLocations.put(worldName, new WorldSpawns(worldName));
+		}
 		return worldSpawnLocations.get(worldName);
+	}
+
+
+	public void addSpawn(TeamSpawnLocation teamSpawnLocation) {
+		String worldName = teamSpawnLocation.getLocation().getWorld().getName();
+		getWorldSpawns(worldName).add(teamSpawnLocation);
+		spawnPoints.add(new XMLSpawnPoint(teamSpawnLocation));
 	}
 
 	public List<XMLSpawnPoint> getSpawnPoints() {
