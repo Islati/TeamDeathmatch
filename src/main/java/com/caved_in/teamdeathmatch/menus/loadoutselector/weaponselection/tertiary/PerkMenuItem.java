@@ -1,8 +1,9 @@
 package com.caved_in.teamdeathmatch.menus.loadoutselector.weaponselection.tertiary;
 
-import com.caved_in.commons.handlers.Player.PlayerHandler;
-import com.caved_in.commons.handlers.Player.PlayerWrapper;
-import com.caved_in.commons.handlers.Utilities.StringUtil;
+
+import com.caved_in.commons.player.PlayerHandler;
+import com.caved_in.commons.player.PlayerWrapper;
+import com.caved_in.commons.utilities.StringUtil;
 import com.caved_in.teamdeathmatch.TDMGame;
 import com.caved_in.teamdeathmatch.fakeboard.FakeboardHandler;
 import com.caved_in.teamdeathmatch.fakeboard.fPlayer;

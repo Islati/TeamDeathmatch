@@ -11,10 +11,10 @@ public class PrimaryWeaponTypeMenu {
 
 	public PrimaryWeaponTypeMenu(int Loadout) {
 		this.wTypeMenu = PopupMenuAPI.createMenu("Select a Weapon Type", 1);
-		this.wTypeMenu.addMenuItem(new PrimaryWeaponTypeMenuItem("Assault Rifles", new MaterialData(Material.GOLDEN_CARROT), GunType.Assault, Loadout), 0);
-		this.wTypeMenu.addMenuItem(new PrimaryWeaponTypeMenuItem("Shotguns", new MaterialData(Material.STONE_HOE), GunType.Shotgun, Loadout), 1);
-		this.wTypeMenu.addMenuItem(new PrimaryWeaponTypeMenuItem("Sniper Rifles", new MaterialData(Material.GOLD_PICKAXE), GunType.Sniper, Loadout), 2);
-		this.wTypeMenu.addMenuItem(new PrimaryWeaponTypeMenuItem("Special Weapons", new MaterialData(Material.DIAMOND_PICKAXE), GunType.Special, Loadout), 3);
+		this.wTypeMenu.addMenuItem(new PrimaryWeaponTypeMenuItem("Assault Rifles", new MaterialData(Material.GOLDEN_CARROT), GunType.ASSAULT, Loadout), 0);
+		this.wTypeMenu.addMenuItem(new PrimaryWeaponTypeMenuItem("Shotguns", new MaterialData(Material.STONE_HOE), GunType.SHOTGUN, Loadout), 1);
+		this.wTypeMenu.addMenuItem(new PrimaryWeaponTypeMenuItem("Sniper Rifles", new MaterialData(Material.GOLD_PICKAXE), GunType.SNIPER, Loadout), 2);
+		this.wTypeMenu.addMenuItem(new PrimaryWeaponTypeMenuItem("Special Weapons", new MaterialData(Material.DIAMOND_PICKAXE), GunType.SPECIAL, Loadout), 3);
 		this.wTypeMenu.setExitOnClickOutside(false);
 	}
 

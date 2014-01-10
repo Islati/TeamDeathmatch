@@ -1,6 +1,6 @@
 package com.caved_in.teamdeathmatch.menus.loadoutselector.weaponselection.tertiary;
 
-import com.caved_in.commons.handlers.Menus.MenuHandler;
+import com.caved_in.commons.menus.MenuHandler;
 import me.xhawk87.PopupMenuAPI.PopupMenu;
 import me.xhawk87.PopupMenuAPI.PopupMenuAPI;
 import org.bukkit.entity.Player;
