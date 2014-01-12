@@ -1,5 +1,6 @@
 package com.caved_in.teamdeathmatch.scoreboard;
 
+import com.caved_in.commons.Commons;
 import com.caved_in.commons.player.PlayerHandler;
 import com.caved_in.teamdeathmatch.TeamType;
 import com.caved_in.teamdeathmatch.fakeboard.FakeboardHandler;
@@ -33,12 +34,17 @@ public class PlayerScoreboard {
 	}
 
 	public void clearScoreboard() {
-		scoreboard.resetScores(getName(terroristScore));
-		scoreboard.resetScores(getName(counterTerroristScore));
-		scoreboard.resetScores(getName(killsScore));
-		scoreboard.resetScores(getName(deathsScore));
-		scoreboard.resetScores(getName(killsStreak));
-		scoreboard.resetScores(getName(XP));
+		try {
+			scoreboard.resetScores(getName(terroristScore));
+			scoreboard.resetScores(getName(counterTerroristScore));
+			scoreboard.resetScores(getName(killsScore));
+			scoreboard.resetScores(getName(deathsScore));
+			scoreboard.resetScores(getName(killsStreak));
+			scoreboard.resetScores(getName(XP));
+		}
+		catch (Exception ex) {
+			Commons.messageConsole("Some scores were null");
+		}
 		//this.Board.clearSlot(DisplaySlot.SIDEBAR);
 	}
 
@@ -47,8 +53,8 @@ public class PlayerScoreboard {
 	}
 
 	public void updateScoreboardData(fPlayer player) {
-		Score terroristScore = objective.getScore(getName(this.terroristScore));
-		Score counterTerroristScore = objective.getScore(getName(this.counterTerroristScore));
+		Score terroristScore = objective.getScore(getName(PlayerScoreboard.terroristScore));
+		Score counterTerroristScore = objective.getScore(getName(PlayerScoreboard.counterTerroristScore));
 		Score playerKillScore = objective.getScore(getName(killsScore));
 		Score playerDeathScore = objective.getScore(getName(deathsScore));
 		Score playerKillStreak = objective.getScore(getName(killsStreak));

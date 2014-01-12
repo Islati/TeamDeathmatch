@@ -6,23 +6,27 @@ import java.util.*;
 
 public class WorldSpawns implements Iterable<TeamSpawnLocation> {
 	private String worldName;
-	private Set<TeamSpawnLocation> spawnLocations = new HashSet<>();
+	private boolean modified = false;
+	private List<TeamSpawnLocation> spawnLocations = new ArrayList<>();
+	private Map<TeamType, List<TeamSpawnLocation>> teamSpawns = new HashMap<>();
 
 	public WorldSpawns(String worldName) {
 		this.worldName = worldName;
 	}
 
-	public WorldSpawns(String worldName, Set<TeamSpawnLocation> spawnLocations) {
+	public WorldSpawns(String worldName, List<TeamSpawnLocation> spawnLocations) {
 		this.worldName = worldName;
 		this.spawnLocations = spawnLocations;
 	}
 
 	public void add(TeamSpawnLocation spawnLocation) {
 		spawnLocations.add(spawnLocation);
+		modified = true;
 	}
 
 	public void remove(TeamSpawnLocation spawnLocation) {
 		spawnLocations.remove(spawnLocation);
+		modified = true;
 	}
 
 	/**
@@ -30,19 +34,22 @@ public class WorldSpawns implements Iterable<TeamSpawnLocation> {
 	 * @param teamType Team we wish to get the spawn locations of
 	 * @return Set of the spawnLocations for the given team
 	 */
-	public Set<TeamSpawnLocation> getSpawnLocations(TeamType teamType) {
-		Set<TeamSpawnLocation> returnLocations = new HashSet<>();
-		for (TeamSpawnLocation spawnLocation : this.spawnLocations) {
-			if (spawnLocation.getTeamType() == teamType) {
-				returnLocations.add(spawnLocation);
+	public List<TeamSpawnLocation> getSpawnLocations(TeamType teamType) {
+		if (modified) {
+			teamSpawns.clear();
+			teamSpawns.put(TeamType.TERRORIST, new ArrayList<TeamSpawnLocation>());
+			teamSpawns.put(TeamType.COUNTER_TERRORIST, new ArrayList<TeamSpawnLocation>());
+			for (TeamSpawnLocation spawnLocation : spawnLocations) {
+				teamSpawns.get(spawnLocation.getTeamType()).add(spawnLocation);
 			}
+			modified = false;
 		}
-		return returnLocations;
+		return teamSpawns.get(teamType);
 	}
 
 	public TeamSpawnLocation getRandomSpawn(TeamType teamType) {
-		ArrayList<TeamSpawnLocation> spawns = new ArrayList<>(getSpawnLocations(teamType));
-		return spawns.get(new Random(System.nanoTime()).nextInt(spawns.size()));
+		List<TeamSpawnLocation> spawns = getSpawnLocations(teamType);
+		return spawns.get(new Random().nextInt(spawns.size()));
 	}
 
 	@Override

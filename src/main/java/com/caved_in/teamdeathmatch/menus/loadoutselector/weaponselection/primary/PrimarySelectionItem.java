@@ -3,7 +3,6 @@ package com.caved_in.teamdeathmatch.menus.loadoutselector.weaponselection.primar
 import com.caved_in.commons.items.ItemHandler;
 import com.caved_in.commons.player.PlayerHandler;
 import com.caved_in.commons.player.PlayerWrapper;
-import com.caved_in.commons.utilities.StringUtil;
 import com.caved_in.teamdeathmatch.fakeboard.FakeboardHandler;
 import com.caved_in.teamdeathmatch.fakeboard.fPlayer;
 import com.caved_in.teamdeathmatch.guns.GunWrap;
@@ -36,32 +35,32 @@ public class PrimarySelectionItem extends MenuItem {
 	@Override
 	public void onClick(Player player) {
 		fPlayer fPlayer = FakeboardHandler.getPlayer(player);
-		if (this.gunData.isDefaultGun() || fPlayer.hasGun(this.gunID) || this.gunData.getGunPrice() == 0) {
-			fPlayer.getLoadout(this.loadoutNumber).setPrimary(this.gunID);
-			//TDMGame.Console("[Loadout Creation] Primary for " + fPlayer.getPlayerName() + " on loadout " + this.loadoutNumber + " set to " + this.gunID);
-			player.sendMessage(StringUtil.formatColorCodes("&aThe '" + this.getText() + "'&a is now your primary for loadout #" + this.loadoutNumber));
-			this.getMenu().switchMenu(player, new LoadoutCreationMenu().getMenu(player));
+		//Check if its a default gun or they already purchased it
+		if (gunData.isDefaultGun() || fPlayer.hasGun(gunID) || gunData.getGunPrice() == 0) {
+			fPlayer.getLoadout(loadoutNumber).setPrimary(gunID);
+			PlayerHandler.sendMessage(player, String.format("&aThe &e%s&a is now your primary weapon for loadout #&e%s", getText(), loadoutNumber));
+			getMenu().switchMenu(player, new LoadoutCreationMenu().getMenu(player));
 		} else {
-			if (!this.hasAlreadyClicked) {
-				this.hasAlreadyClicked = true;
-				player.sendMessage(ChatColor.YELLOW + "Click again to purchase the " + this.getText());
+			//Check if they've already clicked this item
+			if (!hasAlreadyClicked) {
+				hasAlreadyClicked = true;
+				PlayerHandler.sendMessage(player, "&eClick again to purchase the " + getText());
 			} else {
+				//Second click? Begin the purchase!
 				PlayerWrapper playerWrapper = PlayerHandler.getData(player.getName());
 				double playerBalance = playerWrapper.getCurrency();
-				if (playerBalance >= this.gunData.getGunPrice()) {
-					this.hasAlreadyClicked = false;
-					playerWrapper.removeCurrency(this.gunData.getGunPrice());
-					PlayerHandler.updateData(playerWrapper); //TODO test if this call is needed
-					fPlayer.unlockGun(this.gunID);
-					player.sendMessage(StringUtil.formatColorCodes("&bYou've unlocked the " + this.getText() + "&b! You have &a" + ((int) playerWrapper
-							.getCurrency()) + "&b XP remaining!"));
-
-					fPlayer.getLoadout(this.loadoutNumber).setPrimary(this.gunID);
-					player.sendMessage(StringUtil.formatColorCodes("&aThe '" + this.getText() + "'&a is now your primary for loadout #" + this.loadoutNumber));
-					this.getMenu().switchMenu(player, new LoadoutCreationMenu().getMenu(player));
+				if (playerBalance >= gunData.getGunPrice()) {
+					hasAlreadyClicked = false;
+					playerWrapper.removeCurrency(gunData.getGunPrice());
+					PlayerHandler.updateData(playerWrapper);
+					fPlayer.unlockGun(gunID);
+					PlayerHandler.sendMessage(player, String.format("&bYou've unlocked the &e%s&b! You have &a%s&b Tunnels XP Remaining",getText(), (int)playerWrapper.getCurrency()));
+					fPlayer.getLoadout(loadoutNumber).setPrimary(gunID);
+					PlayerHandler.sendMessage(player, String.format("&aThe &e%s&a is now your primary weapon for loadout #&e%s", getText(), loadoutNumber));
+					getMenu().switchMenu(player, new LoadoutCreationMenu().getMenu(player));
 				} else {
-					player.sendMessage(StringUtil.formatColorCodes("&cYou don't have enough XP to unlock this."));
-					this.hasAlreadyClicked = false;
+					PlayerHandler.sendMessage(player, "&cYou don't have enough XP to unlock this.");
+					hasAlreadyClicked = false;
 				}
 			}
 		}

@@ -14,6 +14,7 @@ import com.caved_in.teamdeathmatch.runnables.TeleportCT;
 import com.caved_in.teamdeathmatch.runnables.TeleportTerrorist;
 import com.caved_in.worldmanager.WorldManager;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -76,7 +77,7 @@ public class GameSetupHandler {
 
 	public static void doSetup() {
 		//Teleport players to the spawn
-		teleportPlayersToSpawn();
+//		teleportPlayersToSpawn();
 		//Set a game in progress
 		setGameInProgress(true);
 		//Make all the teams
@@ -99,6 +100,12 @@ public class GameSetupHandler {
 		//Make all the players open their "kits"
 		TDMGame.runnableManager.runTaskLater(playerOpenKits,playerOpenKitDelay);
 
+	}
+
+	public static void givePlayerLoadoutGem(Player player) {
+		if (!ItemHandler.playerHasItem(player, Material.EMERALD, "Select & Edit Loadouts")) {
+			player.getInventory().setItem(8, ItemHandler.makeItemStack(Material.EMERALD, ChatColor.GREEN + "Select & Edit Loadouts"));
+		}
 	}
 
 	private static void makeGameTeams() {
@@ -188,11 +195,11 @@ public class GameSetupHandler {
 		GameSetupHandler.isForceMap = isForceMap;
 	}
 
-	public boolean canSetup() {
+	public static boolean canSetup() {
 		return Bukkit.getOnlinePlayers().length >= 2;
 	}
 
-	public void awardEndgamePoints(String winningTeam, double winningCash, double losingCash) {
+	public static void awardEndgamePoints(String winningTeam, double winningCash, double losingCash) {
 		for (Player player : Bukkit.getOnlinePlayers()) {
 			fPlayer fPlayer = FakeboardHandler.getPlayer(player);
 			if (fPlayer.getTeam() != null) {

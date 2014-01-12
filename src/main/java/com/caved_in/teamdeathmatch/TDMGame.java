@@ -105,15 +105,7 @@ public class TDMGame extends JavaPlugin {
 
 		for (Player player : Bukkit.getOnlinePlayers()) {
 			final String playerName = player.getName();
-			//TODO See if it works better as async, or not
-			runnableManager.runTaskAsynch(new Runnable()
-			{
-				@Override
-				public void run() {
-					FakeboardHandler.loadPlayer(playerName);
-				}
-			});
-
+			FakeboardHandler.loadPlayer(playerName);
 			if (!player.getWorld().getName().equalsIgnoreCase(TDMGame.gameMap)) {
 				player.teleport(Bukkit.getWorld(TDMGame.gameMap).getSpawnLocation());
 				//TDMGame.Console(event.getPlayer().getName() + " joined game and wasn't in world [" + TDMGame.gameMap + "] --> Teleported to current map");
@@ -161,11 +153,13 @@ public class TDMGame extends JavaPlugin {
 
 	public static void cleanActiveMap() {
 		World World = Bukkit.getWorld(gameMap);
-		World.setPVP(true);
-		World.setThundering(false);
-		World.setTime(0);
-		World.setStorm(false);
-		World.setAutoSave(false);
+		if (World != null) {
+			World.setPVP(true);
+			World.setThundering(false);
+			World.setTime(0);
+			World.setStorm(false);
+			World.setAutoSave(false);
+		}
 	}
 
 	public static void rotateMap(boolean rollback) {
@@ -175,7 +169,9 @@ public class TDMGame extends JavaPlugin {
 		}
 		runnableManager.registerSynchRepeatTask("SetupCheck", new StartCheckRunnable(), 200L, 40L);
 		cleanActiveMap();
-		GameSetupHandler.setResetLastMap(rollback);
+		if (rollback) {
+			GameSetupHandler.setResetLastMap(rollback);
+		}
 
 
 		for (Player Player : Bukkit.getOnlinePlayers()) {
@@ -220,7 +216,7 @@ public class TDMGame extends JavaPlugin {
 
 	public static String getGameWorld() {
 		List<String> Worlds = worldList.getContentsAsList();
-		String World = Worlds.get(new Random().nextInt(Worlds.size()));
+		String World = "";
 		while (World.equalsIgnoreCase(gameMap)) {
 			World = Worlds.get(new Random().nextInt(Worlds.size()));
 		}

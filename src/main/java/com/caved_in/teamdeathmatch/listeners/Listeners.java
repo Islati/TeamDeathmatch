@@ -2,9 +2,9 @@ package com.caved_in.teamdeathmatch.listeners;
 
 //Commons Imports
 
+import com.caved_in.commons.items.ItemHandler;
 import com.caved_in.commons.player.PlayerHandler;
 import com.caved_in.commons.time.Cooldown;
-import com.caved_in.forcerespawn.ForceRespawnEvent;
 import com.caved_in.teamdeathmatch.TDMGame;
 import com.caved_in.teamdeathmatch.TeamType;
 import com.caved_in.teamdeathmatch.assists.AssistManager;
@@ -14,8 +14,10 @@ import com.caved_in.teamdeathmatch.fakeboard.Team;
 import com.caved_in.teamdeathmatch.fakeboard.fPlayer;
 import com.caved_in.teamdeathmatch.gamehandler.GameSetupHandler;
 import com.caved_in.teamdeathmatch.gamehandler.KillstreakHandler;
+import com.caved_in.teamdeathmatch.menus.loadoutselector.LoadoutActionMenu;
 import com.caved_in.teamdeathmatch.runnables.AssistAggregator;
 import com.caved_in.teamdeathmatch.runnables.RestoreInventory;
+import com.chaseoes.forcerespawn.event.ForceRespawnEvent;
 import com.shampaggon.crackshot.events.WeaponDamageEntityEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -23,12 +25,10 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
-import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.event.player.PlayerMoveEvent;
-import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.event.player.*;
 import org.kitteh.tag.PlayerReceiveNameTagEvent;
 
 //Team Deathmatch Imports
@@ -45,7 +45,7 @@ public class Listeners implements Listener {
 		Plugin.getServer().getPluginManager().registerEvents(this, Plugin);
 	}
 
-//	@EventHandler
+	@EventHandler
 	public void onPlayerMove(PlayerMoveEvent event) {
 		try {
 			fPlayer fPlayer = FakeboardHandler.getPlayer(event.getPlayer());
@@ -61,13 +61,15 @@ public class Listeners implements Listener {
 				moveCooldown.setOnCooldown(playerName);
 			}
 		} catch (Exception ex) {
+			PlayerHandler.sendMessageToAllPlayers("Move Error for " + event.getPlayer().getName());
 			//Error on join
 		}
 	}
 
 	@EventHandler
 	public void onPlayerInteract(PlayerInteractEvent event) {
-		fPlayer fPlayer = FakeboardHandler.getPlayer(event.getPlayer());
+		Player player = event.getPlayer();
+		fPlayer fPlayer = FakeboardHandler.getPlayer(player);
 		String playerName = fPlayer.getPlayerName();
 
 		if (GameSetupHandler.isGameInProgress()) {
@@ -76,6 +78,12 @@ public class Listeners implements Listener {
 					fPlayer.setAfk(false);
 				}
 				playerCooldown.setOnCooldown(playerName);
+			}
+		}
+
+		if (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) {
+			if (player.getItemInHand() != null && ItemHandler.itemNameContains(player.getItemInHand(), "Select & Edit Loadouts")) {
+				new LoadoutActionMenu(player);
 			}
 		}
 	}
@@ -127,9 +135,8 @@ public class Listeners implements Listener {
 			fPlayer playerShot = FakeboardHandler.getPlayer((Player) event.getVictim());
 			String shooterName = playerShooter.getPlayerName();
 			String shotName = playerShot.getPlayerName();
-			if (playerShooter.getTeam().equalsIgnoreCase(playerShot.getTeam()) || this.respawnInvincibilityCooldown.isOnCooldown(shooterName) || this.respawnInvincibilityCooldown.isOnCooldown(shotName) || playerShooter.isAfk() || playerShot.isAfk()) {
+			if (playerShooter.getTeam().equalsIgnoreCase(playerShot.getTeam()) || respawnInvincibilityCooldown.isOnCooldown(shooterName) || respawnInvincibilityCooldown.isOnCooldown(shotName) || playerShooter.isAfk() || playerShot.isAfk()) {
 				event.setCancelled(true);
-				return;
 			} else {
 				AssistManager.addData(shotName, shooterName);
 			}
@@ -148,36 +155,29 @@ public class Listeners implements Listener {
 		Player player = event.getPlayer();
 		String playerName = player.getName();
 		fPlayer fPlayer = FakeboardHandler.getPlayer(playerName);
+		event.setForcedRespawn(true);
 		if (GameSetupHandler.isGameInProgress()) {
-			event.setForcedRespawn(true);
-			WorldSpawns worldSpawns = TDMGame.configuration.getSpawnConfiguration().getWorldSpawns(player.getWorld().getName());
-			PlayerHandler.teleport(player, worldSpawns.getRandomSpawn(fPlayer.getTeam().equalsIgnoreCase("T") ? TeamType.TERRORIST : TeamType.COUNTER_TERRORIST).getLocation());
 			TDMGame.runnableManager.runTaskLater(new RestoreInventory(playerName), 20);
 		}
-		respawnInvincibilityCooldown.setOnCooldown(event.getPlayer().getName());
+		respawnInvincibilityCooldown.setOnCooldown(playerName);
 		if (fPlayer.isAfk()) {
 			fPlayer.setAfk(false);
 		}
 	}
 
-//	@EventHandler
-//	public void onRespawnEvent(PlayerRespawnEvent event) {
-//		if (GameSetupHandler.isGameInProgress()) {
-//			if (FakeboardHandler.getPlayer(event.getPlayer()).getTeam().equalsIgnoreCase("T")) {
-//				event.setRespawnLocation(new SpawnpointConfig(event.getPlayer().getWorld().getName(), TeamType.Terrorist).getSpawn());
-//				event.getPlayer().getInventory().setArmorContents(new ItemStack[]{ItemHandler.makeLeatherItemStack(Material.LEATHER_HELMET, Color.BLUE),
-//						ItemHandler.makeLeatherItemStack(Material.LEATHER_CHESTPLATE, Color.BLUE), ItemHandler.makeLeatherItemStack(Material.LEATHER_LEGGINGS,
-//						Color.BLUE), ItemHandler.makeLeatherItemStack(Material.LEATHER_BOOTS, Color.BLUE)});
-//			} else {
-//				event.setRespawnLocation(new SpawnpointConfig(event.getPlayer().getWorld().getName(), TeamType.CounterTerrorist).getSpawn());
-//				event.getPlayer().getInventory().setArmorContents(new ItemStack[]{ItemHandler.makeLeatherItemStack(Material.LEATHER_HELMET, Color.RED),
-//						ItemHandler.makeLeatherItemStack(Material.LEATHER_CHESTPLATE, Color.RED), ItemHandler.makeLeatherItemStack(Material.LEATHER_LEGGINGS,
-//						Color.RED), ItemHandler.makeLeatherItemStack(Material.LEATHER_BOOTS, Color.RED)});
-//			}
-//		}
-//		//this.respawnInvincibilityCooldown.setOnCooldown(Event.getPlayer().getName());
-//		//Event.getPlayer().setScoreboard(FakeboardHandler.getPlayer(Event.getPlayer()).getPlayerScoreboard().getScoreboard());
-//	}
+	@EventHandler
+	public void onRespawnEvent(PlayerRespawnEvent event) {
+		Player player = event.getPlayer();
+		fPlayer fPlayer = FakeboardHandler.getPlayer(player);
+		if (GameSetupHandler.isGameInProgress()) {
+			WorldSpawns worldSpawns = TDMGame.configuration.getSpawnConfiguration().getWorldSpawns(player.getWorld().getName());
+			event.setRespawnLocation(worldSpawns.getRandomSpawn(fPlayer.getTeam().equalsIgnoreCase("T") ? TeamType.TERRORIST : TeamType.COUNTER_TERRORIST).getLocation());
+			//player.getInventory().setArmorContents(fPlayer.getTeam().equalsIgnoreCase("T") ? );
+		}
+		respawnInvincibilityCooldown.setOnCooldown(player.getName());
+		//this.respawnInvincibilityCooldown.setOnCooldown(Event.getPlayer().getName());
+		//Event.getPlayer().setScoreboard(FakeboardHandler.getPlayer(Event.getPlayer()).getPlayerScoreboard().getScoreboard());
+	}
 
 //	@EventHandler
 //	public void AsynchChat(AsyncPlayerChatEvent event) {
@@ -280,41 +280,32 @@ public class Listeners implements Listener {
 			@Override
 			public void run() {
 				FakeboardHandler.loadPlayer(playerName);
+				try {
+					if (GameSetupHandler.isGameInProgress()) {
+						GameSetupHandler.assignPlayerTeam(player);
+						String playerTeam = FakeboardHandler.getPlayer(player).getTeam();
+						//TDMGame.Console(event.getPlayer().getName() + " joined game --> Assigned to [" + Team + "]");
+						WorldSpawns worldSpawns = TDMGame.configuration.getSpawnConfiguration().getWorldSpawns(player.getWorld().getName());
+						PlayerHandler.teleport(player, worldSpawns.getRandomSpawn(playerTeam.equalsIgnoreCase("T") ? TeamType.TERRORIST : TeamType.COUNTER_TERRORIST).getLocation());
+						player.chat("/kit");
+						player.sendMessage(ChatColor.GREEN + "To select a loadout, use /kit");
+
+					} else {
+						PlayerHandler.clearInventory(player);
+
+						if (!player.getWorld().getName().equalsIgnoreCase(TDMGame.gameMap)) {
+							player.teleport(Bukkit.getWorld(TDMGame.gameMap).getSpawnLocation());
+							//TDMGame.Console(event.getPlayer().getName() + " joined game and wasn't in world [" + TDMGame.gameMap + "] --> Teleported to current map");
+						}
+
+						GameSetupHandler.givePlayerLoadoutGem(player);
+					}
+				} catch (Exception Ex) {
+					Ex.printStackTrace();
+					player.kickPlayer(ChatColor.YELLOW + "Please Re-Log; There was an error loading your data.");
+				}
 			}
 		});
-
-		if (!player.getWorld().getName().equalsIgnoreCase(TDMGame.gameMap)) {
-			player.teleport(Bukkit.getWorld(TDMGame.gameMap).getSpawnLocation());
-			//TDMGame.Console(event.getPlayer().getName() + " joined game and wasn't in world [" + TDMGame.gameMap + "] --> Teleported to current map");
-		}
-		try {
-			TDMGame.runnableManager.runTaskLater(new Runnable() {
-				@Override
-				public void run() {
-					try {
-						if (GameSetupHandler.isGameInProgress()) {
-							GameSetupHandler.assignPlayerTeam(player);
-							String playerTeam = FakeboardHandler.getPlayer(player).getTeam();
-							//TDMGame.Console(event.getPlayer().getName() + " joined game --> Assigned to [" + Team + "]");
-							WorldSpawns worldSpawns = TDMGame.configuration.getSpawnConfiguration().getWorldSpawns(player.getWorld().getName());
-							PlayerHandler.teleport(player, worldSpawns.getRandomSpawn(playerTeam.equalsIgnoreCase("T") ? TeamType.TERRORIST : TeamType.COUNTER_TERRORIST).getLocation());
-							player.chat("/kit");
-							player.sendMessage(ChatColor.GREEN + "To select a loadout, use /kit");
-
-						} else {
-							PlayerHandler.clearInventory(player);
-						}
-					} catch (Exception Ex) {
-						Ex.printStackTrace();
-						player.kickPlayer(ChatColor.YELLOW + "Please Re-Log; There was an error loading your data.");
-					}
-				}
-			}, 40);
-		} catch (Exception Ex) {
-			Ex.printStackTrace();
-			player.kickPlayer(ChatColor.YELLOW + "Please Re-Log; There was an error loading your data.");
-		}
-		player.setFoodLevel(20);
 		//player.setWalkSpeed(0.2F);
 	}
 

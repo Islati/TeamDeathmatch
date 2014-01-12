@@ -11,7 +11,7 @@ public class ValidateMap implements Runnable {
 	@Override
 	public void run() {
 		for (Player player : Bukkit.getOnlinePlayers()) {
-			if (player.getWorld() != Bukkit.getWorld(TDMGame.gameMap)) {
+			if (!player.getWorld().getName().equalsIgnoreCase(Bukkit.getWorld(TDMGame.gameMap).getName())) {
 				if (player.getGameMode() != GameMode.CREATIVE) {
 					player.teleport(WorldManager.getWorldSpawn(TDMGame.gameMap));
 				}

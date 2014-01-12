@@ -23,7 +23,7 @@ public class XMLSpawnPoint {
 	@Element(name="locZ")
 	private double locZ = 0;
 
-	private TeamType teamType;
+	private TeamType teamType = TeamType.TERRORIST;
 
 	private Location spawnLocation;
 
@@ -53,11 +53,13 @@ public class XMLSpawnPoint {
 		this.teamName = teamType.toString();
 	}
 
+	public XMLSpawnPoint() {
+
+	}
+
 	public XMLSpawnPoint(TeamSpawnLocation teamSpawnLocation) {
 		this(teamSpawnLocation.getTeamType(),teamSpawnLocation.getLocation());
 	}
-
-	public XMLSpawnPoint() {}
 
 	public Location getLocation() {
 		return spawnLocation;

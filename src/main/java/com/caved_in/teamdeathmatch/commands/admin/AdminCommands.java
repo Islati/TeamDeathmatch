@@ -7,7 +7,6 @@ import com.caved_in.commons.player.PlayerHandler;
 import com.caved_in.teamdeathmatch.TDMGame;
 import com.caved_in.teamdeathmatch.TeamType;
 import com.caved_in.teamdeathmatch.config.spawns.TeamSpawnLocation;
-import com.caved_in.teamdeathmatch.config.spawns.WorldSpawns;
 import com.caved_in.teamdeathmatch.fakeboard.FakeboardHandler;
 import com.caved_in.teamdeathmatch.menus.help.HelpMenus;
 import org.apache.commons.lang.StringUtils;
@@ -61,6 +60,15 @@ public class AdminCommands {
 					PlayerHandler.sendMessage(sender, "&eDo &a/forcemap list&e to see a list of available maps");
 				}
 			}
+		}
+	}
+
+	@CommandController.CommandHandler(name = "spawns", permission = "gungame.spawn")
+	public void onSpawnCommand(Player player, String[] args) {
+		if (args.length > 0) {
+			PlayerHandler.sendMessage(player, String.format("&e%s&a has &e%s&a spawns in world &7%s", args[0].equalsIgnoreCase(TeamType.TERRORIST.toString()) ? "terrorist" : "counter terrorist", TDMGame.configuration.getSpawnConfiguration().getWorldSpawns(player.getWorld().getName()).getSpawnLocations(TeamType.getTeamByInitials(args[0])).size(), player.getWorld().getName()));
+		} else {
+			PlayerHandler.sendMessage(player, Messages.INVALID_COMMAND_USAGE("Team"));
 		}
 	}
 

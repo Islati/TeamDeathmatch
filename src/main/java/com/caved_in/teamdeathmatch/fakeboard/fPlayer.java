@@ -1,5 +1,6 @@
 package com.caved_in.teamdeathmatch.fakeboard;
 
+import com.caved_in.commons.player.PlayerHandler;
 import com.caved_in.teamdeathmatch.TDMGame;
 import com.caved_in.teamdeathmatch.guns.GunWrap;
 import com.caved_in.teamdeathmatch.loadout.Loadout;
@@ -30,7 +31,7 @@ public class fPlayer {
 	private String primaryGunID = "AK-47";
 	private String secondaryGunID = "USP45";
 
-	private PlayerScoreboard playerScoreboard;
+	private PlayerScoreboard playerScoreboard = new PlayerScoreboard();
 
 	private com.caved_in.teamdeathmatch.perks.Perk activePerk;
 
@@ -107,9 +108,9 @@ public class fPlayer {
 		for (String Gun : TDMGame.gunsSQL.getGuns(this.playerName)) {
 			this.unlockedGuns.add(Gun);
 		}
-		this.playerScoreboard = new PlayerScoreboard();
-		if (Bukkit.getPlayer(this.playerName) != null) {
-			Bukkit.getPlayer(this.playerName).setScoreboard(this.getPlayerScoreboard().getScoreboard());
+
+		if (PlayerHandler.isOnline(playerName)) {
+			PlayerHandler.getPlayer(playerName).setScoreboard(playerScoreboard.getScoreboard());
 		}
 	}
 
@@ -123,7 +124,9 @@ public class fPlayer {
 	}
 
 	public void clearScoreboard() {
-		this.playerScoreboard.clearScoreboard();
+		if (playerScoreboard != null) {
+			this.playerScoreboard.clearScoreboard();
+		}
 	}
 
 	public List<String> getUnlockedGuns() {

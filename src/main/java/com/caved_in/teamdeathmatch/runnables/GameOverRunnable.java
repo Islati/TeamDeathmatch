@@ -2,9 +2,9 @@ package com.caved_in.teamdeathmatch.runnables;
 
 import com.caved_in.commons.player.PlayerHandler;
 import com.caved_in.teamdeathmatch.TDMGame;
+import com.caved_in.teamdeathmatch.TeamType;
 import com.caved_in.teamdeathmatch.fakeboard.FakeboardHandler;
 import com.caved_in.teamdeathmatch.gamehandler.GameSetupHandler;
-import org.bukkit.Bukkit;
 
 public class GameOverRunnable implements Runnable {
 	int gameStopTicks = 12000;
@@ -27,21 +27,16 @@ public class GameOverRunnable implements Runnable {
 			TDMGame.runnableManager.cancelTask("GameEndCheck");
 		}
 		//Get the scores for both teams; Terrorist and CounterTerrorist
-		int terroristScore = FakeboardHandler.getTeam("T").getTeamScore();
-		int counterTerroristScore = FakeboardHandler.getTeam("CT").getTeamScore();
+		int terroristScore = FakeboardHandler.getTeam(TeamType.TERRORIST.toString()).getTeamScore();
+		int counterTerroristScore = FakeboardHandler.getTeam(TeamType.COUNTER_TERRORIST.toString()).getTeamScore();
 
 		//Check if the game has been running for less than 10 minutes
 		if (gameCurrentTicks <= gameStopTicks) {
 			if (terroristScore >= 50 || counterTerroristScore >= 50) {
 				GameSetupHandler.setGameInProgress(false);
 				gameCurrentTicks = 0;
-				if (terroristScore >= 50) {
-					PlayerHandler.sendMessageToAllPlayers("&6TERRORISTS WIN!");
-					TDMGame.setupHandler.awardEndgamePoints("T", 75, 50);
-				} else {
-					PlayerHandler.sendMessageToAllPlayers("&6COUNTER TERRORISTS WIN!");
-					TDMGame.setupHandler.awardEndgamePoints("CT", 75, 50);
-				}
+				PlayerHandler.sendMessageToAllPlayers(String.format("&6%s WIN!", terroristScore >= 50 ? "TERRORISTS" : "COUNTER TERRORISTS"));
+				GameSetupHandler.awardEndgamePoints(terroristScore >= 50 ? TeamType.TERRORIST.toString() : TeamType.COUNTER_TERRORIST.toString(),75,50);
 				TDMGame.runnableManager.runTaskLater(new Runnable() {
 					@Override
 					public void run() {
@@ -53,15 +48,8 @@ public class GameOverRunnable implements Runnable {
 		} else if (gameCurrentTicks >= gameStopTicks) {
 			GameSetupHandler.setGameInProgress(false);
 			gameCurrentTicks = 0;
-			Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "say TIMES UP; " + (terroristScore > counterTerroristScore ? "TERRORISTS WIN" :
-					"COUNTER TERRORISTS WIN"));
-			if (terroristScore >= 50) {
-				PlayerHandler.sendMessageToAllPlayers("&6TERRORISTS WIN!");
-				TDMGame.setupHandler.awardEndgamePoints("T", 75, 50);
-			} else {
-				PlayerHandler.sendMessageToAllPlayers("&6COUNTER TERRORISTS WIN!");
-				TDMGame.setupHandler.awardEndgamePoints("CT", 75, 50);
-			}
+			PlayerHandler.sendMessageToAllPlayers(String.format("&6TIME'S UP; %s WIN!", terroristScore >= 50 ? "TERRORISTS" : "COUNTER TERRORISTS"));
+			GameSetupHandler.awardEndgamePoints(terroristScore >= 50 ? TeamType.TERRORIST.toString() : TeamType.COUNTER_TERRORIST.toString(),75,50);
 			TDMGame.runnableManager.runTaskLater(new Runnable() {
 				@Override
 				public void run() {

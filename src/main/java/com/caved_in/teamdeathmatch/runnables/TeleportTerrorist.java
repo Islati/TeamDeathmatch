@@ -9,7 +9,7 @@ import org.bukkit.entity.Player;
 public class TeleportTerrorist implements Runnable {
 	@Override
 	public void run() {
-		WorldSpawns	worldSpawns = TDMGame.configuration.getSpawnConfiguration().getWorldSpawns(TDMGame.getGameWorld());
+		WorldSpawns	worldSpawns = TDMGame.configuration.getSpawnConfiguration().getWorldSpawns(TDMGame.gameMap);
 		for (Player player : FakeboardHandler.getPlayers(TeamType.TERRORIST.toString())) {
 			player.teleport(worldSpawns.getRandomSpawn(TeamType.TERRORIST).getLocation());
 		}

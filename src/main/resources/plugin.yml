@@ -26,3 +26,5 @@ commands:
       usage: /<command>
    xp:
       usage: /<command>
+   spawns:
+      usage: /<command>
