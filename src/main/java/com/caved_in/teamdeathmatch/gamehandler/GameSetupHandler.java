@@ -9,6 +9,7 @@ import com.caved_in.teamdeathmatch.TeamType;
 import com.caved_in.teamdeathmatch.fakeboard.FakeboardHandler;
 import com.caved_in.teamdeathmatch.fakeboard.Team;
 import com.caved_in.teamdeathmatch.fakeboard.fPlayer;
+import com.caved_in.teamdeathmatch.menus.loadoutselector.LoadoutActionMenu;
 import com.caved_in.teamdeathmatch.runnables.PlayerOpenKits;
 import com.caved_in.teamdeathmatch.runnables.TeleportCT;
 import com.caved_in.teamdeathmatch.runnables.TeleportTerrorist;
@@ -210,5 +211,16 @@ public class GameSetupHandler {
 				}
 			}
 		}
+	}
+
+	public static void openLoadoutMenu(Player player, boolean isAfk) {
+		fPlayer fPlayer = FakeboardHandler.getPlayer(player);
+		fPlayer.setAfk(isAfk);
+		new LoadoutActionMenu(player);
+
+	}
+
+	public static void openLoadoutMenu(Player player) {
+		openLoadoutMenu(player, true);
 	}
 }

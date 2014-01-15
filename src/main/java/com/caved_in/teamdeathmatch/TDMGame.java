@@ -13,7 +13,7 @@ import com.caved_in.teamdeathmatch.fakeboard.FakeboardHandler;
 import com.caved_in.teamdeathmatch.fakeboard.fPlayer;
 import com.caved_in.teamdeathmatch.gamehandler.GameSetupHandler;
 import com.caved_in.teamdeathmatch.guns.GunHandler;
-import com.caved_in.teamdeathmatch.listeners.Listeners;
+import com.caved_in.teamdeathmatch.listeners.BukkitListeners;
 import com.caved_in.teamdeathmatch.perks.PerkHandler;
 import com.caved_in.teamdeathmatch.runnables.MessageRunnable;
 import com.caved_in.teamdeathmatch.runnables.ScoreboardRunnable;
@@ -97,7 +97,7 @@ public class TDMGame extends JavaPlugin {
 		runnableManager = new RunnableManager(this);
 		rotateMap(false);
 		new CommandRegister(this);
-		new Listeners(this);
+		new BukkitListeners(this);
 		//new Voting(this);
 		runnableManager.registerSynchRepeatTask("MessageReminder", new MessageRunnable(), 6000, 6000);
 		//runnableManager.RegisterSynchRepeatTask("SpeedBoost", new SpeedRunnable(), 20L, 40L);

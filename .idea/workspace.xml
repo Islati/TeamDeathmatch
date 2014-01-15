@@ -5,145 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8037c4d4-8963-4502-a6f5-9863e0620a91" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/menus/loadoutselector/LoadoutActionMenu.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/menus/loadoutselector/LoadoutItem.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_chaseoes_ForceRespawn_Plugin_1_2_SNAPSHOT.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_github_github_maven_core_0_9.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_github_site_maven_plugin_0_9.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_gson_gson_2_2_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_plexus_plexus_utils_3_0_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_mylyn_github_org_eclipse_egit_github_core_2_1_5.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_projectlombok_lombok_1_12_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/jenkinsSettings.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__cglib_cglib_nodep_2_2_2.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_caved_in_forcerespawn_1_0_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_comphenix_executors_BukkitExecutors_1_0_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_comphenix_protocol_ProtocolLib_3_1_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_io_commons_io_2_4.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/.classpath" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/.project" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/TunnelsCommon.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/VaeconCommon.eml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/commons.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/dependency-reduced-pom.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/pom.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/Commons.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/commands/Admin/AdminCommands.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/commands/Chat/ChatCommands.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/commands/CommandController.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/commands/CommandMessage.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/commands/CommandRegister.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/commands/Donator/DonatorCommands.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/commands/Friends/FriendCommands.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/commands/Moderation/PunishmentCommands.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/commands/Utility/Utility.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/config/Configuration.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/config/Formatting/ColorCode.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/config/ItemMenu/XmlMenuItem.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/config/ItemMenuConfiguration.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/config/MaintenanceConfiguration.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/config/SqlConfiguration.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/config/TunnelsPermissions.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/config/WorldConfiguration.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/handlers/Chat/ChatHandler.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/handlers/Chat/ChatMessage.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/handlers/Data/Bans/Ban.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/handlers/Data/Bans/Flag.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/handlers/Data/Bans/IPunishment.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/handlers/Data/Bans/Mute.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/handlers/Data/Bans/Punishment.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/handlers/Data/Bans/PunishmentType.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/handlers/Data/Bans/Warn.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/handlers/Data/Disguises/Disguise.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/handlers/Data/Menu/HelpScreen.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/handlers/Data/Menu/Pages.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/handlers/Entity/EntityArmorSlot.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/handlers/Entity/EntityUtility.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/handlers/File/DataHandler.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/handlers/File/FolderHandler.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/handlers/File/Tag.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/handlers/Fireworks/FireworkEffectPlayer.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/handlers/Fireworks/FireworkSettings.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/handlers/Friends/Friend.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/handlers/Friends/FriendHandler.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/handlers/Friends/FriendList.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/handlers/Items/BlockID.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/handlers/Items/ItemHandler.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/handlers/Items/ItemID.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/handlers/Items/ItemType.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/handlers/Items/PotionUtil.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/handlers/Location/LocationHandler.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/handlers/Menus/MenuHandler.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/handlers/Menus/MenuWrapper.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/handlers/Menus/ServerSelection/ServerMenuGenerator.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/handlers/Menus/ServerSelection/ServerMenuItem.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/handlers/Menus/ServerSelection/ServerMenuWrapper.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/handlers/Menus/XYMenuItemWrapper.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/handlers/Misc/PunishmentUtils.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/handlers/Misc/TimeHandler.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/handlers/Particles/ParticleEffects.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/handlers/Particles/ReflectionUtilities.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/handlers/Player/PlayerHandler.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/handlers/Player/PlayerWrapper.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/handlers/SQL/BansSQL.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/handlers/SQL/DisguiseSQL.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/handlers/SQL/FriendSQL.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/handlers/SQL/FriendStatus.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/handlers/SQL/PlayerSQL.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/handlers/SQL/SQL.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/handlers/Threading/RunnableManager.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/handlers/Time/Cooldown.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/handlers/Utilities/CommonUtils.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/handlers/Utilities/LogUtils.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/handlers/Utilities/NumberUtil.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/handlers/Utilities/StringUtil.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/handlers/World/WorldHandler.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/handlers/YML/YMLIO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/handlers/YML/YML_Wrapper.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/listeners/BlockBreakListener.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/listeners/BlockFormListener.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/listeners/BlockSpreadListener.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/listeners/ChatListener.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/listeners/CommandPreProcessListener.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/listeners/CompassListener.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/listeners/FoodChangeListener.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/listeners/ItemDropListener.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/listeners/ItemPickupListener.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/listeners/LauncherListener.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/listeners/LightningStrikeListener.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/listeners/PlayerJoinListener.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/listeners/PlayerKickListener.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/listeners/PlayerLoginListener.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/listeners/PlayerQuitListener.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/listeners/PrePlayerLoginListener.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/listeners/ServerPingListener.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/listeners/ThungerChangeListener.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/listeners/WeatherChangeListener.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/com/caved_in/commons/listeners/WorldLoadedListener.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TunnelsCommon/src/main/resources/plugin.yml" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_caved_in_commons_1_0_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_caved_in_commons_1_1_RELEASE.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/commands/admin/AdminCommands.java" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/commands/admin/AdminCommands.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/GameOverRunnable.java" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/GameOverRunnable.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/chatcommands/ChatCommand.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/events/ChatCommandEvent.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/events/EventHandler.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/events/GameEndEvent.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/events/GunPurchaseEvent.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/events/LoadoutEditEvent.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/events/LoadoutSelectEvent.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/events/PlayerAfkEvent.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/events/fPlayerDeathEvent.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/events/fPlayerEvent.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/listeners/fPlayerListeners.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/events/fPlayerRespawnEvent.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/chatvote/ChatManager.java" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/chatcommands/ChatManager.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/chatvote/VoteKick.java" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/chatcommands/VoteKick.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/chatvote/VoteMap.java" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/chatcommands/VoteMap.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/listeners/Listeners.java" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/listeners/BukkitListeners.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/gamehandler/GameSetupHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/gamehandler/GameSetupHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/listeners/Listeners.java" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/listeners/Listeners.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/menus/loadoutselector/LoadoutSelectionMenu.java" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/menus/loadoutselector/LoadoutSelectionMenu.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/scoreboard/PlayerScoreboard.java" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/scoreboard/PlayerScoreboard.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/menus/loadoutselector/weaponselection/primary/PrimarySelectionItem.java" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/menus/loadoutselector/weaponselection/primary/PrimarySelectionItem.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/menus/loadoutselector/weaponselection/primary/PrimaryWeaponTypeMenu.java" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/menus/loadoutselector/weaponselection/primary/PrimaryWeaponTypeMenu.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/menus/loadoutselector/weaponselection/secondary/SecondaryWeaponTypeMenu.java" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/menus/loadoutselector/weaponselection/secondary/SecondaryWeaponTypeMenu.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/StartCheckRunnable.java" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/StartCheckRunnable.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/TDMGame.java" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/TDMGame.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Team Deathmatch.iml" afterPath="$PROJECT_DIR$/Team Deathmatch.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/TeleportCT.java" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/TeleportCT.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/TeleportTerrorist.java" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/TeleportTerrorist.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/ValidateMap.java" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/ValidateMap.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/spawns/WorldSpawns.java" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/spawns/WorldSpawns.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/spawns/XMLSpawnPoint.java" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/spawns/XMLSpawnPoint.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/fakeboard/fPlayer.java" afterPath="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/fakeboard/fPlayer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Team Deathmatch.iws" />
@@ -214,43 +93,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="LoadoutItem.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/menus/loadoutselector/LoadoutItem.java">
+      <file leaf-file-name="BukkitListeners.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/listeners/BukkitListeners.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="97" selection-start="821" selection-end="821" vertical-scroll-proportion="0.0" vertical-offset="144" max-vertical-offset="688">
+            <state line="78" column="13" selection-start="2977" selection-end="2977" vertical-scroll-proportion="-0.67830426" vertical-offset="1104" max-vertical-offset="4976">
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LoadoutCreationMenu.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/menus/loadoutselector/LoadoutCreationMenu.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="39" selection-start="677" selection-end="677" vertical-scroll-proportion="0.0" vertical-offset="144" max-vertical-offset="560">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LoadoutActionMenu.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/menus/loadoutselector/LoadoutActionMenu.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="0" selection-start="270" selection-end="270" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="400">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Listeners.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/listeners/Listeners.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="88" column="5" selection-start="3177" selection-end="3177" vertical-scroll-proportion="-1.9271709" vertical-offset="1664" max-vertical-offset="5104">
-              <folding>
-                <element signature="e#11143#12561#0" expanded="true" />
-                <element signature="e#12556#12557#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -258,47 +105,17 @@
       <file leaf-file-name="GameSetupHandler.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/gamehandler/GameSetupHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="106" column="131" selection-start="3813" selection-end="3813" vertical-scroll-proportion="0.0" vertical-offset="1371" max-vertical-offset="2896">
+            <state line="221" column="0" selection-start="7221" selection-end="7221" vertical-scroll-proportion="0.0" vertical-offset="2483" max-vertical-offset="3072">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ValidateMap.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/ValidateMap.java">
+      <file leaf-file-name="PlayerAfkEvent.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/events/PlayerAfkEvent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="17" selection-start="367" selection-end="367" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="384">
+            <state line="7" column="29" selection-start="157" selection-end="157" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="240">
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TeleportTerrorist.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/TeleportTerrorist.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="110" selection-start="485" selection-end="485" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="304">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WorldSpawns.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/spawns/WorldSpawns.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="42" column="58" selection-start="1420" selection-end="1420" vertical-scroll-proportion="0.0" vertical-offset="512" max-vertical-offset="1040">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LoadoutSelectionMenu.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/menus/loadoutselector/LoadoutSelectionMenu.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="24" selection-start="1425" selection-end="1425" vertical-scroll-proportion="0.0" vertical-offset="16" max-vertical-offset="480">
-              <folding>
-                <element signature="e#1405#1406#0" expanded="true" />
-                <element signature="e#1427#1428#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -316,18 +133,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/perks/Perks/Jump1.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/perks/Perks/Regen1.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/perks/Perks/Speed1.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/perks/Perks/Speed2.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/perks/Perks/Speed3.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/perks/Perks/ThunderThighs_One.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/menus/loadoutselector/LoadoutSelectionItem.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/menus/loadoutselector/LoadoutCreationMenu.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/fakeboard/Team.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/ScoreboardRunnable.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/RestoreInventory.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/MessageRunnable.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/GameStartReminder.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/assists/AssistManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/runnables/AssistAggregator.java" />
@@ -365,8 +170,20 @@
         <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/menus/loadoutselector/LoadoutSelectionMenu.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/menus/loadoutselector/LoadoutItem.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/menus/loadoutselector/LoadoutActionMenu.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/gamehandler/GameSetupHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/listeners/Listeners.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/events/fPlayerDeath.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/events/fPlayerRespawn.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/chatcommands/ChatManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/chatcommands/ChatCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/events/ChatCommandEvent.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/listeners/fPlayerListeners.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/events/GameEndEvent.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/events/fPlayerEvent.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/events/GunPurchaseEvent.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/events/LoadoutEditEvent.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/events/LoadoutSelectEvent.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/gamehandler/GameSetupHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/listeners/BukkitListeners.java" />
       </list>
     </option>
   </component>
@@ -457,7 +274,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -1219,6 +1035,44 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="events" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Team Deathmatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TeamDeathmatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="caved_in" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="teamdeathmatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="config" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -1463,7 +1317,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="chatvote" />
+              <option name="myItemId" value="chatcommands" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1507,6 +1361,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1739,7 +1594,11 @@
       <created>1389378695852</created>
       <updated>1389378695852</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Fixed a load of bugs in pretty-much everything">
+      <created>1389503326897</created>
+      <updated>1389503326897</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1751,7 +1610,6 @@
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32750398" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24967825" sideWeight="0.6703755" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290938" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -1761,7 +1619,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14090909" sideWeight="0.6675939" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14545454" sideWeight="0.6675939" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Jenkins" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28863636" sideWeight="0.6675939" order="0" side_tool="false" content_ui="combo" />
@@ -1771,6 +1629,7 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32750398" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32962447" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3991655" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1790,7 +1649,8 @@
     <MESSAGE value="Updated LITERALLY everything" />
     <MESSAGE value="It compiles! This is a starting point, i suppose!" />
     <MESSAGE value="It's playable! Updated admin commands to save spawns, added saving of config on stop; added prepared statements for gun / perk / loadout insertion.&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="It's playable! Updated admin commands to save spawns, added saving of config on stop; added prepared statements for gun / perk / loadout insertion.&#10;" />
+    <MESSAGE value="Fixed a load of bugs in pretty-much everything" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed a load of bugs in pretty-much everything" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1800,91 +1660,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/SqlConfiguration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="0" selection-start="85" selection-end="85" vertical-scroll-proportion="0.14285715" vertical-offset="0" max-vertical-offset="768">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/loadout/Loadout.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="13" selection-start="207" selection-end="207" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="928">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/PerksSQL.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="72" column="45" selection-start="2417" selection-end="2417" vertical-scroll-proportion="0.0" vertical-offset="832" max-vertical-offset="1424">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/LoadoutSQL.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="16" selection-start="1347" selection-end="1347" vertical-scroll-proportion="0.0" vertical-offset="202" max-vertical-offset="2032">
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/shop/GunShopConfiguration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="19" selection-start="624" selection-end="624" vertical-scroll-proportion="0.0" vertical-offset="64" max-vertical-offset="544">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/config/GunsSQL.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="62" selection-start="2288" selection-end="2288" vertical-scroll-proportion="0.0" vertical-offset="464" max-vertical-offset="1520">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/menus/loadoutselector/weaponselection/primary/PrimarySelectionMenu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="84" selection-start="443" selection-end="443" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="336" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/menus/loadoutselector/weaponselection/primary/PrimaryWeaponRender.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="49" selection-start="762" selection-end="762" vertical-scroll-proportion="0.0" vertical-offset="38" max-vertical-offset="352" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/menus/loadoutselector/weaponselection/primary/PrimaryWeaponTypeMenu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="50" selection-start="405" selection-end="405" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="400" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/menus/loadoutselector/weaponselection/primary/PrimaryWeaponTypeMenuItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="13" selection-start="291" selection-end="291" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="448" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/menus/loadoutselector/weaponselection/primary/PrimarySelectionItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="51" selection-start="2252" selection-end="2252" vertical-scroll-proportion="0.0" vertical-offset="232" max-vertical-offset="1200">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/menus/loadoutselector/LoadoutSelectionItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="0" selection-start="1375" selection-end="1375" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="560">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/perks/Perks/Jump1.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="13" selection-start="317" selection-end="317" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="368">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/guns/GunHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="26" column="89" selection-start="688" selection-end="688" vertical-scroll-proportion="0.0" vertical-offset="288" max-vertical-offset="1296">
@@ -2034,9 +1809,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/plugin.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="8" selection-start="624" selection-end="624" vertical-scroll-proportion="0.0" vertical-offset="151" max-vertical-offset="560">
-          <folding />
-        </state>
+        <state line="28" column="8" selection-start="624" selection-end="624" vertical-scroll-proportion="0.0" vertical-offset="151" max-vertical-offset="560" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/commands/admin/AdminCommands.java">
@@ -2078,8 +1851,8 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="216" column="25" selection-start="7126" selection-end="7126" vertical-scroll-proportion="0.0" vertical-offset="11" max-vertical-offset="3264">
           <folding>
-            <element signature="e#4330#4331#0" expanded="true" />
-            <element signature="e#4354#4355#0" expanded="true" />
+            <element signature="e#4342#4343#0" expanded="true" />
+            <element signature="e#4366#4367#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2115,10 +1888,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/menus/loadoutselector/LoadoutSelectionMenu.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="31" column="24" selection-start="1425" selection-end="1425" vertical-scroll-proportion="0.0" vertical-offset="16" max-vertical-offset="480">
-          <folding>
-            <element signature="e#1405#1406#0" expanded="true" />
-            <element signature="e#1427#1428#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2132,9 +1902,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/menus/loadoutselector/LoadoutActionMenu.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="0" selection-start="270" selection-end="270" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="400">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2147,25 +1915,155 @@
     </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/com/caved_in/commons/1.1-RELEASE/commons-1.1-RELEASE.jar!/com/caved_in/commons/items/ItemHandler.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="150" column="23" selection-start="4032" selection-end="4032" vertical-scroll-proportion="0.35779816" vertical-offset="2283" max-vertical-offset="4704">
+        <state line="150" column="23" selection-start="4032" selection-end="4032" vertical-scroll-proportion="0.35779816" vertical-offset="2283" max-vertical-offset="4704" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/chatcommands/ChatCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="3" selection-start="242" selection-end="242" vertical-scroll-proportion="-0.46206897" vertical-offset="476" max-vertical-offset="1056">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1030#1031#0" expanded="true" />
+            <element signature="e#1051#1052#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/chatcommands/ChatManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="38" selection-start="524" selection-end="524" vertical-scroll-proportion="0.20987654" vertical-offset="153" max-vertical-offset="1584">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/events/EventHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="25" selection-start="152" selection-end="152" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="240">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/events/ChatCommandEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="28" selection-start="439" selection-end="439" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="528">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#653#654#0" expanded="true" />
+            <element signature="e#674#675#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/listeners/fPlayerListeners.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="0" selection-start="217" selection-end="217" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="288">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/events/LoadoutSelectEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="46" selection-start="614" selection-end="614" vertical-scroll-proportion="0.50344825" vertical-offset="124" max-vertical-offset="704">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#534#535#0" expanded="true" />
+            <element signature="e#557#558#0" expanded="true" />
+            <element signature="e#616#617#0" expanded="true" />
+            <element signature="e#649#650#0" expanded="true" />
+            <element signature="e#681#682#0" expanded="true" />
+            <element signature="e#702#703#0" expanded="true" />
+            <element signature="e#746#747#0" expanded="true" />
+            <element signature="e#775#776#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/events/LoadoutEditEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="35" selection-start="643" selection-end="643" vertical-scroll-proportion="0.53103447" vertical-offset="124" max-vertical-offset="704">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#530#531#0" expanded="true" />
+            <element signature="e#553#554#0" expanded="true" />
+            <element signature="e#612#613#0" expanded="true" />
+            <element signature="e#645#646#0" expanded="true" />
+            <element signature="e#677#678#0" expanded="true" />
+            <element signature="e#698#699#0" expanded="true" />
+            <element signature="e#742#743#0" expanded="true" />
+            <element signature="e#771#772#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/events/GunPurchaseEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="24" selection-start="271" selection-end="271" vertical-scroll-proportion="0.3034483" vertical-offset="0" max-vertical-offset="640">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#478#479#0" expanded="true" />
+            <element signature="e#495#496#0" expanded="true" />
+            <element signature="e#539#540#0" expanded="true" />
+            <element signature="e#562#563#0" expanded="true" />
+            <element signature="e#621#622#0" expanded="true" />
+            <element signature="e#654#655#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/events/GameEndEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="28" selection-start="286" selection-end="286" vertical-scroll-proportion="0.3586207" vertical-offset="0" max-vertical-offset="580">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/events/fPlayerRespawnEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="0" selection-start="445" selection-end="445" vertical-scroll-proportion="0.4074703" vertical-offset="0" max-vertical-offset="589">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/events/fPlayerEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="45" selection-start="405" selection-end="405" vertical-scroll-proportion="0.37209302" vertical-offset="0" max-vertical-offset="602">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/events/fPlayerDeathEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="5" selection-start="1250" selection-end="1250" vertical-scroll-proportion="0.78268254" vertical-offset="67" max-vertical-offset="656">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/events/PlayerAfkEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="29" selection-start="157" selection-end="157" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="240">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/gamehandler/GameSetupHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="106" column="131" selection-start="3813" selection-end="3813" vertical-scroll-proportion="0.0" vertical-offset="1371" max-vertical-offset="2896">
+        <state line="221" column="0" selection-start="7221" selection-end="7221" vertical-scroll-proportion="0.0" vertical-offset="2483" max-vertical-offset="3072">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/listeners/Listeners.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/caved_in/teamdeathmatch/listeners/BukkitListeners.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="88" column="5" selection-start="3177" selection-end="3177" vertical-scroll-proportion="-1.9271709" vertical-offset="1664" max-vertical-offset="5104">
-          <folding>
-            <element signature="e#11143#12561#0" expanded="true" />
-            <element signature="e#12556#12557#0" expanded="true" />
-          </folding>
+        <state line="78" column="13" selection-start="2977" selection-end="2977" vertical-scroll-proportion="-0.67830426" vertical-offset="1104" max-vertical-offset="4976">
+          <folding />
         </state>
       </provider>
     </entry>

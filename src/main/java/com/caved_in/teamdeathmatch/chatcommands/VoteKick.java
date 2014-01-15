@@ -1,4 +1,4 @@
-package com.caved_in.teamdeathmatch.chatvote;
+package com.caved_in.teamdeathmatch.chatcommands;
 
 import java.util.ArrayList;
 

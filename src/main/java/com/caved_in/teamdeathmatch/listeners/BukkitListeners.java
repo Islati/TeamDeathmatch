@@ -14,7 +14,6 @@ import com.caved_in.teamdeathmatch.fakeboard.Team;
 import com.caved_in.teamdeathmatch.fakeboard.fPlayer;
 import com.caved_in.teamdeathmatch.gamehandler.GameSetupHandler;
 import com.caved_in.teamdeathmatch.gamehandler.KillstreakHandler;
-import com.caved_in.teamdeathmatch.menus.loadoutselector.LoadoutActionMenu;
 import com.caved_in.teamdeathmatch.runnables.AssistAggregator;
 import com.caved_in.teamdeathmatch.runnables.RestoreInventory;
 import com.chaseoes.forcerespawn.event.ForceRespawnEvent;
@@ -36,12 +35,12 @@ import org.kitteh.tag.PlayerReceiveNameTagEvent;
 //Bukkit Imports
 
 
-public class Listeners implements Listener {
+public class BukkitListeners implements Listener {
 	private Cooldown playerCooldown = new Cooldown(2);
 	private Cooldown moveCooldown = new Cooldown(3);
 	private Cooldown respawnInvincibilityCooldown = new Cooldown(6);
 
-	public Listeners(TDMGame Plugin) {
+	public BukkitListeners(TDMGame Plugin) {
 		Plugin.getServer().getPluginManager().registerEvents(this, Plugin);
 	}
 
@@ -72,18 +71,18 @@ public class Listeners implements Listener {
 		fPlayer fPlayer = FakeboardHandler.getPlayer(player);
 		String playerName = fPlayer.getPlayerName();
 
-		if (GameSetupHandler.isGameInProgress()) {
+		if (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) {
+			if (player.getItemInHand() != null && ItemHandler.itemNameContains(player.getItemInHand(), "Select & Edit Loadouts")) {
+				event.setCancelled(true);
+				//Open the loadout menu for the player
+				GameSetupHandler.openLoadoutMenu(player);
+			}
+		} else if (GameSetupHandler.isGameInProgress()) {
 			if (!playerCooldown.isOnCooldown(playerName)) {
 				if (fPlayer.isAfk()) {
 					fPlayer.setAfk(false);
 				}
 				playerCooldown.setOnCooldown(playerName);
-			}
-		}
-
-		if (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) {
-			if (player.getItemInHand() != null && ItemHandler.itemNameContains(player.getItemInHand(), "Select & Edit Loadouts")) {
-				new LoadoutActionMenu(player);
 			}
 		}
 	}
@@ -284,29 +283,25 @@ public class Listeners implements Listener {
 					if (GameSetupHandler.isGameInProgress()) {
 						GameSetupHandler.assignPlayerTeam(player);
 						String playerTeam = FakeboardHandler.getPlayer(player).getTeam();
-						//TDMGame.Console(event.getPlayer().getName() + " joined game --> Assigned to [" + Team + "]");
 						WorldSpawns worldSpawns = TDMGame.configuration.getSpawnConfiguration().getWorldSpawns(player.getWorld().getName());
 						PlayerHandler.teleport(player, worldSpawns.getRandomSpawn(playerTeam.equalsIgnoreCase("T") ? TeamType.TERRORIST : TeamType.COUNTER_TERRORIST).getLocation());
 						player.chat("/kit");
 						player.sendMessage(ChatColor.GREEN + "To select a loadout, use /kit");
-
 					} else {
 						PlayerHandler.clearInventory(player);
 
 						if (!player.getWorld().getName().equalsIgnoreCase(TDMGame.gameMap)) {
 							player.teleport(Bukkit.getWorld(TDMGame.gameMap).getSpawnLocation());
-							//TDMGame.Console(event.getPlayer().getName() + " joined game and wasn't in world [" + TDMGame.gameMap + "] --> Teleported to current map");
 						}
 
 						GameSetupHandler.givePlayerLoadoutGem(player);
 					}
-				} catch (Exception Ex) {
-					Ex.printStackTrace();
+				} catch (Exception ex) {
+					ex.printStackTrace();
 					player.kickPlayer(ChatColor.YELLOW + "Please Re-Log; There was an error loading your data.");
 				}
 			}
 		});
-		//player.setWalkSpeed(0.2F);
 	}
 
 	@EventHandler(priority = EventPriority.HIGHEST)
