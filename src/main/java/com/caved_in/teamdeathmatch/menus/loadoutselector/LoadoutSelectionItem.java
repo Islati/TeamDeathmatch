@@ -1,9 +1,10 @@
 package com.caved_in.teamdeathmatch.menus.loadoutselector;
 
+import com.caved_in.commons.player.PlayerHandler;
 import com.caved_in.teamdeathmatch.TDMGame;
 import com.caved_in.teamdeathmatch.fakeboard.FakeboardHandler;
-import com.caved_in.teamdeathmatch.fakeboard.Team;
 import com.caved_in.teamdeathmatch.fakeboard.fPlayer;
+import com.caved_in.teamdeathmatch.gamehandler.GameSetupHandler;
 import me.xhawk87.PopupMenuAPI.MenuItem;
 import org.bukkit.entity.Player;
 import org.bukkit.material.MaterialData;
@@ -19,6 +20,7 @@ public class LoadoutSelectionItem extends MenuItem {
 
 	@Override
 	public void onClick(Player player) {
+		PlayerHandler.clearInventory(player,false);
 		fPlayer fPlayer = FakeboardHandler.getPlayer(player);
 		fPlayer.setActiveLoadout(selectedLoadout);
 		TDMGame.crackShotAPI.giveWeapon(player, fPlayer.getPrimaryGunID(), 1);
@@ -28,8 +30,7 @@ public class LoadoutSelectionItem extends MenuItem {
 				player.addPotionEffect(Effect);
 			}
 		}
-		Team playersTeam = FakeboardHandler.getTeamByPlayer(player); //TODO not sure if this needs to actually be here or not.
-		playersTeam.addPlayer(fPlayer);
+		GameSetupHandler.givePlayerLoadoutGem(player);
 		getMenu().closeMenu(player);
 	}
 

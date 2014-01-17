@@ -10,6 +10,8 @@ import com.caved_in.teamdeathmatch.fakeboard.FakeboardHandler;
 import com.caved_in.teamdeathmatch.fakeboard.Team;
 import com.caved_in.teamdeathmatch.fakeboard.fPlayer;
 import com.caved_in.teamdeathmatch.menus.loadoutselector.LoadoutActionMenu;
+import com.caved_in.teamdeathmatch.menus.loadoutselector.LoadoutCreationMenu;
+import com.caved_in.teamdeathmatch.menus.loadoutselector.LoadoutSelectionMenu;
 import com.caved_in.teamdeathmatch.runnables.PlayerOpenKits;
 import com.caved_in.teamdeathmatch.runnables.TeleportCT;
 import com.caved_in.teamdeathmatch.runnables.TeleportTerrorist;
@@ -100,7 +102,6 @@ public class GameSetupHandler {
 
 		//Make all the players open their "kits"
 		TDMGame.runnableManager.runTaskLater(playerOpenKits,playerOpenKitDelay);
-
 	}
 
 	public static void givePlayerLoadoutGem(Player player) {
@@ -213,14 +214,34 @@ public class GameSetupHandler {
 		}
 	}
 
-	public static void openLoadoutMenu(Player player, boolean isAfk) {
+	public static void openCreationMenu(Player player, boolean isAfk) {
+		fPlayer fPlayer = FakeboardHandler.getPlayer(player);
+		fPlayer.setAfk(isAfk);
+		new LoadoutCreationMenu(player);
+	}
+
+	public static void openCreationMenu(Player player) {
+		openCreationMenu(player, true);
+	}
+
+	public static void openLoadoutSelectionMenu(Player player, boolean isAfk) {
+		fPlayer fPlayer = FakeboardHandler.getPlayer(player);
+		fPlayer.setAfk(isAfk);
+		new LoadoutSelectionMenu(player);
+	}
+
+	public static void openLoadoutSelectionMenu(Player player) {
+		openLoadoutSelectionMenu(player);
+	}
+
+	public static void openLoadoutOptionMenu(Player player, boolean isAfk) {
 		fPlayer fPlayer = FakeboardHandler.getPlayer(player);
 		fPlayer.setAfk(isAfk);
 		new LoadoutActionMenu(player);
 
 	}
 
-	public static void openLoadoutMenu(Player player) {
-		openLoadoutMenu(player, true);
+	public static void openLoadoutOptionMenu(Player player) {
+		openLoadoutOptionMenu(player, true);
 	}
 }

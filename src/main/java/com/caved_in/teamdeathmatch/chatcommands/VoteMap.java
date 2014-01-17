@@ -42,10 +42,6 @@ public class VoteMap {
 	}
 
 	public boolean doAction() {
-		if (yesVotes == noVotes) {
-			return false;
-		} else {
-			return (yesVotes > noVotes);
-		}
+		return yesVotes != noVotes && (yesVotes > noVotes);
 	}
 }

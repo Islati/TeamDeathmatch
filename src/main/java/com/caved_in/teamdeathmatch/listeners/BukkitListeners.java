@@ -52,7 +52,8 @@ public class BukkitListeners implements Listener {
 
 			if (!moveCooldown.isOnCooldown(playerName)) {
 				if (GameSetupHandler.isGameInProgress()) {
-					if (fPlayer != null && fPlayer.isAfk()) //TODO prevent the null check from being needed
+					//TODO prevent the null check from being needed
+					if (fPlayer != null && fPlayer.isAfk())
 					{
 						fPlayer.setAfk(false);
 					}
@@ -75,7 +76,7 @@ public class BukkitListeners implements Listener {
 			if (player.getItemInHand() != null && ItemHandler.itemNameContains(player.getItemInHand(), "Select & Edit Loadouts")) {
 				event.setCancelled(true);
 				//Open the loadout menu for the player
-				GameSetupHandler.openLoadoutMenu(player);
+				GameSetupHandler.openLoadoutOptionMenu(player);
 			}
 		} else if (GameSetupHandler.isGameInProgress()) {
 			if (!playerCooldown.isOnCooldown(playerName)) {
@@ -285,17 +286,15 @@ public class BukkitListeners implements Listener {
 						String playerTeam = FakeboardHandler.getPlayer(player).getTeam();
 						WorldSpawns worldSpawns = TDMGame.configuration.getSpawnConfiguration().getWorldSpawns(player.getWorld().getName());
 						PlayerHandler.teleport(player, worldSpawns.getRandomSpawn(playerTeam.equalsIgnoreCase("T") ? TeamType.TERRORIST : TeamType.COUNTER_TERRORIST).getLocation());
-						player.chat("/kit");
-						player.sendMessage(ChatColor.GREEN + "To select a loadout, use /kit");
+						GameSetupHandler.openLoadoutSelectionMenu(player, true);
 					} else {
-						PlayerHandler.clearInventory(player);
-
 						if (!player.getWorld().getName().equalsIgnoreCase(TDMGame.gameMap)) {
 							player.teleport(Bukkit.getWorld(TDMGame.gameMap).getSpawnLocation());
 						}
-
-						GameSetupHandler.givePlayerLoadoutGem(player);
+						PlayerHandler.clearInventory(player);
 					}
+					GameSetupHandler.givePlayerLoadoutGem(player);
+
 				} catch (Exception ex) {
 					ex.printStackTrace();
 					player.kickPlayer(ChatColor.YELLOW + "Please Re-Log; There was an error loading your data.");

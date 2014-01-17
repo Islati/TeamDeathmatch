@@ -2,10 +2,8 @@ package com.caved_in.teamdeathmatch.commands.player;
 
 
 import com.caved_in.commons.commands.CommandController;
-import com.caved_in.commons.player.PlayerHandler;
 import com.caved_in.teamdeathmatch.TDMGame;
 import com.caved_in.teamdeathmatch.fakeboard.FakeboardHandler;
-import com.caved_in.teamdeathmatch.fakeboard.Team;
 import com.caved_in.teamdeathmatch.gamehandler.GameSetupHandler;
 import com.caved_in.teamdeathmatch.menus.loadoutselector.LoadoutCreationMenu;
 import com.caved_in.teamdeathmatch.menus.loadoutselector.LoadoutSelectionMenu;
@@ -33,15 +31,15 @@ public class PlayerCommands {
 	public void KITCommand(Player player, String[] Args) {
 		if (GameSetupHandler.isGameInProgress()) {
 			try {
-				Team pTeam = FakeboardHandler.getTeamByPlayer(player);
-				PlayerHandler.clearInventory(player);
-				if (pTeam.getName().equalsIgnoreCase("CT")) {
-					player.getInventory().setArmorContents(GameSetupHandler.getRedTeamArmor());
-				} else {
-					player.getInventory().setArmorContents(GameSetupHandler.getBlueTeamArmor());
-				}
+//				Team pTeam = FakeboardHandler.getTeamByPlayer(player);
+//				PlayerHandler.clearInventory(player);
+//				if (pTeam.getName().equalsIgnoreCase("CT")) {
+//					player.getInventory().setArmorContents(GameSetupHandler.getRedTeamArmor());
+//				} else {
+//					player.getInventory().setArmorContents(GameSetupHandler.getBlueTeamArmor());
+//				}
 				player.sendMessage(ChatColor.GREEN + "To edit your loadouts, use /loadout");
-				new LoadoutSelectionMenu(player.getName());
+				new LoadoutSelectionMenu(player);
 			} catch (Exception Ex) {
 				Ex.printStackTrace();
 				player.kickPlayer(ChatColor.YELLOW + "Please Re-Log; There was an error loading your data.");
@@ -52,10 +50,6 @@ public class PlayerCommands {
 		}
 	}
 
-	@CommandController.CommandHandler(name = "xp", description = "View your current amount of XP", usage = "/xp")
-	public void XPCommand(Player Sender, String[] Args) {
-		Sender.chat("/money");
-	}
 
 	@CommandController.CommandHandler(name = "loadout", description = "Create & Modify your loadouts", usage = "/loadout")
 	public void LoadoutCommand(Player Sender, String[] Args) {

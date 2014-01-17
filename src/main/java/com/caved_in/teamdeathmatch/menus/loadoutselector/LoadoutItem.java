@@ -1,6 +1,8 @@
 package com.caved_in.teamdeathmatch.menus.loadoutselector;
 
 
+import com.caved_in.commons.player.PlayerHandler;
+import com.caved_in.teamdeathmatch.gamehandler.GameSetupHandler;
 import me.xhawk87.PopupMenuAPI.MenuItem;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -23,7 +25,11 @@ public class LoadoutItem extends MenuItem {
 	public void onClick(Player player) {
 		switch (loadoutAction) {
 			case SELECT:
-				getMenu().switchMenu(player, new LoadoutSelectionMenu(player.getName()).getMenu());
+				if (GameSetupHandler.isGameInProgress()) {
+				getMenu().switchMenu(player, new LoadoutSelectionMenu(player).getMenu());
+				} else {
+					PlayerHandler.sendMessage(player, "&eYou can't select a class to use until the game begins");
+				}
 				break;
 			case EDIT:
 				getMenu().switchMenu(player, new LoadoutCreationMenu().getMenu(player));

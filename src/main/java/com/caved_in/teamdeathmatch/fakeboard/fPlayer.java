@@ -1,6 +1,7 @@
 package com.caved_in.teamdeathmatch.fakeboard;
 
 import com.caved_in.commons.player.PlayerHandler;
+import com.caved_in.commons.potions.PotionHandler;
 import com.caved_in.teamdeathmatch.TDMGame;
 import com.caved_in.teamdeathmatch.guns.GunWrap;
 import com.caved_in.teamdeathmatch.loadout.Loadout;
@@ -8,16 +9,12 @@ import com.caved_in.teamdeathmatch.perks.Perk;
 import com.caved_in.teamdeathmatch.perks.Perks.Nothing;
 import com.caved_in.teamdeathmatch.scoreboard.PlayerScoreboard;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class fPlayer {
 	private String playerName = "";
@@ -28,6 +25,8 @@ public class fPlayer {
 	private int killStreak = 0;
 	private int playerDeaths = 0;
 
+	private static final int afkDuration = (20 * 60) * 10;
+
 	private String primaryGunID = "AK-47";
 	private String secondaryGunID = "USP45";
 
@@ -37,13 +36,13 @@ public class fPlayer {
 
 	private boolean isAfk = false;
 
-	private List<Perk> playerPerks = new ArrayList<Perk>();
+	private Set<Perk> playerPerks = new HashSet<>();
 
 	private int activeLoadout = 1;
 
 	private HashMap<Integer, Loadout> playerLoadouts = new HashMap<Integer, Loadout>();
 
-	private List<String> unlockedGuns = new ArrayList<String>();
+	private Set<String> unlockedGuns = new HashSet<>();
 
 	private List<ItemStack> deathRestoreInventory = new ArrayList<ItemStack>();
 	private ItemStack[] deathInventory = new ItemStack[]{};
@@ -97,16 +96,16 @@ public class fPlayer {
 	}
 
 	public void setupPlayerData() {
-		for (Loadout Loadout : TDMGame.loadoutSQL.getLoadouts(this.playerName)) {
-			this.playerLoadouts.put(Loadout.getNumber(), Loadout);
+		for (Loadout Loadout : TDMGame.loadoutSQL.getLoadouts(playerName)) {
+			playerLoadouts.put(Loadout.getNumber(), Loadout);
 		}
 
-		for (Perk Perk : TDMGame.perksSQL.getPerks(this.playerName)) {
-			this.playerPerks.add(Perk);
+		for (Perk Perk : TDMGame.perksSQL.getPerks(playerName)) {
+			playerPerks.add(Perk);
 		}
 
-		for (String Gun : TDMGame.gunsSQL.getGuns(this.playerName)) {
-			this.unlockedGuns.add(Gun);
+		for (String Gun : TDMGame.gunsSQL.getGuns(playerName)) {
+			unlockedGuns.add(Gun);
 		}
 
 		if (PlayerHandler.isOnline(playerName)) {
@@ -116,21 +115,21 @@ public class fPlayer {
 
 
 	public PlayerScoreboard getPlayerScoreboard() {
-		return this.playerScoreboard;
+		return playerScoreboard;
 	}
 
 	public void updateScoreboard() {
-		this.playerScoreboard.updateScoreboardData(this);
+		playerScoreboard.updateScoreboardData(this);
 	}
 
 	public void clearScoreboard() {
 		if (playerScoreboard != null) {
-			this.playerScoreboard.clearScoreboard();
+			playerScoreboard.clearScoreboard();
 		}
 	}
 
-	public List<String> getUnlockedGuns() {
-		return this.unlockedGuns;
+	public Set<String> getUnlockedGuns() {
+		return unlockedGuns;
 	}
 
 	public boolean hasGun(String ID) {
@@ -144,7 +143,7 @@ public class fPlayer {
 	public void unlockGun(String ID) {
 		if (!this.unlockedGuns.contains(ID)) {
 			this.unlockedGuns.add(ID);
-			TDMGame.gunsSQL.insertGun(this.playerName, ID);
+			TDMGame.gunsSQL.insertGun(playerName, ID);
 		}
 	}
 
@@ -153,7 +152,7 @@ public class fPlayer {
 		return (getPlayer().isWhitelisted() ? 9 : 3);
 	}
 
-	public List<Perk> getPlayerPerks() {
+	public Set<Perk> getPlayerPerks() {
 		return this.playerPerks;
 	}
 
@@ -162,10 +161,8 @@ public class fPlayer {
 	}
 
 	public void addPerk(Perk Perk) {
-		if (!hasPerk(Perk)) {
-			this.playerPerks.add(Perk);
-			TDMGame.perksSQL.insertPerk(Perk, this.playerName);
-		}
+		playerPerks.add(Perk);
+		TDMGame.perksSQL.insertPerk(Perk, playerName);
 	}
 
 	/**
@@ -180,10 +177,10 @@ public class fPlayer {
 	/**
 	 * Set the name of the fPlayer
 	 *
-	 * @param Name
+	 * @param playerName
 	 */
-	public void setPlayerName(String Name) {
-		this.playerName = Name;
+	public void setPlayerName(String playerName) {
+		this.playerName = playerName;
 	}
 
 	/**
@@ -314,12 +311,13 @@ public class fPlayer {
 	}
 
 	public void setActiveLoadout(int loadoutNumber) {
-		Loadout selectedLoad = this.getLoadout(loadoutNumber);
+		Loadout selectedLoad =
+				getLoadout(loadoutNumber);
 		if (selectedLoad != null) {
-			this.activeLoadout = loadoutNumber;
-			this.primaryGunID = selectedLoad.getPrimary();
-			this.secondaryGunID = selectedLoad.getSecondary();
-			this.activePerk = selectedLoad.getPerk();
+			activeLoadout = loadoutNumber;
+			primaryGunID = selectedLoad.getPrimary();
+			secondaryGunID = selectedLoad.getSecondary();
+			activePerk = selectedLoad.getPerk();
 		}
 	}
 
@@ -383,14 +381,14 @@ public class fPlayer {
 	}
 
 	public void setAfk(boolean isAfk) {
+		this.isAfk = isAfk;
 		Player player = getPlayer();
-		if (isAfk == true) {
-			player.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, (20 * 60) * 10, 1));
+		if (isAfk) {
+			PlayerHandler.addPotionEffect(player, PotionHandler.getPotionEffect(PotionEffectType.INVISIBILITY, 1, afkDuration));
 		} else {
 			player.removePotionEffect(PotionEffectType.INVISIBILITY);
 		}
-		this.isAfk = isAfk;
-		player.sendMessage(ChatColor.GRAY + "You are" + (this.isAfk() ? " now afk" : " no longer afk"));
+		PlayerHandler.sendMessage(player, "&7You are " + (isAfk ? "now" : "no longer") + " afk");
 	}
 
 	public boolean isAfk() {

@@ -25,6 +25,7 @@ public class GameOverRunnable implements Runnable {
 				}
 			}, 100L);
 			TDMGame.runnableManager.cancelTask("GameEndCheck");
+			return;
 		}
 		//Get the scores for both teams; Terrorist and CounterTerrorist
 		int terroristScore = FakeboardHandler.getTeam(TeamType.TERRORIST.toString()).getTeamScore();

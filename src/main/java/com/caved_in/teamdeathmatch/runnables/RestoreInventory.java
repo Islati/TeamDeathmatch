@@ -13,16 +13,16 @@ public class RestoreInventory implements Runnable {
 	private ItemStack[] inventory = null;
 	private String playerName = "";
 
-	public RestoreInventory(String Player) {
-		this.playerName = Player;
-		this.inventory = FakeboardHandler.getPlayer(Player).getDeathInventory();
+	public RestoreInventory(String playerName) {
+		this.playerName = playerName;
+		this.inventory = FakeboardHandler.getPlayer(playerName).getDeathInventory();
 	}
 
 	@Override
 	public void run() {
-		Player rPlayer = Bukkit.getPlayer(this.playerName);
-		fPlayer fPlayer = FakeboardHandler.getPlayer(rPlayer);
+		Player rPlayer = Bukkit.getPlayer(playerName);
 		if (rPlayer != null) {
+			fPlayer fPlayer = FakeboardHandler.getPlayer(rPlayer);
 
 			if (fPlayer.getTeam().equalsIgnoreCase("T")) {
 				rPlayer.getInventory().setArmorContents(GameSetupHandler.getBlueTeamArmor());
