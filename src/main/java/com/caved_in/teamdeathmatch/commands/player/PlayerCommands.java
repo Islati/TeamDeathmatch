@@ -1,70 +1,58 @@
 package com.caved_in.teamdeathmatch.commands.player;
 
-
 import com.caved_in.commons.commands.CommandController;
+import com.caved_in.commons.player.PlayerHandler;
 import com.caved_in.teamdeathmatch.TDMGame;
 import com.caved_in.teamdeathmatch.fakeboard.FakeboardHandler;
+import com.caved_in.teamdeathmatch.fakeboard.fPlayer;
 import com.caved_in.teamdeathmatch.gamehandler.GameSetupHandler;
 import com.caved_in.teamdeathmatch.menus.loadoutselector.LoadoutCreationMenu;
 import com.caved_in.teamdeathmatch.menus.loadoutselector.LoadoutSelectionMenu;
-import org.bukkit.ChatColor;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+
+import static com.caved_in.teamdeathmatch.TdmMessages.*;
+
 
 public class PlayerCommands {
 	@CommandController.CommandHandler(name = "afk", description = "Set yourself as 'afk' which stops all damage, and turns you invisible", usage = "/afk")
-	public void AFKCommand(Player Sender, String[] Args) {
+	public void onAfkCommand(Player player, String[] args) {
 		if (GameSetupHandler.isGameInProgress()) {
-			Player Player = (Player) Sender;
-			if (!TDMGame.afkCooldown.isOnCooldown(Player.getName())) {
-				if (FakeboardHandler.getPlayer(Player) != null) {
-					FakeboardHandler.getPlayer(Player).setAfk(!FakeboardHandler.getPlayer(Player).isAfk());
-					TDMGame.afkCooldown.setOnCooldown(Player.getName());
+			String playerName = player.getName();
+			if (!TDMGame.afkCooldown.isOnCooldown(playerName)) {
+				fPlayer fPlayer = FakeboardHandler.getPlayer(playerName);
+				if (fPlayer != null) {
+					fPlayer.setAfk(!fPlayer.isAfk());
+					TDMGame.afkCooldown.setOnCooldown(playerName);
 				}
 			} else {
-				Player.sendMessage(ChatColor.GRAY + "You've used this command in the past 10 seconds, please don't abuse it Q_Q Wait and try again..");
+				PlayerHandler.sendMessage(player,AFK_COMMAND_ON_COOLDOWN);
 			}
 		}
 	}
 
 	@CommandController.CommandHandler(name = "kit", description = "Select & Set your active loadout", usage = "/kit")
-	public void KITCommand(Player player, String[] Args) {
+	public void onKitCommand(Player player, String[] args) {
 		if (GameSetupHandler.isGameInProgress()) {
 			try {
-//				Team pTeam = FakeboardHandler.getTeamByPlayer(player);
-//				PlayerHandler.clearInventory(player);
-//				if (pTeam.getName().equalsIgnoreCase("CT")) {
-//					player.getInventory().setArmorContents(GameSetupHandler.getRedTeamArmor());
-//				} else {
-//					player.getInventory().setArmorContents(GameSetupHandler.getBlueTeamArmor());
-//				}
-				player.sendMessage(ChatColor.GREEN + "To edit your loadouts, use /loadout");
+				PlayerHandler.sendMessage(player, LOADOUT_EDIT_INSTRUCTION);
 				new LoadoutSelectionMenu(player);
-			} catch (Exception Ex) {
-				Ex.printStackTrace();
-				player.kickPlayer(ChatColor.YELLOW + "Please Re-Log; There was an error loading your data.");
+			} catch (Exception ex) {
+				ex.printStackTrace();
+				PlayerHandler.kickPlayer(player, PLAYER_DATA_LOAD_ERROR);
 			}
 		} else {
-			player.sendMessage(ChatColor.GREEN + "[Tunnels] " + ChatColor.YELLOW + "The round must begin before you can select a class; You can edit your " +
-					"classes however, by using " + ChatColor.GRAY + "/loadout");
+			PlayerHandler.sendMessage(player,GAME_MUST_BEGIN_LOADOUT_SELECTION);
 		}
 	}
 
 
 	@CommandController.CommandHandler(name = "loadout", description = "Create & Modify your loadouts", usage = "/loadout")
-	public void LoadoutCommand(Player Sender, String[] Args) {
+	public void onLoadoutCommand(Player player, String[] args) {
 		if (GameSetupHandler.isGameInProgress()) {
-			new LoadoutCreationMenu(Sender);
-			Sender.chat("/afk");
+			new LoadoutCreationMenu(player);
+			player.chat("/afk");
 		} else {
-			new LoadoutCreationMenu(Sender);
+			new LoadoutCreationMenu(player);
 		}
-	}
-
-	@CommandController.CommandHandler(name = "vote", description = "Get info on how to vote, and the rewards", usage = "/vote")
-	public void VoteCommand(CommandSender Sender, String[] Args) {
-		Sender.sendMessage(ChatColor.GREEN + "To vote, visit http://caved.in/vote.php");
-		Sender.sendMessage(ChatColor.GREEN + "On the website there's links which correspond to sites you can vote on");
-		Sender.sendMessage(ChatColor.GREEN + "You can vote every 24 hours; And each vote gets you 250 XP; Thanks for voting!");
 	}
 }

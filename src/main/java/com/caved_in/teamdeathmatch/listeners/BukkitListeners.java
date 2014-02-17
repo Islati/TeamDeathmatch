@@ -1,11 +1,11 @@
 package com.caved_in.teamdeathmatch.listeners;
 
-//Commons Imports
-
 import com.caved_in.commons.items.ItemHandler;
 import com.caved_in.commons.player.PlayerHandler;
 import com.caved_in.commons.time.Cooldown;
+import com.caved_in.commons.world.WorldHandler;
 import com.caved_in.teamdeathmatch.TDMGame;
+import com.caved_in.teamdeathmatch.TdmMessages;
 import com.caved_in.teamdeathmatch.TeamType;
 import com.caved_in.teamdeathmatch.assists.AssistManager;
 import com.caved_in.teamdeathmatch.config.spawns.WorldSpawns;
@@ -18,7 +18,6 @@ import com.caved_in.teamdeathmatch.runnables.AssistAggregator;
 import com.caved_in.teamdeathmatch.runnables.RestoreInventory;
 import com.chaseoes.forcerespawn.event.ForceRespawnEvent;
 import com.shampaggon.crackshot.events.WeaponDamageEntityEvent;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -28,12 +27,7 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.*;
-import org.kitteh.tag.PlayerReceiveNameTagEvent;
-
-//Team Deathmatch Imports
-//Crackshot Import
-//Bukkit Imports
-
+import org.kitteh.tag.AsyncPlayerReceiveNameTagEvent;
 
 public class BukkitListeners implements Listener {
 	private Cooldown playerCooldown = new Cooldown(2);
@@ -92,7 +86,7 @@ public class BukkitListeners implements Listener {
 	public void onPlayerDied(final PlayerDeathEvent event) {
 		//Get the player who died
 		Player player = event.getEntity();
-		//Check if there's a game in profeess
+		//Check if there's a game in progress
 		if (GameSetupHandler.isGameInProgress()) {
 			//Get the fPlayer data for the player who was killed, and set their inventory contents
 			fPlayer fPlayerKilled = FakeboardHandler.getPlayer(player);
@@ -170,13 +164,10 @@ public class BukkitListeners implements Listener {
 		Player player = event.getPlayer();
 		fPlayer fPlayer = FakeboardHandler.getPlayer(player);
 		if (GameSetupHandler.isGameInProgress()) {
-			WorldSpawns worldSpawns = TDMGame.configuration.getSpawnConfiguration().getWorldSpawns(player.getWorld().getName());
+			WorldSpawns worldSpawns = TDMGame.configuration.getSpawnConfiguration().getWorldSpawns(PlayerHandler.getWorldName(player));
 			event.setRespawnLocation(worldSpawns.getRandomSpawn(fPlayer.getTeam().equalsIgnoreCase("T") ? TeamType.TERRORIST : TeamType.COUNTER_TERRORIST).getLocation());
-			//player.getInventory().setArmorContents(fPlayer.getTeam().equalsIgnoreCase("T") ? );
 		}
 		respawnInvincibilityCooldown.setOnCooldown(player.getName());
-		//this.respawnInvincibilityCooldown.setOnCooldown(Event.getPlayer().getName());
-		//Event.getPlayer().setScoreboard(FakeboardHandler.getPlayer(Event.getPlayer()).getPlayerScoreboard().getScoreboard());
 	}
 
 //	@EventHandler
@@ -275,8 +266,7 @@ public class BukkitListeners implements Listener {
 		final String playerName = player.getName();
 
 		PlayerHandler.removePotionEffects(player);
-		TDMGame.runnableManager.runTaskAsynch(new Runnable() //TODO See if it works better as async, or not
-		{
+		TDMGame.runnableManager.runTaskAsynch(new Runnable() {
 			@Override
 			public void run() {
 				FakeboardHandler.loadPlayer(playerName);
@@ -284,12 +274,12 @@ public class BukkitListeners implements Listener {
 					if (GameSetupHandler.isGameInProgress()) {
 						GameSetupHandler.assignPlayerTeam(player);
 						String playerTeam = FakeboardHandler.getPlayer(player).getTeam();
-						WorldSpawns worldSpawns = TDMGame.configuration.getSpawnConfiguration().getWorldSpawns(player.getWorld().getName());
+						WorldSpawns worldSpawns = TDMGame.configuration.getSpawnConfiguration().getWorldSpawns(PlayerHandler.getWorldName(player));
 						PlayerHandler.teleport(player, worldSpawns.getRandomSpawn(playerTeam.equalsIgnoreCase("T") ? TeamType.TERRORIST : TeamType.COUNTER_TERRORIST).getLocation());
 						GameSetupHandler.openLoadoutSelectionMenu(player, true);
 					} else {
-						if (!player.getWorld().getName().equalsIgnoreCase(TDMGame.gameMap)) {
-							player.teleport(Bukkit.getWorld(TDMGame.gameMap).getSpawnLocation());
+						if (!PlayerHandler.getWorldName(player).equalsIgnoreCase(TDMGame.gameMap)) {
+							PlayerHandler.teleport(player, WorldHandler.getSpawn(TDMGame.gameMap));
 						}
 						PlayerHandler.clearInventory(player);
 					}
@@ -297,31 +287,31 @@ public class BukkitListeners implements Listener {
 
 				} catch (Exception ex) {
 					ex.printStackTrace();
-					player.kickPlayer(ChatColor.YELLOW + "Please Re-Log; There was an error loading your data.");
+					PlayerHandler.kickPlayer(player, TdmMessages.PLAYER_DATA_LOAD_ERROR);
 				}
 			}
 		});
 	}
 
 	@EventHandler(priority = EventPriority.HIGHEST)
-	public void onReceiveName(PlayerReceiveNameTagEvent Event) {
-		Player playerReceiving = Event.getPlayer();
-		Player playerSending = Event.getNamedPlayer();
+	public void onReceiveName(AsyncPlayerReceiveNameTagEvent event) {
+		Player playerReceiving = event.getPlayer();
+		Player playerSending = event.getNamedPlayer();
 		String sendingName = playerSending.getName();
 		if (GameSetupHandler.isGameInProgress()) {
 			Team sendingPlayerTeam = FakeboardHandler.getTeamByPlayer(playerSending);
 			Team receivingPlayerTeam = FakeboardHandler.getTeamByPlayer(playerReceiving);
 			if (sendingPlayerTeam != null && receivingPlayerTeam != null) {
 				if (sendingPlayerTeam.getName().equalsIgnoreCase(receivingPlayerTeam.getName())) {
-					Event.setTag(ChatColor.GREEN + sendingName);
+					event.setTag(ChatColor.GREEN + sendingName);
 				} else {
-					Event.setTag(ChatColor.RED + sendingName);
+					event.setTag(ChatColor.RED + sendingName);
 				}
 			} else {
-				Event.setTag(ChatColor.WHITE + sendingName);
+				event.setTag(ChatColor.WHITE + sendingName);
 			}
 		} else {
-			Event.setTag(ChatColor.WHITE + sendingName);
+			event.setTag(ChatColor.WHITE + sendingName);
 		}
 	}
 

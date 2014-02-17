@@ -1,7 +1,6 @@
 package com.caved_in.teamdeathmatch.config;
 
 import com.caved_in.commons.sql.SQL;
-import com.caved_in.teamdeathmatch.TDMGame;
 import com.caved_in.teamdeathmatch.loadout.Loadout;
 import com.caved_in.teamdeathmatch.perks.PerkHandler;
 
@@ -12,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LoadoutSQL extends SQL{
-	private static String loadoutTable = "Guns_Loadouts";
+	private static String loadoutTable = "guns_loadouts";
 	private static String playerColumn = "Player";
 	private static String loadoutNumberColumn = "Loadout";
 	private static String primaryWeaponColumn = "PrimaryG";
@@ -23,14 +22,18 @@ public class LoadoutSQL extends SQL{
 	private static String insertLoadoutStatement = "INSERT INTO " + loadoutTable + " (" + playerColumn + ", " + loadoutNumberColumn + ", " + primaryWeaponColumn + ", " + secondaryWeaponColumn + ", " + perkColumn + ") VALUES (?,?,?,?,?)";
 	private static String updateLoadoutStatement = "UPDATE " + loadoutTable + " SET " + primaryWeaponColumn + "=?, " + secondaryWeaponColumn + "=?, " + perkColumn + "=? WHERE " + playerColumn + "=? AND " + loadoutNumberColumn + "=?";
 
-	public LoadoutSQL() {
+	private static String creationStatement = "CREATE TABLE IF NOT EXISTS `[DB]`.`guns_loadouts` (`ID` int(10) unsigned NOT NULL AUTO_INCREMENT, `Player` text NOT NULL, `Loadout` text NOT NULL, `PrimaryG` text NOT NULL, `Secondary` text NOT NULL,`Perk` text NOT NULL, PRIMARY KEY (`ID`) ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;";
+
+	public LoadoutSQL(SqlConfiguration sqlConfig) {
 		super(
-				TDMGame.configuration.getSqlConfiguration().getHost(),
-				TDMGame.configuration.getSqlConfiguration().getPort(),
-				TDMGame.configuration.getSqlConfiguration().getDatabase(),
-				TDMGame.configuration.getSqlConfiguration().getUsername(),
-				TDMGame.configuration.getSqlConfiguration().getPassword()
+				sqlConfig.getHost(),
+				sqlConfig.getPort(),
+				sqlConfig.getDatabase(),
+				sqlConfig.getUsername(),
+				sqlConfig.getPassword()
 		);
+		creationStatement = creationStatement.replace("[DB]",sqlConfig.getDatabase());
+		execute(creationStatement);
 	}
 
 	public boolean hasData(String playerName) {

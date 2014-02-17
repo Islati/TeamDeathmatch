@@ -147,7 +147,7 @@
             <dependency>
                 <groupId>com.caved_in</groupId>
                 <artifactId>commons</artifactId>
-                <version>RELEASE</version>
+                <version>1.2.1-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.caved_in</groupId>

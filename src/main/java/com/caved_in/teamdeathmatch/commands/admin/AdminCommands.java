@@ -101,11 +101,11 @@ public class AdminCommands {
 
 	@CommandController.CommandHandler(name = "setteamspawn", description = "Used to add spawn locations for teams", permission = "gungame.admin",
 			usage = "/setteamspawn [team]")
-	public void SetTeamSpawn(Player sender, String[] args) {
+	public void onSetTeamSpawnCommand(Player sender, String[] args) {
 		if (args.length > 0) {
 			String teamName = args[0];
 			//Get the world spawns for the player issueing the command
-			String playerWorldName = sender.getWorld().getName();
+			String playerWorldName = PlayerHandler.getWorldName(sender);
 			switch (teamName.toLowerCase()) {
 				case "t":
 				case "ct":
@@ -123,12 +123,12 @@ public class AdminCommands {
 
 	@CommandController.CommandHandler(name = "gungame", description = "The parent command of (almost) all admin-related commands",
 			permission = "gungame.admin", usage = "/gungame")
-	public void TDMAdmin(CommandSender Sender, String[] Args) {
+	public void onGunGameAdmin(CommandSender Sender, String[] Args) {
 		Sender.sendMessage(ChatColor.YELLOW + "For help with the /gungame command do '/gungame help'");
 	}
 
 	@CommandController.SubCommandHandler(parent = "gungame", name = "help", permission = "gungame.admin")
-	public void TotalWarHelpCommand(CommandSender sender, String[] args) {
+	public void onGungameHelpCommand(CommandSender sender, String[] args) {
 		HelpScreen HelpScreen = new HelpScreen("GunGame Admin Menu");
 		HelpScreen.setHeader(ChatColor.BLUE + "<name> Page <page> of <maxpage>");
 		HelpScreen.setFormat("<name> --> <desc>");
@@ -140,18 +140,18 @@ public class AdminCommands {
 		HelpScreen.setEntry("/forcewin [T/CT]", "Force a team to win so the round will re-start");
 		HelpScreen.setEntry("/forcemap <Map>", "Forces a map change to the given map");
 		HelpScreen.setEntry("/forcemap list", "List all available maps");
-		int Page = 1;
+		int page = 1;
 		if (args.length > 1 && StringUtils.isNumeric(args[1])) {
-			Page = Integer.parseInt(args[1]);
+			page = Integer.parseInt(args[1]);
 		}
-		HelpScreen.sendTo(sender, Page, 6);
+		HelpScreen.sendTo(sender, page, 6);
 	}
 
 	@CommandController.SubCommandHandler(parent = "gungame", name = "reload", permission = "gungame.admin")
-	public void TDMReload(CommandSender sender, String[] args) {
+	public void onGungameReloadCommand(CommandSender sender, String[] args) {
 		TDMGame.gunHandler.initData();
 		TDMGame.reloadMessages();
 		Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "shot config reload");
-		sender.sendMessage(ChatColor.GREEN + "[Tunnels] GunData and ShopData reloaded");
+		PlayerHandler.sendMessage(sender, "&a[Tunnels] GunData and ShopData reloaded");
 	}
 }

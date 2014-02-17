@@ -1,7 +1,6 @@
 package com.caved_in.teamdeathmatch.config;
 
 import com.caved_in.commons.sql.SQL;
-import com.caved_in.teamdeathmatch.TDMGame;
 import com.caved_in.teamdeathmatch.perks.Perk;
 import com.caved_in.teamdeathmatch.perks.PerkHandler;
 
@@ -14,21 +13,24 @@ import java.util.Set;
 
 public class PerksSQL extends SQL {
 
-	private static String perkTable = "Guns_Perks";
+	private static String perkTable = "guns_perks";
 	private static String playerColumn = "Player";
 	private static String perkColumn = "Perk";
 
 	private static String getDataStatement = "SELECT * FROM " + perkTable + " WHERE " + playerColumn + "=?";
 	private static String insertDataStatement = "INSERT INTO " + perkTable + " (" + playerColumn + ", " + perkColumn + ") VALUES (?, ?)";
+	private static String creationStatement = "CREATE TABLE IF NOT EXISTS `[DB]`.`guns_perks` (`ID` int(10) unsigned NOT NULL AUTO_INCREMENT, `Player` text NOT NULL, `Perk` text NOT NULL, PRIMARY KEY (`ID`)) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;";
 
-	public PerksSQL() {
+	public PerksSQL(SqlConfiguration sqlConfig) {
 		super(
-				TDMGame.configuration.getSqlConfiguration().getHost(),
-				TDMGame.configuration.getSqlConfiguration().getPort(),
-				TDMGame.configuration.getSqlConfiguration().getDatabase(),
-				TDMGame.configuration.getSqlConfiguration().getUsername(),
-				TDMGame.configuration.getSqlConfiguration().getPassword()
+				sqlConfig.getHost(),
+				sqlConfig.getPort(),
+				sqlConfig.getDatabase(),
+				sqlConfig.getUsername(),
+				sqlConfig.getPassword()
 		);
+		creationStatement = creationStatement.replace("[DB]",sqlConfig.getDatabase());
+		execute(creationStatement);
 	}
 	public boolean hasData(String playerName) {
 		PreparedStatement preparedStatement = prepareStatement(getDataStatement);

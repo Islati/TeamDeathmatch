@@ -82,10 +82,11 @@ public class TDMGame extends JavaPlugin {
 		initConfig();
 		//Initialize the configuration
 		configuration = new Configuration();
+		SqlConfiguration sqlConfiguration = configuration.getSqlConfiguration();
 		//Load out sql shit
-		loadoutSQL = new LoadoutSQL();
-		gunsSQL = new GunsSQL();
-		perksSQL = new PerksSQL();
+		loadoutSQL = new LoadoutSQL(sqlConfiguration);
+		gunsSQL = new GunsSQL(sqlConfiguration);
+		perksSQL = new PerksSQL(sqlConfiguration);
 		//Init the Handlers and apis'
 		perkHandler = new PerkHandler();
 		gunHandler = new GunHandler();
@@ -170,7 +171,7 @@ public class TDMGame extends JavaPlugin {
 		runnableManager.registerSynchRepeatTask("SetupCheck", new StartCheckRunnable(), 200L, 40L);
 		cleanActiveMap();
 		if (rollback) {
-			GameSetupHandler.setResetLastMap(rollback);
+			GameSetupHandler.setResetLastMap(true);
 		}
 
 
@@ -186,13 +187,7 @@ public class TDMGame extends JavaPlugin {
 	}
 
 	public static void givePlayerTunnelsXP(Player player, double amount, boolean isSilent) {
-		String playerName = player.getName();
-		PlayerWrapper playerWrapper = PlayerHandler.getData(playerName);
-		double earnedXP = getXP(playerName, amount);
-		playerWrapper.addCurrency(earnedXP);
-		if (!isSilent) {
-			player.sendMessage(ChatColor.GREEN + "You've earned +" + ((int) earnedXP) + " XP!");
-		}
+		givePlayerTunnelsXP(player.getName(),amount,isSilent);
 	}
 
 	public static void givePlayerTunnelsXP(String playerName, double amount, boolean isSilent) {

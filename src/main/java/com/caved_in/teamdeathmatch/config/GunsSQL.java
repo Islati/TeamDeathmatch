@@ -1,7 +1,6 @@
 package com.caved_in.teamdeathmatch.config;
 
 import com.caved_in.commons.sql.SQL;
-import com.caved_in.teamdeathmatch.TDMGame;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,15 +15,17 @@ public class GunsSQL extends SQL {
 	private static String gunColumn = "GunID";
 	private static String getDataStatement = "SELECT * FROM " + gunsTable + " WHERE " + playerColumn + "=?";
 	private static String insertDataStatement = "INSERT INTO " + gunsTable + " (" + playerColumn + ", " + gunColumn + ") VALUES (?,?)";
-
-	public GunsSQL() {
+	private static String createTableStatement = "CREATE TABLE IF NOT EXISTS `[DB]`.`Guns_Weapons` (`ID` int(10) unsigned NOT NULL AUTO_INCREMENT, `Player` text NOT NULL, `GunID` text NOT NULL, PRIMARY KEY (`ID`) ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;";
+	public GunsSQL(SqlConfiguration sqlConfig) {
 		super(
-				TDMGame.configuration.getSqlConfiguration().getHost(),
-				TDMGame.configuration.getSqlConfiguration().getPort(),
-				TDMGame.configuration.getSqlConfiguration().getDatabase(),
-				TDMGame.configuration.getSqlConfiguration().getUsername(),
-				TDMGame.configuration.getSqlConfiguration().getPassword()
+				sqlConfig.getHost(),
+				sqlConfig.getPort(),
+				sqlConfig.getDatabase(),
+				sqlConfig.getUsername(),
+				sqlConfig.getPassword()
 		);
+		createTableStatement = createTableStatement.replace("[DB]",sqlConfig.getDatabase());
+		execute(createTableStatement);
 	}
 
 	public boolean hasData(String playerName) {
