@@ -3,15 +3,18 @@ package com.caved_in.teamdeathmatch.events;
 import com.caved_in.teamdeathmatch.loadout.Loadout;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;
+import org.bukkit.event.HandlerList;
 
 /**
  * Created By: TheGamersCave (Brandon)
  * Date: 15/01/14
  * Time: 9:57 AM
  */
-public class LoadoutEditEvent extends fPlayerEvent implements Cancellable {
+public class LoadoutEditEvent extends GamePlayerEvent implements Cancellable {
 	private Loadout loadout;
 	private boolean cancelled = false;
+
+	public static final HandlerList handlers = new HandlerList();
 
 	public LoadoutEditEvent(Player who, Loadout loadout) {
 		super(who);
@@ -34,5 +37,13 @@ public class LoadoutEditEvent extends fPlayerEvent implements Cancellable {
 
 	public void setLoadout(Loadout loadout) {
 		this.loadout = loadout;
+	}
+
+	public HandlerList getHandlers() {
+		return handlers;
+	}
+
+	public static HandlerList getHandlerList() {
+		return handlers;
 	}
 }

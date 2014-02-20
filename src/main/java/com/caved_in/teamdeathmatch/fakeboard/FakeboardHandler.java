@@ -2,17 +2,15 @@ package com.caved_in.teamdeathmatch.fakeboard;
 
 import com.caved_in.commons.player.PlayerHandler;
 import org.bukkit.entity.Player;
-import org.bukkit.potion.PotionEffect;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Map.Entry;
+import java.util.Set;
 
 public class FakeboardHandler {
-	//private TDMGame Plugin;
 	private static HashMap<String, Team> activeTeams = new HashMap<String, Team>();
-	private static HashMap<String, fPlayer> activePlayers = new HashMap<String, fPlayer>();
+	private static HashMap<String, GamePlayer> activePlayers = new HashMap<String, GamePlayer>();
 
 	/**
 	 * Register a new team with the specified name
@@ -26,42 +24,41 @@ public class FakeboardHandler {
 	}
 
 	public static void loadPlayer(String playerName) {
-		activePlayers.put(playerName, new fPlayer(playerName));
+		activePlayers.put(playerName, new GamePlayer(playerName));
 	}
 
 
-	public static fPlayer getPlayer(String playerName) {
+	public static GamePlayer getPlayer(String playerName) {
 		return activePlayers.get(playerName);
 	}
 
-	public static fPlayer getPlayer(Player player) {
+	public static GamePlayer getPlayer(Player player) {
 		return getPlayer(player.getName());
 	}
 
+	//Todo: Optimize this method, and clean this up
 	public static void cleanTeams() {
-		for (Entry<String, Team> Item : activeTeams.entrySet()) {
-			for (Player Player : getPlayers(Item.getKey())) {
-				getPlayer(Player).setTeam(null);
-				resetScores(Player);
-				removeFromTeam(Item.getKey(), Player);
-				PlayerHandler.clearInventory(Player);
-				for (PotionEffect E : Player.getActivePotionEffects()) {
-					Player.removePotionEffect(E.getType());
-				}
+		for (Entry<String, Team> teamEntry : activeTeams.entrySet()) {
+			for (Player player : getPlayers(teamEntry.getKey())) {
+				getPlayer(player).setTeam(null);
+				resetScores(player);
+				removeFromTeam(teamEntry.getKey(), player);
+				PlayerHandler.clearInventory(player);
+				PlayerHandler.removePotionEffects(player);
 			}
 		}
 		activeTeams.clear();
 	}
 
 	public static void resetScores(Player player) {
-		fPlayer fPlayer = getPlayer(player);
-		fPlayer.setPlayerScore(0);
-		fPlayer.resetDeaths();
-		fPlayer.resetKillstreak();
+		GamePlayer GamePlayer = getPlayer(player);
+		GamePlayer.setPlayerScore(0);
+		GamePlayer.resetDeaths();
+		GamePlayer.resetKillstreak();
 	}
 
 	public static Team getTeamByPlayer(String playerName) {
-		fPlayer player = getPlayer(playerName);
+		GamePlayer player = getPlayer(playerName);
 		if (player != null) {
 			return getTeam(player.getTeam());
 		}
@@ -112,7 +109,7 @@ public class FakeboardHandler {
 		return false;
 	}
 
-	public static boolean addToTeam(String team, fPlayer player) {
+	public static boolean addToTeam(String team, GamePlayer player) {
 		if (!activeTeams.get(team).hasPlayer(player)) {
 			activeTeams.get(team).addPlayer(player);
 			return true;
@@ -124,18 +121,19 @@ public class FakeboardHandler {
 		activeTeams.get(teamName).setFriendlyFire(friendlyFire);
 	}
 
-	public static List<Player> getPlayers(String teamName) {
-		List<Player> Players = new ArrayList<Player>();
-		for (fPlayer Player : activeTeams.get(teamName).getTeamMembers()) {
-			if (Player.getPlayer() != null) {
-				Players.add(Player.getPlayer());
+	public static Set<Player> getPlayers(String teamName) {
+		Set<Player> players = new HashSet<Player>();
+		for (GamePlayer teamPlayer : activeTeams.get(teamName).getTeamMembers()) {
+			Player player = teamPlayer.getPlayer();
+			if (player != null) {
+				players.add(player);
 			}
 		}
-		return Players;
+		return players;
 	}
 
-	public static Team getTeam(String TeamName) {
-		return activeTeams.get(TeamName);
+	public static Team getTeam(String teamName) {
+		return activeTeams.get(teamName);
 	}
 
 	public static void removePlayer(Player player) {

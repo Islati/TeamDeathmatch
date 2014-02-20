@@ -6,7 +6,7 @@ import com.caved_in.commons.player.PlayerWrapper;
 import com.caved_in.commons.utilities.StringUtil;
 import com.caved_in.teamdeathmatch.TDMGame;
 import com.caved_in.teamdeathmatch.fakeboard.FakeboardHandler;
-import com.caved_in.teamdeathmatch.fakeboard.fPlayer;
+import com.caved_in.teamdeathmatch.fakeboard.GamePlayer;
 import com.caved_in.teamdeathmatch.perks.Perk;
 import me.xhawk87.PopupMenuAPI.MenuItem;
 import org.bukkit.Material;
@@ -39,15 +39,15 @@ public class PerkMenuItem extends MenuItem {
 
 	@Override
 	public void onClick(Player player) {
-		fPlayer fPlayer = FakeboardHandler.getPlayer(player);
-		if (fPlayer.hasPerk(this.perk)) {
-			fPlayer.getLoadout(this.loadout).setPerk(this.perk);
+		GamePlayer GamePlayer = FakeboardHandler.getPlayer(player);
+		if (GamePlayer.hasPerk(this.perk)) {
+			GamePlayer.getLoadout(this.loadout).setPerk(this.perk);
 			player.sendMessage(StringUtil.formatColorCodes("&aYour active perk for loadout # " + this.loadout + " is now '" + this.getText() + "'"));
 			this.getMenu().closeMenu(player);
 		} else {
 			if (!this.hasClicked) {
 				if (this.perk.isTieredPerk()) {
-					if (!fPlayer.hasPerk(TDMGame.perkHandler.getPerk(perk.getPerkRequired()))) {
+					if (!GamePlayer.hasPerk(TDMGame.perkHandler.getPerk(perk.getPerkRequired()))) {
 						player.sendMessage(StringUtil.formatColorCodes("&e" + perkName + " &cis a tiered perk, you need to purchase &e" + perk.getPerkRequired
 								() + "&c before you can purchase this one"));
 					} else {
@@ -64,7 +64,7 @@ public class PerkMenuItem extends MenuItem {
 				if (playerWrapper.getCurrency() >= perkPurchaseCost) {
 					playerWrapper.removeCurrency(perkPurchaseCost);
 					PlayerHandler.updateData(playerWrapper);
-					fPlayer.addPerk(perk);
+					GamePlayer.addPerk(perk);
 					player.sendMessage(StringUtil.formatColorCodes("&bYou've purchased the &e" + this.perk.getPerkName() + "&b for &a" + this.perk
 							.getPurchaseCost() + "; You have &a" + ((int) playerWrapper.getCurrency()) + " &b XP remaining."));
 					this.getMenu().closeMenu(player);

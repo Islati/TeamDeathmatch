@@ -10,7 +10,7 @@ import com.caved_in.teamdeathmatch.config.*;
 import com.caved_in.teamdeathmatch.config.shop.GunShopConfiguration;
 import com.caved_in.teamdeathmatch.config.spawns.SpawnConfiguration;
 import com.caved_in.teamdeathmatch.fakeboard.FakeboardHandler;
-import com.caved_in.teamdeathmatch.fakeboard.fPlayer;
+import com.caved_in.teamdeathmatch.fakeboard.GamePlayer;
 import com.caved_in.teamdeathmatch.gamehandler.GameSetupHandler;
 import com.caved_in.teamdeathmatch.guns.GunHandler;
 import com.caved_in.teamdeathmatch.listeners.BukkitListeners;
@@ -176,9 +176,9 @@ public class TDMGame extends JavaPlugin {
 
 
 		for (Player Player : Bukkit.getOnlinePlayers()) {
-			fPlayer fPlayer = FakeboardHandler.getPlayer(Player);
-			fPlayer.clearScoreboard();
-			Player.setScoreboard(fPlayer.getPlayerScoreboard().getScoreboard());
+			GamePlayer GamePlayer = FakeboardHandler.getPlayer(Player);
+			GamePlayer.clearScoreboard();
+			Player.setScoreboard(GamePlayer.getPlayerScoreboard().getScoreboard());
 		}
 	}
 

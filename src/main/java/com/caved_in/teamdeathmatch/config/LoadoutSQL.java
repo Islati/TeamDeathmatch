@@ -7,16 +7,17 @@ import com.caved_in.teamdeathmatch.perks.PerkHandler;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
-public class LoadoutSQL extends SQL{
+public class LoadoutSQL extends SQL {
 	private static String loadoutTable = "guns_loadouts";
 	private static String playerColumn = "Player";
 	private static String loadoutNumberColumn = "Loadout";
 	private static String primaryWeaponColumn = "PrimaryG";
 	private static String secondaryWeaponColumn = "Secondary";
 	private static String perkColumn = "Perk";
+
+	private Set<String> playersWithData = new HashSet<>();
 
 	private static String getDataStatement = "SELECT * FROM " + loadoutTable + " WHERE " + playerColumn + "=?";
 	private static String insertLoadoutStatement = "INSERT INTO " + loadoutTable + " (" + playerColumn + ", " + loadoutNumberColumn + ", " + primaryWeaponColumn + ", " + secondaryWeaponColumn + ", " + perkColumn + ") VALUES (?,?,?,?,?)";
@@ -32,32 +33,39 @@ public class LoadoutSQL extends SQL{
 				sqlConfig.getUsername(),
 				sqlConfig.getPassword()
 		);
-		creationStatement = creationStatement.replace("[DB]",sqlConfig.getDatabase());
+		creationStatement = creationStatement.replace("[DB]", sqlConfig.getDatabase());
 		execute(creationStatement);
 	}
 
 	public boolean hasData(String playerName) {
-		PreparedStatement preparedStatement = prepareStatement(getDataStatement);
-		boolean hasData = false;
-		try {
-			preparedStatement.setString(1, playerName);
-			hasData = preparedStatement.executeQuery().next();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(preparedStatement);
+		boolean hasData = playersWithData.contains(playerName);
+		if (!hasData) {
+			PreparedStatement preparedStatement = prepareStatement(getDataStatement);
+			try {
+				preparedStatement.setString(1, playerName);
+				hasData = preparedStatement.executeQuery().next();
+				//If the player has data, then put them into the array of players that have data
+				if (hasData) {
+					playersWithData.add(playerName);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close(preparedStatement);
+			}
 		}
 		return hasData;
 	}
 
-	public List<Loadout> getLoadouts(String playerName) {
-		List<Loadout> playerLoadouts = new ArrayList<Loadout>();
+	public Map<Integer, Loadout> getLoadouts(String playerName) {
+		Map<Integer, Loadout> playerLoadouts = new HashMap<>();
 		PreparedStatement preparedStatement = prepareStatement(getDataStatement);
 		try {
 			preparedStatement.setString(1, playerName);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while (resultSet.next()) {
-				playerLoadouts.add(new Loadout(playerName, resultSet.getInt(loadoutNumberColumn), resultSet.getString(primaryWeaponColumn), resultSet.getString(secondaryWeaponColumn), PerkHandler.getPerk(resultSet.getString(perkColumn))));
+				int loadoutNumber = resultSet.getInt(loadoutNumberColumn);
+				playerLoadouts.put(loadoutNumber, new Loadout(playerName, loadoutNumber, resultSet.getString(primaryWeaponColumn), resultSet.getString(secondaryWeaponColumn), PerkHandler.getPerk(resultSet.getString(perkColumn))));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -67,12 +75,12 @@ public class LoadoutSQL extends SQL{
 		return playerLoadouts;
 	}
 
-	public void insertLoadouts(List<Loadout> loadouts) {
+	public void insertLoadouts(Collection<Loadout> loadouts) {
 		PreparedStatement preparedStatement = prepareStatement(insertLoadoutStatement);
 		try {
 			for (Loadout loadout : loadouts) {
 				preparedStatement.setString(1, loadout.getPlayerName());
-				preparedStatement.setInt(2,loadout.getNumber());
+				preparedStatement.setInt(2, loadout.getNumber());
 				preparedStatement.setString(3, loadout.getPrimary());
 				preparedStatement.setString(4, loadout.getSecondary());
 				preparedStatement.setString(5, loadout.getPerk().getPerkName());
@@ -91,7 +99,7 @@ public class LoadoutSQL extends SQL{
 		try {
 			//Set all the variables required to insert a perk
 			preparedStatement.setString(1, playerName);
-			preparedStatement.setInt(2,loadout);
+			preparedStatement.setInt(2, loadout);
 			preparedStatement.setString(3, primary);
 			preparedStatement.setString(4, secondary);
 			preparedStatement.setString(5, perk);

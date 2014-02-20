@@ -1,7 +1,7 @@
 package com.caved_in.teamdeathmatch.runnables;
 
 import com.caved_in.teamdeathmatch.fakeboard.FakeboardHandler;
-import com.caved_in.teamdeathmatch.fakeboard.fPlayer;
+import com.caved_in.teamdeathmatch.fakeboard.GamePlayer;
 import com.caved_in.teamdeathmatch.gamehandler.GameSetupHandler;
 import com.caved_in.teamdeathmatch.perks.Perk;
 import org.bukkit.Bukkit;
@@ -22,15 +22,15 @@ public class RestoreInventory implements Runnable {
 	public void run() {
 		Player rPlayer = Bukkit.getPlayer(playerName);
 		if (rPlayer != null) {
-			fPlayer fPlayer = FakeboardHandler.getPlayer(rPlayer);
+			GamePlayer GamePlayer = FakeboardHandler.getPlayer(rPlayer);
 
-			if (fPlayer.getTeam().equalsIgnoreCase("T")) {
+			if (GamePlayer.getTeam().equalsIgnoreCase("T")) {
 				rPlayer.getInventory().setArmorContents(GameSetupHandler.getBlueTeamArmor());
 			} else {
 				rPlayer.getInventory().setArmorContents(GameSetupHandler.getRedTeamArmor());
 			}
 
-			Perk playerPerk = fPlayer.getActivePerk();
+			Perk playerPerk = GamePlayer.getActivePerk();
 			if (playerPerk != null) {
 				if (!playerPerk.getPerkName().equalsIgnoreCase("Nothing")) {
 					for (PotionEffect Effect : playerPerk.getEffects()) {

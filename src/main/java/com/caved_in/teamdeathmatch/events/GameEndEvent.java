@@ -10,13 +10,18 @@ import org.bukkit.event.HandlerList;
  */
 public class GameEndEvent extends Event {
 
+	public static final HandlerList handlers = new HandlerList();
+
 	public GameEndEvent() {
 		//Not an async event
 		super(false);
 	}
 
-	@Override
 	public HandlerList getHandlers() {
-		return null;
+		return handlers;
+	}
+
+	public static HandlerList getHandlerList() {
+		return handlers;
 	}
 }

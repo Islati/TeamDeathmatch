@@ -6,9 +6,9 @@ import com.caved_in.commons.Commons;
 import com.caved_in.commons.items.ItemHandler;
 import com.caved_in.teamdeathmatch.TDMGame;
 import com.caved_in.teamdeathmatch.TeamType;
+import com.caved_in.teamdeathmatch.fakeboard.GamePlayer;
 import com.caved_in.teamdeathmatch.fakeboard.FakeboardHandler;
 import com.caved_in.teamdeathmatch.fakeboard.Team;
-import com.caved_in.teamdeathmatch.fakeboard.fPlayer;
 import com.caved_in.teamdeathmatch.menus.loadoutselector.LoadoutActionMenu;
 import com.caved_in.teamdeathmatch.menus.loadoutselector.LoadoutCreationMenu;
 import com.caved_in.teamdeathmatch.menus.loadoutselector.LoadoutSelectionMenu;
@@ -49,23 +49,23 @@ public class GameSetupHandler {
 	private static Runnable playerOpenKits = new PlayerOpenKits();
 
 	//Variables related to running the threads above
-	private static long playerOpenKitDelay = 10L;
+	private static long playerOpenKitDelay = 20L;
 
 	//Blue and Red team armors
 	private static ItemStack[] blueTeamArmor, redTeamArmor;
 
 	static {
-		blueTeamArmor = new ItemStack[] {
-			ItemHandler.makeLeatherItemStack(Material.LEATHER_HELMET, Color.BLUE),
-			ItemHandler.makeLeatherItemStack(Material.LEATHER_CHESTPLATE, Color.BLUE),
-			ItemHandler.makeLeatherItemStack(Material.LEATHER_LEGGINGS, Color.BLUE),
-			ItemHandler.makeLeatherItemStack(Material.LEATHER_BOOTS, Color.BLUE),
+		blueTeamArmor = new ItemStack[]{
+				ItemHandler.makeLeatherItemStack(Material.LEATHER_BOOTS, Color.BLUE),
+				ItemHandler.makeLeatherItemStack(Material.LEATHER_LEGGINGS, Color.BLUE),
+				ItemHandler.makeLeatherItemStack(Material.LEATHER_CHESTPLATE, Color.BLUE),
+				ItemHandler.makeLeatherItemStack(Material.LEATHER_HELMET, Color.BLUE),
 		};
-		redTeamArmor = new ItemStack[] {
-			ItemHandler.makeLeatherItemStack(Material.LEATHER_HELMET, Color.RED),
-			ItemHandler.makeLeatherItemStack(Material.LEATHER_CHESTPLATE, Color.RED),
-			ItemHandler.makeLeatherItemStack(Material.LEATHER_LEGGINGS, Color.RED),
-			ItemHandler.makeLeatherItemStack(Material.LEATHER_BOOTS, Color.RED),
+		redTeamArmor = new ItemStack[]{
+				ItemHandler.makeLeatherItemStack(Material.LEATHER_BOOTS, Color.RED),
+				ItemHandler.makeLeatherItemStack(Material.LEATHER_LEGGINGS, Color.RED),
+				ItemHandler.makeLeatherItemStack(Material.LEATHER_CHESTPLATE, Color.RED),
+				ItemHandler.makeLeatherItemStack(Material.LEATHER_HELMET, Color.RED),
 		};
 
 	}
@@ -101,7 +101,7 @@ public class GameSetupHandler {
 		}
 
 		//Make all the players open their "kits"
-		TDMGame.runnableManager.runTaskLater(playerOpenKits,playerOpenKitDelay);
+		TDMGame.runnableManager.runTaskLater(playerOpenKits, playerOpenKitDelay);
 	}
 
 	public static void givePlayerLoadoutGem(Player player) {
@@ -126,30 +126,30 @@ public class GameSetupHandler {
 		//The size of each team
 		int terroristCount = terroristTeam.getTeamSize();
 		int counterTerroristCount = counterTerroristTeam.getTeamSize();
-		//Get our fPlayer
-		fPlayer fPlayer = FakeboardHandler.getPlayer(player);
+		//Get our GamePlayer
+		GamePlayer GamePlayer = FakeboardHandler.getPlayer(player);
 		if (terroristCount != counterTerroristCount) {
 			if (terroristCount > counterTerroristCount) {
 				//Add the player to CT
-				FakeboardHandler.addToTeam(teamCounterTerrorist, fPlayer);
+				FakeboardHandler.addToTeam(teamCounterTerrorist, GamePlayer);
 				//Set their team to CT
-				fPlayer.setTeam(teamCounterTerrorist);
+				GamePlayer.setTeam(teamCounterTerrorist);
 				player.getInventory().setArmorContents(redTeamArmor);
 			} else {
 				FakeboardHandler.addToTeam(teamTerrorist, player);
-				fPlayer.setTeam(teamTerrorist);
+				GamePlayer.setTeam(teamTerrorist);
 				player.getInventory().setArmorContents(blueTeamArmor);
 			}
 		} else {
 			switch (new Random().nextInt(2)) {
 				case 0:
 					FakeboardHandler.addToTeam(teamCounterTerrorist, player);
-					fPlayer.setTeam(teamCounterTerrorist);
+					GamePlayer.setTeam(teamCounterTerrorist);
 					player.getInventory().setArmorContents(redTeamArmor);
 					break;
 				case 1:
 					FakeboardHandler.addToTeam(teamTerrorist, player);
-					fPlayer.setTeam(teamTerrorist);
+					GamePlayer.setTeam(teamTerrorist);
 					player.getInventory().setArmorContents(blueTeamArmor);
 					break;
 				default:
@@ -203,20 +203,16 @@ public class GameSetupHandler {
 
 	public static void awardEndgamePoints(String winningTeam, double winningCash, double losingCash) {
 		for (Player player : Bukkit.getOnlinePlayers()) {
-			fPlayer fPlayer = FakeboardHandler.getPlayer(player);
-			if (fPlayer.getTeam() != null) {
-				if (fPlayer.getTeam().equalsIgnoreCase(winningTeam)) {
-					TDMGame.givePlayerTunnelsXP(player, winningCash);
-				} else {
-					TDMGame.givePlayerTunnelsXP(player, losingCash);
-				}
+			GamePlayer GamePlayer = FakeboardHandler.getPlayer(player);
+			if (GamePlayer.getTeam() != null) {
+				TDMGame.givePlayerTunnelsXP(player, GamePlayer.getTeam().equalsIgnoreCase(winningTeam) ? winningCash : losingCash);
 			}
 		}
 	}
 
 	public static void openCreationMenu(Player player, boolean isAfk) {
-		fPlayer fPlayer = FakeboardHandler.getPlayer(player);
-		fPlayer.setAfk(isAfk);
+		GamePlayer GamePlayer = FakeboardHandler.getPlayer(player);
+		GamePlayer.setAfk(isAfk);
 		new LoadoutCreationMenu(player);
 	}
 
@@ -225,18 +221,18 @@ public class GameSetupHandler {
 	}
 
 	public static void openLoadoutSelectionMenu(Player player, boolean isAfk) {
-		fPlayer fPlayer = FakeboardHandler.getPlayer(player);
-		fPlayer.setAfk(isAfk);
+		GamePlayer GamePlayer = FakeboardHandler.getPlayer(player);
+		GamePlayer.setAfk(isAfk,false);
 		new LoadoutSelectionMenu(player);
 	}
 
 	public static void openLoadoutSelectionMenu(Player player) {
-		openLoadoutSelectionMenu(player);
+		openLoadoutSelectionMenu(player, true);
 	}
 
 	public static void openLoadoutOptionMenu(Player player, boolean isAfk) {
-		fPlayer fPlayer = FakeboardHandler.getPlayer(player);
-		fPlayer.setAfk(isAfk);
+		GamePlayer GamePlayer = FakeboardHandler.getPlayer(player);
+		GamePlayer.setAfk(isAfk,false);
 		new LoadoutActionMenu(player);
 
 	}

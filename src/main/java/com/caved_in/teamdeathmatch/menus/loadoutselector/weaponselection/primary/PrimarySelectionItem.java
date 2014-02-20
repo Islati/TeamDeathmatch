@@ -2,9 +2,10 @@ package com.caved_in.teamdeathmatch.menus.loadoutselector.weaponselection.primar
 
 import com.caved_in.commons.items.ItemHandler;
 import com.caved_in.commons.player.PlayerHandler;
-import com.caved_in.commons.player.PlayerWrapper;
+import com.caved_in.teamdeathmatch.events.CustomEventHandler;
+import com.caved_in.teamdeathmatch.events.GunPurchaseEvent;
 import com.caved_in.teamdeathmatch.fakeboard.FakeboardHandler;
-import com.caved_in.teamdeathmatch.fakeboard.fPlayer;
+import com.caved_in.teamdeathmatch.fakeboard.GamePlayer;
 import com.caved_in.teamdeathmatch.guns.GunWrap;
 import com.caved_in.teamdeathmatch.menus.loadoutselector.LoadoutCreationMenu;
 import me.xhawk87.PopupMenuAPI.MenuItem;
@@ -34,10 +35,10 @@ public class PrimarySelectionItem extends MenuItem {
 
 	@Override
 	public void onClick(Player player) {
-		fPlayer fPlayer = FakeboardHandler.getPlayer(player);
+		GamePlayer gamePlayer = FakeboardHandler.getPlayer(player);
 		//Check if its a default gun or they already purchased it
-		if (gunData.isDefaultGun() || fPlayer.hasGun(gunID) || gunData.getGunPrice() == 0) {
-			fPlayer.getLoadout(loadoutNumber).setPrimary(gunID);
+		if (gunData.isDefaultGun() || gamePlayer.hasGun(gunID) || gunData.getGunPrice() == 0) {
+			gamePlayer.getLoadout(loadoutNumber).setPrimary(gunID);
 			PlayerHandler.sendMessage(player, String.format("&aThe &e%s&a is now your primary weapon for loadout #&e%s", getText(), loadoutNumber));
 			getMenu().switchMenu(player, new LoadoutCreationMenu().getMenu(player));
 		} else {
@@ -46,24 +47,11 @@ public class PrimarySelectionItem extends MenuItem {
 				hasAlreadyClicked = true;
 				PlayerHandler.sendMessage(player, "&eClick again to purchase the " + getText());
 			} else {
-				//Second click? Begin the purchase!
-				PlayerWrapper playerWrapper = PlayerHandler.getData(player.getName());
-				double playerBalance = playerWrapper.getCurrency();
-				if (playerBalance >= gunData.getGunPrice()) {
-					hasAlreadyClicked = false;
-					playerWrapper.removeCurrency(gunData.getGunPrice());
-					PlayerHandler.updateData(playerWrapper);
-					fPlayer.unlockGun(gunID);
-					PlayerHandler.sendMessage(player, String.format("&bYou've unlocked the &e%s&b! You have &a%s&b Tunnels XP Remaining",getText(), (int)playerWrapper.getCurrency()));
-					fPlayer.getLoadout(loadoutNumber).setPrimary(gunID);
-					PlayerHandler.sendMessage(player, String.format("&aThe &e%s&a is now your primary weapon for loadout #&e%s", getText(), loadoutNumber));
-					getMenu().switchMenu(player, new LoadoutCreationMenu().getMenu(player));
-				} else {
-					PlayerHandler.sendMessage(player, "&cYou don't have enough XP to unlock this.");
-					hasAlreadyClicked = false;
-				}
+				hasAlreadyClicked = false;
+				//Second click? Create a new gun purchase event, and call it!
+				GunPurchaseEvent gunPurchaseEvent = new GunPurchaseEvent(player,gunData,loadoutNumber);
+				CustomEventHandler.handleGunPurchaseEvent(gunPurchaseEvent);
 			}
 		}
 	}
-
 }

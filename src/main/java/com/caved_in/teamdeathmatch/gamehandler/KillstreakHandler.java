@@ -1,15 +1,15 @@
 package com.caved_in.teamdeathmatch.gamehandler;
 
 import com.caved_in.teamdeathmatch.TDMGame;
-import com.caved_in.teamdeathmatch.fakeboard.fPlayer;
+import com.caved_in.teamdeathmatch.fakeboard.GamePlayer;
 import com.caved_in.teamdeathmatch.soundhandler.SoundHandler;
 import com.caved_in.teamdeathmatch.soundhandler.SoundHandler.SoundEffect;
 import org.bukkit.entity.Player;
 
 public class KillstreakHandler {
-	public static void HandleKillStreak(fPlayer fPlayer) {
-		Player player = fPlayer.getPlayer();
-		int playerKills = fPlayer.getKillStreak();
+	public static void HandleKillStreak(GamePlayer GamePlayer) {
+		Player player = GamePlayer.getPlayer();
+		int playerKills = GamePlayer.getKillStreak();
 		if (playerKills > 0 && playerKills <= 9) {
 			switch (playerKills) {
 				case 2:
@@ -42,6 +42,6 @@ public class KillstreakHandler {
 		} else if (playerKills > 9) {
 			SoundHandler.playSoundForPLayer(player, SoundEffect.HOLYSHIT);
 		}
-		fPlayer.getPlayer().updateInventory();
+		GamePlayer.getPlayer().updateInventory();
 	}
 }

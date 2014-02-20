@@ -4,7 +4,7 @@ import com.caved_in.commons.items.ItemHandler;
 import com.caved_in.commons.player.PlayerHandler;
 import com.caved_in.commons.player.PlayerWrapper;
 import com.caved_in.teamdeathmatch.fakeboard.FakeboardHandler;
-import com.caved_in.teamdeathmatch.fakeboard.fPlayer;
+import com.caved_in.teamdeathmatch.fakeboard.GamePlayer;
 import com.caved_in.teamdeathmatch.guns.GunWrap;
 import com.caved_in.teamdeathmatch.menus.loadoutselector.LoadoutCreationMenu;
 import me.xhawk87.PopupMenuAPI.MenuItem;
@@ -35,9 +35,9 @@ public class SecondarySelectionItem extends MenuItem {
 
 	@Override
 	public void onClick(Player player) {
-		fPlayer fPlayer = FakeboardHandler.getPlayer(player);
-		if (this.gunData.isDefaultGun() || fPlayer.hasGun(this.gunID) || this.gunData.getGunPrice() == 0) {
-			fPlayer.getLoadout(this.loadoutNumber).setSecondary(this.gunID);
+		GamePlayer GamePlayer = FakeboardHandler.getPlayer(player);
+		if (this.gunData.isDefaultGun() || GamePlayer.hasGun(this.gunID) || this.gunData.getGunPrice() == 0) {
+			GamePlayer.getLoadout(this.loadoutNumber).setSecondary(this.gunID);
 			player.sendMessage(ChatColor.GREEN + "The '" + this.getText() + "' is now your secondary for loadout #" + this.loadoutNumber);
 			this.getMenu().switchMenu(player, new LoadoutCreationMenu().getMenu(player));
 		} else {
@@ -51,11 +51,11 @@ public class SecondarySelectionItem extends MenuItem {
 					this.hasAlreadyClicked = false;
 					playerWrapper.removeCurrency(this.gunData.getGunPrice());
 					PlayerHandler.updateData(playerWrapper);
-					fPlayer.unlockGun(this.gunID);
+					GamePlayer.unlockGun(this.gunID);
 					player.sendMessage(ChatColor.AQUA + "You've unlocked the " + this.getText() + ChatColor.AQUA + "! You have " + ChatColor.GREEN + ((int)
 							playerWrapper.getCurrency()) + " XP " + ChatColor.AQUA + "remaining!");
 					//Update the players gun
-					fPlayer.getLoadout(this.loadoutNumber).setSecondary(this.gunID);
+					GamePlayer.getLoadout(this.loadoutNumber).setSecondary(this.gunID);
 					player.sendMessage(ChatColor.GREEN + "The '" + this.getText() + "' is now your secondary for loadout #" + this.loadoutNumber);
 					this.getMenu().switchMenu(player, new LoadoutCreationMenu().getMenu(player));
 				} else {

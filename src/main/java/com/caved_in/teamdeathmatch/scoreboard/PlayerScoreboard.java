@@ -3,8 +3,8 @@ package com.caved_in.teamdeathmatch.scoreboard;
 import com.caved_in.commons.Commons;
 import com.caved_in.commons.player.PlayerHandler;
 import com.caved_in.teamdeathmatch.TeamType;
+import com.caved_in.teamdeathmatch.fakeboard.GamePlayer;
 import com.caved_in.teamdeathmatch.fakeboard.FakeboardHandler;
-import com.caved_in.teamdeathmatch.fakeboard.fPlayer;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
@@ -52,7 +52,7 @@ public class PlayerScoreboard {
 		return this.scoreboard;
 	}
 
-	public void updateScoreboardData(fPlayer player) {
+	public void updateScoreboardData(GamePlayer player) {
 		Score terroristScore = objective.getScore(getName(PlayerScoreboard.terroristScore));
 		Score counterTerroristScore = objective.getScore(getName(PlayerScoreboard.counterTerroristScore));
 		Score playerKillScore = objective.getScore(getName(killsScore));
@@ -64,14 +64,14 @@ public class PlayerScoreboard {
 		playerKillScore.setScore(player.getPlayerScore());
 		playerDeathScore.setScore(player.getPlayerDeaths());
 		playerKillStreak.setScore(player.getKillStreak());
-		playerXPScore.setScore((int) PlayerHandler.getData(player.getPlayerName()).getCurrency());
+		playerXPScore.setScore((int) PlayerHandler.getData(player.getName()).getCurrency());
 	}
 
 	public enum ScoreType {
 		Terrorist, CounterTerrorist, Kills, Deaths, Killstreak
 	}
 
-	public void updateData(ScoreType score, fPlayer playerWrapper) {
+	public void updateData(ScoreType score, GamePlayer playerWrapper) {
 		switch (score) {
 			case CounterTerrorist:
 				Score ctScore = this.objective.getScore(getName(counterTerroristScore));

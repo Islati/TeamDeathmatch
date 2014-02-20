@@ -2,9 +2,7 @@ package com.caved_in.teamdeathmatch.guns;
 
 import com.caved_in.teamdeathmatch.TDMGame;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class GunHandler {
 	private List<GunWrap> gunPistols = new ArrayList<>();
@@ -17,7 +15,7 @@ public class GunHandler {
 
 	private List<GunWrap> gunShotgun = new ArrayList<>();
 
-	private List<GunWrap> gunDefault = new ArrayList<>();
+	private Map<String, GunWrap> gunDefault = new HashMap<>();
 
 	public GunHandler() {
 		initData();
@@ -28,7 +26,7 @@ public class GunHandler {
 		for (GunWrap gunWrapper : gunData) {
 			//Check if it's a default gun, and if so add it to the list of defaults
 			if (gunWrapper.isDefaultGun()) {
-				gunDefault.add(gunWrapper);
+				gunDefault.put(gunWrapper.getGunName(), gunWrapper);
 			}
 
 			//Sort all the gun data
@@ -54,7 +52,10 @@ public class GunHandler {
 		}
 	}
 
-	public List<GunWrap> getDefaultGuns() {
+	public Set<GunWrap> getDefaultGuns() {
+		return new HashSet<>(gunDefault.values());
+	}	
+	public Map<String,GunWrap> getDefaultGunMap() {
 		return gunDefault;
 	}
 

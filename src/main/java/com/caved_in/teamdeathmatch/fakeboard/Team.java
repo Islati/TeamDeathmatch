@@ -10,7 +10,7 @@ import java.util.Map;
 public class Team {
 	private String teamName = "";
 
-	private Map<String, fPlayer> teamMembers = new HashMap<String, fPlayer>();
+	private Map<String, GamePlayer> teamMembers = new HashMap<String, GamePlayer>();
 	private Boolean allowFriendlyFire = false;
 	private int teamScore = 0;
 
@@ -39,8 +39,8 @@ public class Team {
 		return hasPlayer(player.getName());
 	}
 
-	public boolean hasPlayer(fPlayer player) {
-		return hasPlayer(player.getPlayerName());
+	public boolean hasPlayer(GamePlayer player) {
+		return hasPlayer(player.getName());
 	}
 
 	public boolean removePlayer(String playerName) {
@@ -51,8 +51,8 @@ public class Team {
 		return removePlayer(player.getName());
 	}
 
-	public boolean removePlayer(fPlayer player) {
-		return removePlayer(player.getPlayerName());
+	public boolean removePlayer(GamePlayer player) {
+		return removePlayer(player.getName());
 	}
 
 	public void addPlayer(String playerName) {
@@ -63,21 +63,21 @@ public class Team {
 		addPlayer(player.getName());
 	}
 
-	public void addPlayer(fPlayer player) {
+	public void addPlayer(GamePlayer player) {
 		player.setTeam(teamName);
-		teamMembers.put(player.getPlayerName(), player);
+		teamMembers.put(player.getName(), player);
 	}
 
-	public fPlayer getPlayer(String playerName) {
+	public GamePlayer getPlayer(String playerName) {
 		return teamMembers.get(playerName);
 	}
 
-	public fPlayer getPlayer(Player player) {
+	public GamePlayer getPlayer(Player player) {
 		return getPlayer(player.getName());
 	}
 
-	public List<fPlayer> getTeamMembers() {
-		return new ArrayList<fPlayer>(teamMembers.values());
+	public List<GamePlayer> getTeamMembers() {
+		return new ArrayList<GamePlayer>(teamMembers.values());
 	}
 
 	public int getTeamSize() {

@@ -32,24 +32,11 @@ public class GameOverRunnable implements Runnable {
 		int counterTerroristScore = FakeboardHandler.getTeam(TeamType.COUNTER_TERRORIST.toString()).getTeamScore();
 
 		//Check if the game has been running for less than 10 minutes
-		if (gameCurrentTicks <= gameStopTicks) {
-			if (terroristScore >= 50 || counterTerroristScore >= 50) {
-				GameSetupHandler.setGameInProgress(false);
-				gameCurrentTicks = 0;
-				PlayerHandler.sendMessageToAllPlayers(String.format("&6%s WIN!", terroristScore >= 50 ? "TERRORISTS" : "COUNTER TERRORISTS"));
-				GameSetupHandler.awardEndgamePoints(terroristScore >= 50 ? TeamType.TERRORIST.toString() : TeamType.COUNTER_TERRORIST.toString(),75,50);
-				TDMGame.runnableManager.runTaskLater(new Runnable() {
-					@Override
-					public void run() {
-						TDMGame.rotateMap(true);
-					}
-				}, 100L);
-				TDMGame.runnableManager.cancelTask("GameEndCheck");
-			}
-		} else if (gameCurrentTicks >= gameStopTicks) {
+		boolean gameTimeExpired = gameCurrentTicks >= gameStopTicks;
+		if ((terroristScore >= 50 || counterTerroristScore >= 50) || gameTimeExpired) {
 			GameSetupHandler.setGameInProgress(false);
 			gameCurrentTicks = 0;
-			PlayerHandler.sendMessageToAllPlayers(String.format("&6TIME'S UP; %s WIN!", terroristScore >= 50 ? "TERRORISTS" : "COUNTER TERRORISTS"));
+			PlayerHandler.sendMessageToAllPlayers(String.format(gameTimeExpired ? "TIMES UP; &6%s WIN!" : "&6%s WIN!", terroristScore >= 50 ? "TERRORISTS" : "COUNTER TERRORISTS"));
 			GameSetupHandler.awardEndgamePoints(terroristScore >= 50 ? TeamType.TERRORIST.toString() : TeamType.COUNTER_TERRORIST.toString(),75,50);
 			TDMGame.runnableManager.runTaskLater(new Runnable() {
 				@Override

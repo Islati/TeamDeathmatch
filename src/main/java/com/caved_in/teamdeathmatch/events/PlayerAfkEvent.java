@@ -6,4 +6,5 @@ package com.caved_in.teamdeathmatch.events;
  * Time: 10:08 AM
  */
 public class PlayerAfkEvent {
+	
 }
