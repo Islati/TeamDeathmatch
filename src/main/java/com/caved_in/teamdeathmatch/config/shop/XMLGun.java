@@ -1,7 +1,7 @@
 package com.caved_in.teamdeathmatch.config.shop;
 
 import com.caved_in.teamdeathmatch.guns.GunType;
-import com.caved_in.teamdeathmatch.guns.GunWrap;
+import com.caved_in.teamdeathmatch.guns.GunWrapper;
 import org.simpleframework.xml.Element;
 
 public class XMLGun {
@@ -20,7 +20,7 @@ public class XMLGun {
 
 	private GunType gunType = GunType.ASSAULT;
 
-	private GunWrap gunWrapper;
+	private GunWrapper gunWrapper;
 
 	public XMLGun(@Element(name="gun_name")String gunName,
 				  @Element(name="gun_type")String gunCategory,
@@ -39,7 +39,7 @@ public class XMLGun {
 	}
 
 	private void initGunWrapper() {
-		this.gunWrapper = new GunWrap(gunName,gunPrice,defaultGun,gunType);
+		this.gunWrapper = new GunWrapper(gunName,gunPrice,defaultGun,gunType);
 	}
 
 	public boolean isDefaultGun() {
@@ -62,7 +62,7 @@ public class XMLGun {
 		return gunType;
 	}
 
-	public GunWrap getGunWrapper() {
+	public GunWrapper getGunWrapper() {
 		return gunWrapper;
 	}
 }

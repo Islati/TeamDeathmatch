@@ -5,25 +5,25 @@ import com.caved_in.teamdeathmatch.TDMGame;
 import java.util.*;
 
 public class GunHandler {
-	private List<GunWrap> gunPistols = new ArrayList<>();
+	private List<GunWrapper> gunPistols = new ArrayList<>();
 
-	private List<GunWrap> gunAssaultRifles = new ArrayList<>();
+	private List<GunWrapper> gunAssaultRifles = new ArrayList<>();
 
-	private List<GunWrap> gunSniperRifles = new ArrayList<>();
+	private List<GunWrapper> gunSniperRifles = new ArrayList<>();
 
-	private List<GunWrap> gunSpecial = new ArrayList<>();
+	private List<GunWrapper> gunSpecial = new ArrayList<>();
 
-	private List<GunWrap> gunShotgun = new ArrayList<>();
+	private List<GunWrapper> gunShotgun = new ArrayList<>();
 
-	private Map<String, GunWrap> gunDefault = new HashMap<>();
+	private Map<String, GunWrapper> gunDefault = new HashMap<>();
 
 	public GunHandler() {
 		initData();
 	}
 
 	public void initData() {
-		List<GunWrap> gunData = TDMGame.configuration.getGunShopConfiguration().getGunData();
-		for (GunWrap gunWrapper : gunData) {
+		List<GunWrapper> gunData = TDMGame.configuration.getGunShopConfiguration().getGunData();
+		for (GunWrapper gunWrapper : gunData) {
 			//Check if it's a default gun, and if so add it to the list of defaults
 			if (gunWrapper.isDefaultGun()) {
 				gunDefault.put(gunWrapper.getGunName(), gunWrapper);
@@ -52,14 +52,14 @@ public class GunHandler {
 		}
 	}
 
-	public Set<GunWrap> getDefaultGuns() {
+	public Set<GunWrapper> getDefaultGuns() {
 		return new HashSet<>(gunDefault.values());
 	}	
-	public Map<String,GunWrap> getDefaultGunMap() {
+	public Map<String,GunWrapper> getDefaultGunMap() {
 		return gunDefault;
 	}
 
-	public List<GunWrap> getGuns(GunType gunType) {
+	public List<GunWrapper> getGuns(GunType gunType) {
 		switch (gunType) {
 			case ASSAULT:
 				return gunAssaultRifles;
@@ -76,7 +76,7 @@ public class GunHandler {
 		}
 	}
 
-	private GunWrap getRandomFromList(List<GunWrap> input) {
+	private GunWrapper getRandomFromList(List<GunWrapper> input) {
 		return input.get(new Random().nextInt(input.size()));
 	}
 }

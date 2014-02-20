@@ -1,6 +1,6 @@
 package com.caved_in.teamdeathmatch.events;
 
-import com.caved_in.teamdeathmatch.guns.GunWrap;
+import com.caved_in.teamdeathmatch.guns.GunWrapper;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.HandlerList;
@@ -16,17 +16,17 @@ public class GunPurchaseEvent extends GamePlayerEvent implements Cancellable {
 
 	private boolean cancelled = false;
 
-	private GunWrap gun;
+	private GunWrapper gun;
 
 	private int loadoutNumber;
 
-	public GunPurchaseEvent(Player who, GunWrap gun, int loadoutNumber) {
+	public GunPurchaseEvent(Player who, GunWrapper gun, int loadoutNumber) {
 		super(who);
 		this.gun = gun;
 		this.loadoutNumber = loadoutNumber;
 	}
 
-	public GunWrap getGun() {
+	public GunWrapper getGun() {
 		return gun;
 	}
 
@@ -56,7 +56,7 @@ public class GunPurchaseEvent extends GamePlayerEvent implements Cancellable {
 		this.loadoutNumber = loadoutNumber;
 	}
 
-	public void setGun(GunWrap gun) {
+	public void setGun(GunWrapper gun) {
 		this.gun = gun;
 	}
 }

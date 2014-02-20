@@ -8,7 +8,7 @@ import com.caved_in.teamdeathmatch.fakeboard.GamePlayer;
 import com.caved_in.teamdeathmatch.fakeboard.Team;
 import com.caved_in.teamdeathmatch.gamehandler.GameSetupHandler;
 import com.caved_in.teamdeathmatch.gamehandler.KillstreakHandler;
-import com.caved_in.teamdeathmatch.guns.GunWrap;
+import com.caved_in.teamdeathmatch.guns.GunWrapper;
 import com.caved_in.teamdeathmatch.perks.Perk;
 import com.caved_in.teamdeathmatch.runnables.AssistAggregator;
 import org.bukkit.Bukkit;
@@ -86,7 +86,7 @@ public class CustomEventHandler {
 		if (!event.isCancelled()) {
 			Player player = event.getPlayer();
 			GamePlayer gamePlayer = event.getGamePlayer();
-			GunWrap gunData = event.getGun();
+			GunWrapper gunData = event.getGun();
 			String gunID = gunData.getGunName();
 			//Get the wrapped player data from commons
 			PlayerWrapper playerWrapper = PlayerHandler.getData(player.getName());

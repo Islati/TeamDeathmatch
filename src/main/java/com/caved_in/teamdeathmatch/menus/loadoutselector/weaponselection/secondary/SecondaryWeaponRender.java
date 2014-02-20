@@ -4,7 +4,7 @@ import com.caved_in.teamdeathmatch.TDMGame;
 import com.caved_in.teamdeathmatch.fakeboard.FakeboardHandler;
 import com.caved_in.teamdeathmatch.fakeboard.GamePlayer;
 import com.caved_in.teamdeathmatch.guns.GunType;
-import com.caved_in.teamdeathmatch.guns.GunWrap;
+import com.caved_in.teamdeathmatch.guns.GunWrapper;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ public class SecondaryWeaponRender {
 	public static List<SecondarySelectionItem> getSecondaryWeapons(GunType gunType, int loadout, Player player) {
 		List<SecondarySelectionItem> secondarySelectionItems = new ArrayList<SecondarySelectionItem>();
 		GamePlayer GamePlayer = FakeboardHandler.getPlayer(player);
-		for (GunWrap gunWrapper : TDMGame.gunHandler.getGuns(gunType)) {
+		for (GunWrapper gunWrapper : TDMGame.gunHandler.getGuns(gunType)) {
 			secondarySelectionItems.add(new SecondarySelectionItem(gunWrapper, gunWrapper.getItemStack(), loadout, GamePlayer.hasGun(gunWrapper)));
 		}
 		return secondarySelectionItems;

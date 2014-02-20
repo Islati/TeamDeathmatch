@@ -3,7 +3,7 @@ package com.caved_in.teamdeathmatch.fakeboard;
 import com.caved_in.commons.player.PlayerHandler;
 import com.caved_in.commons.potions.PotionHandler;
 import com.caved_in.teamdeathmatch.TDMGame;
-import com.caved_in.teamdeathmatch.guns.GunWrap;
+import com.caved_in.teamdeathmatch.guns.GunWrapper;
 import com.caved_in.teamdeathmatch.loadout.Loadout;
 import com.caved_in.teamdeathmatch.perks.Perk;
 import com.caved_in.teamdeathmatch.perks.Perks.Nothing;
@@ -123,7 +123,7 @@ public class GamePlayer {
 		return unlockedGuns.contains(gunName);
 	}
 
-	public boolean hasGun(GunWrap gunWrapper) {
+	public boolean hasGun(GunWrapper gunWrapper) {
 		return hasGun(gunWrapper.getGunName());
 	}
 

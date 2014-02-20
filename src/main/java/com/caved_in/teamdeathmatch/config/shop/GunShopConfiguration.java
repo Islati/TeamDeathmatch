@@ -1,6 +1,6 @@
 package com.caved_in.teamdeathmatch.config.shop;
 
-import com.caved_in.teamdeathmatch.guns.GunWrap;
+import com.caved_in.teamdeathmatch.guns.GunWrapper;
 import org.simpleframework.xml.ElementList;
 
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ public class GunShopConfiguration {
 	@ElementList(name = "guns_data", type = XMLGun.class)
 	private List<XMLGun> gunData = new ArrayList<XMLGun>();
 
-	private List<GunWrap> gunWraps = new ArrayList<>();
+	private List<GunWrapper> gunWrappers = new ArrayList<>();
 
 	public GunShopConfiguration(@ElementList(name = "guns_data", type = XMLGun.class)List<XMLGun> gunData) {
 		this.gunData = gunData;
@@ -24,11 +24,11 @@ public class GunShopConfiguration {
 
 	private void initData() {
 		for(XMLGun gun : gunData) {
-			gunWraps.add(gun.getGunWrapper());
+			gunWrappers.add(gun.getGunWrapper());
 		}
 	}
 
-	public List<GunWrap> getGunData() {
-		return gunWraps;
+	public List<GunWrapper> getGunData() {
+		return gunWrappers;
 	}
 }

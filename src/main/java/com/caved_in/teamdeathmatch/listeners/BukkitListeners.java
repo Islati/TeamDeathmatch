@@ -235,15 +235,16 @@ public class BukkitListeners implements Listener {
 //		}
 //	}
 
+	/*
 	@EventHandler(priority = EventPriority.LOWEST)
 	public void onAsyncPreJoin(AsyncPlayerPreLoginEvent event) {
 		if (event.getLoginResult() == AsyncPlayerPreLoginEvent.Result.ALLOWED) {
 			String playerName = event.getName();
 			if (TDMGame.gunsSQL.hasData(playerName)) {
-
 			}
 		}
 	}
+	*/
 
 	@EventHandler
 	public void onPlayerJoin(final PlayerJoinEvent event) {

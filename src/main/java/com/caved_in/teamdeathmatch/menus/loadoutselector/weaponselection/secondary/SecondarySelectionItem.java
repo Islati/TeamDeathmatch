@@ -5,7 +5,7 @@ import com.caved_in.commons.player.PlayerHandler;
 import com.caved_in.commons.player.PlayerWrapper;
 import com.caved_in.teamdeathmatch.fakeboard.FakeboardHandler;
 import com.caved_in.teamdeathmatch.fakeboard.GamePlayer;
-import com.caved_in.teamdeathmatch.guns.GunWrap;
+import com.caved_in.teamdeathmatch.guns.GunWrapper;
 import com.caved_in.teamdeathmatch.menus.loadoutselector.LoadoutCreationMenu;
 import me.xhawk87.PopupMenuAPI.MenuItem;
 import org.bukkit.ChatColor;
@@ -18,11 +18,11 @@ import java.util.List;
 public class SecondarySelectionItem extends MenuItem {
 	private String gunID = "";
 	private int loadoutNumber = 1;
-	private GunWrap gunData;
+	private GunWrapper gunData;
 	private boolean hasAlreadyClicked = false;
 
 
-	public SecondarySelectionItem(GunWrap gunWrapper, ItemStack gunItemStack, int loadoutNumber, boolean purchased) {
+	public SecondarySelectionItem(GunWrapper gunWrapper, ItemStack gunItemStack, int loadoutNumber, boolean purchased) {
 		super(ItemHandler.getItemName(gunItemStack), new MaterialData(gunItemStack.getType()));
 		this.gunData = gunWrapper;
 		this.gunID = gunWrapper.getGunName();
