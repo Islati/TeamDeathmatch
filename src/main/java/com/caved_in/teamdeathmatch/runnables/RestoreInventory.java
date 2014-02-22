@@ -22,15 +22,12 @@ public class RestoreInventory implements Runnable {
 	public void run() {
 		Player rPlayer = Bukkit.getPlayer(playerName);
 		if (rPlayer != null) {
-			GamePlayer GamePlayer = FakeboardHandler.getPlayer(rPlayer);
+			GamePlayer gamePlayer = FakeboardHandler.getPlayer(rPlayer);
 
-			if (GamePlayer.getTeam().equalsIgnoreCase("T")) {
-				rPlayer.getInventory().setArmorContents(GameSetupHandler.getBlueTeamArmor());
-			} else {
-				rPlayer.getInventory().setArmorContents(GameSetupHandler.getRedTeamArmor());
-			}
 
-			Perk playerPerk = GamePlayer.getActivePerk();
+			rPlayer.getInventory().setArmorContents(gamePlayer.getTeam().equalsIgnoreCase("T") ? GameSetupHandler.getBlueTeamArmor() : GameSetupHandler.getRedTeamArmor());
+
+			Perk playerPerk = gamePlayer.getActivePerk();
 			if (playerPerk != null) {
 				if (!playerPerk.getPerkName().equalsIgnoreCase("Nothing")) {
 					for (PotionEffect Effect : playerPerk.getEffects()) {

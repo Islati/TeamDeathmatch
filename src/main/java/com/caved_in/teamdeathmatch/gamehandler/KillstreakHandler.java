@@ -7,9 +7,9 @@ import com.caved_in.teamdeathmatch.soundhandler.SoundHandler.SoundEffect;
 import org.bukkit.entity.Player;
 
 public class KillstreakHandler {
-	public static void HandleKillStreak(GamePlayer GamePlayer) {
-		Player player = GamePlayer.getPlayer();
-		int playerKills = GamePlayer.getKillStreak();
+	public static void HandleKillStreak(GamePlayer gamePlayer) {
+		Player player = gamePlayer.getPlayer();
+		int playerKills = gamePlayer.getKillStreak();
 		if (playerKills > 0 && playerKills <= 9) {
 			switch (playerKills) {
 				case 2:
@@ -42,6 +42,6 @@ public class KillstreakHandler {
 		} else if (playerKills > 9) {
 			SoundHandler.playSoundForPLayer(player, SoundEffect.HOLYSHIT);
 		}
-		GamePlayer.getPlayer().updateInventory();
+		gamePlayer.getPlayer().updateInventory();
 	}
 }

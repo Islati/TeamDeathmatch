@@ -6,8 +6,8 @@ import com.caved_in.commons.Commons;
 import com.caved_in.commons.items.ItemHandler;
 import com.caved_in.teamdeathmatch.TDMGame;
 import com.caved_in.teamdeathmatch.TeamType;
-import com.caved_in.teamdeathmatch.fakeboard.GamePlayer;
 import com.caved_in.teamdeathmatch.fakeboard.FakeboardHandler;
+import com.caved_in.teamdeathmatch.fakeboard.GamePlayer;
 import com.caved_in.teamdeathmatch.fakeboard.Team;
 import com.caved_in.teamdeathmatch.menus.loadoutselector.LoadoutActionMenu;
 import com.caved_in.teamdeathmatch.menus.loadoutselector.LoadoutCreationMenu;
@@ -48,9 +48,6 @@ public class GameSetupHandler {
 	private static Runnable teleportCounterTerrorists = new TeleportCT();
 	private static Runnable playerOpenKits = new PlayerOpenKits();
 
-	//Variables related to running the threads above
-	private static long playerOpenKitDelay = 20L;
-
 	//Blue and Red team armors
 	private static ItemStack[] blueTeamArmor, redTeamArmor;
 
@@ -88,7 +85,8 @@ public class GameSetupHandler {
 		//Teleport terrorists and Counter Terrorists
 		TDMGame.runnableManager.runTaskNow(teleportTerrorists);
 		TDMGame.runnableManager.runTaskNow(teleportCounterTerrorists);
-
+		//Make all the players open their "kits"
+		TDMGame.runnableManager.runTaskLater(playerOpenKits, 10L);
 		//If we want to reset the last map
 		if (isResetLastMap()) {
 			//Get the maps name
@@ -99,9 +97,6 @@ public class GameSetupHandler {
 			setResetLastMap(false);
 			setMapToReset("");
 		}
-
-		//Make all the players open their "kits"
-		TDMGame.runnableManager.runTaskLater(playerOpenKits, playerOpenKitDelay);
 	}
 
 	public static void givePlayerLoadoutGem(Player player) {
@@ -119,7 +114,7 @@ public class GameSetupHandler {
 	}
 
 	//TODO Optimize the fuck out of this
-	public static void assignPlayerTeam(Player player) {
+	public static void assignPlayerTeam(final Player player) {
 		//Our two teams, the terrorists and counter terrorists
 		Team terroristTeam = FakeboardHandler.getTeam(teamTerrorist);
 		Team counterTerroristTeam = FakeboardHandler.getTeam(teamCounterTerrorist);
@@ -156,7 +151,12 @@ public class GameSetupHandler {
 					break;
 			}
 		}
-		TagAPI.refreshPlayer(player);
+		TDMGame.runnableManager.runTaskOneTickLater(new Runnable() {
+			@Override
+			public void run() {
+				TagAPI.refreshPlayer(player);
+			}
+		});
 	}
 
 	public static void teleportPlayersToSpawn() {

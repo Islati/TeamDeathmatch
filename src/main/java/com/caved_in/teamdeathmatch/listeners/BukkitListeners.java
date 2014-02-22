@@ -15,7 +15,6 @@ import com.caved_in.teamdeathmatch.fakeboard.FakeboardHandler;
 import com.caved_in.teamdeathmatch.fakeboard.GamePlayer;
 import com.caved_in.teamdeathmatch.fakeboard.Team;
 import com.caved_in.teamdeathmatch.gamehandler.GameSetupHandler;
-import com.caved_in.teamdeathmatch.runnables.InitPlayerTask;
 import com.caved_in.teamdeathmatch.runnables.RestoreInventory;
 import com.caved_in.teamdeathmatch.scoreboard.PlayerScoreboard;
 import com.chaseoes.forcerespawn.event.ForceRespawnEvent;
@@ -250,38 +249,42 @@ public class BukkitListeners implements Listener {
 	public void onPlayerJoin(final PlayerJoinEvent event) {
 		final Player player = event.getPlayer();
 		final String playerName = player.getName();
-		final PlayerScoreboard playerScoreboard = new PlayerScoreboard();
-		player.setScoreboard(playerScoreboard.getScoreboard());
 
 		PlayerHandler.removePotionEffects(player);
-		InitPlayerTask initPlayerTask = new InitPlayerTask(playerName);
-		TDMGame.runnableManager.runTaskAsynch(initPlayerTask);
-		TDMGame.runnableManager.runTaskLater(new Runnable() {
+		TDMGame.runnableManager.runTaskAsynch(new Runnable() {
 			@Override
 			public void run() {
-				Player player = PlayerHandler.getPlayer(playerName);
-				try {
-					if (GameSetupHandler.isGameInProgress()) {
-						GameSetupHandler.assignPlayerTeam(player);
-						String playerTeam = FakeboardHandler.getPlayer(player).getTeam();
-						WorldSpawns worldSpawns = TDMGame.configuration.getSpawnConfiguration().getWorldSpawns(PlayerHandler.getWorldName(player));
-						PlayerHandler.teleport(player, worldSpawns.getRandomSpawn(playerTeam.equalsIgnoreCase("T") ? TeamType.TERRORIST : TeamType.COUNTER_TERRORIST).getLocation());
-						GameSetupHandler.openLoadoutSelectionMenu(player, true);
-					} else {
-						if (!PlayerHandler.getWorldName(player).equalsIgnoreCase(TDMGame.gameMap)) {
-							PlayerHandler.teleport(player, WorldHandler.getSpawn(TDMGame.gameMap));
-						}
-						PlayerHandler.clearInventory(player);
-					}
-					GameSetupHandler.givePlayerLoadoutGem(player);
+				FakeboardHandler.loadPlayer(playerName);
+				TDMGame.runnableManager.runTaskOneTickLater(new Runnable() {
+					@Override
+					public void run() {
+						try {
+							if (GameSetupHandler.isGameInProgress()) {
+								GameSetupHandler.assignPlayerTeam(player);
+								String playerTeam = FakeboardHandler.getPlayer(player).getTeam();
+								WorldSpawns worldSpawns = TDMGame.configuration.getSpawnConfiguration().getWorldSpawns(PlayerHandler.getWorldName(player));
+								PlayerHandler.teleport(player, worldSpawns.getRandomSpawn(playerTeam.equalsIgnoreCase("T") ? TeamType.TERRORIST : TeamType.COUNTER_TERRORIST).getLocation());
+								GameSetupHandler.openLoadoutSelectionMenu(player, true);
+							} else {
+								if (!PlayerHandler.getWorldName(player).equalsIgnoreCase(TDMGame.gameMap)) {
+									PlayerHandler.teleport(player, WorldHandler.getSpawn(TDMGame.gameMap));
+								}
+								PlayerHandler.clearInventory(player);
+							}
+							GameSetupHandler.givePlayerLoadoutGem(player);
+							PlayerScoreboard playerScoreboard = new PlayerScoreboard();
+							player.setScoreboard(playerScoreboard.getScoreboard());
+							FakeboardHandler.getPlayer(playerName).setPlayerScoreboard(playerScoreboard);
 
-				} catch (Exception ex) {
-					ex.printStackTrace();
-					PlayerHandler.kickPlayer(player, TdmMessages.PLAYER_DATA_LOAD_ERROR);
-				}
-				FakeboardHandler.getPlayer(playerName).setPlayerScoreboard(playerScoreboard);
+						} catch (Exception ex) {
+							ex.printStackTrace();
+							PlayerHandler.kickPlayer(player, TdmMessages.PLAYER_DATA_LOAD_ERROR);
+						}
+					}
+
+				});
 			}
-		}, 15L);
+		});
 	}
 
 	@EventHandler(priority = EventPriority.HIGHEST)

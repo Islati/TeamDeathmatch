@@ -17,14 +17,15 @@ import java.util.Arrays;
 public class LoadoutSelectionMenu {
 	private PopupMenu sLoadout;
 	private LoadoutSelectionMenu(String playerName) {
-		GamePlayer GamePlayer = FakeboardHandler.getPlayer(playerName);
-		int loadoutLimit = GamePlayer.getLoadoutLimit();
+		GamePlayer gamePlayer = FakeboardHandler.getPlayer(playerName);
+		gamePlayer.setAfk(true,false);
+		int loadoutLimit = gamePlayer.getLoadoutLimit();
 		sLoadout = PopupMenuAPI.createMenu("Select a Loadout", MenuHandler.getRows(loadoutLimit));
 		for (int I = 0; I < loadoutLimit; I++) {
 			int loadoutNumber = I + 1;
 			LoadoutSelectionItem loadoutItem = new LoadoutSelectionItem("Loadout #" + loadoutNumber, new MaterialData(Material.CHEST), loadoutNumber);
-			loadoutItem.setDescriptions(Arrays.asList(ItemHandler.getItemName(TDMGame.crackShotAPI.generateWeapon(GamePlayer.getPrimaryGunID(loadoutNumber))),
-					ItemHandler.getItemName(TDMGame.crackShotAPI.generateWeapon(GamePlayer.getSecondaryGunID(loadoutNumber)))));
+			loadoutItem.setDescriptions(Arrays.asList(ItemHandler.getItemName(TDMGame.crackShotAPI.generateWeapon(gamePlayer.getPrimaryGunID(loadoutNumber))),
+					ItemHandler.getItemName(TDMGame.crackShotAPI.generateWeapon(gamePlayer.getSecondaryGunID(loadoutNumber)))));
 			sLoadout.addMenuItem(loadoutItem, I);
 		}
 		sLoadout.setExitOnClickOutside(false);

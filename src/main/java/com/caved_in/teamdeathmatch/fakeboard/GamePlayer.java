@@ -34,7 +34,7 @@ public class GamePlayer {
 	private String primaryGunID = "AK-47";
 	private String secondaryGunID = "USP45";
 
-	private PlayerScoreboard playerScoreboard;
+	private PlayerScoreboard playerScoreboard = null;
 
 	private Perk activePerk;
 

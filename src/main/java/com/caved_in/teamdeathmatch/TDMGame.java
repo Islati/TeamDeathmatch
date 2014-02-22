@@ -176,9 +176,9 @@ public class TDMGame extends JavaPlugin {
 
 
 		for (Player Player : Bukkit.getOnlinePlayers()) {
-			GamePlayer GamePlayer = FakeboardHandler.getPlayer(Player);
-			GamePlayer.clearScoreboard();
-			Player.setScoreboard(GamePlayer.getPlayerScoreboard().getScoreboard());
+			GamePlayer gamePlayer = FakeboardHandler.getPlayer(Player);
+			gamePlayer.clearScoreboard();
+			Player.setScoreboard(gamePlayer.getPlayerScoreboard().getScoreboard());
 		}
 	}
 
@@ -210,12 +210,12 @@ public class TDMGame extends JavaPlugin {
 	}
 
 	public static String getGameWorld() {
-		List<String> Worlds = worldList.getContentsAsList();
-		String World = "";
-		while (World.equalsIgnoreCase(gameMap)) {
-			World = Worlds.get(new Random().nextInt(Worlds.size()));
+		List<String> worldList = TDMGame.worldList.getContentsAsList();
+		String worldName = "";
+		while (worldName.equalsIgnoreCase(gameMap)) {
+			worldName = worldList.get(new Random().nextInt(worldList.size()));
 		}
-		return World;
+		return worldName;
 	}
 
 	public enum LoadoutSlot {
