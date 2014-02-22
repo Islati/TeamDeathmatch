@@ -53,16 +53,16 @@ public class GameSetupHandler {
 
 	static {
 		blueTeamArmor = new ItemStack[]{
-				ItemHandler.makeLeatherItemStack(Material.LEATHER_BOOTS, Color.BLUE),
-				ItemHandler.makeLeatherItemStack(Material.LEATHER_LEGGINGS, Color.BLUE),
-				ItemHandler.makeLeatherItemStack(Material.LEATHER_CHESTPLATE, Color.BLUE),
 				ItemHandler.makeLeatherItemStack(Material.LEATHER_HELMET, Color.BLUE),
+				ItemHandler.makeLeatherItemStack(Material.LEATHER_CHESTPLATE, Color.BLUE),
+				ItemHandler.makeLeatherItemStack(Material.LEATHER_LEGGINGS, Color.BLUE),
+				ItemHandler.makeLeatherItemStack(Material.LEATHER_BOOTS, Color.BLUE),
 		};
 		redTeamArmor = new ItemStack[]{
-				ItemHandler.makeLeatherItemStack(Material.LEATHER_BOOTS, Color.RED),
-				ItemHandler.makeLeatherItemStack(Material.LEATHER_LEGGINGS, Color.RED),
-				ItemHandler.makeLeatherItemStack(Material.LEATHER_CHESTPLATE, Color.RED),
 				ItemHandler.makeLeatherItemStack(Material.LEATHER_HELMET, Color.RED),
+				ItemHandler.makeLeatherItemStack(Material.LEATHER_CHESTPLATE, Color.RED),
+				ItemHandler.makeLeatherItemStack(Material.LEATHER_LEGGINGS, Color.RED),
+				ItemHandler.makeLeatherItemStack(Material.LEATHER_BOOTS, Color.RED),
 		};
 
 	}
