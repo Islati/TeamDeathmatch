@@ -12,7 +12,6 @@ public class SecondaryWeaponTypeMenu {
 
 	public SecondaryWeaponTypeMenu(int Loadout) {
 		this.wTypeMenu = PopupMenuAPI.createMenu("Select a Weapon Type", 1);
-		wTypeMenu.setMenuCloseBehaviour(LoadoutMenuCloseBehaviour.getInstance());
 		this.wTypeMenu.addMenuItem(new SecondaryWeaponTypeMenuItem("Pistol", new MaterialData(Material.GOLDEN_CARROT), GunType.PISTOL, Loadout), 0);
 		this.wTypeMenu.setExitOnClickOutside(false);
 	}

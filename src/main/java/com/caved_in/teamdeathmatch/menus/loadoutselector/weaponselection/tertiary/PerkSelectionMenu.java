@@ -13,7 +13,6 @@ public class PerkSelectionMenu {
 
 	public PerkSelectionMenu(int loadoutSlot, Player player) {
 		List<PerkMenuItem> perkMenuItems = PerkRender.renderPerks(loadoutSlot, player);
-		perkMenu.setMenuCloseBehaviour(LoadoutMenuCloseBehaviour.getInstance());
 		this.perkMenu = PopupMenuAPI.createMenu("Select a perk!", MenuHandler.getRows(perkMenuItems.size()));
 		for (int I = 0; I < perkMenuItems.size(); I++) {
 			this.perkMenu.addMenuItem(perkMenuItems.get(I), I);

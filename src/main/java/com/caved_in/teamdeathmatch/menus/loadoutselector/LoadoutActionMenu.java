@@ -8,7 +8,6 @@ public class LoadoutActionMenu extends PopupMenu {
 
 	public LoadoutActionMenu(Player player) {
 		super("Select & Edit Loadouts",1);
-		setMenuCloseBehaviour(LoadoutMenuCloseBehaviour.getInstance());
 		addMenuItem(new LoadoutItem(LoadoutItem.LoadoutAction.SELECT),0);
 		addMenuItem(new LoadoutItem(LoadoutItem.LoadoutAction.EDIT),1);
 		openMenu(player);

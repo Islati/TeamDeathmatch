@@ -24,15 +24,15 @@ public class SelectionItem extends MenuItem {
 	public void onClick(Player player) {
 		switch (this.loadoutSlot) {
 			case Primary:
-				this.getMenu().switchMenu(player, new PrimaryWeaponTypeMenu(this.loadoutNumber).getMenu());
+				getMenu().switchMenu(player, new PrimaryWeaponTypeMenu(loadoutNumber).getMenu());
 				player.sendMessage(ChatColor.GREEN + "Select your primary weapon type");
 				break;
 			case Secondary:
-				this.getMenu().switchMenu(player, new SecondaryWeaponTypeMenu(this.loadoutNumber).getMenu());
+				getMenu().switchMenu(player, new SecondaryWeaponTypeMenu(loadoutNumber).getMenu());
 				player.sendMessage(ChatColor.GREEN + "Select your secondary weapon type");
 				break;
 			case Tertiary:
-				this.getMenu().switchMenu(player, new PerkSelectionMenu(this.loadoutNumber, player).getMenu());
+				getMenu().switchMenu(player, new PerkSelectionMenu(loadoutNumber, player).getMenu());
 				player.sendMessage(ChatColor.GREEN + "Select your active perk");
 				break;
 			default:

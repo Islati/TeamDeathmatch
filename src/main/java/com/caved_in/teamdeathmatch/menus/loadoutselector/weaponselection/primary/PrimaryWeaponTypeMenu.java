@@ -12,7 +12,6 @@ public class PrimaryWeaponTypeMenu {
 
 	public PrimaryWeaponTypeMenu(int loadoutNumber) {
 		wTypeMenu = PopupMenuAPI.createMenu("Select a Weapon Type", 1);
-		wTypeMenu.setMenuCloseBehaviour(LoadoutMenuCloseBehaviour.getInstance());
 		wTypeMenu.addMenuItem(new PrimaryWeaponTypeMenuItem("Assault Rifles", new MaterialData(Material.GOLDEN_CARROT), GunType.ASSAULT, loadoutNumber), 0);
 		wTypeMenu.addMenuItem(new PrimaryWeaponTypeMenuItem("Shotguns", new MaterialData(Material.STONE_HOE), GunType.SHOTGUN, loadoutNumber), 1);
 		wTypeMenu.addMenuItem(new PrimaryWeaponTypeMenuItem("Sniper Rifles", new MaterialData(Material.GOLD_PICKAXE), GunType.SNIPER, loadoutNumber), 2);

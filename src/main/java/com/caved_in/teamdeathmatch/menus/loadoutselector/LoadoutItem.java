@@ -11,8 +11,9 @@ import org.bukkit.material.MaterialData;
 public class LoadoutItem extends MenuItem {
 
 	private LoadoutAction loadoutAction;
+
 	public LoadoutItem(LoadoutAction loadoutAction) {
-		super(loadoutAction == LoadoutAction.SELECT ? "Select a loadout" : "Edit a loadout",new MaterialData(loadoutAction == LoadoutAction.SELECT ? Material.CHEST : Material.EMERALD));
+		super(loadoutAction == LoadoutAction.SELECT ? "Select a loadout" : "Edit a loadout", new MaterialData(loadoutAction == LoadoutAction.SELECT ? Material.CHEST : Material.EMERALD));
 		this.loadoutAction = loadoutAction;
 	}
 
@@ -21,7 +22,7 @@ public class LoadoutItem extends MenuItem {
 		switch (loadoutAction) {
 			case SELECT:
 				if (GameSetupHandler.isGameInProgress()) {
-				getMenu().switchMenu(player, new LoadoutSelectionMenu(player).getMenu());
+					getMenu().switchMenu(player, new LoadoutSelectionMenu(player).getMenu());
 				} else {
 					PlayerHandler.sendMessage(player, "&eYou can't select a class to use until the game begins");
 				}
