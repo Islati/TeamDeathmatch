@@ -13,7 +13,7 @@ import java.util.List;
 public class PrimaryWeaponRender {
 
 	public static List<PrimarySelectionItem> getPrimaryWeapons(GunType gunType, int loadoutNumber, Player player) {
-		List<PrimarySelectionItem> primaryWeapons = new ArrayList<PrimarySelectionItem>();
+		List<PrimarySelectionItem> primaryWeapons = new ArrayList<>();
 		GamePlayer GamePlayer = FakeboardHandler.getPlayer(player);
 		for (GunWrapper gunWrapper : TDMGame.gunHandler.getGuns(gunType)) {
 			primaryWeapons.add(new PrimarySelectionItem(gunWrapper, gunWrapper.getItemStack(), loadoutNumber, GamePlayer.hasGun(gunWrapper)));

@@ -159,12 +159,6 @@ public class GameSetupHandler {
 		});
 	}
 
-	public static void teleportPlayersToSpawn() {
-		for (Player player : Bukkit.getOnlinePlayers()) {
-			player.teleport(WorldManager.getWorldSpawn(TDMGame.getGameWorld()));
-		}
-	}
-
 	public static boolean isGameInProgress() {
 		return gameInProgress;
 	}
@@ -216,18 +210,10 @@ public class GameSetupHandler {
 		new LoadoutCreationMenu(player);
 	}
 
-	public static void openCreationMenu(Player player) {
-		openCreationMenu(player, true);
-	}
-
 	public static void openLoadoutSelectionMenu(Player player, boolean isAfk) {
 		GamePlayer GamePlayer = FakeboardHandler.getPlayer(player);
 		GamePlayer.setAfk(isAfk,false);
 		new LoadoutSelectionMenu(player);
-	}
-
-	public static void openLoadoutSelectionMenu(Player player) {
-		openLoadoutSelectionMenu(player, true);
 	}
 
 	public static void openLoadoutOptionMenu(Player player, boolean isAfk) {

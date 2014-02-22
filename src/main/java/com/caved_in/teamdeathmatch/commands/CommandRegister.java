@@ -9,6 +9,5 @@ public class CommandRegister {
 	public CommandRegister(TDMGame Plugin) {
 		CommandController.registerCommands(Plugin, new PlayerCommands());
 		CommandController.registerCommands(Plugin, new AdminCommands());
-//		CommandController.registerCommands(Plugin, new Utility());
 	}
 }

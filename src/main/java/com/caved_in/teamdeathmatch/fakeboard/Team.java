@@ -2,15 +2,14 @@ package com.caved_in.teamdeathmatch.fakeboard;
 
 import org.bukkit.entity.Player;
 
-import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Team {
-	private String teamName = "";
+	private String teamName;
 
-	private Map<String, GamePlayer> teamMembers = new HashMap<String, GamePlayer>();
+	private Map<String, GamePlayer> teamMembers = new HashMap<>();
 	private Boolean allowFriendlyFire = false;
 	private int teamScore = 0;
 
@@ -51,10 +50,6 @@ public class Team {
 		return removePlayer(player.getName());
 	}
 
-	public boolean removePlayer(GamePlayer player) {
-		return removePlayer(player.getName());
-	}
-
 	public void addPlayer(String playerName) {
 		teamMembers.put(playerName, FakeboardHandler.getPlayer(playerName));
 	}
@@ -76,24 +71,16 @@ public class Team {
 		return getPlayer(player.getName());
 	}
 
-	public List<GamePlayer> getTeamMembers() {
-		return new ArrayList<GamePlayer>(teamMembers.values());
+	public Collection<GamePlayer> getTeamMembers() {
+		return teamMembers.values();
 	}
 
 	public int getTeamSize() {
 		return teamMembers.size();
 	}
 
-	public void setScore(Player player, int score) {
-		setScore(player.getName(), score);
-	}
-
 	public void setScore(String playerName, int score) {
 		getPlayer(playerName).setPlayerScore(score);
-	}
-
-	public void addScore(Player player, int incrementAmount) {
-		addScore(player.getName(), incrementAmount);
 	}
 
 	public void addScore(String playerName, int incrementAmount) {

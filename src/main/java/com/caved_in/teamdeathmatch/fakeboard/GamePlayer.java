@@ -25,7 +25,6 @@ public class GamePlayer {
 	private String teamName = "";
 
 	private int playerScore = 0;
-	private int teamKills = 0;
 	private int killStreak = 0;
 	private int playerDeaths = 0;
 
@@ -34,7 +33,7 @@ public class GamePlayer {
 	private String primaryGunID = "AK-47";
 	private String secondaryGunID = "USP45";
 
-	private PlayerScoreboard playerScoreboard = null;
+	private PlayerScoreboard playerScoreboard;
 
 	private Perk activePerk;
 
@@ -42,13 +41,10 @@ public class GamePlayer {
 
 	private Set<Perk> playerPerks = new HashSet<>();
 
-	private int activeLoadout = 1;
-
-	private HashMap<Integer, Loadout> playerLoadouts = new HashMap<Integer, Loadout>();
+	private HashMap<Integer, Loadout> playerLoadouts = new HashMap<>();
 
 	private Set<String> unlockedGuns = new HashSet<>();
 
-	private List<ItemStack> deathRestoreInventory = new ArrayList<ItemStack>();
 	private ItemStack[] deathInventory = new ItemStack[]{};
 
 	/**
@@ -63,6 +59,7 @@ public class GamePlayer {
 		setupPlayerData();
 		//Instance the players loadout slots
 		loadoutSlots = getPlayer().isWhitelisted() ? PREMIUM_LOADOUT_LIMIT : NON_PREMIUM_LOADOUT_LIMIT;
+
 	}
 
 	public void setPlayerScoreboard(PlayerScoreboard playerScoreboard) {
@@ -115,10 +112,6 @@ public class GamePlayer {
 		}
 	}
 
-	public Set<String> getUnlockedGuns() {
-		return unlockedGuns;
-	}
-
 	public boolean hasGun(String gunName) {
 		return unlockedGuns.contains(gunName);
 	}
@@ -139,10 +132,6 @@ public class GamePlayer {
 		return loadoutSlots;
 	}
 
-	public Set<Perk> getPlayerPerks() {
-		return playerPerks;
-	}
-
 	public boolean hasPerk(Perk perk) {
 		return playerPerks.contains(perk);
 	}
@@ -152,141 +141,56 @@ public class GamePlayer {
 		TDMGame.perksSQL.insertPerk(perk, name);
 	}
 
-	/**
-	 * Gets the fPlayers Name
-	 *
-	 * @return
-	 */
 	public String getName() {
 		return this.name;
 	}
 
-	/**
-	 * Set the name of the GamePlayer
-	 *
-	 * @param playerName
-	 */
-	public void setName(String playerName) {
-		this.name = playerName;
-	}
-
-	/**
-	 * Gets the Player for the GamePlayer in this instance; Uses Bukkit.getPlayer
-	 *
-	 * @return
-	 */
 	public Player getPlayer() {
 		return PlayerHandler.getPlayer(name);
 	}
 
-	/**
-	 * Gets this fPlayers Score
-	 *
-	 * @return
-	 */
 	public int getPlayerScore() {
 		return playerScore;
 	}
 
-	/**
-	 * Sets the score for this GamePlayer
-	 *
-	 * @param score
-	 */
 	public void setPlayerScore(int score) {
 		playerScore = score;
 	}
 
-	/**
-	 * Add more to the fPlayers Score
-	 *
-	 * @param amount
-	 */
 	public void addScore(int amount) {
 		playerScore += amount;
 	}
 
-	/**
-	 * Set the team this GamePlayer is on
-	 *
-	 * @param teamName
-	 */
 	public void setTeam(String teamName) {
 		this.teamName = teamName;
 	}
 
-	/**
-	 * Gets the name of the team this GamePlayer is on
-	 *
-	 * @return
-	 */
 	public String getTeam() {
 		return teamName;
 	}
 
-	/**
-	 * Gets how many Team-Kills this GamePlayer has
-	 *
-	 * @return
-	 */
-	public int getTeamKills() {
-		return teamKills;
-	}
-
-	/**
-	 * Adds to the Team-Kills this player has
-	 *
-	 * @param amount
-	 */
-	public void addTeamKills(int amount) {
-		this.teamKills += amount;
-	}
-
-	/**
-	 * Gets how many kills this GamePlayer has on their current Killstreak
-	 *
-	 * @return
-	 */
 	public int getKillStreak() {
 		return killStreak;
 	}
 
-	/**
-	 * Sets the players Killstreak to 0
-	 */
 	public void resetKillstreak() {
 		killStreak = 0;
 	}
 
-	/**
-	 * Adds the Amount to this players Killstreak
-	 *
-	 * @param amount
-	 */
 	public void addKillstreak(int amount) {
 		killStreak += amount;
 	}
 
-	/**
-	 * Gets this players Chosen gun
-	 *
-	 * @return
-	 */
 	public String getPrimaryGunID() {
 		return primaryGunID;
 	}
 
-	/**
-	 * Returns the secondary gun in the players selected loadout
-	 *
-	 * @return
-	 */
-	public String getSecondaryGunID() {
-		return secondaryGunID;
-	}
-
 	public String getPrimaryGunID(int loadoutNumber) {
 		return getLoadout(loadoutNumber).getPrimary();
+	}
+
+	public String getSecondaryGunID() {
+		return secondaryGunID;
 	}
 
 	public String getSecondaryGunID(int loadoutNumber) {
@@ -300,56 +204,18 @@ public class GamePlayer {
 	public void setActiveLoadout(int loadoutNumber) {
 		Loadout selectedLoad = getLoadout(loadoutNumber);
 		if (selectedLoad != null) {
-			activeLoadout = loadoutNumber;
 			primaryGunID = selectedLoad.getPrimary();
 			secondaryGunID = selectedLoad.getSecondary();
 			activePerk = selectedLoad.getPerk();
 		}
 	}
 
-	/**
-	 * Gets this players inventory to restore after death
-	 *
-	 * @return
-	 */
-	public List<ItemStack> getDeathInventoryAsList() {
-		return this.deathRestoreInventory;
-	}
-
-	/**
-	 * Gets this players inventory to restore after death in an ItemStack[]
-	 *
-	 * @return
-	 */
 	public ItemStack[] getDeathInventory() {
 		return this.deathInventory;
 	}
 
-	/**
-	 * Sets the items that this player will get after death
-	 *
-	 * @param items
-	 */
-	public void setDeathInventory(List<ItemStack> items) {
-		this.deathRestoreInventory = items;
-	}
-
-	/**
-	 * Sets the items that this player will get after death
-	 *
-	 * @param deathInventory
-	 */
 	public void setDeathInventory(ItemStack[] deathInventory) {
-		this.deathRestoreInventory = Arrays.asList(deathInventory);
 		this.deathInventory = deathInventory;
-	}
-
-	/**
-	 * Clears the inventory data for this player
-	 */
-	public void clearDeathInventory() {
-		this.deathRestoreInventory.clear();
-		this.deathInventory = new ItemStack[]{};
 	}
 
 	public Loadout getLoadout(int loadoutNumber) {
@@ -406,5 +272,29 @@ public class GamePlayer {
 
 	public void addDeath() {
 		this.playerDeaths += 1;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		//If it's null, then it's not this object
+		if (o == null) {
+			return false;
+		}
+		//If it's this instance, then yes
+		if (o == this) {
+			return true;
+		}
+		//It's not a player, or a game player
+		if (!(o instanceof GamePlayer) && !(o instanceof Player)) {
+			return false;
+		}
+
+		if (o instanceof GamePlayer) {
+			GamePlayer gamePlayer = (GamePlayer) o;
+			return gamePlayer.getName().equals(name);
+		} else {
+			Player player = (Player) o;
+			return player.getName().equals(name);
+		}
 	}
 }

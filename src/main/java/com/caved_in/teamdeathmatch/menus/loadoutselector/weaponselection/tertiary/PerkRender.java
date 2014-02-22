@@ -11,7 +11,7 @@ import java.util.List;
 
 public class PerkRender {
 	public static List<PerkMenuItem> renderPerks(int selectedLoadout, Player player) {
-		List<PerkMenuItem> perkMenuItems = new ArrayList<PerkMenuItem>();
+		List<PerkMenuItem> perkMenuItems = new ArrayList<>();
 		GamePlayer GamePlayer = FakeboardHandler.getPlayer(player);
 		for (Perk perk : PerkHandler.getPerks()) {
 			if (!perk.getPerkName().equalsIgnoreCase("Nothing")) {

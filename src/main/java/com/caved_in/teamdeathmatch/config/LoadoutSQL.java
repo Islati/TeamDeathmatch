@@ -94,24 +94,6 @@ public class LoadoutSQL extends SQL {
 		}
 	}
 
-	public void insertLoadout(String playerName, int loadout, String primary, String secondary, String perk) {
-		PreparedStatement preparedStatement = prepareStatement(insertLoadoutStatement);
-		try {
-			//Set all the variables required to insert a perk
-			preparedStatement.setString(1, playerName);
-			preparedStatement.setInt(2, loadout);
-			preparedStatement.setString(3, primary);
-			preparedStatement.setString(4, secondary);
-			preparedStatement.setString(5, perk);
-			//execute the insert statement
-			preparedStatement.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(preparedStatement);
-		}
-	}
-
 	public void updateLoadout(String name, int loadout, String primary, String secondary, String perk) {
 		PreparedStatement preparedStatement = prepareStatement(updateLoadoutStatement);
 		try {

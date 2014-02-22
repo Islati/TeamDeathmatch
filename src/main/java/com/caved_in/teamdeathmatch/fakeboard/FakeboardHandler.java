@@ -9,14 +9,9 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 public class FakeboardHandler {
-	private static HashMap<String, Team> activeTeams = new HashMap<String, Team>();
-	private static HashMap<String, GamePlayer> activePlayers = new HashMap<String, GamePlayer>();
+	private static HashMap<String, Team> activeTeams = new HashMap<>();
+	private static HashMap<String, GamePlayer> activePlayers = new HashMap<>();
 
-	/**
-	 * Register a new team with the specified name
-	 *
-	 * @param teamName
-	 */
 	public static void registerTeam(String teamName, boolean friendlyFire) {
 		Team newTeam = new Team(teamName);
 		newTeam.setFriendlyFire(friendlyFire);
@@ -69,38 +64,10 @@ public class FakeboardHandler {
 		return getTeamByPlayer(player.getName());
 	}
 
-	/**
-	 * Checks if whether a team exists with the given name or not
-	 *
-	 * @param teamName Name of team to check
-	 * @return true if a team with that name exists, false otherwise
-	 */
-	public static boolean doesTeamExist(String teamName) {
-		return activeTeams.containsKey(teamName);
-	}
-
-	/**
-	 * Removes a player from a team
-	 *
-	 * @param team   Team to remove player from
-	 * @param player Player to remove
-	 * @return True if they were removed, false otherwise
-	 */
 	public static boolean removeFromTeam(String team, Player player) {
 		return activeTeams.get(team).removePlayer(player);
 	}
 
-	public static boolean isOnTeam(String team, Player player) {
-		return activeTeams.get(team).hasPlayer(player);
-	}
-
-	/**
-	 * Adds a player to a team
-	 *
-	 * @param team
-	 * @param player
-	 * @return true if they were added, false otherwise
-	 */
 	public static boolean addToTeam(String team, Player player) {
 		if (!activeTeams.get(team).hasPlayer(player)) {
 			activeTeams.get(team).addPlayer(player);
@@ -122,7 +89,7 @@ public class FakeboardHandler {
 	}
 
 	public static Set<Player> getPlayers(String teamName) {
-		Set<Player> players = new HashSet<Player>();
+		Set<Player> players = new HashSet<>();
 		for (GamePlayer teamPlayer : activeTeams.get(teamName).getTeamMembers()) {
 			Player player = teamPlayer.getPlayer();
 			if (player != null) {

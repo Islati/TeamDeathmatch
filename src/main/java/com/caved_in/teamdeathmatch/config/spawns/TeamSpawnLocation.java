@@ -21,15 +21,8 @@ public class TeamSpawnLocation {
 		return teamType;
 	}
 
-	public void setTeamType(TeamType teamType) {
-		this.teamType = teamType;
-	}
-
 	public Location getLocation() {
 		return location;
 	}
 
-	public void setLocation(Location location) {
-		this.location = location;
-	}
 }

@@ -4,7 +4,7 @@ import com.caved_in.teamdeathmatch.TeamType;
 
 import java.util.*;
 
-public class WorldSpawns implements Iterable<TeamSpawnLocation> {
+public class WorldSpawns {
 	private String worldName;
 	private boolean modified = false;
 	private List<TeamSpawnLocation> spawnLocations = new ArrayList<>();
@@ -50,11 +50,6 @@ public class WorldSpawns implements Iterable<TeamSpawnLocation> {
 	public TeamSpawnLocation getRandomSpawn(TeamType teamType) {
 		List<TeamSpawnLocation> spawns = getSpawnLocations(teamType);
 		return spawns.get(new Random().nextInt(spawns.size()));
-	}
-
-	@Override
-	public Iterator<TeamSpawnLocation> iterator() {
-		return spawnLocations.iterator();
 	}
 
 	public String getWorldName() {

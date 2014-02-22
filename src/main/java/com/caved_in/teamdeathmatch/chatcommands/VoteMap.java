@@ -1,7 +1,7 @@
 package com.caved_in.teamdeathmatch.chatcommands;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class VoteMap {
 	private String voteCaster = "";
@@ -10,7 +10,7 @@ public class VoteMap {
 	private int yesVotes = 0;
 	private int noVotes = 0;
 
-	private List<String> alreadyVoted = new ArrayList<String>();
+	private Set<String> alreadyVoted = new HashSet<>();
 
 	public VoteMap(String voteCaster, String votingMap) {
 		this.voteCaster = voteCaster;
@@ -18,19 +18,19 @@ public class VoteMap {
 	}
 
 	public boolean hasVoted(String playerName) {
-		return this.alreadyVoted.contains(playerName);
+		return alreadyVoted.contains(playerName);
 	}
 
 	public void addYes() {
-		this.yesVotes += 1;
+		yesVotes += 1;
 	}
 
 	public void addNo() {
-		this.noVotes += 1;
+		noVotes += 1;
 	}
 
 	public void setVoted(String playerName) {
-		this.alreadyVoted.add(playerName);
+		alreadyVoted.add(playerName);
 	}
 
 	public String getVotingMap() {

@@ -16,11 +16,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.potion.PotionEffect;
 
-/**
- * Created By: TheGamersCave (Brandon)
- * Date: 15/01/14
- * Time: 9:32 AM
- */
 public class CustomEventHandler {
 
 	private static void callEvent(Event event) {
@@ -29,7 +24,6 @@ public class CustomEventHandler {
 
 	public static void handleChatCommandEvent(ChatCommandEvent event) {
 		callEvent(event);
-
 	}
 
 	public static void handleGamePlayerDeathEvent(GamePlayerDeathEvent event) {

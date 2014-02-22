@@ -8,7 +8,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class PerksSQL extends SQL {
@@ -48,7 +47,7 @@ public class PerksSQL extends SQL {
 
 
 	public Set<Perk> getPerks(String playerName) {
-		Set<Perk> playerPerks = new HashSet<Perk>();
+		Set<Perk> playerPerks = new HashSet<>();
 		PreparedStatement preparedStatement = prepareStatement(getDataStatement);
 		try {
 			preparedStatement.setString(1, playerName);
@@ -62,22 +61,6 @@ public class PerksSQL extends SQL {
 			close(preparedStatement);
 		}
 		return playerPerks;
-	}
-
-	public void insertPerks(String playerName, List<Perk> perks) {
-		PreparedStatement preparedStatement = prepareStatement(insertDataStatement);
-		try {
-			for (Perk perk : perks) {
-				preparedStatement.setString(1, playerName);
-				preparedStatement.setString(2, perk.getPerkName());
-				preparedStatement.addBatch();
-			}
-			preparedStatement.executeBatch();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(preparedStatement);
-		}
 	}
 
 	public void insertPerk(Perk perk, String playerName) {

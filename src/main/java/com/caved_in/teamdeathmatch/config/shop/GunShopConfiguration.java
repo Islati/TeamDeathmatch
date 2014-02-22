@@ -8,7 +8,7 @@ import java.util.List;
 
 public class GunShopConfiguration {
 	@ElementList(name = "guns_data", type = XMLGun.class)
-	private List<XMLGun> gunData = new ArrayList<XMLGun>();
+	private List<XMLGun> gunData = new ArrayList<>();
 
 	private List<GunWrapper> gunWrappers = new ArrayList<>();
 

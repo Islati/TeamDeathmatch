@@ -17,7 +17,6 @@ public class SpawnConfiguration {
 	public SpawnConfiguration(@ElementList(name = "spawnpoints", type = XMLSpawnPoint.class)
 							  List<XMLSpawnPoint> spawnPoints) {
 		this.spawnPoints = spawnPoints;
-		//Initialize our team spawns
 		initializeTeamSpawns();
 	}
 
@@ -60,7 +59,4 @@ public class SpawnConfiguration {
 		spawnPoints.add(new XMLSpawnPoint(teamSpawnLocation));
 	}
 
-	public List<XMLSpawnPoint> getSpawnPoints() {
-		return this.spawnPoints;
-	}
 }

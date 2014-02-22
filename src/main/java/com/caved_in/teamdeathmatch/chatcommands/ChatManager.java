@@ -84,10 +84,7 @@ public class ChatManager {
 	}
 
 	public static boolean hasVoted(String playerName) {
-		if (isActiveVoteKick()) {
-			return activeVoteKick.hasVoted(playerName);
-		}
-		return true;
+		return isActiveVoteKick() && activeVoteKick.hasVoted(playerName);
 	}
 
 	public static void newVoteKick(Player playerKicking, Player playerToKick, String kickReason) {

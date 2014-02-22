@@ -52,9 +52,6 @@ public class GunHandler {
 		}
 	}
 
-	public Set<GunWrapper> getDefaultGuns() {
-		return new HashSet<>(gunDefault.values());
-	}	
 	public Map<String,GunWrapper> getDefaultGunMap() {
 		return gunDefault;
 	}
@@ -76,7 +73,4 @@ public class GunHandler {
 		}
 	}
 
-	private GunWrapper getRandomFromList(List<GunWrapper> input) {
-		return input.get(new Random().nextInt(input.size()));
-	}
 }

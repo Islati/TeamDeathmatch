@@ -13,7 +13,7 @@ import java.util.List;
 public class SecondaryWeaponRender {
 
 	public static List<SecondarySelectionItem> getSecondaryWeapons(GunType gunType, int loadout, Player player) {
-		List<SecondarySelectionItem> secondarySelectionItems = new ArrayList<SecondarySelectionItem>();
+		List<SecondarySelectionItem> secondarySelectionItems = new ArrayList<>();
 		GamePlayer GamePlayer = FakeboardHandler.getPlayer(player);
 		for (GunWrapper gunWrapper : TDMGame.gunHandler.getGuns(gunType)) {
 			secondarySelectionItems.add(new SecondarySelectionItem(gunWrapper, gunWrapper.getItemStack(), loadout, GamePlayer.hasGun(gunWrapper)));

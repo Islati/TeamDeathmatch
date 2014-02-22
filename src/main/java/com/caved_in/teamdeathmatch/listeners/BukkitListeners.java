@@ -84,8 +84,6 @@ public class BukkitListeners implements Listener {
 
 	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onPlayerDied(final PlayerDeathEvent event) {
-		//Get the player who died
-		Player player = event.getEntity();
 		//Check if there's a game in progress
 		if (GameSetupHandler.isGameInProgress()) {
 			//Create a new player death event and call it via the handler

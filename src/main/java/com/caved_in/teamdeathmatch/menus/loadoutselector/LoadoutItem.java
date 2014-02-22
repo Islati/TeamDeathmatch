@@ -8,11 +8,6 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.material.MaterialData;
 
-/**
- * Created By: TheGamersCave (Brandon)
- * Date: 10/01/14
- * Time: 11:37 PM
- */
 public class LoadoutItem extends MenuItem {
 
 	private LoadoutAction loadoutAction;
