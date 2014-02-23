@@ -31,6 +31,7 @@ public class WorldSpawns {
 
 	/**
 	 * Filter a list of spawn locations based on the team given
+	 *
 	 * @param teamType Team we wish to get the spawn locations of
 	 * @return Set of the spawnLocations for the given team
 	 */

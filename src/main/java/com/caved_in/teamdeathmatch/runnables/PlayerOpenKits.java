@@ -8,7 +8,7 @@ public class PlayerOpenKits implements Runnable {
 	@Override
 	public void run() {
 		Commons.messageConsole("&eForcing players to open their loadout selection menus");
-		for(Player player: Bukkit.getOnlinePlayers()) {
+		for (Player player : Bukkit.getOnlinePlayers()) {
 			player.chat("/kit");
 		}
 	}

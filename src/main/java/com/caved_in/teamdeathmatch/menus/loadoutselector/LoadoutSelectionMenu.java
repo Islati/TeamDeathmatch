@@ -3,8 +3,8 @@ package com.caved_in.teamdeathmatch.menus.loadoutselector;
 import com.caved_in.commons.items.ItemHandler;
 import com.caved_in.commons.menus.MenuHandler;
 import com.caved_in.teamdeathmatch.TDMGame;
-import com.caved_in.teamdeathmatch.fakeboard.GamePlayer;
 import com.caved_in.teamdeathmatch.fakeboard.FakeboardHandler;
+import com.caved_in.teamdeathmatch.fakeboard.GamePlayer;
 import com.caved_in.teamdeathmatch.gamehandler.GameSetupHandler;
 import me.xhawk87.PopupMenuAPI.PopupMenu;
 import me.xhawk87.PopupMenuAPI.PopupMenuAPI;
@@ -16,9 +16,10 @@ import java.util.Arrays;
 
 public class LoadoutSelectionMenu {
 	private PopupMenu sLoadout;
+
 	private LoadoutSelectionMenu(String playerName) {
 		GamePlayer gamePlayer = FakeboardHandler.getPlayer(playerName);
-		gamePlayer.setAfk(true,false);
+		gamePlayer.setAfk(true, false);
 		int loadoutLimit = gamePlayer.getLoadoutLimit();
 		sLoadout = PopupMenuAPI.createMenu("Select a Loadout", MenuHandler.getRows(loadoutLimit));
 		for (int I = 0; I < loadoutLimit; I++) {

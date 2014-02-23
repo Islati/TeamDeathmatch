@@ -8,30 +8,30 @@ import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 
 public class XMLSpawnPoint {
-	@Attribute(name="team_name")
+	@Attribute(name = "team_name")
 	private String teamName = "t";
 
 	@Element(name = "worldName")
 	private String worldName = "world";
 
 	@Element(name = "locX")
-	private double locX = 0;
+	private int locX = 0;
 
-	@Element(name="locY")
-	private double locY = 0;
+	@Element(name = "locY")
+	private int locY = 0;
 
-	@Element(name="locZ")
-	private double locZ = 0;
+	@Element(name = "locZ")
+	private int locZ = 0;
 
 	private TeamType teamType = TeamType.TERRORIST;
 
 	private Location spawnLocation;
 
-	public XMLSpawnPoint(@Attribute(name="team_name")String teamName,
-						 @Element(name = "worldName")String worldName,
-						 @Element(name="locX")double locX,
-						 @Element(name="locY")double locY,
-						 @Element(name="locZ")double locZ
+	public XMLSpawnPoint(@Attribute(name = "team_name") String teamName,
+						 @Element(name = "worldName") String worldName,
+						 @Element(name = "locX") int locX,
+						 @Element(name = "locY") int locY,
+						 @Element(name = "locZ") int locZ
 	) {
 		this.teamName = teamName;
 		this.teamType = TeamType.getTeamByInitials(teamName);
@@ -39,7 +39,7 @@ public class XMLSpawnPoint {
 		this.locX = locX;
 		this.locY = locY;
 		this.locZ = locZ;
-		this.spawnLocation = new Location(Bukkit.getWorld(worldName),locX,locY,locZ);
+		this.spawnLocation = new Location(Bukkit.getWorld(worldName), locX, locY, locZ);
 	}
 
 	public XMLSpawnPoint(TeamType teamType, Location spawnLocation) {
@@ -58,7 +58,7 @@ public class XMLSpawnPoint {
 	}
 
 	public XMLSpawnPoint(TeamSpawnLocation teamSpawnLocation) {
-		this(teamSpawnLocation.getTeamType(),teamSpawnLocation.getLocation());
+		this(teamSpawnLocation.getTeamType(), teamSpawnLocation.getLocation());
 	}
 
 	public Location getLocation() {

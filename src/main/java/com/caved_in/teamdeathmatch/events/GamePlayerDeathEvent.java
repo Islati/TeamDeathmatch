@@ -20,7 +20,7 @@ public class GamePlayerDeathEvent extends PlayerDeathEvent {
 	private boolean keepInventory = true;
 
 	public GamePlayerDeathEvent(PlayerDeathEvent event) {
-		super(event.getEntity(),event.getDrops(),event.getDroppedExp(),event.getDeathMessage());
+		super(event.getEntity(), event.getDrops(), event.getDroppedExp(), event.getDeathMessage());
 		this.gamePlayer = FakeboardHandler.getPlayer(event.getEntity());
 	}
 

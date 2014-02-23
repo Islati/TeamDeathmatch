@@ -1,7 +1,7 @@
 package com.caved_in.teamdeathmatch.events;
 
-import com.caved_in.teamdeathmatch.fakeboard.GamePlayer;
 import com.caved_in.teamdeathmatch.fakeboard.FakeboardHandler;
+import com.caved_in.teamdeathmatch.fakeboard.GamePlayer;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;
@@ -28,10 +28,10 @@ public class GamePlayerRespawnEvent extends PlayerRespawnEvent {
 	}
 
 	public HandlerList getHandlers() {
-	    return handlers;
+		return handlers;
 	}
 
 	public static HandlerList getHandlerList() {
-	    return handlers;
+		return handlers;
 	}
 }

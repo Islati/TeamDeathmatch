@@ -3,8 +3,8 @@ package com.caved_in.teamdeathmatch.scoreboard;
 import com.caved_in.commons.Commons;
 import com.caved_in.commons.player.PlayerHandler;
 import com.caved_in.teamdeathmatch.TeamType;
-import com.caved_in.teamdeathmatch.fakeboard.GamePlayer;
 import com.caved_in.teamdeathmatch.fakeboard.FakeboardHandler;
+import com.caved_in.teamdeathmatch.fakeboard.GamePlayer;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
@@ -41,8 +41,7 @@ public class PlayerScoreboard {
 			scoreboard.resetScores(getName(deathsScore));
 			scoreboard.resetScores(getName(killsStreak));
 			scoreboard.resetScores(getName(XP));
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			Commons.messageConsole("Some scores were null");
 		}
 		//this.Board.clearSlot(DisplaySlot.SIDEBAR);

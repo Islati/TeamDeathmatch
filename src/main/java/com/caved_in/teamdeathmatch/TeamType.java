@@ -12,7 +12,7 @@ public enum TeamType {
 	private static Map<String, TeamType> teamMap = new HashMap<String, TeamType>();
 
 	static {
-		for(TeamType teamType : EnumSet.allOf(TeamType.class)) {
+		for (TeamType teamType : EnumSet.allOf(TeamType.class)) {
 			for (String initial : teamType.teamInitials) {
 				teamMap.put(initial, teamType);
 			}

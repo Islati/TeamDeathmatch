@@ -12,7 +12,7 @@ public class GunShopConfiguration {
 
 	private List<GunWrapper> gunWrappers = new ArrayList<>();
 
-	public GunShopConfiguration(@ElementList(name = "guns_data", type = XMLGun.class)List<XMLGun> gunData) {
+	public GunShopConfiguration(@ElementList(name = "guns_data", type = XMLGun.class) List<XMLGun> gunData) {
 		this.gunData = gunData;
 		initData();
 	}
@@ -23,7 +23,7 @@ public class GunShopConfiguration {
 	}
 
 	private void initData() {
-		for(XMLGun gun : gunData) {
+		for (XMLGun gun : gunData) {
 			gunWrappers.add(gun.getGunWrapper());
 		}
 	}

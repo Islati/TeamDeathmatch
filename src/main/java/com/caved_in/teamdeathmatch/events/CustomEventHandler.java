@@ -112,7 +112,7 @@ public class CustomEventHandler {
 			GamePlayer gamePlayer = event.getGamePlayer();
 			int selectedLoadout = event.getLoadout().getNumber();
 			//Clear the players inventory
-			PlayerHandler.clearInventory(player,false);
+			PlayerHandler.clearInventory(player, false);
 			//Set the active loadout
 			gamePlayer.setActiveLoadout(selectedLoadout);
 			//Give them their primary and secondary weapons

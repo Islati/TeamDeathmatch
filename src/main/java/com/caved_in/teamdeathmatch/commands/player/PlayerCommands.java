@@ -3,8 +3,8 @@ package com.caved_in.teamdeathmatch.commands.player;
 import com.caved_in.commons.commands.CommandController;
 import com.caved_in.commons.player.PlayerHandler;
 import com.caved_in.teamdeathmatch.TDMGame;
-import com.caved_in.teamdeathmatch.fakeboard.GamePlayer;
 import com.caved_in.teamdeathmatch.fakeboard.FakeboardHandler;
+import com.caved_in.teamdeathmatch.fakeboard.GamePlayer;
 import com.caved_in.teamdeathmatch.gamehandler.GameSetupHandler;
 import com.caved_in.teamdeathmatch.menus.loadoutselector.LoadoutCreationMenu;
 import com.caved_in.teamdeathmatch.menus.loadoutselector.LoadoutSelectionMenu;
@@ -25,7 +25,7 @@ public class PlayerCommands {
 					TDMGame.afkCooldown.setOnCooldown(playerName);
 				}
 			} else {
-				PlayerHandler.sendMessage(player,AFK_COMMAND_ON_COOLDOWN);
+				PlayerHandler.sendMessage(player, AFK_COMMAND_ON_COOLDOWN);
 			}
 		}
 	}
@@ -41,7 +41,7 @@ public class PlayerCommands {
 				PlayerHandler.kickPlayer(player, PLAYER_DATA_LOAD_ERROR);
 			}
 		} else {
-			PlayerHandler.sendMessage(player,GAME_MUST_BEGIN_LOADOUT_SELECTION);
+			PlayerHandler.sendMessage(player, GAME_MUST_BEGIN_LOADOUT_SELECTION);
 		}
 	}
 

@@ -37,7 +37,7 @@ public class GameOverRunnable implements Runnable {
 			GameSetupHandler.setGameInProgress(false);
 			gameCurrentTicks = 0;
 			PlayerHandler.sendMessageToAllPlayers(String.format(gameTimeExpired ? "TIMES UP; &6%s WIN!" : "&6%s WIN!", terroristScore >= 50 ? "TERRORISTS" : "COUNTER TERRORISTS"));
-			GameSetupHandler.awardEndgamePoints(terroristScore >= 50 ? TeamType.TERRORIST.toString() : TeamType.COUNTER_TERRORIST.toString(),75,50);
+			GameSetupHandler.awardEndgamePoints(terroristScore >= 50 ? TeamType.TERRORIST.toString() : TeamType.COUNTER_TERRORIST.toString(), 75, 50);
 			TDMGame.runnableManager.runTaskLater(new Runnable() {
 				@Override
 				public void run() {

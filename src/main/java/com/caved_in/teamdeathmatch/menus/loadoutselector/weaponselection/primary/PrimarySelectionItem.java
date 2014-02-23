@@ -49,7 +49,7 @@ public class PrimarySelectionItem extends MenuItem {
 			} else {
 				hasAlreadyClicked = false;
 				//Second click? Create a new gun purchase event, and call it!
-				GunPurchaseEvent gunPurchaseEvent = new GunPurchaseEvent(player,gunData,loadoutNumber);
+				GunPurchaseEvent gunPurchaseEvent = new GunPurchaseEvent(player, gunData, loadoutNumber);
 				CustomEventHandler.handleGunPurchaseEvent(gunPurchaseEvent);
 			}
 		}

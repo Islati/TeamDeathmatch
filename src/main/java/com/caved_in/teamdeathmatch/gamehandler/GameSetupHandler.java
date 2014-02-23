@@ -212,13 +212,13 @@ public class GameSetupHandler {
 
 	public static void openLoadoutSelectionMenu(Player player, boolean isAfk) {
 		GamePlayer GamePlayer = FakeboardHandler.getPlayer(player);
-		GamePlayer.setAfk(isAfk,false);
+		GamePlayer.setAfk(isAfk, false);
 		new LoadoutSelectionMenu(player);
 	}
 
 	public static void openLoadoutOptionMenu(Player player, boolean isAfk) {
 		GamePlayer GamePlayer = FakeboardHandler.getPlayer(player);
-		GamePlayer.setAfk(isAfk,false);
+		GamePlayer.setAfk(isAfk, false);
 		new LoadoutActionMenu(player);
 
 	}

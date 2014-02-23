@@ -2,7 +2,10 @@ package com.caved_in.teamdeathmatch.guns;
 
 import com.caved_in.teamdeathmatch.TDMGame;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class GunHandler {
 	private List<GunWrapper> gunPistols = new ArrayList<>();
@@ -52,7 +55,7 @@ public class GunHandler {
 		}
 	}
 
-	public Map<String,GunWrapper> getDefaultGunMap() {
+	public Map<String, GunWrapper> getDefaultGunMap() {
 		return gunDefault;
 	}
 

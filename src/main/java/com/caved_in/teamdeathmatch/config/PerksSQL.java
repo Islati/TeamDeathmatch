@@ -28,9 +28,10 @@ public class PerksSQL extends SQL {
 				sqlConfig.getUsername(),
 				sqlConfig.getPassword()
 		);
-		creationStatement = creationStatement.replace("[DB]",sqlConfig.getDatabase());
+		creationStatement = creationStatement.replace("[DB]", sqlConfig.getDatabase());
 		execute(creationStatement);
 	}
+
 	public boolean hasData(String playerName) {
 		PreparedStatement preparedStatement = prepareStatement(getDataStatement);
 		boolean hasData = false;

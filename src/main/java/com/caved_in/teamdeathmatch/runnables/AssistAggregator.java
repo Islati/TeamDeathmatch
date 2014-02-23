@@ -10,7 +10,7 @@ import org.bukkit.Bukkit;
  * Date: 09/01/14
  * Time: 12:39 PM
  */
-public class AssistAggregator implements Runnable{
+public class AssistAggregator implements Runnable {
 	private String killedName = "";
 	private String killerName = "";
 

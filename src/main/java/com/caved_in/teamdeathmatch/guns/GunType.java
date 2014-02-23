@@ -8,6 +8,7 @@ public enum GunType {
 	SPECIAL("special");
 
 	private String category;
+
 	GunType(String category) {
 		this.category = category;
 	}

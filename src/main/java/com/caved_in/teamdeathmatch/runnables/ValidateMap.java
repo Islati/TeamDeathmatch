@@ -25,7 +25,7 @@ public class ValidateMap implements Runnable {
 					}
 				}
 			} catch (Exception ex) {
-				Commons.messageConsole(String.format("Error in ValidateMap.java; Unable to load/get world '%s'",TDMGame.gameMap));
+				Commons.messageConsole(String.format("Error in ValidateMap.java; Unable to load/get world '%s'", TDMGame.gameMap));
 			}
 		}
 	}

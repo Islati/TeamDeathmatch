@@ -10,7 +10,7 @@ import java.util.Map;
 public class SpawnConfiguration {
 
 	@ElementList(name = "spawnpoints", type = XMLSpawnPoint.class)
-	private List<XMLSpawnPoint> spawnPoints = new ArrayList<XMLSpawnPoint>();
+	private List<XMLSpawnPoint> spawnPoints = new ArrayList<>();
 
 	private Map<String, WorldSpawns> worldSpawnLocations = new HashMap<>();
 
@@ -27,7 +27,7 @@ public class SpawnConfiguration {
 
 	private void initializeTeamSpawns() {
 		//Loop through our loaded XMLSpawnPoints
-		for(XMLSpawnPoint xmlSpawnPoint : spawnPoints) {
+		for (XMLSpawnPoint xmlSpawnPoint : spawnPoints) {
 			//Get the world name of the selected spawn point
 			String worldName = xmlSpawnPoint.getWorldName();
 			//Check if our worldSpawns lists has an entry for this world already

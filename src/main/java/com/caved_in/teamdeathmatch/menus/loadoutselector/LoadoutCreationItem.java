@@ -17,7 +17,7 @@ public class LoadoutCreationItem extends MenuItem {
 	@Override
 	public void onClick(Player player) {
 		this.getMenu().switchMenu(player, new SelectionMenu(this.loadoutNumber).getMenu());
-		PlayerHandler.sendMessage(player,"&aSelect which item you're editing; Primary or Secondary?");
+		PlayerHandler.sendMessage(player, "&aSelect which item you're editing; Primary or Secondary?");
 	}
 
 }

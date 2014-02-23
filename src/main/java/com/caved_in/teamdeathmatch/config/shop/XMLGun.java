@@ -22,10 +22,10 @@ public class XMLGun {
 
 	private GunWrapper gunWrapper;
 
-	public XMLGun(@Element(name="gun_name")String gunName,
-				  @Element(name="gun_type")String gunCategory,
-				  @Element(name="gun_price")int gunPrice,
-				  @Element(name="default_gun")boolean defaultGun) {
+	public XMLGun(@Element(name = "gun_name") String gunName,
+				  @Element(name = "gun_type") String gunCategory,
+				  @Element(name = "gun_price") int gunPrice,
+				  @Element(name = "default_gun") boolean defaultGun) {
 		this.gunName = gunName;
 		this.gunCategory = gunCategory;
 		this.gunPrice = gunPrice;
@@ -39,7 +39,7 @@ public class XMLGun {
 	}
 
 	private void initGunWrapper() {
-		this.gunWrapper = new GunWrapper(gunName,gunPrice,defaultGun,gunType);
+		this.gunWrapper = new GunWrapper(gunName, gunPrice, defaultGun, gunType);
 	}
 
 	public boolean isDefaultGun() {

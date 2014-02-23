@@ -165,15 +165,14 @@ public class TDMGame extends JavaPlugin {
 
 	public static void rotateMap(boolean rollback) {
 		FakeboardHandler.cleanTeams();
+
 		if (!GameSetupHandler.isForceMap()) {
 			gameMap = getGameWorld();
 		}
-		runnableManager.registerSynchRepeatTask("SetupCheck", new StartCheckRunnable(), 200L, 40L);
-		cleanActiveMap();
-		if (rollback) {
-			GameSetupHandler.setResetLastMap(true);
-		}
 
+		runnableManager.registerSynchRepeatTask("SetupCheck", new StartCheckRunnable(), 200L, 40L);
+
+		cleanActiveMap();
 
 		for (Player Player : Bukkit.getOnlinePlayers()) {
 			GamePlayer gamePlayer = FakeboardHandler.getPlayer(Player);
@@ -187,7 +186,7 @@ public class TDMGame extends JavaPlugin {
 	}
 
 	public static void givePlayerTunnelsXP(Player player, double amount, boolean isSilent) {
-		givePlayerTunnelsXP(player.getName(),amount,isSilent);
+		givePlayerTunnelsXP(player.getName(), amount, isSilent);
 	}
 
 	public static void givePlayerTunnelsXP(String playerName, double amount, boolean isSilent) {
