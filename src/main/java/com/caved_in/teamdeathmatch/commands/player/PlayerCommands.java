@@ -2,7 +2,7 @@ package com.caved_in.teamdeathmatch.commands.player;
 
 import com.caved_in.commons.commands.CommandController;
 import com.caved_in.commons.player.PlayerHandler;
-import com.caved_in.teamdeathmatch.TDMGame;
+import com.caved_in.teamdeathmatch.Game;
 import com.caved_in.teamdeathmatch.fakeboard.FakeboardHandler;
 import com.caved_in.teamdeathmatch.fakeboard.GamePlayer;
 import com.caved_in.teamdeathmatch.gamehandler.GameSetupHandler;
@@ -18,11 +18,11 @@ public class PlayerCommands {
 	public void onAfkCommand(Player player, String[] args) {
 		if (GameSetupHandler.isGameInProgress()) {
 			String playerName = player.getName();
-			if (!TDMGame.afkCooldown.isOnCooldown(playerName)) {
+			if (!Game.afkCooldown.isOnCooldown(playerName)) {
 				GamePlayer GamePlayer = FakeboardHandler.getPlayer(playerName);
 				if (GamePlayer != null) {
 					GamePlayer.setAfk(!GamePlayer.isAfk());
-					TDMGame.afkCooldown.setOnCooldown(playerName);
+					Game.afkCooldown.setOnCooldown(playerName);
 				}
 			} else {
 				PlayerHandler.sendMessage(player, AFK_COMMAND_ON_COOLDOWN);

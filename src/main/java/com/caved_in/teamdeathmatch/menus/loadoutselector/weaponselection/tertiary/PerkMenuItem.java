@@ -4,7 +4,7 @@ package com.caved_in.teamdeathmatch.menus.loadoutselector.weaponselection.tertia
 import com.caved_in.commons.player.PlayerHandler;
 import com.caved_in.commons.player.PlayerWrapper;
 import com.caved_in.commons.utilities.StringUtil;
-import com.caved_in.teamdeathmatch.TDMGame;
+import com.caved_in.teamdeathmatch.Game;
 import com.caved_in.teamdeathmatch.fakeboard.FakeboardHandler;
 import com.caved_in.teamdeathmatch.fakeboard.GamePlayer;
 import com.caved_in.teamdeathmatch.perks.Perk;
@@ -47,7 +47,7 @@ public class PerkMenuItem extends MenuItem {
 		} else {
 			if (!this.hasClicked) {
 				if (this.perk.isTieredPerk()) {
-					if (!GamePlayer.hasPerk(TDMGame.perkHandler.getPerk(perk.getPerkRequired()))) {
+					if (!GamePlayer.hasPerk(Game.perkHandler.getPerk(perk.getPerkRequired()))) {
 						player.sendMessage(StringUtil.formatColorCodes("&e" + perkName + " &cis a tiered perk, you need to purchase &e" + perk.getPerkRequired
 								() + "&c before you can purchase this one"));
 					} else {

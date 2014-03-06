@@ -1,6 +1,6 @@
 package com.caved_in.teamdeathmatch.guns;
 
-import com.caved_in.teamdeathmatch.TDMGame;
+import com.caved_in.teamdeathmatch.Game;
 import org.bukkit.inventory.ItemStack;
 
 public class GunWrapper {
@@ -33,7 +33,7 @@ public class GunWrapper {
 	}
 
 	public ItemStack getItemStack() {
-		return TDMGame.crackShotAPI.generateWeapon(gunName);
+		return Game.crackShotAPI.generateWeapon(gunName);
 	}
 
 }

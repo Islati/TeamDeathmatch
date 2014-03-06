@@ -4,7 +4,7 @@ package com.caved_in.teamdeathmatch.gamehandler;
 
 import com.caved_in.commons.Commons;
 import com.caved_in.commons.items.ItemHandler;
-import com.caved_in.teamdeathmatch.TDMGame;
+import com.caved_in.teamdeathmatch.Game;
 import com.caved_in.teamdeathmatch.TeamType;
 import com.caved_in.teamdeathmatch.fakeboard.FakeboardHandler;
 import com.caved_in.teamdeathmatch.fakeboard.GamePlayer;
@@ -83,10 +83,10 @@ public class GameSetupHandler {
 		//Make all the teams
 		makeGameTeams();
 		//Teleport terrorists and Counter Terrorists
-		TDMGame.runnableManager.runTaskNow(teleportTerrorists);
-		TDMGame.runnableManager.runTaskNow(teleportCounterTerrorists);
+		Game.runnableManager.runTaskNow(teleportTerrorists);
+		Game.runnableManager.runTaskNow(teleportCounterTerrorists);
 		//Make all the players open their "kits"
-		TDMGame.runnableManager.runTaskLater(playerOpenKits, 10L);
+		Game.runnableManager.runTaskLater(playerOpenKits, 10L);
 		//If we want to reset the last map
 		if (isResetLastMap()) {
 			//Get the maps name
@@ -151,7 +151,7 @@ public class GameSetupHandler {
 					break;
 			}
 		}
-		TDMGame.runnableManager.runTaskOneTickLater(new Runnable() {
+		Game.runnableManager.runTaskOneTickLater(new Runnable() {
 			@Override
 			public void run() {
 				TagAPI.refreshPlayer(player);
@@ -199,7 +199,7 @@ public class GameSetupHandler {
 		for (Player player : Bukkit.getOnlinePlayers()) {
 			GamePlayer GamePlayer = FakeboardHandler.getPlayer(player);
 			if (GamePlayer.getTeam() != null) {
-				TDMGame.givePlayerTunnelsXP(player, GamePlayer.getTeam().equalsIgnoreCase(winningTeam) ? winningCash : losingCash);
+				Game.givePlayerTunnelsXP(player, GamePlayer.getTeam().equalsIgnoreCase(winningTeam) ? winningCash : losingCash);
 			}
 		}
 	}

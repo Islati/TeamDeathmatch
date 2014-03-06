@@ -1,7 +1,7 @@
 package com.caved_in.teamdeathmatch.runnables;
 
 import com.caved_in.commons.player.PlayerHandler;
-import com.caved_in.teamdeathmatch.TDMGame;
+import com.caved_in.teamdeathmatch.Game;
 import com.caved_in.teamdeathmatch.assists.AssistManager;
 import org.bukkit.Bukkit;
 
@@ -27,12 +27,12 @@ public class AssistAggregator implements Runnable {
 			for (String playersWhoAssisted : AssistManager.getData(killedName).getAttackers()) {
 				if (!playersWhoAssisted.equalsIgnoreCase(killerName)) {
 					if (PlayerHandler.isOnline(playersWhoAssisted)) {
-						TDMGame.givePlayerTunnelsXP(playersWhoAssisted, 1, true);
+						Game.givePlayerTunnelsXP(playersWhoAssisted, 1, true);
 					}
 				}
 			}
 			AssistManager.removeData(killedName);
-			TDMGame.givePlayerTunnelsXP(Bukkit.getPlayer(killerName), 4);
+			Game.givePlayerTunnelsXP(Bukkit.getPlayer(killerName), 4);
 		}
 	}
 }

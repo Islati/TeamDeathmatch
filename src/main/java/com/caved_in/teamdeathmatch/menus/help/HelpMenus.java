@@ -1,7 +1,7 @@
 package com.caved_in.teamdeathmatch.menus.help;
 
 import com.caved_in.commons.menu.HelpScreen;
-import com.caved_in.teamdeathmatch.TDMGame;
+import com.caved_in.teamdeathmatch.Game;
 import org.bukkit.ChatColor;
 
 import java.util.Map;
@@ -61,7 +61,7 @@ public class HelpMenus {
 
 	public static HelpScreen getAdminCommandsHelp() {
 		HelpScreen helpScreen = generateHelpScreen("Available Maps", PageDisplay.DEFAULT, ItemFormat.SINGLE_DASH, ChatColor.GREEN, ChatColor.DARK_GREEN);
-		for (String worldName : TDMGame.worldList.getContentsAsList()) {
+		for (String worldName : Game.worldList.getContentsAsList()) {
 			helpScreen.setEntry(worldName, "/forcemap " + worldName);
 		}
 		return helpScreen;

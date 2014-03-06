@@ -1,7 +1,7 @@
 package com.caved_in.teamdeathmatch.runnables;
 
 import com.caved_in.commons.player.PlayerHandler;
-import com.caved_in.teamdeathmatch.TDMGame;
+import com.caved_in.teamdeathmatch.Game;
 import com.caved_in.teamdeathmatch.TeamType;
 import com.caved_in.teamdeathmatch.fakeboard.FakeboardHandler;
 import com.caved_in.teamdeathmatch.gamehandler.GameSetupHandler;
@@ -18,13 +18,13 @@ public class GameOverRunnable implements Runnable {
 			GameSetupHandler.setGameInProgress(false);
 			gameCurrentTicks = 0;
 			//Schedule a map rotation
-			TDMGame.runnableManager.runTaskLater(new Runnable() {
+			Game.runnableManager.runTaskLater(new Runnable() {
 				@Override
 				public void run() {
-					TDMGame.rotateMap(true);
+					Game.rotateMap(true);
 				}
 			}, 100L);
-			TDMGame.runnableManager.cancelTask("GameEndCheck");
+			Game.runnableManager.cancelTask("GameEndCheck");
 			return;
 		}
 		//Get the scores for both teams; Terrorist and CounterTerrorist
@@ -38,13 +38,13 @@ public class GameOverRunnable implements Runnable {
 			gameCurrentTicks = 0;
 			PlayerHandler.sendMessageToAllPlayers(String.format(gameTimeExpired ? "TIMES UP; &6%s WIN!" : "&6%s WIN!", terroristScore >= 50 ? "TERRORISTS" : "COUNTER TERRORISTS"));
 			GameSetupHandler.awardEndgamePoints(terroristScore >= 50 ? TeamType.TERRORIST.toString() : TeamType.COUNTER_TERRORIST.toString(), 75, 50);
-			TDMGame.runnableManager.runTaskLater(new Runnable() {
+			Game.runnableManager.runTaskLater(new Runnable() {
 				@Override
 				public void run() {
-					TDMGame.rotateMap(true);
+					Game.rotateMap(true);
 				}
 			}, 100L);
-			TDMGame.runnableManager.cancelTask("GameEndCheck");
+			Game.runnableManager.cancelTask("GameEndCheck");
 		}
 		gameCurrentTicks += 40;
 	}

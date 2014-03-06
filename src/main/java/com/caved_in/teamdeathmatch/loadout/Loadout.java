@@ -1,6 +1,6 @@
 package com.caved_in.teamdeathmatch.loadout;
 
-import com.caved_in.teamdeathmatch.TDMGame;
+import com.caved_in.teamdeathmatch.Game;
 import com.caved_in.teamdeathmatch.perks.Perk;
 import com.caved_in.teamdeathmatch.perks.Perks.Nothing;
 
@@ -57,10 +57,10 @@ public class Loadout {
 	}
 
 	public void updateSql() {
-		TDMGame.runnableManager.runTaskAsynch(new Runnable() {
+		Game.runnableManager.runTaskAsynch(new Runnable() {
 			@Override
 			public void run() {
-				TDMGame.loadoutSQL.updateLoadout(playerName, loadoutNumber, primary, secondary, perk.getPerkName());
+				Game.loadoutSQL.updateLoadout(playerName, loadoutNumber, primary, secondary, perk.getPerkName());
 			}
 		});
 	}

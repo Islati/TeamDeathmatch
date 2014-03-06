@@ -1,6 +1,6 @@
 package com.caved_in.teamdeathmatch.config;
 
-import com.caved_in.teamdeathmatch.TDMGame;
+import com.caved_in.teamdeathmatch.Game;
 import com.caved_in.teamdeathmatch.config.shop.GunShopConfiguration;
 import com.caved_in.teamdeathmatch.config.spawns.SpawnConfiguration;
 import org.simpleframework.xml.Serializer;
@@ -36,9 +36,9 @@ public class Configuration {
 
 	public void saveConfig() {
 		try {
-			serializer.write(spawnConfiguration, new File(TDMGame.SPAWN_CONFIG_FILE));
-			serializer.write(gunShopConfiguration, new File(TDMGame.GUN_CONFIG_FILE));
-			serializer.write(sqlConfiguration, new File(TDMGame.SQL_CONFIG_FILE));
+			serializer.write(spawnConfiguration, new File(Game.SPAWN_CONFIG_FILE));
+			serializer.write(gunShopConfiguration, new File(Game.GUN_CONFIG_FILE));
+			serializer.write(sqlConfiguration, new File(Game.SQL_CONFIG_FILE));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -46,9 +46,9 @@ public class Configuration {
 
 	public void loadConfig() {
 		try {
-			spawnConfiguration = serializer.read(SpawnConfiguration.class, new File(TDMGame.SPAWN_CONFIG_FILE));
-			gunShopConfiguration = serializer.read(GunShopConfiguration.class, new File(TDMGame.GUN_CONFIG_FILE));
-			sqlConfiguration = serializer.read(SqlConfiguration.class, new File(TDMGame.SQL_CONFIG_FILE));
+			spawnConfiguration = serializer.read(SpawnConfiguration.class, new File(Game.SPAWN_CONFIG_FILE));
+			gunShopConfiguration = serializer.read(GunShopConfiguration.class, new File(Game.GUN_CONFIG_FILE));
+			sqlConfiguration = serializer.read(SqlConfiguration.class, new File(Game.SQL_CONFIG_FILE));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -4,7 +4,7 @@ import com.caved_in.commons.items.ItemHandler;
 import com.caved_in.commons.player.PlayerHandler;
 import com.caved_in.commons.time.Cooldown;
 import com.caved_in.commons.world.WorldHandler;
-import com.caved_in.teamdeathmatch.TDMGame;
+import com.caved_in.teamdeathmatch.Game;
 import com.caved_in.teamdeathmatch.TdmMessages;
 import com.caved_in.teamdeathmatch.TeamType;
 import com.caved_in.teamdeathmatch.assists.AssistManager;
@@ -35,7 +35,7 @@ public class BukkitListeners implements Listener {
 	private Cooldown moveCooldown = new Cooldown(3);
 	private Cooldown respawnInvincibilityCooldown = new Cooldown(6);
 
-	public BukkitListeners(TDMGame Plugin) {
+	public BukkitListeners(Game Plugin) {
 		Plugin.getServer().getPluginManager().registerEvents(this, Plugin);
 	}
 
@@ -123,7 +123,7 @@ public class BukkitListeners implements Listener {
 		GamePlayer GamePlayer = FakeboardHandler.getPlayer(playerName);
 		event.setForcedRespawn(true);
 		if (GameSetupHandler.isGameInProgress()) {
-			TDMGame.runnableManager.runTaskLater(new RestoreInventory(playerName), 20);
+			Game.runnableManager.runTaskLater(new RestoreInventory(playerName), 20);
 		}
 		respawnInvincibilityCooldown.setOnCooldown(playerName);
 		if (GamePlayer.isAfk()) {
@@ -136,7 +136,7 @@ public class BukkitListeners implements Listener {
 		Player player = event.getPlayer();
 		GamePlayer GamePlayer = FakeboardHandler.getPlayer(player);
 		if (GameSetupHandler.isGameInProgress()) {
-			WorldSpawns worldSpawns = TDMGame.configuration.getSpawnConfiguration().getWorldSpawns(PlayerHandler.getWorldName(player));
+			WorldSpawns worldSpawns = Game.configuration.getSpawnConfiguration().getWorldSpawns(PlayerHandler.getWorldName(player));
 			event.setRespawnLocation(worldSpawns.getRandomSpawn(GamePlayer.getTeam().equalsIgnoreCase("T") ? TeamType.TERRORIST : TeamType.COUNTER_TERRORIST).getLocation());
 		}
 		respawnInvincibilityCooldown.setOnCooldown(player.getName());
@@ -249,23 +249,23 @@ public class BukkitListeners implements Listener {
 		final String playerName = player.getName();
 
 		PlayerHandler.removePotionEffects(player);
-		TDMGame.runnableManager.runTaskAsynch(new Runnable() {
+		Game.runnableManager.runTaskAsynch(new Runnable() {
 			@Override
 			public void run() {
 				FakeboardHandler.loadPlayer(playerName);
-				TDMGame.runnableManager.runTaskOneTickLater(new Runnable() {
+				Game.runnableManager.runTaskOneTickLater(new Runnable() {
 					@Override
 					public void run() {
 						try {
 							if (GameSetupHandler.isGameInProgress()) {
 								GameSetupHandler.assignPlayerTeam(player);
 								String playerTeam = FakeboardHandler.getPlayer(player).getTeam();
-								WorldSpawns worldSpawns = TDMGame.configuration.getSpawnConfiguration().getWorldSpawns(PlayerHandler.getWorldName(player));
+								WorldSpawns worldSpawns = Game.configuration.getSpawnConfiguration().getWorldSpawns(PlayerHandler.getWorldName(player));
 								PlayerHandler.teleport(player, worldSpawns.getRandomSpawn(playerTeam.equalsIgnoreCase("T") ? TeamType.TERRORIST : TeamType.COUNTER_TERRORIST).getLocation());
 								GameSetupHandler.openLoadoutSelectionMenu(player, true);
 							} else {
-								if (!PlayerHandler.getWorldName(player).equalsIgnoreCase(TDMGame.gameMap)) {
-									PlayerHandler.teleport(player, WorldHandler.getSpawn(TDMGame.gameMap));
+								if (!PlayerHandler.getWorldName(player).equalsIgnoreCase(Game.gameMap)) {
+									PlayerHandler.teleport(player, WorldHandler.getSpawn(Game.gameMap));
 								}
 								PlayerHandler.clearInventory(player);
 							}

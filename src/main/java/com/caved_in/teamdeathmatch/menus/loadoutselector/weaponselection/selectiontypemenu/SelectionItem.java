@@ -1,6 +1,6 @@
 package com.caved_in.teamdeathmatch.menus.loadoutselector.weaponselection.selectiontypemenu;
 
-import com.caved_in.teamdeathmatch.TDMGame.LoadoutSlot;
+import com.caved_in.teamdeathmatch.Game.LoadoutSlot;
 import com.caved_in.teamdeathmatch.menus.loadoutselector.weaponselection.primary.PrimaryWeaponTypeMenu;
 import com.caved_in.teamdeathmatch.menus.loadoutselector.weaponselection.secondary.SecondaryWeaponTypeMenu;
 import com.caved_in.teamdeathmatch.menus.loadoutselector.weaponselection.tertiary.PerkSelectionMenu;

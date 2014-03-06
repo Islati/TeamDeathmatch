@@ -1,7 +1,7 @@
 package com.caved_in.teamdeathmatch.menus.loadoutselector;
 
 import com.caved_in.commons.items.ItemHandler;
-import com.caved_in.teamdeathmatch.TDMGame;
+import com.caved_in.teamdeathmatch.Game;
 import com.caved_in.teamdeathmatch.fakeboard.FakeboardHandler;
 import com.caved_in.teamdeathmatch.fakeboard.GamePlayer;
 import me.xhawk87.PopupMenuAPI.PopupMenu;
@@ -29,8 +29,8 @@ public class LoadoutCreationMenu {
 		for (int I = 0; I < loadoutLimit; I++) {
 			int loadoutNumber = I + 1;
 			LoadoutCreationItem loadoutCreationItem = new LoadoutCreationItem("Loadout #" + loadoutNumber, new MaterialData(Material.CHEST), loadoutNumber);
-			loadoutCreationItem.setDescriptions(Arrays.asList(ItemHandler.getItemName(TDMGame.crackShotAPI.generateWeapon(GamePlayer.getPrimaryGunID
-					(loadoutNumber))), ItemHandler.getItemName(TDMGame.crackShotAPI.generateWeapon(GamePlayer.getSecondaryGunID(loadoutNumber)))));
+			loadoutCreationItem.setDescriptions(Arrays.asList(ItemHandler.getItemName(Game.crackShotAPI.generateWeapon(GamePlayer.getPrimaryGunID
+					(loadoutNumber))), ItemHandler.getItemName(Game.crackShotAPI.generateWeapon(GamePlayer.getSecondaryGunID(loadoutNumber)))));
 			loadoutCreationMenu.addMenuItem(loadoutCreationItem, I);
 		}
 

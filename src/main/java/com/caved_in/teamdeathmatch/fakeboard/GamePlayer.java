@@ -2,7 +2,7 @@ package com.caved_in.teamdeathmatch.fakeboard;
 
 import com.caved_in.commons.player.PlayerHandler;
 import com.caved_in.commons.potions.PotionHandler;
-import com.caved_in.teamdeathmatch.TDMGame;
+import com.caved_in.teamdeathmatch.Game;
 import com.caved_in.teamdeathmatch.guns.GunWrapper;
 import com.caved_in.teamdeathmatch.loadout.Loadout;
 import com.caved_in.teamdeathmatch.perks.Perk;
@@ -76,25 +76,25 @@ public class GamePlayer {
 	}
 
 	public void defaultPlayerData() {
-		if (!TDMGame.loadoutSQL.hasData(name)) {
+		if (!Game.loadoutSQL.hasData(name)) {
 			List<Loadout> loadouts = new ArrayList<>();
 			for (int i = 0; i < getLoadoutLimit(); i++) {
 				loadouts.add(new Loadout(name, i + 1, primaryGunID, secondaryGunID, activePerk));
 			}
-			TDMGame.loadoutSQL.insertLoadouts(loadouts);
+			Game.loadoutSQL.insertLoadouts(loadouts);
 		}
 
-		if (!TDMGame.perksSQL.hasData(name)) {
-			TDMGame.perksSQL.insertPerk(new Nothing(), name);
+		if (!Game.perksSQL.hasData(name)) {
+			Game.perksSQL.insertPerk(new Nothing(), name);
 		}
 
-		TDMGame.gunsSQL.insertGuns(name, TDMGame.gunHandler.getDefaultGunMap().keySet());
+		Game.gunsSQL.insertGuns(name, Game.gunHandler.getDefaultGunMap().keySet());
 	}
 
 	public void setupPlayerData() {
-		playerLoadouts.putAll(TDMGame.loadoutSQL.getLoadouts(name));
-		playerPerks.addAll(TDMGame.perksSQL.getPerks(name));
-		unlockedGuns.addAll(TDMGame.gunsSQL.getGuns(name));
+		playerLoadouts.putAll(Game.loadoutSQL.getLoadouts(name));
+		playerPerks.addAll(Game.perksSQL.getPerks(name));
+		unlockedGuns.addAll(Game.gunsSQL.getGuns(name));
 	}
 
 
@@ -123,7 +123,7 @@ public class GamePlayer {
 	public void unlockGun(String gunId) {
 		if (!unlockedGuns.contains(gunId)) {
 			unlockedGuns.add(gunId);
-			TDMGame.gunsSQL.insertGun(name, gunId);
+			Game.gunsSQL.insertGun(name, gunId);
 		}
 	}
 
@@ -138,7 +138,7 @@ public class GamePlayer {
 
 	public void addPerk(Perk perk) {
 		playerPerks.add(perk);
-		TDMGame.perksSQL.insertPerk(perk, name);
+		Game.perksSQL.insertPerk(perk, name);
 	}
 
 	public String getName() {
@@ -224,8 +224,8 @@ public class GamePlayer {
 
 	public void giveActiveLoadout() {
 		Player player = this.getPlayer();
-		TDMGame.crackShotAPI.giveWeapon(player, getPrimaryGunID(), 1);
-		TDMGame.crackShotAPI.giveWeapon(player, getSecondaryGunID(), 1);
+		Game.crackShotAPI.giveWeapon(player, getPrimaryGunID(), 1);
+		Game.crackShotAPI.giveWeapon(player, getSecondaryGunID(), 1);
 
 		for (PotionEffect potionEffect : getActivePerk().getEffects()) {
 			player.addPotionEffect(potionEffect);

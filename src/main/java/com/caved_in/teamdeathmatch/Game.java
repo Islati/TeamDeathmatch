@@ -33,7 +33,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class TDMGame extends JavaPlugin {
+public class Game extends JavaPlugin {
 	public static GameSetupHandler setupHandler;
 	public static RunnableManager runnableManager;
 
@@ -107,8 +107,8 @@ public class TDMGame extends JavaPlugin {
 		for (Player player : Bukkit.getOnlinePlayers()) {
 			final String playerName = player.getName();
 			FakeboardHandler.loadPlayer(playerName);
-			if (!player.getWorld().getName().equalsIgnoreCase(TDMGame.gameMap)) {
-				player.teleport(Bukkit.getWorld(TDMGame.gameMap).getSpawnLocation());
+			if (!player.getWorld().getName().equalsIgnoreCase(Game.gameMap)) {
+				player.teleport(Bukkit.getWorld(Game.gameMap).getSpawnLocation());
 				//TDMGame.Console(event.getPlayer().getName() + " joined game and wasn't in world [" + TDMGame.gameMap + "] --> Teleported to current map");
 			}
 		}
@@ -209,7 +209,7 @@ public class TDMGame extends JavaPlugin {
 	}
 
 	public static String getGameWorld() {
-		List<String> worldList = TDMGame.worldList.getContentsAsList();
+		List<String> worldList = Game.worldList.getContentsAsList();
 		String worldName = "";
 		while (worldName.equalsIgnoreCase(gameMap)) {
 			worldName = worldList.get(new Random().nextInt(worldList.size()));

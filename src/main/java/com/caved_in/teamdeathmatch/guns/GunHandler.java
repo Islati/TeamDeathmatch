@@ -1,6 +1,6 @@
 package com.caved_in.teamdeathmatch.guns;
 
-import com.caved_in.teamdeathmatch.TDMGame;
+import com.caved_in.teamdeathmatch.Game;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,7 +25,7 @@ public class GunHandler {
 	}
 
 	public void initData() {
-		List<GunWrapper> gunData = TDMGame.configuration.getGunShopConfiguration().getGunData();
+		List<GunWrapper> gunData = Game.configuration.getGunShopConfiguration().getGunData();
 		for (GunWrapper gunWrapper : gunData) {
 			//Check if it's a default gun, and if so add it to the list of defaults
 			if (gunWrapper.isDefaultGun()) {

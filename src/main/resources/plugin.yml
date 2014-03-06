@@ -1,5 +1,5 @@
 name: TDMGame
-main: com.caved_in.teamdeathmatch.TDMGame
+main: com.caved_in.teamdeathmatch.Game
 version: 1.0
 description: KABOOM
 author: Brandon_TGC

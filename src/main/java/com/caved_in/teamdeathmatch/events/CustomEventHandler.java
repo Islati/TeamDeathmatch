@@ -2,7 +2,7 @@ package com.caved_in.teamdeathmatch.events;
 
 import com.caved_in.commons.player.PlayerHandler;
 import com.caved_in.commons.player.PlayerWrapper;
-import com.caved_in.teamdeathmatch.TDMGame;
+import com.caved_in.teamdeathmatch.Game;
 import com.caved_in.teamdeathmatch.fakeboard.FakeboardHandler;
 import com.caved_in.teamdeathmatch.fakeboard.GamePlayer;
 import com.caved_in.teamdeathmatch.fakeboard.Team;
@@ -56,7 +56,7 @@ public class CustomEventHandler {
 				final String killerName = killingPlayer.getName();
 				final String killedName = gamePlayerKilled.getName();
 
-				TDMGame.runnableManager.runTaskLater(new AssistAggregator(killedName, killerName), 5);
+				Game.runnableManager.runTaskLater(new AssistAggregator(killedName, killerName), 5);
 			}
 		}
 		PlayerHandler.clearInventory(player);
@@ -116,8 +116,8 @@ public class CustomEventHandler {
 			//Set the active loadout
 			gamePlayer.setActiveLoadout(selectedLoadout);
 			//Give them their primary and secondary weapons
-			TDMGame.crackShotAPI.giveWeapon(player, gamePlayer.getPrimaryGunID(), 1);
-			TDMGame.crackShotAPI.giveWeapon(player, gamePlayer.getSecondaryGunID(), 1);
+			Game.crackShotAPI.giveWeapon(player, gamePlayer.getPrimaryGunID(), 1);
+			Game.crackShotAPI.giveWeapon(player, gamePlayer.getSecondaryGunID(), 1);
 			Perk activePerk = gamePlayer.getActivePerk();
 			//If they've got an active perk and it isn't nothing
 			if (activePerk != null && !activePerk.getPerkName().equalsIgnoreCase("Nothing")) {

@@ -1,6 +1,6 @@
 package com.caved_in.teamdeathmatch.menus.loadoutselector.weaponselection.secondary;
 
-import com.caved_in.teamdeathmatch.TDMGame;
+import com.caved_in.teamdeathmatch.Game;
 import com.caved_in.teamdeathmatch.fakeboard.FakeboardHandler;
 import com.caved_in.teamdeathmatch.fakeboard.GamePlayer;
 import com.caved_in.teamdeathmatch.guns.GunType;
@@ -15,7 +15,7 @@ public class SecondaryWeaponRender {
 	public static List<SecondarySelectionItem> getSecondaryWeapons(GunType gunType, int loadout, Player player) {
 		List<SecondarySelectionItem> secondarySelectionItems = new ArrayList<>();
 		GamePlayer GamePlayer = FakeboardHandler.getPlayer(player);
-		for (GunWrapper gunWrapper : TDMGame.gunHandler.getGuns(gunType)) {
+		for (GunWrapper gunWrapper : Game.gunHandler.getGuns(gunType)) {
 			secondarySelectionItems.add(new SecondarySelectionItem(gunWrapper, gunWrapper.getItemStack(), loadout, GamePlayer.hasGun(gunWrapper)));
 		}
 		return secondarySelectionItems;

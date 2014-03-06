@@ -1,6 +1,6 @@
 package com.caved_in.teamdeathmatch.menus.loadoutselector.weaponselection.selectiontypemenu;
 
-import com.caved_in.teamdeathmatch.TDMGame;
+import com.caved_in.teamdeathmatch.Game;
 import me.xhawk87.PopupMenuAPI.PopupMenu;
 import me.xhawk87.PopupMenuAPI.PopupMenuAPI;
 import org.bukkit.Material;
@@ -12,10 +12,10 @@ public class SelectionMenu {
 	public SelectionMenu(int loadoutNumber) {
 		this.slotSelectionMenu = PopupMenuAPI.createMenu("Which Item?", 1);
 //		slotSelectionMenu.setMenuCloseBehaviour(LoadoutMenuCloseBehaviour.getInstance());
-		this.slotSelectionMenu.addMenuItem(new SelectionItem("Primary Weapon", new MaterialData(Material.DIAMOND_SWORD), TDMGame.LoadoutSlot.Primary, loadoutNumber),
+		this.slotSelectionMenu.addMenuItem(new SelectionItem("Primary Weapon", new MaterialData(Material.DIAMOND_SWORD), Game.LoadoutSlot.Primary, loadoutNumber),
 				0);
-		this.slotSelectionMenu.addMenuItem(new SelectionItem("Secondary Weapon", new MaterialData(Material.ARROW), TDMGame.LoadoutSlot.Secondary, loadoutNumber), 1);
-		this.slotSelectionMenu.addMenuItem(new SelectionItem("Active Perk", new MaterialData(Material.EXP_BOTTLE), TDMGame.LoadoutSlot.Tertiary, loadoutNumber), 2);
+		this.slotSelectionMenu.addMenuItem(new SelectionItem("Secondary Weapon", new MaterialData(Material.ARROW), Game.LoadoutSlot.Secondary, loadoutNumber), 1);
+		this.slotSelectionMenu.addMenuItem(new SelectionItem("Active Perk", new MaterialData(Material.EXP_BOTTLE), Game.LoadoutSlot.Tertiary, loadoutNumber), 2);
 		this.slotSelectionMenu.setExitOnClickOutside(false);
 	}
 

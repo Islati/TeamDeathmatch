@@ -4,7 +4,7 @@ import com.caved_in.commons.Messages;
 import com.caved_in.commons.commands.CommandController;
 import com.caved_in.commons.menu.HelpScreen;
 import com.caved_in.commons.player.PlayerHandler;
-import com.caved_in.teamdeathmatch.TDMGame;
+import com.caved_in.teamdeathmatch.Game;
 import com.caved_in.teamdeathmatch.TeamType;
 import com.caved_in.teamdeathmatch.config.spawns.TeamSpawnLocation;
 import com.caved_in.teamdeathmatch.fakeboard.FakeboardHandler;
@@ -48,13 +48,13 @@ public class AdminCommands {
 				//They didn't want a list of the maps
 			} else {
 				//Now we get the list of all available maps
-				List<String> worldList = TDMGame.worldList.getContentsAsList();
+				List<String> worldList = Game.worldList.getContentsAsList();
 				//Check if the world list contains the map they requested
 				if (worldList.contains(mapSelection)) {
 					//Send the player a message saying we forced a map change
 					PlayerHandler.sendMessage(sender, String.format("&aMap forced to &7%s", mapSelection));
 					//Actually change the map
-					TDMGame.gameMap = mapSelection;
+					Game.gameMap = mapSelection;
 				} else {
 					//The map they requested doesn't exist; Send them the command to see all the maps
 					PlayerHandler.sendMessage(sender, "&eDo &a/forcemap list&e to see a list of available maps");
@@ -66,7 +66,7 @@ public class AdminCommands {
 	@CommandController.CommandHandler(name = "spawns", permission = "gungame.spawn")
 	public void onSpawnCommand(Player player, String[] args) {
 		if (args.length > 0) {
-			PlayerHandler.sendMessage(player, String.format("&e%s&a has &e%s&a spawns in world &7%s", args[0].equalsIgnoreCase(TeamType.TERRORIST.toString()) ? "terrorist" : "counter terrorist", TDMGame.configuration.getSpawnConfiguration().getWorldSpawns(player.getWorld().getName()).getSpawnLocations(TeamType.getTeamByInitials(args[0])).size(), player.getWorld().getName()));
+			PlayerHandler.sendMessage(player, String.format("&e%s&a has &e%s&a spawns in world &7%s", args[0].equalsIgnoreCase(TeamType.TERRORIST.toString()) ? "terrorist" : "counter terrorist", Game.configuration.getSpawnConfiguration().getWorldSpawns(player.getWorld().getName()).getSpawnLocations(TeamType.getTeamByInitials(args[0])).size(), player.getWorld().getName()));
 		} else {
 			PlayerHandler.sendMessage(player, Messages.INVALID_COMMAND_USAGE("Team"));
 		}
@@ -109,7 +109,7 @@ public class AdminCommands {
 			switch (teamName.toLowerCase()) {
 				case "t":
 				case "ct":
-					TDMGame.configuration.getSpawnConfiguration().addSpawn(new TeamSpawnLocation(sender.getLocation(), TeamType.getTeamByInitials(teamName)));
+					Game.configuration.getSpawnConfiguration().addSpawn(new TeamSpawnLocation(sender.getLocation(), TeamType.getTeamByInitials(teamName)));
 					PlayerHandler.sendMessage(sender, "&aSpawn point for &e" + teamName + "&a has been added for the world &e" + playerWorldName);
 					break;
 				default:
@@ -149,8 +149,8 @@ public class AdminCommands {
 
 	@CommandController.SubCommandHandler(parent = "gungame", name = "reload", permission = "gungame.admin")
 	public void onGungameReloadCommand(CommandSender sender, String[] args) {
-		TDMGame.gunHandler.initData();
-		TDMGame.reloadMessages();
+		Game.gunHandler.initData();
+		Game.reloadMessages();
 		Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "shot config reload");
 		PlayerHandler.sendMessage(sender, "&a[Tunnels] GunData and ShopData reloaded");
 	}
