@@ -5,7 +5,7 @@ import com.caved_in.commons.player.PlayerHandler;
 import com.caved_in.commons.time.Cooldown;
 import com.caved_in.commons.world.WorldHandler;
 import com.caved_in.teamdeathmatch.Game;
-import com.caved_in.teamdeathmatch.TdmMessages;
+import com.caved_in.teamdeathmatch.GameMessages;
 import com.caved_in.teamdeathmatch.TeamType;
 import com.caved_in.teamdeathmatch.assists.AssistManager;
 import com.caved_in.teamdeathmatch.config.spawns.WorldSpawns;
@@ -17,8 +17,10 @@ import com.caved_in.teamdeathmatch.fakeboard.Team;
 import com.caved_in.teamdeathmatch.gamehandler.GameSetupHandler;
 import com.caved_in.teamdeathmatch.runnables.RestoreInventory;
 import com.caved_in.teamdeathmatch.scoreboard.PlayerScoreboard;
+import com.caved_in.teamdeathmatch.vote.ChatCommand;
 import com.chaseoes.forcerespawn.event.ForceRespawnEvent;
 import com.shampaggon.crackshot.events.WeaponDamageEntityEvent;
+import org.apache.commons.lang.StringUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -142,95 +144,37 @@ public class BukkitListeners implements Listener {
 		respawnInvincibilityCooldown.setOnCooldown(player.getName());
 	}
 
-//	@EventHandler
-//	public void AsynchChat(AsyncPlayerChatEvent event) {
-//		String chatMessage = event.getMessage();
-//		Player playerCastingVote = event.getPlayer();
-//		String playerCastingName = playerCastingVote.getName();
-//		if (ChatHandler.startsWith(chatMessage, "!kick")) {
-//			if (!ChatHandler.isActiveVoteKick()) {
-//				if (ChatHandler.canCastVote(playerCastingName)) {
-//					if (chatMessage.contains(" ")) {
-//						String[] Split = chatMessage.split(" ");
-//						String PlayerName = Split[1];
-//						String Reason = "";
-//						for (int I = 2; I < Split.length; I++) {
-//							Reason += Split[I] + " ";
-//						}
-//						if (!StringUtils.isEmptyOrWhitespaceOnly(Reason)) {
-//							if (!StringUtils.isEmptyOrWhitespaceOnly(PlayerName)) {
-//								if (Bukkit.getPlayer(PlayerName) != null) {
-//									ChatHandler.newVoteKick(playerCastingVote, Bukkit.getPlayer(PlayerName), Reason);
-//									TDMGame.SendMessageToAll(ChatColor.YELLOW + playerCastingName + ChatColor.WHITE + " wants to kick " + ChatColor.YELLOW +
-//											PlayerName + ChatColor.WHITE + " for '" + ChatColor.AQUA + Reason);
-//									TDMGame.SendMessageToAll("Type " + ChatColor.YELLOW + "!yes" + ChatColor.WHITE + " in chat to vote yes, " +
-//											"or " + ChatColor.YELLOW + "!no" + ChatColor.WHITE + " to vote no");
-//									TDMGame.runnableManager.runTaskLater(new Runnable() {
-//
-//										@Override
-//										public void run() {
-//											ChatHandler.handleActiveVoteKick();
-//										}
-//									}, (20 * 25));
-//								} else {
-//									playerCastingVote.sendMessage(ChatColor.RED + "This player isn't online, or simply doesn't exist.");
-//									event.setCancelled(true);
-//								}
-//							} else {
-//								playerCastingVote.sendMessage(ChatColor.RED + "You need to provide a player name to kick");
-//								event.setCancelled(true);
-//							}
-//						} else {
-//							playerCastingVote.sendMessage(ChatColor.RED + "You must provide a message for why you want to kick a player");
-//							event.setCancelled(true);
-//						}
-//					}
-//				} else {
-//					playerCastingVote.sendMessage(ChatColor.RED + "You need to wait 5 minutes before casting another vote...");
-//					event.setCancelled(true);
-//				}
-//			} else {
-//				playerCastingVote.sendMessage(ChatColor.RED + "There's currently a vote being casted, please wait until it's over...");
-//				event.setCancelled(true);
-//			}
-//		} else if (ChatHandler.startsWith(chatMessage, "!yes") || ChatHandler.startsWith(chatMessage, "!no")) {
-//			if (ChatHandler.isActiveVoteKick()) {
-//				if (!ChatHandler.hasVoted(playerCastingName)) {
-//					if (ChatHandler.startsWith(chatMessage, "!yes")) {
-//						ChatHandler.addVote(playerCastingVote, ChatHandler.VoteType.Yes);
-//					} else {
-//						ChatHandler.addVote(playerCastingVote, ChatHandler.VoteType.No);
-//					}
-//				} else {
-//					playerCastingVote.sendMessage(ChatColor.YELLOW + "You've already casted your vote..");
-//					event.setCancelled(true);
-//				}
-//			} else {
-//				playerCastingVote.sendMessage(ChatColor.YELLOW + "There's no vote currently active");
-//				event.setCancelled(true);
-//			}
-//		} else {
-//			String playerPrefix = "";
-//			if (!playerCastingVote.isOp()) {
-//				if (PlayerHandler.isPremium(playerCastingName)) {
-//					playerPrefix += ChatColor.GOLD + "[P]" + ChatColor.RESET;
-//				}
-//			} else {
-//				playerPrefix += ChatColor.AQUA + "[Owner]" + ChatColor.RESET;
-//			}
-//
-//			if (TDMGame.gameInProgress) {
-//				String playerTeam = FakeboardHandler.getPlayer(event.getPlayer()).getTeam();
-//				if (playerTeam.equalsIgnoreCase("t")) {
-//					playerPrefix += ChatColor.GRAY + "[T] " + ChatColor.RESET;
-//				} else {
-//					playerPrefix += ChatColor.GRAY + "[CT] " + ChatColor.RESET;
-//				}
-//			}
-//
-//			event.setFormat(playerPrefix + "%1$s - %2$s");
-//		}
-//	}
+	@EventHandler
+	public void onAsyncChat(AsyncPlayerChatEvent event) {
+		String message = event.getMessage();
+		Player player = event.getPlayer();
+		String playerName = player.getName();
+		//Chat commands start with a '!' delimeter, so check if it's a chat command
+		if (message.startsWith("!")) {
+			event.setCancelled(true);
+			String command = message;
+			String[] args = new String[] { };
+			if (message.contains(" ")) {
+				String[] tmp = message.split(" ");
+				if (tmp.length > 0) {
+					System.arraycopy(tmp, 1, args, 0, tmp.length - 1);
+				}
+				command = message.split(" ")[0];
+			}
+			command = StringUtils.remove(command,"!");
+			if (ChatCommand.isValidCommand(command)) {
+				ChatCommand chatCommand = ChatCommand.getCommand(command);
+				int argsRequired = chatCommand.getMinArgs();
+				if (args.length >= argsRequired) {
+					chatCommand.doCommand(player, args);
+				} else {
+					PlayerHandler.sendMessage(player, GameMessages.INSUFFICIENT_CHAT_COMMAND_ARGUMENTS(command,argsRequired));
+				}
+			} else {
+				PlayerHandler.sendMessage(player, GameMessages.INVALID_CHAT_COMMAND(command));
+			}
+		}
+	}
 
 	/*
 	@EventHandler(priority = EventPriority.LOWEST)
@@ -276,7 +220,7 @@ public class BukkitListeners implements Listener {
 
 						} catch (Exception ex) {
 							ex.printStackTrace();
-							PlayerHandler.kickPlayer(player, TdmMessages.PLAYER_DATA_LOAD_ERROR);
+							PlayerHandler.kickPlayer(player, GameMessages.PLAYER_DATA_LOAD_ERROR);
 						}
 					}
 

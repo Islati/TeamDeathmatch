@@ -10,7 +10,7 @@ import com.caved_in.teamdeathmatch.menus.loadoutselector.LoadoutCreationMenu;
 import com.caved_in.teamdeathmatch.menus.loadoutselector.LoadoutSelectionMenu;
 import org.bukkit.entity.Player;
 
-import static com.caved_in.teamdeathmatch.TdmMessages.*;
+import static com.caved_in.teamdeathmatch.GameMessages.*;
 
 
 public class PlayerCommands {
