@@ -18,6 +18,7 @@ import com.caved_in.teamdeathmatch.perks.PerkHandler;
 import com.caved_in.teamdeathmatch.runnables.MessageRunnable;
 import com.caved_in.teamdeathmatch.runnables.ScoreboardRunnable;
 import com.caved_in.teamdeathmatch.runnables.StartCheckRunnable;
+import com.google.common.collect.Iterables;
 import com.shampaggon.crackshot.CSUtility;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -146,6 +147,10 @@ public class Game extends JavaPlugin {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	public static boolean isValidMap(String mapName) {
+		return Iterables.contains(worldList.getContentsAsList(),mapName);
 	}
 
 	public static void reloadMessages() {

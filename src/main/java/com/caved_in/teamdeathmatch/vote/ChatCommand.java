@@ -1,6 +1,8 @@
 package com.caved_in.teamdeathmatch.vote;
 
+import com.caved_in.commons.Messages;
 import com.caved_in.commons.player.PlayerHandler;
+import com.caved_in.teamdeathmatch.Game;
 import com.caved_in.teamdeathmatch.GameMessages;
 import org.bukkit.entity.Player;
 
@@ -12,36 +14,66 @@ public enum ChatCommand {
 	VOTE_KICK_PLAYER("kick", 2) {
 		@Override
 		public void doCommand(Player player, String... args) {
-			VoteFactory.setActiveVote(VoteFactory.createVote(VOTE_KICK_PLAYER, player.getName(), args));
+			if (!VoteFactory.hasActiveVote()) {
+				String playerKick = args[0];
+				if (PlayerHandler.isOnline(playerKick)) {
+					VoteFactory.setActiveVote(VoteFactory.createVote(VOTE_KICK_PLAYER, player.getName(), args));
+				} else {
+					PlayerHandler.sendMessage(player, Messages.PLAYER_OFFLINE(playerKick));
+				}
+			} else {
+				PlayerHandler.sendMessage(player, GameMessages.VOTE_ALREADY_IN_PROGRESS);
+			}
 		}
 	},
 	VOTE_MAP_CHANGE("map", 1) {
 		@Override
 		public void doCommand(Player player, String... args) {
-			VoteFactory.setActiveVote(VoteFactory.createVote(VOTE_MAP_CHANGE, player.getName(),args));
+			if (!VoteFactory.hasActiveVote()) {
+				if (args.length > 0) {
+					String mapName = args[0];
+					if (Game.isValidMap(mapName)) {
+						VoteFactory.setActiveVote(VoteFactory.createVote(VOTE_MAP_CHANGE, player.getName(), args));
+					} else {
+						PlayerHandler.sendMessage(player, GameMessages.INVALID_MAP_NAME(mapName));
+					}
+				}
+			} else {
+				PlayerHandler.sendMessage(player, GameMessages.VOTE_ALREADY_IN_PROGRESS);
+			}
 		}
 	},
 	YES("yes", 0) {
 		@Override
 		public void doCommand(Player player, String... args) {
-			Vote vote = VoteFactory.getActiveVote();
-			String playerName = player.getName();
-			if (!vote.hasVoted(playerName)) {
-				vote.addYes();
+			if (VoteFactory.hasActiveVote()) {
+				Vote vote = VoteFactory.getActiveVote();
+				String playerName = player.getName();
+				if (!vote.hasVoted(playerName)) {
+					vote.addYes();
+					PlayerHandler.sendMessage(player, "&aThanks for voting!");
+				} else {
+					PlayerHandler.sendMessage(player, GameMessages.VOTE_ALREADY_CASTED);
+				}
 			} else {
-				PlayerHandler.sendMessage(player, GameMessages.VOTE_ALREADY_CASTED);
+				PlayerHandler.sendMessage(player, GameMessages.NO_ACTIVE_VOTE);
 			}
 		}
 	},
 	NO("no", 0) {
 		@Override
 		public void doCommand(Player player, String... args) {
-			Vote vote = VoteFactory.getActiveVote();
-			String playerName = player.getName();
-			if (!vote.hasVoted(playerName)) {
-				vote.addNo();
+			if (VoteFactory.hasActiveVote()) {
+				Vote vote = VoteFactory.getActiveVote();
+				String playerName = player.getName();
+				if (!vote.hasVoted(playerName)) {
+					vote.addNo();
+					PlayerHandler.sendMessage(player, "&aThanks for voting!");
+				} else {
+					PlayerHandler.sendMessage(player, GameMessages.VOTE_ALREADY_CASTED);
+				}
 			} else {
-				PlayerHandler.sendMessage(player, GameMessages.VOTE_ALREADY_CASTED);
+				PlayerHandler.sendMessage(player, GameMessages.NO_ACTIVE_VOTE);
 			}
 		}
 	};

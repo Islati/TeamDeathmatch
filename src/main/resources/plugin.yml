@@ -1,4 +1,4 @@
-name: TDMGame
+name: Team Deathmatch
 main: com.caved_in.teamdeathmatch.Game
 version: 1.0
 description: KABOOM
@@ -6,10 +6,10 @@ author: Brandon_TGC
 depend: [Multiverse-Core,TagAPI,PopupMenuAPI,CrackShot,WorldManager,ForceRespawn,Tunnels-Common]
 commands:
    setteamspawn:
-      usage: /<command> <Tagger/Player>
+      usage: /<command> <team>
       permission: op
    forcemap:
-      usage: /<command> <MAP>
+      usage: /<command> <map>
       permission: op
    forcewin:
       usage: /<command>
@@ -20,11 +20,9 @@ commands:
       usage: /<command>
    afk:
       usage: /<command>
-   vote:
-      usage: /<command>
-   gungame:
-      usage: /<command>
-   xp:
+   game:
       usage: /<command>
    spawns:
+      usage: /<command>
+   maps:
       usage: /<command>

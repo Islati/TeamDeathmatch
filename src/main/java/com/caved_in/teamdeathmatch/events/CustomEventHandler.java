@@ -22,10 +22,6 @@ public class CustomEventHandler {
 		Bukkit.getServer().getPluginManager().callEvent(event);
 	}
 
-	public static void handleChatCommandEvent(ChatCommandEvent event) {
-		callEvent(event);
-	}
-
 	public static void handleGamePlayerDeathEvent(GamePlayerDeathEvent event) {
 		callEvent(event);
 
