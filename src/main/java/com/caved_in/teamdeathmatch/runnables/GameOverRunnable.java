@@ -5,7 +5,14 @@ import com.caved_in.teamdeathmatch.Game;
 import com.caved_in.teamdeathmatch.TeamType;
 import com.caved_in.teamdeathmatch.fakeboard.FakeboardHandler;
 import com.caved_in.teamdeathmatch.gamehandler.GameSetupHandler;
-
+/**
+ * ----------------------------------------------------------------------------
+ * "THE BEER-WARE LICENSE" (Revision 42):
+ * <brandon@caved.in> wrote this file. As long as you retain this notice you
+ * can do whatever you want with this stuff. If we meet some day, and you think
+ * this stuff is worth it, you can buy me a beer in return Brandon Curtis.
+ * ----------------------------------------------------------------------------
+ */
 public class GameOverRunnable implements Runnable {
 	int gameStopTicks = 12000;
 	int gameCurrentTicks = 0;
@@ -28,8 +35,8 @@ public class GameOverRunnable implements Runnable {
 			return;
 		}
 		//Get the scores for both teams; Terrorist and CounterTerrorist
-		int terroristScore = FakeboardHandler.getTeam(TeamType.TERRORIST.toString()).getTeamScore();
-		int counterTerroristScore = FakeboardHandler.getTeam(TeamType.COUNTER_TERRORIST.toString()).getTeamScore();
+		int terroristScore = FakeboardHandler.getTeam(TeamType.TERRORIST).getTeamScore();
+		int counterTerroristScore = FakeboardHandler.getTeam(TeamType.COUNTER_TERRORIST).getTeamScore();
 
 		//Check if the game has been running for less than 10 minutes
 		boolean gameTimeExpired = gameCurrentTicks >= gameStopTicks;
@@ -37,7 +44,7 @@ public class GameOverRunnable implements Runnable {
 			GameSetupHandler.setGameInProgress(false);
 			gameCurrentTicks = 0;
 			PlayerHandler.sendMessageToAllPlayers(String.format(gameTimeExpired ? "TIMES UP; &6%s WIN!" : "&6%s WIN!", terroristScore >= 50 ? "TERRORISTS" : "COUNTER TERRORISTS"));
-			GameSetupHandler.awardEndgamePoints(terroristScore >= 50 ? TeamType.TERRORIST.toString() : TeamType.COUNTER_TERRORIST.toString(), 75, 50);
+			GameSetupHandler.awardEndgamePoints(terroristScore >= 50 ? TeamType.TERRORIST : TeamType.COUNTER_TERRORIST, 75, 50);
 			Game.runnableManager.runTaskLater(new Runnable() {
 				@Override
 				public void run() {

@@ -1,7 +1,14 @@
 package com.caved_in.teamdeathmatch;
 
 import com.caved_in.teamdeathmatch.vote.Vote;
-
+/**
+ * ----------------------------------------------------------------------------
+ * "THE BEER-WARE LICENSE" (Revision 42):
+ * <brandon@caved.in> wrote this file. As long as you retain this notice you
+ * can do whatever you want with this stuff. If we meet some day, and you think
+ * this stuff is worth it, you can buy me a beer in return Brandon Curtis.
+ * ----------------------------------------------------------------------------
+ */
 public class GameMessages {
 	private static final String PREFIX = "[Tunnels] ";
 	public static final String LOADOUT_EDIT_INSTRUCTION = "&aTo edit your loadouts, use &e/loadout";
@@ -17,11 +24,11 @@ public class GameMessages {
 	}
 
 	public static String ANNOUNCE_VOTE_MAP_CHANGE(String voteCaster, String mapName) {
-		return String.format("&e%s&a has voted that the map be switched to &e%s&a. If you want to switch the map to &e%s&a, type &e!yes&a in chat, otherwise type &e!no", voteCaster, mapName, mapName);
+		return String.format("&a%s&e has voted that the map be switched to &b%s&e. If you want to switch the map to &b%s&e, type &a!yes&e in chat, otherwise type &c!no", voteCaster, mapName, mapName);
 	}
 
 	public static String ANNOUNCE_VOTE_PLAYER_KICK(String voteCaster, String playerName, String reason) {
-		return String.format("&e%s&a wants to kick &e%s&a for '&e%s&a'; To kick &e%s&a type &6!yes&a in chat, otherwise type &6!no", voteCaster, playerName, reason, playerName);
+		return String.format("&a%s&e wants to kick &a%s&e for '&c%s&e'; To kick &a%s&e type &a!yes&e in chat, otherwise type &c!no", voteCaster, playerName, reason, playerName);
 	}
 
 	public static String VOTE_FAILED(int yesVoteCount, int noVoteCount) {

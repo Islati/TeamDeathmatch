@@ -1,33 +1,36 @@
 package com.caved_in.teamdeathmatch.fakeboard;
 
+import com.caved_in.teamdeathmatch.TeamType;
 import org.bukkit.entity.Player;
 
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-
+/**
+ * ----------------------------------------------------------------------------
+ * "THE BEER-WARE LICENSE" (Revision 42):
+ * <brandon@caved.in> wrote this file. As long as you retain this notice you
+ * can do whatever you want with this stuff. If we meet some day, and you think
+ * this stuff is worth it, you can buy me a beer in return Brandon Curtis.
+ * ----------------------------------------------------------------------------
+ */
 public class Team {
-	private String teamName;
+	private TeamType team;
 
 	private Map<String, GamePlayer> teamMembers = new HashMap<>();
 	private Boolean allowFriendlyFire = false;
 	private int teamScore = 0;
 
-	public Team(String teamName) {
-		this.teamName = teamName;
+	public Team(TeamType teamType) {
+		this.team = team;
 	}
-
-	public String getName() {
-		return teamName;
-	}
-
-	public void setName(String teamName) {
-		this.teamName = teamName;
-	}
-
 	@Override
 	public String toString() {
-		return teamName;
+		return team.toString();
+	}
+
+	public TeamType getType() {
+		return team;
 	}
 
 	public boolean hasPlayer(String playerName) {
@@ -59,7 +62,7 @@ public class Team {
 	}
 
 	public void addPlayer(GamePlayer player) {
-		player.setTeam(teamName);
+		player.setTeam(team);
 		teamMembers.put(player.getName(), player);
 	}
 

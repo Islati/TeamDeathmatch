@@ -12,7 +12,14 @@ import org.bukkit.scoreboard.DisplaySlot;
 import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Score;
 import org.bukkit.scoreboard.Scoreboard;
-
+/**
+ * ----------------------------------------------------------------------------
+ * "THE BEER-WARE LICENSE" (Revision 42):
+ * <brandon@caved.in> wrote this file. As long as you retain this notice you
+ * can do whatever you want with this stuff. If we meet some day, and you think
+ * this stuff is worth it, you can buy me a beer in return Brandon Curtis.
+ * ----------------------------------------------------------------------------
+ */
 public class PlayerScoreboard {
 	private static String dummyObjectiveName = ChatColor.RESET.toString();
 	private Objective objective;
@@ -58,8 +65,8 @@ public class PlayerScoreboard {
 		Score playerDeathScore = objective.getScore(getName(deathsScore));
 		Score playerKillStreak = objective.getScore(getName(killsStreak));
 		Score playerXPScore = objective.getScore(getName(XP));
-		terroristScore.setScore(FakeboardHandler.getTeam(TeamType.TERRORIST.toString()).getTeamScore());
-		counterTerroristScore.setScore(FakeboardHandler.getTeam(TeamType.COUNTER_TERRORIST.toString()).getTeamScore());
+		terroristScore.setScore(FakeboardHandler.getTeam(TeamType.TERRORIST).getTeamScore());
+		counterTerroristScore.setScore(FakeboardHandler.getTeam(TeamType.COUNTER_TERRORIST).getTeamScore());
 		playerKillScore.setScore(player.getPlayerScore());
 		playerDeathScore.setScore(player.getPlayerDeaths());
 		playerKillStreak.setScore(player.getKillStreak());
@@ -74,7 +81,7 @@ public class PlayerScoreboard {
 		switch (score) {
 			case CounterTerrorist:
 				Score ctScore = this.objective.getScore(getName(counterTerroristScore));
-				ctScore.setScore(FakeboardHandler.getTeam(TeamType.COUNTER_TERRORIST.toString()).getTeamScore());
+				ctScore.setScore(FakeboardHandler.getTeam(TeamType.COUNTER_TERRORIST).getTeamScore());
 				break;
 			case Deaths:
 				Score dScore = objective.getScore(getName(deathsScore));
@@ -90,7 +97,7 @@ public class PlayerScoreboard {
 				break;
 			case Terrorist:
 				Score tScore = objective.getScore(getName(terroristScore));
-				tScore.setScore(FakeboardHandler.getTeam(TeamType.TERRORIST.toString()).getTeamScore());
+				tScore.setScore(FakeboardHandler.getTeam(TeamType.TERRORIST).getTeamScore());
 				break;
 			default:
 				break;

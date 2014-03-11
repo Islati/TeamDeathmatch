@@ -11,9 +11,12 @@ import static com.caved_in.teamdeathmatch.GameMessages.LOADOUT_EDIT_INSTRUCTION;
 import static com.caved_in.teamdeathmatch.GameMessages.PLAYER_DATA_LOAD_ERROR;
 
 /**
- * Created By: TheGamersCave (Brandon)
- * Date: 09/03/14
- * Time: 12:39 PM
+ * ----------------------------------------------------------------------------
+ * "THE BEER-WARE LICENSE" (Revision 42):
+ * <brandon@caved.in> wrote this file. As long as you retain this notice you
+ * can do whatever you want with this stuff. If we meet some day, and you think
+ * this stuff is worth it, you can buy me a beer in return Brandon Curtis.
+ * ----------------------------------------------------------------------------
  */
 public class KitCommand {
 

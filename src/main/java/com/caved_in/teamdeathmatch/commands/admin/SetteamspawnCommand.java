@@ -5,7 +5,7 @@ import com.caved_in.commons.commands.CommandController;
 import com.caved_in.commons.player.PlayerHandler;
 import com.caved_in.teamdeathmatch.Game;
 import com.caved_in.teamdeathmatch.TeamType;
-import com.caved_in.teamdeathmatch.config.spawns.TeamSpawnLocation;
+import com.caved_in.teamdeathmatch.config.TeamSpawnLocation;
 import org.bukkit.entity.Player;
 
 /**

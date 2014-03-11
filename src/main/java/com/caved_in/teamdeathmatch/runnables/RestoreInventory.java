@@ -8,7 +8,14 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
-
+/**
+ * ----------------------------------------------------------------------------
+ * "THE BEER-WARE LICENSE" (Revision 42):
+ * <brandon@caved.in> wrote this file. As long as you retain this notice you
+ * can do whatever you want with this stuff. If we meet some day, and you think
+ * this stuff is worth it, you can buy me a beer in return Brandon Curtis.
+ * ----------------------------------------------------------------------------
+ */
 public class RestoreInventory implements Runnable {
 	private ItemStack[] inventory = null;
 	private String playerName = "";
@@ -25,7 +32,7 @@ public class RestoreInventory implements Runnable {
 			GamePlayer gamePlayer = FakeboardHandler.getPlayer(rPlayer);
 
 
-			rPlayer.getInventory().setArmorContents(gamePlayer.getTeam().equalsIgnoreCase("T") ? GameSetupHandler.getBlueTeamArmor() : GameSetupHandler.getRedTeamArmor());
+			rPlayer.getInventory().setArmorContents(GameSetupHandler.getTeamArmor(gamePlayer.getTeam()));
 
 			Perk playerPerk = gamePlayer.getActivePerk();
 			if (playerPerk != null) {

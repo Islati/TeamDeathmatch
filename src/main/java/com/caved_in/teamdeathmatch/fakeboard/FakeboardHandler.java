@@ -1,25 +1,40 @@
 package com.caved_in.teamdeathmatch.fakeboard;
 
 import com.caved_in.commons.player.PlayerHandler;
+import com.caved_in.teamdeathmatch.TeamType;
 import org.bukkit.entity.Player;
 
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map.Entry;
 import java.util.Set;
-
+/**
+ * ----------------------------------------------------------------------------
+ * "THE BEER-WARE LICENSE" (Revision 42):
+ * <brandon@caved.in> wrote this file. As long as you retain this notice you
+ * can do whatever you want with this stuff. If we meet some day, and you think
+ * this stuff is worth it, you can buy me a beer in return Brandon Curtis.
+ * ----------------------------------------------------------------------------
+ */
 public class FakeboardHandler {
-	private static HashMap<String, Team> activeTeams = new HashMap<>();
+	private static HashMap<TeamType, Team> activeTeams = new HashMap<>();
 	private static HashMap<String, GamePlayer> activePlayers = new HashMap<>();
 
-	public static void registerTeam(String teamName, boolean friendlyFire) {
-		Team newTeam = new Team(teamName);
+	public static void registerTeam(TeamType team, boolean friendlyFire) {
+		Team newTeam = new Team(team);
 		newTeam.setFriendlyFire(friendlyFire);
-		activeTeams.put(teamName, newTeam);
+		activeTeams.put(team, newTeam);
 	}
 
-	public static void loadPlayer(String playerName) {
-		activePlayers.put(playerName, new GamePlayer(playerName));
+	public static boolean loadPlayer(String playerName) {
+		try {
+			GamePlayer gamePlayer = GamePlayer.initPlayer(playerName);
+			activePlayers.put(playerName, gamePlayer);
+			return true;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
 	}
 
 
@@ -33,7 +48,7 @@ public class FakeboardHandler {
 
 	//Todo: Optimize this method, and clean this up
 	public static void cleanTeams() {
-		for (Entry<String, Team> teamEntry : activeTeams.entrySet()) {
+		for (Entry<TeamType, Team> teamEntry : activeTeams.entrySet()) {
 			for (Player player : getPlayers(teamEntry.getKey())) {
 				getPlayer(player).setTeam(null);
 				resetScores(player);
@@ -52,6 +67,10 @@ public class FakeboardHandler {
 		GamePlayer.resetKillstreak();
 	}
 
+	public static TeamType getPlayerTeam(Player player) {
+		return getPlayer(player).getTeam();
+	}
+
 	public static Team getTeamByPlayer(String playerName) {
 		GamePlayer player = getPlayer(playerName);
 		if (player != null) {
@@ -64,33 +83,30 @@ public class FakeboardHandler {
 		return getTeamByPlayer(player.getName());
 	}
 
-	public static boolean removeFromTeam(String team, Player player) {
+	public static boolean removeFromTeam(TeamType team, Player player) {
 		return activeTeams.get(team).removePlayer(player);
 	}
 
-	public static boolean addToTeam(String team, Player player) {
-		if (!activeTeams.get(team).hasPlayer(player)) {
-			activeTeams.get(team).addPlayer(player);
+	public static boolean addToTeam(TeamType team, Player player) {
+		return addToTeam(team, getPlayer(player));
+	}
+
+	public static boolean addToTeam(TeamType team, GamePlayer player) {
+		Team addingTeam = activeTeams.get(team);
+		if (addingTeam != null && !addingTeam.hasPlayer(player)) {
+			addingTeam.addPlayer(player);
 			return true;
 		}
 		return false;
 	}
 
-	public static boolean addToTeam(String team, GamePlayer player) {
-		if (!activeTeams.get(team).hasPlayer(player)) {
-			activeTeams.get(team).addPlayer(player);
-			return true;
-		}
-		return false;
+	public static void setFriendlyFire(TeamType team, boolean friendlyFire) {
+		activeTeams.get(team).setFriendlyFire(friendlyFire);
 	}
 
-	public static void setFriendlyFire(String teamName, boolean friendlyFire) {
-		activeTeams.get(teamName).setFriendlyFire(friendlyFire);
-	}
-
-	public static Set<Player> getPlayers(String teamName) {
+	public static Set<Player> getPlayers(TeamType team) {
 		Set<Player> players = new HashSet<>();
-		for (GamePlayer teamPlayer : activeTeams.get(teamName).getTeamMembers()) {
+		for (GamePlayer teamPlayer : activeTeams.get(team).getTeamMembers()) {
 			Player player = teamPlayer.getPlayer();
 			if (player != null) {
 				players.add(player);
@@ -99,8 +115,8 @@ public class FakeboardHandler {
 		return players;
 	}
 
-	public static Team getTeam(String teamName) {
-		return activeTeams.get(teamName);
+	public static Team getTeam(TeamType team) {
+		return activeTeams.get(team);
 	}
 
 	public static void removePlayer(Player player) {

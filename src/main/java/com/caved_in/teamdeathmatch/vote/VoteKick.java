@@ -3,8 +3,16 @@ package com.caved_in.teamdeathmatch.vote;
 import com.caved_in.commons.Commons;
 import com.caved_in.commons.Messages;
 import com.caved_in.commons.player.PlayerHandler;
+import com.caved_in.commons.utilities.StringUtil;
 import com.caved_in.teamdeathmatch.GameMessages;
-
+/**
+ * ----------------------------------------------------------------------------
+ * "THE BEER-WARE LICENSE" (Revision 42):
+ * <brandon@caved.in> wrote this file. As long as you retain this notice you
+ * can do whatever you want with this stuff. If we meet some day, and you think
+ * this stuff is worth it, you can buy me a beer in return Brandon Curtis.
+ * ----------------------------------------------------------------------------
+ */
 public class VoteKick extends Vote {
 
 	private String playerToKick;
@@ -13,8 +21,9 @@ public class VoteKick extends Vote {
 	public VoteKick(String voteCaster, String... args) {
 		super(voteCaster, args);
 		addYes();
+		setVoted(voteCaster);
 		playerToKick = args[0];
-		kickReason = args[1];
+		kickReason = StringUtil.joinString(args, " ", 1);
 	}
 
 	public String getKickReason() {

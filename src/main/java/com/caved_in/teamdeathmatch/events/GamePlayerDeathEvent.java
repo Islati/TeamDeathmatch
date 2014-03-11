@@ -10,9 +10,12 @@ import org.bukkit.inventory.ItemStack;
 import java.util.List;
 
 /**
- * Created By: TheGamersCave (Brandon)
- * Date: 15/01/14
- * Time: 9:08 AM
+ * ----------------------------------------------------------------------------
+ * "THE BEER-WARE LICENSE" (Revision 42):
+ * <brandon@caved.in> wrote this file. As long as you retain this notice you
+ * can do whatever you want with this stuff. If we meet some day, and you think
+ * this stuff is worth it, you can buy me a beer in return Brandon Curtis.
+ * ----------------------------------------------------------------------------
  */
 public class GamePlayerDeathEvent extends PlayerDeathEvent {
 	private static final HandlerList handlers = new HandlerList();

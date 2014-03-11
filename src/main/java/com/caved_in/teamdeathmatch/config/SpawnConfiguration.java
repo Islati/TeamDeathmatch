@@ -1,4 +1,4 @@
-package com.caved_in.teamdeathmatch.config.spawns;
+package com.caved_in.teamdeathmatch.config;
 
 import org.simpleframework.xml.ElementList;
 
@@ -6,28 +6,35 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+/**
+ * ----------------------------------------------------------------------------
+ * "THE BEER-WARE LICENSE" (Revision 42):
+ * <brandon@caved.in> wrote this file. As long as you retain this notice you
+ * can do whatever you want with this stuff. If we meet some day, and you think
+ * this stuff is worth it, you can buy me a beer in return Brandon Curtis.
+ * ----------------------------------------------------------------------------
+ */
 public class SpawnConfiguration {
 
-	@ElementList(name = "spawnpoints", type = XMLSpawnPoint.class)
-	private List<XMLSpawnPoint> spawnPoints = new ArrayList<>();
+	@ElementList(name = "spawnpoints", type = XmlSpawnPoint.class)
+	private List<XmlSpawnPoint> spawnPoints = new ArrayList<>();
 
 	private Map<String, WorldSpawns> worldSpawnLocations = new HashMap<>();
 
-	public SpawnConfiguration(@ElementList(name = "spawnpoints", type = XMLSpawnPoint.class)
-							  List<XMLSpawnPoint> spawnPoints) {
+	public SpawnConfiguration(@ElementList(name = "spawnpoints", type = XmlSpawnPoint.class)
+							  List<XmlSpawnPoint> spawnPoints) {
 		this.spawnPoints = spawnPoints;
 		initializeTeamSpawns();
 	}
 
 	public SpawnConfiguration() {
 		initializeTeamSpawns();
-		spawnPoints.add(new XMLSpawnPoint());
+		spawnPoints.add(new XmlSpawnPoint());
 	}
 
 	private void initializeTeamSpawns() {
 		//Loop through our loaded XMLSpawnPoints
-		for (XMLSpawnPoint xmlSpawnPoint : spawnPoints) {
+		for (XmlSpawnPoint xmlSpawnPoint : spawnPoints) {
 			//Get the world name of the selected spawn point
 			String worldName = xmlSpawnPoint.getWorldName();
 			//Check if our worldSpawns lists has an entry for this world already
@@ -56,7 +63,7 @@ public class SpawnConfiguration {
 	public void addSpawn(TeamSpawnLocation teamSpawnLocation) {
 		String worldName = teamSpawnLocation.getLocation().getWorld().getName();
 		getWorldSpawns(worldName).add(teamSpawnLocation);
-		spawnPoints.add(new XMLSpawnPoint(teamSpawnLocation));
+		spawnPoints.add(new XmlSpawnPoint(teamSpawnLocation));
 	}
 
 }

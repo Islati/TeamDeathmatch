@@ -4,8 +4,10 @@ package com.caved_in.teamdeathmatch.gamehandler;
 
 import com.caved_in.commons.Commons;
 import com.caved_in.commons.items.ItemHandler;
+import com.caved_in.commons.player.PlayerHandler;
 import com.caved_in.teamdeathmatch.Game;
 import com.caved_in.teamdeathmatch.TeamType;
+import com.caved_in.teamdeathmatch.config.WorldSpawns;
 import com.caved_in.teamdeathmatch.fakeboard.FakeboardHandler;
 import com.caved_in.teamdeathmatch.fakeboard.GamePlayer;
 import com.caved_in.teamdeathmatch.fakeboard.Team;
@@ -26,14 +28,15 @@ import org.kitteh.tag.TagAPI;
 
 import java.util.Random;
 
-//Team Deathmatch imports
-//World Manager Imports
-//Bukkit imports
-
+/**
+ * ----------------------------------------------------------------------------
+ * "THE BEER-WARE LICENSE" (Revision 42):
+ * <brandon@caved.in> wrote this file. As long as you retain this notice you
+ * can do whatever you want with this stuff. If we meet some day, and you think
+ * this stuff is worth it, you can buy me a beer in return Brandon Curtis.
+ * ----------------------------------------------------------------------------
+ */
 public class GameSetupHandler {
-	//Initials for both of the teams
-	private static String teamCounterTerrorist = TeamType.COUNTER_TERRORIST.toString();
-	private static String teamTerrorist = TeamType.TERRORIST.toString();
 	//If a game is currently in progress
 	private static boolean gameInProgress = false;
 	//Whether or not to reset the last map
@@ -75,6 +78,17 @@ public class GameSetupHandler {
 		return redTeamArmor;
 	}
 
+	public static ItemStack[] getTeamArmor(TeamType teamType) {
+		switch (teamType) {
+			case TERRORIST:
+				return blueTeamArmor;
+			case COUNTER_TERRORIST:
+				return redTeamArmor;
+			default:
+				return new ItemStack[] { };
+		}
+	}
+
 	public static void doSetup() {
 		//Teleport players to the spawn
 //		teleportPlayersToSpawn();
@@ -106,50 +120,27 @@ public class GameSetupHandler {
 	}
 
 	private static void makeGameTeams() {
-		FakeboardHandler.registerTeam(teamTerrorist, false);
-		FakeboardHandler.registerTeam(teamCounterTerrorist, false);
+		FakeboardHandler.registerTeam(TeamType.TERRORIST, false);
+		FakeboardHandler.registerTeam(TeamType.COUNTER_TERRORIST, false);
 		for (Player P : Bukkit.getOnlinePlayers()) {
 			assignPlayerTeam(P);
 		}
 	}
 
-	//TODO Optimize the fuck out of this
 	public static void assignPlayerTeam(final Player player) {
 		//Our two teams, the terrorists and counter terrorists
-		Team terroristTeam = FakeboardHandler.getTeam(teamTerrorist);
-		Team counterTerroristTeam = FakeboardHandler.getTeam(teamCounterTerrorist);
+		Team terroristTeam = FakeboardHandler.getTeam(TeamType.TERRORIST);
+		Team counterTerroristTeam = FakeboardHandler.getTeam(TeamType.COUNTER_TERRORIST);
 		//The size of each team
 		int terroristCount = terroristTeam.getTeamSize();
 		int counterTerroristCount = counterTerroristTeam.getTeamSize();
-		//Get our GamePlayer
-		GamePlayer GamePlayer = FakeboardHandler.getPlayer(player);
+		GamePlayer gamePlayer = FakeboardHandler.getPlayer(player);
 		if (terroristCount != counterTerroristCount) {
-			if (terroristCount > counterTerroristCount) {
-				//Add the player to CT
-				FakeboardHandler.addToTeam(teamCounterTerrorist, GamePlayer);
-				//Set their team to CT
-				GamePlayer.setTeam(teamCounterTerrorist);
-				player.getInventory().setArmorContents(redTeamArmor);
-			} else {
-				FakeboardHandler.addToTeam(teamTerrorist, player);
-				GamePlayer.setTeam(teamTerrorist);
-				player.getInventory().setArmorContents(blueTeamArmor);
-			}
+			//If there are more terrorists than counter terrorists, then assign to CT, otherwise T
+			setTeam(gamePlayer, terroristCount > counterTerroristCount ? TeamType.COUNTER_TERRORIST : TeamType.TERRORIST);
 		} else {
-			switch (new Random().nextInt(2)) {
-				case 0:
-					FakeboardHandler.addToTeam(teamCounterTerrorist, player);
-					GamePlayer.setTeam(teamCounterTerrorist);
-					player.getInventory().setArmorContents(redTeamArmor);
-					break;
-				case 1:
-					FakeboardHandler.addToTeam(teamTerrorist, player);
-					GamePlayer.setTeam(teamTerrorist);
-					player.getInventory().setArmorContents(blueTeamArmor);
-					break;
-				default:
-					break;
-			}
+			//There are an exact amount of terrorists and counter-terrorists, so check against a random
+			setTeam(gamePlayer, new Random().nextBoolean() ? TeamType.COUNTER_TERRORIST : TeamType.TERRORIST);
 		}
 		Game.runnableManager.runTaskOneTickLater(new Runnable() {
 			@Override
@@ -157,6 +148,12 @@ public class GameSetupHandler {
 				TagAPI.refreshPlayer(player);
 			}
 		});
+	}
+
+	public static void setTeam(GamePlayer player, TeamType team) {
+		FakeboardHandler.addToTeam(team,player);
+		player.setTeam(team);
+		player.getPlayer().getInventory().setArmorContents(getTeamArmor(team));
 	}
 
 	public static boolean isGameInProgress() {
@@ -195,35 +192,51 @@ public class GameSetupHandler {
 		return Bukkit.getOnlinePlayers().length >= 2;
 	}
 
-	public static void awardEndgamePoints(String winningTeam, double winningCash, double losingCash) {
+	public static void awardEndgamePoints(TeamType team, double winningCash, double losingCash) {
 		for (Player player : Bukkit.getOnlinePlayers()) {
-			GamePlayer GamePlayer = FakeboardHandler.getPlayer(player);
-			if (GamePlayer.getTeam() != null) {
-				Game.givePlayerTunnelsXP(player, GamePlayer.getTeam().equalsIgnoreCase(winningTeam) ? winningCash : losingCash);
+			GamePlayer gamePlayer = FakeboardHandler.getPlayer(player);
+			if (gamePlayer.getTeam() != null) {
+				Game.givePlayerTunnelsXP(player, gamePlayer.getTeam() == team ? winningCash : losingCash);
 			}
 		}
 	}
 
-	public static void openCreationMenu(Player player, boolean isAfk) {
-		GamePlayer GamePlayer = FakeboardHandler.getPlayer(player);
-		GamePlayer.setAfk(isAfk);
-		new LoadoutCreationMenu(player);
+	public static void openCreationMenu(final Player player, boolean isAfk) {
+		Commons.threadManager.runTaskOneTickLater(new Runnable() {
+			@Override
+			public void run() {
+				new LoadoutCreationMenu(player);
+			}
+		});
+		FakeboardHandler.getPlayer(player).setAfk(isAfk,false);
 	}
 
-	public static void openLoadoutSelectionMenu(Player player, boolean isAfk) {
-		GamePlayer GamePlayer = FakeboardHandler.getPlayer(player);
-		GamePlayer.setAfk(isAfk, false);
-		new LoadoutSelectionMenu(player);
+	public static void openLoadoutSelectionMenu(final Player player, boolean isAfk) {
+		Commons.threadManager.runTaskOneTickLater(new Runnable() {
+			@Override
+			public void run() {
+				new LoadoutSelectionMenu(player);
+			}
+		});
+		FakeboardHandler.getPlayer(player).setAfk(isAfk);
 	}
 
-	public static void openLoadoutOptionMenu(Player player, boolean isAfk) {
-		GamePlayer GamePlayer = FakeboardHandler.getPlayer(player);
-		GamePlayer.setAfk(isAfk, false);
-		new LoadoutActionMenu(player);
-
+	public static void openLoadoutOptionMenu(final Player player, boolean isAfk) {
+		Commons.threadManager.runTaskOneTickLater(new Runnable() {
+			@Override
+			public void run() {
+				new LoadoutActionMenu(player);
+			}
+		});
+		FakeboardHandler.getPlayer(player).setAfk(isAfk);
 	}
 
 	public static void openLoadoutOptionMenu(Player player) {
 		openLoadoutOptionMenu(player, true);
+	}
+
+	public static void teleportToRandomSpawn(Player player, TeamType teamType) {
+		WorldSpawns worldSpawns = Game.configuration.getSpawnConfiguration().getWorldSpawns(PlayerHandler.getWorldName(player));
+		PlayerHandler.teleport(player, worldSpawns.getRandomSpawn(FakeboardHandler.getPlayerTeam(player)).getLocation());
 	}
 }

@@ -3,6 +3,7 @@ package com.caved_in.teamdeathmatch.fakeboard;
 import com.caved_in.commons.player.PlayerHandler;
 import com.caved_in.commons.potions.PotionHandler;
 import com.caved_in.teamdeathmatch.Game;
+import com.caved_in.teamdeathmatch.TeamType;
 import com.caved_in.teamdeathmatch.guns.GunWrapper;
 import com.caved_in.teamdeathmatch.loadout.Loadout;
 import com.caved_in.teamdeathmatch.perks.Perk;
@@ -14,7 +15,14 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 import java.util.*;
-
+/**
+ * ----------------------------------------------------------------------------
+ * "THE BEER-WARE LICENSE" (Revision 42):
+ * <brandon@caved.in> wrote this file. As long as you retain this notice you
+ * can do whatever you want with this stuff. If we meet some day, and you think
+ * this stuff is worth it, you can buy me a beer in return Brandon Curtis.
+ * ----------------------------------------------------------------------------
+ */
 public class GamePlayer {
 	private static final int PREMIUM_LOADOUT_LIMIT = 9;
 	private static final int NON_PREMIUM_LOADOUT_LIMIT = 4;
@@ -22,7 +30,7 @@ public class GamePlayer {
 	private int loadoutSlots = NON_PREMIUM_LOADOUT_LIMIT;
 
 	private String name = "";
-	private String teamName = "";
+	private TeamType team;
 
 	private int playerScore = 0;
 	private int killStreak = 0;
@@ -60,6 +68,10 @@ public class GamePlayer {
 		//Instance the players loadout slots
 		loadoutSlots = getPlayer().isWhitelisted() ? PREMIUM_LOADOUT_LIMIT : NON_PREMIUM_LOADOUT_LIMIT;
 
+	}
+
+	public static GamePlayer initPlayer(String playerName) {
+		return new GamePlayer(playerName);
 	}
 
 	public void setPlayerScoreboard(PlayerScoreboard playerScoreboard) {
@@ -161,12 +173,12 @@ public class GamePlayer {
 		playerScore += amount;
 	}
 
-	public void setTeam(String teamName) {
-		this.teamName = teamName;
+	public void setTeam(TeamType team) {
+		this.team = team;
 	}
 
-	public String getTeam() {
-		return teamName;
+	public TeamType getTeam() {
+		return team;
 	}
 
 	public int getKillStreak() {

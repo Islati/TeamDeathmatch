@@ -1,30 +1,30 @@
 package com.caved_in.teamdeathmatch.perks;
 
-import com.caved_in.teamdeathmatch.perks.Perks.*;
-
-import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
-
+/**
+ * ----------------------------------------------------------------------------
+ * "THE BEER-WARE LICENSE" (Revision 42):
+ * <brandon@caved.in> wrote this file. As long as you retain this notice you
+ * can do whatever you want with this stuff. If we meet some day, and you think
+ * this stuff is worth it, you can buy me a beer in return Brandon Curtis.
+ * ----------------------------------------------------------------------------
+ */
 public class PerkHandler {
 	private static HashMap<String, Perk> perks = new HashMap<String, Perk>();
 
-	static {
-		initializePerk(new Jump1());
-		initializePerk(new Speed1());
-		initializePerk(new Speed2());
-		initializePerk(new Speed3());
-		initializePerk(new Nothing());
-		initializePerk(new ThunderThighs_One());
-		initializePerk(new Regen1());
+	public static void initializePerks(Perk... perks) {
+		for(Perk perk : perks) {
+			initializePerk(perk);
+		}
 	}
 
 	public static void initializePerk(Perk perk) {
 		perks.put(perk.getPerkName(), perk);
 	}
 
-	public static List<Perk> getPerks() {
-		return new ArrayList<Perk>(perks.values());
+	public static Collection<Perk> getPerks() {
+		return perks.values();
 	}
 
 	public static Perk getPerk(String perkName) {

@@ -1,10 +1,7 @@
 package com.caved_in.teamdeathmatch.config;
 
 import com.caved_in.teamdeathmatch.Game;
-import com.caved_in.teamdeathmatch.config.shop.GunShopConfiguration;
-import com.caved_in.teamdeathmatch.config.spawns.SpawnConfiguration;
 import org.simpleframework.xml.Serializer;
-import org.simpleframework.xml.core.Persister;
 
 import java.io.File;
 
@@ -16,7 +13,7 @@ public class Configuration {
 
 	private SqlConfiguration sqlConfiguration;
 
-	private static Serializer serializer = new Persister();
+	private static Serializer serializer = Game.getPersister();
 
 	public Configuration() {
 		loadConfig();

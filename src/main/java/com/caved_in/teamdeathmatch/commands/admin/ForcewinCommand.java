@@ -3,6 +3,7 @@ package com.caved_in.teamdeathmatch.commands.admin;
 import com.caved_in.commons.Messages;
 import com.caved_in.commons.commands.CommandController;
 import com.caved_in.commons.player.PlayerHandler;
+import com.caved_in.teamdeathmatch.TeamType;
 import com.caved_in.teamdeathmatch.fakeboard.FakeboardHandler;
 import org.bukkit.command.CommandSender;
 
@@ -31,7 +32,7 @@ public class ForcewinCommand {
 				case "ct":
 				case "t":
 					//The winning team is either terrorist or counterterrorist; Add 50 to their score
-					FakeboardHandler.getTeam(winningTeam).addTeamScore(50);
+					FakeboardHandler.getTeam(TeamType.getTeamByInitials(winningTeam)).addTeamScore(50);
 					break;
 				default:
 					//They didn't enter a valid team name, so send a list of available ones

@@ -7,8 +7,8 @@ import com.caved_in.commons.threading.RunnableManager;
 import com.caved_in.commons.time.Cooldown;
 import com.caved_in.teamdeathmatch.commands.CommandRegister;
 import com.caved_in.teamdeathmatch.config.*;
-import com.caved_in.teamdeathmatch.config.shop.GunShopConfiguration;
-import com.caved_in.teamdeathmatch.config.spawns.SpawnConfiguration;
+import com.caved_in.teamdeathmatch.config.GunShopConfiguration;
+import com.caved_in.teamdeathmatch.config.SpawnConfiguration;
 import com.caved_in.teamdeathmatch.fakeboard.FakeboardHandler;
 import com.caved_in.teamdeathmatch.fakeboard.GamePlayer;
 import com.caved_in.teamdeathmatch.gamehandler.GameSetupHandler;
@@ -33,7 +33,14 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
+/**
+ * ----------------------------------------------------------------------------
+ * "THE BEER-WARE LICENSE" (Revision 42):
+ * <brandon@caved.in> wrote this file. As long as you retain this notice you
+ * can do whatever you want with this stuff. If we meet some day, and you think
+ * this stuff is worth it, you can buy me a beer in return Brandon Curtis.
+ * ----------------------------------------------------------------------------
+ */
 public class Game extends JavaPlugin {
 	public static GameSetupHandler setupHandler;
 	public static RunnableManager runnableManager;
@@ -92,7 +99,7 @@ public class Game extends JavaPlugin {
 		perkHandler = new PerkHandler();
 		gunHandler = new GunHandler();
 		crackShotAPI = new CSUtility();
-		worldList = new DataHandler("plugins/TDMGame/Worldlist.txt");
+		worldList = new DataHandler("plugins/Team-Deathmatch/Worldlist.txt");
 		//(Re)load our messages
 		reloadMessages();
 		setupHandler = new GameSetupHandler();
@@ -144,6 +151,8 @@ public class Game extends JavaPlugin {
 			if (!sqlConfig.exists()) {
 				getPersister().write(new SqlConfiguration(), sqlConfig);
 			}
+
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -154,7 +163,7 @@ public class Game extends JavaPlugin {
 	}
 
 	public static void reloadMessages() {
-		messages = new DataHandler("plugins/TDMGame/Messages.txt").getContentsAsList();
+		messages = new DataHandler("plugins/Team-Deathmatch/Messages.txt").getContentsAsList();
 	}
 
 	public static void cleanActiveMap() {
