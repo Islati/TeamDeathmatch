@@ -16,7 +16,6 @@ public class Configuration {
 	private static Serializer serializer = Game.getPersister();
 
 	public Configuration() {
-		loadConfig();
 	}
 
 	public SpawnConfiguration getSpawnConfiguration() {
@@ -41,7 +40,7 @@ public class Configuration {
 		}
 	}
 
-	public void loadConfig() {
+	public Configuration init() {
 		try {
 			spawnConfiguration = serializer.read(SpawnConfiguration.class, new File(Game.SPAWN_CONFIG_FILE));
 			gunShopConfiguration = serializer.read(GunShopConfiguration.class, new File(Game.GUN_CONFIG_FILE));
@@ -49,5 +48,6 @@ public class Configuration {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return this;
 	}
 }

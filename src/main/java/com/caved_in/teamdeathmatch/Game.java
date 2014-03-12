@@ -1,5 +1,6 @@
 package com.caved_in.teamdeathmatch;
 
+import com.caved_in.commons.Commons;
 import com.caved_in.commons.file.DataHandler;
 import com.caved_in.commons.player.PlayerHandler;
 import com.caved_in.commons.player.PlayerWrapper;
@@ -7,8 +8,6 @@ import com.caved_in.commons.threading.RunnableManager;
 import com.caved_in.commons.time.Cooldown;
 import com.caved_in.teamdeathmatch.commands.CommandRegister;
 import com.caved_in.teamdeathmatch.config.*;
-import com.caved_in.teamdeathmatch.config.GunShopConfiguration;
-import com.caved_in.teamdeathmatch.config.SpawnConfiguration;
 import com.caved_in.teamdeathmatch.fakeboard.FakeboardHandler;
 import com.caved_in.teamdeathmatch.fakeboard.GamePlayer;
 import com.caved_in.teamdeathmatch.gamehandler.GameSetupHandler;
@@ -20,6 +19,7 @@ import com.caved_in.teamdeathmatch.runnables.ScoreboardRunnable;
 import com.caved_in.teamdeathmatch.runnables.StartCheckRunnable;
 import com.google.common.collect.Iterables;
 import com.shampaggon.crackshot.CSUtility;
+import org.apache.commons.io.FileUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.World;
@@ -31,8 +31,10 @@ import org.simpleframework.xml.core.Persister;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Random;
+
 /**
  * ----------------------------------------------------------------------------
  * "THE BEER-WARE LICENSE" (Revision 42):
@@ -69,6 +71,8 @@ public class Game extends JavaPlugin {
 
 	public static String SQL_CONFIG_FILE;
 
+	public static String PERKS_FOLDER;
+
 	public static Configuration configuration;
 
 	private static Serializer serializer = new Persister();
@@ -86,10 +90,11 @@ public class Game extends JavaPlugin {
 		//Spawn config file
 		SPAWN_CONFIG_FILE = DATA_FOLDER + "SpawnConfig.xml";
 		SQL_CONFIG_FILE = DATA_FOLDER + "Database.xml";
+		PERKS_FOLDER = DATA_FOLDER + "Perks/";
 		//Init our config
 		initConfig();
 		//Initialize the configuration
-		configuration = new Configuration();
+		configuration = new Configuration().init();
 		SqlConfiguration sqlConfiguration = configuration.getSqlConfiguration();
 		//Load out sql shit
 		loadoutSQL = new LoadoutSQL(sqlConfiguration);
@@ -138,6 +143,7 @@ public class Game extends JavaPlugin {
 		File gunConfig = new File(GUN_CONFIG_FILE);
 		File spawnConfig = new File(SPAWN_CONFIG_FILE);
 		File sqlConfig = new File(SQL_CONFIG_FILE);
+		File perksDirectory = new File(PERKS_FOLDER);
 		try {
 			if (!gunConfig.exists()) {
 				//This saves the configurations
@@ -152,6 +158,28 @@ public class Game extends JavaPlugin {
 				getPersister().write(new SqlConfiguration(), sqlConfig);
 			}
 
+			if (!perksDirectory.exists()) {
+				if (perksDirectory.mkdirs()) {
+					getPersister().write(new XmlPerk(), new File(PERKS_FOLDER + "Nothing.xml"));
+				} else {
+					Commons.messageConsole("Error making the perks folder");
+				}
+			}
+
+			if (perksDirectory.exists()) {
+				Collection<File> perkFiles = FileUtils.listFiles(new File(PERKS_FOLDER), null, false);
+				try {
+					for (File perkFile : perkFiles) {
+						XmlPerk perk = getPersister().read(XmlPerk.class, perkFile);
+						if (perk != null) {
+							PerkHandler.initializePerk(perk.getPerk());
+							Commons.messageConsole("Initialized the perk " + perk.getPerkName() + " from file " + perkFile.getName());
+						}
+					}
+				} catch (Exception ex) {
+					ex.printStackTrace();
+				}
+			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -159,7 +187,7 @@ public class Game extends JavaPlugin {
 	}
 
 	public static boolean isValidMap(String mapName) {
-		return Iterables.contains(worldList.getContentsAsList(),mapName);
+		return Iterables.contains(worldList.getContentsAsList(), mapName);
 	}
 
 	public static void reloadMessages() {
