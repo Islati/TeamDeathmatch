@@ -1,4 +1,4 @@
-package com.caved_in.teamdeathmatch.commands.admin;
+package com.caved_in.teamdeathmatch.commands;
 
 import com.caved_in.commons.commands.CommandController;
 import com.caved_in.commons.menu.HelpScreen;
@@ -48,7 +48,6 @@ public class GameCommand {
 	@CommandController.SubCommandHandler(parent = "game", name = "reload", permission = "game.admin")
 	public void ongameReloadCommand(CommandSender sender, String[] args) {
 		Game.gunHandler.initData();
-		Game.reloadMessages();
 		Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "shot config reload");
 		PlayerHandler.sendMessage(sender, "&a[Tunnels] GunData and ShopData reloaded");
 	}

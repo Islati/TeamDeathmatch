@@ -1,10 +1,11 @@
 package com.caved_in.teamdeathmatch.menus.loadoutselector.weaponselection.primary;
 
-import com.caved_in.commons.menus.MenuHandler;
+import com.caved_in.commons.menu.MenuHandler;
 import me.xhawk87.PopupMenuAPI.PopupMenu;
 import me.xhawk87.PopupMenuAPI.PopupMenuAPI;
 
 import java.util.List;
+
 /**
  * ----------------------------------------------------------------------------
  * "THE BEER-WARE LICENSE" (Revision 42):

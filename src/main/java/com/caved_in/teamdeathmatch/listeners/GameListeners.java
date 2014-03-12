@@ -1,6 +1,7 @@
 package com.caved_in.teamdeathmatch.listeners;
 
 import org.bukkit.event.Listener;
+
 /**
  * ----------------------------------------------------------------------------
  * "THE BEER-WARE LICENSE" (Revision 42):

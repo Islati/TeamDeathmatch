@@ -7,7 +7,7 @@ import com.caved_in.teamdeathmatch.TeamType;
 import com.caved_in.teamdeathmatch.guns.GunWrapper;
 import com.caved_in.teamdeathmatch.loadout.Loadout;
 import com.caved_in.teamdeathmatch.perks.Perk;
-import com.caved_in.teamdeathmatch.perks.Perks.Nothing;
+import com.caved_in.teamdeathmatch.perks.PerkHandler;
 import com.caved_in.teamdeathmatch.scoreboard.PlayerScoreboard;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -15,6 +15,7 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 import java.util.*;
+
 /**
  * ----------------------------------------------------------------------------
  * "THE BEER-WARE LICENSE" (Revision 42):
@@ -62,7 +63,7 @@ public class GamePlayer {
 	 */
 	public GamePlayer(String playerName) {
 		this.name = playerName;
-		this.activePerk = new Nothing();
+		this.activePerk = PerkHandler.getPerk("Nothing");
 		defaultPlayerData();
 		setupPlayerData();
 		//Instance the players loadout slots
@@ -97,7 +98,7 @@ public class GamePlayer {
 		}
 
 		if (!Game.perksSQL.hasData(name)) {
-			Game.perksSQL.insertPerk(new Nothing(), name);
+			Game.perksSQL.insertPerk(PerkHandler.getPerk("Nothing"), name);
 		}
 
 		Game.gunsSQL.insertGuns(name, Game.gunHandler.getDefaultGunMap().keySet());
@@ -189,8 +190,8 @@ public class GamePlayer {
 		killStreak = 0;
 	}
 
-	public void addKillstreak(int amount) {
-		killStreak += amount;
+	public void addKillstreak() {
+		killStreak += 1;
 	}
 
 	public String getPrimaryGunID() {

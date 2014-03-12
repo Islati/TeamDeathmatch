@@ -4,6 +4,7 @@ import com.caved_in.commons.player.PlayerHandler;
 import com.caved_in.teamdeathmatch.GameMessages;
 import com.caved_in.teamdeathmatch.vote.Vote;
 import com.caved_in.teamdeathmatch.vote.VoteFactory;
+
 /**
  * ----------------------------------------------------------------------------
  * "THE BEER-WARE LICENSE" (Revision 42):
@@ -12,7 +13,7 @@ import com.caved_in.teamdeathmatch.vote.VoteFactory;
  * this stuff is worth it, you can buy me a beer in return Brandon Curtis.
  * ----------------------------------------------------------------------------
  */
-public class ExecuteVoteRunnable implements Runnable{
+public class ExecuteVoteRunnable implements Runnable {
 	@Override
 	public void run() {
 		Vote activeVote = VoteFactory.getActiveVote();

@@ -85,7 +85,7 @@ public class GameSetupHandler {
 			case COUNTER_TERRORIST:
 				return redTeamArmor;
 			default:
-				return new ItemStack[] { };
+				return new ItemStack[]{};
 		}
 	}
 
@@ -120,8 +120,8 @@ public class GameSetupHandler {
 	}
 
 	private static void makeGameTeams() {
-		FakeboardHandler.registerTeam(TeamType.TERRORIST, false);
-		FakeboardHandler.registerTeam(TeamType.COUNTER_TERRORIST, false);
+		FakeboardHandler.registerTeam(TeamType.TERRORIST);
+		FakeboardHandler.registerTeam(TeamType.COUNTER_TERRORIST);
 		for (Player P : Bukkit.getOnlinePlayers()) {
 			assignPlayerTeam(P);
 		}
@@ -151,7 +151,7 @@ public class GameSetupHandler {
 	}
 
 	public static void setTeam(GamePlayer player, TeamType team) {
-		FakeboardHandler.addToTeam(team,player);
+		FakeboardHandler.addToTeam(team, player);
 		player.setTeam(team);
 		player.getPlayer().getInventory().setArmorContents(getTeamArmor(team));
 	}
@@ -196,7 +196,7 @@ public class GameSetupHandler {
 		for (Player player : Bukkit.getOnlinePlayers()) {
 			GamePlayer gamePlayer = FakeboardHandler.getPlayer(player);
 			if (gamePlayer.getTeam() != null) {
-				Game.givePlayerTunnelsXP(player, gamePlayer.getTeam() == team ? winningCash : losingCash);
+				Game.givePlayerTunnelsXP(player, gamePlayer.getTeam() == team ? (double) winningCash : losingCash);
 			}
 		}
 	}
@@ -208,7 +208,7 @@ public class GameSetupHandler {
 				new LoadoutCreationMenu(player);
 			}
 		});
-		FakeboardHandler.getPlayer(player).setAfk(isAfk,false);
+		FakeboardHandler.getPlayer(player).setAfk(isAfk, false);
 	}
 
 	public static void openLoadoutSelectionMenu(final Player player, boolean isAfk) {
@@ -235,7 +235,7 @@ public class GameSetupHandler {
 		openLoadoutOptionMenu(player, true);
 	}
 
-	public static void teleportToRandomSpawn(Player player, TeamType teamType) {
+	public static void teleportToRandomSpawn(Player player) {
 		WorldSpawns worldSpawns = Game.configuration.getSpawnConfiguration().getWorldSpawns(PlayerHandler.getWorldName(player));
 		PlayerHandler.teleport(player, worldSpawns.getRandomSpawn(FakeboardHandler.getPlayerTeam(player)).getLocation());
 	}

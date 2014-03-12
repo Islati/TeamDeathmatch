@@ -15,6 +15,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.potion.PotionEffect;
+
 /**
  * ----------------------------------------------------------------------------
  * "THE BEER-WARE LICENSE" (Revision 42):
@@ -52,7 +53,7 @@ public class CustomEventHandler {
 				//Add +1 score to the player who killed
 				killingPlayer.addScore(1);
 				//Add killstreak progress to the player who killed
-				killingPlayer.addKillstreak(1);
+				killingPlayer.addKillstreak();
 				KillstreakHandler.HandleKillStreak(killingPlayer);
 				gamePlayerKilled.resetKillstreak();
 
@@ -132,7 +133,4 @@ public class CustomEventHandler {
 		}
 	}
 
-	public static void handlePlayerAfkEvent(PlayerAfkEvent event) {
-
-	}
 }

@@ -2,6 +2,7 @@ package com.caved_in.teamdeathmatch.config;
 
 import com.caved_in.teamdeathmatch.Game;
 import org.simpleframework.xml.Serializer;
+import org.simpleframework.xml.core.Persister;
 
 import java.io.File;
 
@@ -13,7 +14,7 @@ public class Configuration {
 
 	private SqlConfiguration sqlConfiguration;
 
-	private static Serializer serializer = Game.getPersister();
+	private Serializer serializer = new Persister();
 
 	public Configuration() {
 	}

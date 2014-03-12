@@ -2,6 +2,7 @@ package com.caved_in.teamdeathmatch.config;
 
 import com.caved_in.teamdeathmatch.TeamType;
 import org.bukkit.Location;
+
 /**
  * ----------------------------------------------------------------------------
  * "THE BEER-WARE LICENSE" (Revision 42):

@@ -3,6 +3,7 @@ package com.caved_in.teamdeathmatch.config;
 import com.caved_in.teamdeathmatch.guns.GunType;
 import com.caved_in.teamdeathmatch.guns.GunWrapper;
 import org.simpleframework.xml.Element;
+
 /**
  * ----------------------------------------------------------------------------
  * "THE BEER-WARE LICENSE" (Revision 42):

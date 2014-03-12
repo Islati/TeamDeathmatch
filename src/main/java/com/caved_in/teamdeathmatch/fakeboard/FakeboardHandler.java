@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map.Entry;
 import java.util.Set;
+
 /**
  * ----------------------------------------------------------------------------
  * "THE BEER-WARE LICENSE" (Revision 42):
@@ -17,12 +18,12 @@ import java.util.Set;
  * ----------------------------------------------------------------------------
  */
 public class FakeboardHandler {
-	private static HashMap<TeamType, Team> activeTeams = new HashMap<>();
-	private static HashMap<String, GamePlayer> activePlayers = new HashMap<>();
+	private static final HashMap<TeamType, Team> activeTeams = new HashMap<>();
+	private static final HashMap<String, GamePlayer> activePlayers = new HashMap<>();
 
-	public static void registerTeam(TeamType team, boolean friendlyFire) {
+	public static void registerTeam(TeamType team) {
 		Team newTeam = new Team(team);
-		newTeam.setFriendlyFire(friendlyFire);
+		newTeam.setFriendlyFire(false);
 		activeTeams.put(team, newTeam);
 	}
 
@@ -85,10 +86,6 @@ public class FakeboardHandler {
 
 	public static boolean removeFromTeam(TeamType team, Player player) {
 		return activeTeams.get(team).removePlayer(player);
-	}
-
-	public static boolean addToTeam(TeamType team, Player player) {
-		return addToTeam(team, getPlayer(player));
 	}
 
 	public static boolean addToTeam(TeamType team, GamePlayer player) {

@@ -2,7 +2,6 @@ package com.caved_in.teamdeathmatch.loadout;
 
 import com.caved_in.teamdeathmatch.Game;
 import com.caved_in.teamdeathmatch.perks.Perk;
-import com.caved_in.teamdeathmatch.perks.Perks.Nothing;
 /**
  * ----------------------------------------------------------------------------
  * "THE BEER-WARE LICENSE" (Revision 42):
@@ -17,7 +16,7 @@ public class Loadout {
 
 	private int loadoutNumber = 0;
 
-	private Perk perk = new Nothing();
+	private Perk perk;
 	private String playerName = "";
 
 	public Loadout(String playerName, int loadoutNumber, String primaryWeapon, String secondaryWeapon, Perk loadoutPerk) {
@@ -53,13 +52,13 @@ public class Loadout {
 		updateSql();
 	}
 
-	public void setSecondary(String ID) {
-		this.secondary = ID;
+	public void setSecondary(String id) {
+		this.secondary = id;
 		updateSql();
 	}
 
-	public void setPerk(Perk Perk) {
-		this.perk = Perk;
+	public void setPerk(Perk perk) {
+		this.perk = perk;
 		updateSql();
 	}
 

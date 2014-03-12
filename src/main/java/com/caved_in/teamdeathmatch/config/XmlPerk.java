@@ -1,14 +1,16 @@
 package com.caved_in.teamdeathmatch.config;
 
-import com.caved_in.commons.potions.PotionHandler;
-import com.caved_in.commons.potions.PotionType;
 import com.caved_in.teamdeathmatch.perks.Perk;
 import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
-import org.simpleframework.xml.ElementArray;
+import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
+
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * ----------------------------------------------------------------------------
@@ -18,7 +20,7 @@ import org.simpleframework.xml.Root;
  * this stuff is worth it, you can buy me a beer in return Brandon Curtis.
  * ----------------------------------------------------------------------------
  */
-@Root
+@Root(name = "Perk")
 public class XmlPerk {
 	@Attribute(name = "perk_name")
 	private String perkName = "Nothing";
@@ -26,8 +28,8 @@ public class XmlPerk {
 	@Element(name = "perk_cost")
 	private int perkCost = 0;
 
-	@ElementArray(name = "perk_description", entry = "line")
-	private String[] perkDescription;
+	@ElementList(name = "perk_description", entry = "line", inline = true)
+	private List<String> perkDescription;
 
 	@Attribute(name = "is_tiered")
 	private boolean tiered = false;
@@ -35,18 +37,18 @@ public class XmlPerk {
 	@Attribute(name = "required_perk")
 	private String requiredPerk = "";
 
-	@ElementArray(name = "potion_effects")
-	private XmlPotionEffect[] xmlPotionEffects;
+	@ElementList(name = "potion_effects", entry = "effect", inline = true, type = XmlPotionEffect.class)
+	private List<XmlPotionEffect> xmlPotionEffects;
 
-	private PotionEffect[] potionEffects;
+	private Set<PotionEffect> potionEffects = new HashSet<>();
 
 	private Perk perk;
 
 	public XmlPerk(@Attribute(name = "perk_name") String perkName, @Element(name = "perk_cost") int perkCost,
-				   @ElementArray(name = "perk_description", entry = "line") String[] perkDescription,
+				   @ElementList(name = "perk_description", entry = "line", inline = true) List<String> perkDescription,
 				   @Attribute(name = "is_tiered") boolean tiered,
 				   @Attribute(name = "required_perk") String requiredPerk,
-				   @ElementArray(name = "potion_effects") XmlPotionEffect[] xmlPotionEffects) {
+				   @ElementList(name = "potion_effects", entry= "effect", inline = true, type = XmlPotionEffect.class) List<XmlPotionEffect> xmlPotionEffects) {
 		this.perkName = perkName;
 		this.perkCost = perkCost;
 		this.perkDescription = perkDescription;
@@ -57,16 +59,15 @@ public class XmlPerk {
 	}
 
 	public XmlPerk() {
-		perkDescription = new String[]{"&eIt's actually nothing.", "&lHonestly... Nothing", "&oI promise!"};
-		xmlPotionEffects = new XmlPotionEffect[]{new XmlPotionEffect("speed", 1)};
+		perkDescription = Arrays.asList("&eIt's actually nothing.", "&lHonestly... Nothing", "&oI promise!");
+		xmlPotionEffects = Arrays.asList(new XmlPotionEffect("speed", 1));
 		init();
 	}
 
 	private void init() {
 		//Parse all the potion effects and instance an array
-		potionEffects = new PotionEffect[xmlPotionEffects.length];
-		for (int i = 0; i < xmlPotionEffects.length; i++) {
-			potionEffects[i] = xmlPotionEffects[i].getPotionEffect();
+		for (XmlPotionEffect xmlPotionEffect : xmlPotionEffects) {
+			potionEffects.add(xmlPotionEffect.getPotionEffect());
 		}
 		//Generate the perk
 		if (!isTiered()) {
@@ -84,7 +85,7 @@ public class XmlPerk {
 		return tiered;
 	}
 
-	public String[] getPerkDescription() {
+	public List<String> getPerkDescription() {
 		return perkDescription;
 	}
 
@@ -96,41 +97,11 @@ public class XmlPerk {
 		return perkName;
 	}
 
-	public PotionEffect[] getPotionEffects() {
+	public Set<PotionEffect> getPotionEffects() {
 		return potionEffects;
 	}
 
 	public Perk getPerk() {
 		return perk;
-	}
-
-	private class XmlPotionEffect {
-		@Element(name = "potion_type")
-		private String alias = "";
-
-		@Attribute(name = "level")
-		private int level = 1;
-
-		private PotionEffect potionEffect;
-		private boolean valid = false;
-
-		public XmlPotionEffect(@Element(name = "potion_type") String alias, @Attribute(name = "level") int level) {
-			this.alias = alias;
-			this.level = level;
-			if (PotionType.isPotionType(alias)) {
-				valid = true;
-				this.potionEffect = PotionHandler.getPotionEffect(PotionType.getPotionType(alias).getPotionEffectType(), level, Integer.MAX_VALUE);
-			} else {
-				this.potionEffect = new PotionEffect(PotionEffectType.CONFUSION, 1, 1);
-			}
-		}
-
-		public boolean isValid() {
-			return valid;
-		}
-
-		public PotionEffect getPotionEffect() {
-			return potionEffect;
-		}
 	}
 }

@@ -1,4 +1,4 @@
-package com.caved_in.teamdeathmatch.commands.player;
+package com.caved_in.teamdeathmatch.commands;
 
 import com.caved_in.commons.commands.CommandController;
 import com.caved_in.commons.player.PlayerHandler;
@@ -6,9 +6,7 @@ import com.caved_in.teamdeathmatch.gamehandler.GameSetupHandler;
 import com.caved_in.teamdeathmatch.menus.loadoutselector.LoadoutSelectionMenu;
 import org.bukkit.entity.Player;
 
-import static com.caved_in.teamdeathmatch.GameMessages.GAME_MUST_BEGIN_LOADOUT_SELECTION;
-import static com.caved_in.teamdeathmatch.GameMessages.LOADOUT_EDIT_INSTRUCTION;
-import static com.caved_in.teamdeathmatch.GameMessages.PLAYER_DATA_LOAD_ERROR;
+import static com.caved_in.teamdeathmatch.GameMessages.*;
 
 /**
  * ----------------------------------------------------------------------------

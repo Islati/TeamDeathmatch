@@ -2,6 +2,7 @@ package com.caved_in.teamdeathmatch.perks;
 
 import java.util.Collection;
 import java.util.HashMap;
+
 /**
  * ----------------------------------------------------------------------------
  * "THE BEER-WARE LICENSE" (Revision 42):
@@ -11,16 +12,16 @@ import java.util.HashMap;
  * ----------------------------------------------------------------------------
  */
 public class PerkHandler {
-	private static HashMap<String, Perk> perks = new HashMap<String, Perk>();
+	private static HashMap<String, Perk> perks = new HashMap<>();
 
 	public static void initializePerks(Perk... perks) {
-		for(Perk perk : perks) {
+		for (Perk perk : perks) {
 			initializePerk(perk);
 		}
 	}
 
 	public static void initializePerk(Perk perk) {
-		perks.put(perk.getPerkName(), perk);
+		perks.put(perk.getPerkName().toLowerCase(), perk);
 	}
 
 	public static Collection<Perk> getPerks() {
@@ -28,7 +29,7 @@ public class PerkHandler {
 	}
 
 	public static Perk getPerk(String perkName) {
-		return perks.get(perkName);
+		return perks.get(perkName.toLowerCase());
 	}
 
 }

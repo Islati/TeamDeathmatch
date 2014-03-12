@@ -5,6 +5,7 @@ import com.caved_in.teamdeathmatch.Game;
 import org.bukkit.ChatColor;
 
 import java.util.Map;
+
 /**
  * ----------------------------------------------------------------------------
  * "THE BEER-WARE LICENSE" (Revision 42):

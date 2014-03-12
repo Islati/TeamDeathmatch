@@ -9,6 +9,7 @@ import org.bukkit.entity.Player;
 import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.Map;
+
 /**
  * ----------------------------------------------------------------------------
  * "THE BEER-WARE LICENSE" (Revision 42):
@@ -88,7 +89,7 @@ public enum ChatCommand {
 	/* This is the method that each command will call */
 	public abstract void doCommand(Player player, String... args);
 
-	private static Map<String, ChatCommand> chatCommands = new HashMap<>();
+	private static final Map<String, ChatCommand> chatCommands = new HashMap<>();
 
 	static {
 		//Instance all the valid commands
@@ -97,8 +98,8 @@ public enum ChatCommand {
 		}
 	}
 
-	private String command;
-	private int minArgs;
+	private final String command;
+	private final int minArgs;
 
 	ChatCommand(String command, int minArgs) {
 		this.command = command;

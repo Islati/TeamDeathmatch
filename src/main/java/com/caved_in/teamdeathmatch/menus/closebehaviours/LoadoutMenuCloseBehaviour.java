@@ -3,6 +3,7 @@ package com.caved_in.teamdeathmatch.menus.closebehaviours;
 import com.caved_in.teamdeathmatch.fakeboard.FakeboardHandler;
 import me.xhawk87.PopupMenuAPI.MenuCloseBehaviour;
 import org.bukkit.entity.Player;
+
 /**
  * ----------------------------------------------------------------------------
  * "THE BEER-WARE LICENSE" (Revision 42):

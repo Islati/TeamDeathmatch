@@ -1,6 +1,7 @@
 package com.caved_in.teamdeathmatch.config;
 
 import org.simpleframework.xml.Element;
+
 /**
  * ----------------------------------------------------------------------------
  * "THE BEER-WARE LICENSE" (Revision 42):

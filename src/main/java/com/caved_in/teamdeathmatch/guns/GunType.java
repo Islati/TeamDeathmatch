@@ -1,4 +1,5 @@
 package com.caved_in.teamdeathmatch.guns;
+
 /**
  * ----------------------------------------------------------------------------
  * "THE BEER-WARE LICENSE" (Revision 42):

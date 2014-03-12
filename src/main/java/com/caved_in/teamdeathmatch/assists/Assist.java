@@ -5,14 +5,10 @@ import java.util.Set;
 
 public class Assist {
 	private String attacked = "";
-	private Set<String> attackers = new HashSet<>();
+	private final Set<String> attackers = new HashSet<>();
 
 	public Assist(String attackedPlayer) {
 		this.attacked = attackedPlayer;
-	}
-
-	public String getAttacked() {
-		return attacked;
 	}
 
 	public Set<String> getAttackers() {

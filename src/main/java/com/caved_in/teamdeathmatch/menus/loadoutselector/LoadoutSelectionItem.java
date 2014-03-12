@@ -5,6 +5,7 @@ import com.caved_in.teamdeathmatch.events.LoadoutSelectEvent;
 import me.xhawk87.PopupMenuAPI.MenuItem;
 import org.bukkit.entity.Player;
 import org.bukkit.material.MaterialData;
+
 /**
  * ----------------------------------------------------------------------------
  * "THE BEER-WARE LICENSE" (Revision 42):

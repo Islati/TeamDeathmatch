@@ -2,14 +2,7 @@ package com.caved_in.teamdeathmatch.commands;
 
 import com.caved_in.commons.commands.CommandController;
 import com.caved_in.teamdeathmatch.Game;
-import com.caved_in.teamdeathmatch.commands.admin.ForcemapCommand;
-import com.caved_in.teamdeathmatch.commands.admin.ForcewinCommand;
-import com.caved_in.teamdeathmatch.commands.admin.SetteamspawnCommand;
-import com.caved_in.teamdeathmatch.commands.admin.SpawnsCommand;
-import com.caved_in.teamdeathmatch.commands.player.AfkCommand;
-import com.caved_in.teamdeathmatch.commands.player.KitCommand;
-import com.caved_in.teamdeathmatch.commands.player.LoadoutCommand;
-import com.caved_in.teamdeathmatch.commands.player.MapsCommand;
+
 /**
  * ----------------------------------------------------------------------------
  * "THE BEER-WARE LICENSE" (Revision 42):

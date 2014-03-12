@@ -2,6 +2,7 @@ package com.caved_in.teamdeathmatch.soundhandler;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+
 /**
  * ----------------------------------------------------------------------------
  * "THE BEER-WARE LICENSE" (Revision 42):
@@ -11,18 +12,6 @@ import org.bukkit.entity.Player;
  * ----------------------------------------------------------------------------
  */
 public class SoundHandler {
-	private static String TerroristsWinSound = "mob.horse.breathe2";
-	private static String CounterTerroristsWinSound = "mob.horse.breathe1";
-	private static String LockNLoad = "mob.horse.breathe3";
-	private static String Headshot = "mob.horse.hit";
-	private static String Dominating = "mob.horse.so";
-	private static String Ultrakill = "mob.horse.soft";
-	private static String Doublekill = "mob.horse.leather";
-	private static String Megakill = "mob.horse.soft";
-	private static String Rampage = "mob.horse.soft";
-	private static String Unstoppable = "mob.horse.soft";
-	private static String Godlike = "mob.horse.jump";
-	private static String HolyShit = "mob.horse.soft";
 
 	public static void playSoundForPLayer(Player Player, SoundEffect Sound) {
 		Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "playsound " + getSound(Sound) + " " + Player.getName());
@@ -47,29 +36,29 @@ public class SoundHandler {
 	public static String getSound(SoundEffect Sound) {
 		switch (Sound) {
 			case CounterTerroristsWin:
-				return CounterTerroristsWinSound;
+				return "mob.horse.breathe1";
 			case HeadShots:
-				return Headshot;
+				return "mob.horse.hit";
 			case LockAndLoad:
-				return LockNLoad;
+				return "mob.horse.breathe3";
 			case TerroristsWin:
-				return TerroristsWinSound;
+				return "mob.horse.breathe2";
 			case DoubleKill:
-				return Doublekill;
+				return "mob.horse.leather";
 			case Dominating:
-				return Dominating;
+				return "mob.horse.so";
 			case UltraKill:
-				return Ultrakill;
+				return "mob.horse.soft";
 			case MegaKill:
-				return Megakill;
+				return "mob.horse.soft";
 			case Rampage:
-				return Rampage;
+				return "mob.horse.soft";
 			case Unstoppable:
-				return Unstoppable;
+				return "mob.horse.soft";
 			case Godlike:
-				return Godlike;
+				return "mob.horse.jump";
 			case HOLYSHIT:
-				return HolyShit;
+				return "mob.horse.soft";
 			default:
 				break;
 		}

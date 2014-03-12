@@ -3,6 +3,7 @@ package com.caved_in.teamdeathmatch.config;
 import com.caved_in.teamdeathmatch.TeamType;
 
 import java.util.*;
+
 /**
  * ----------------------------------------------------------------------------
  * "THE BEER-WARE LICENSE" (Revision 42):

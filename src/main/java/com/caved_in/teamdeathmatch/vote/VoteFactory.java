@@ -3,6 +3,7 @@ package com.caved_in.teamdeathmatch.vote;
 import com.caved_in.commons.time.Cooldown;
 import com.caved_in.teamdeathmatch.Game;
 import com.caved_in.teamdeathmatch.runnables.ExecuteVoteRunnable;
+
 /**
  * ----------------------------------------------------------------------------
  * "THE BEER-WARE LICENSE" (Revision 42):
@@ -15,6 +16,7 @@ public class VoteFactory {
 	private static Vote activeVote = null;
 	private static Cooldown voteCastCooldown = new Cooldown(300);
 	private static final long VOTE_EXECUTE_DELAY = 600;
+
 	public static boolean hasActiveVote() {
 		return activeVote != null;
 	}

@@ -4,6 +4,7 @@ import com.caved_in.commons.Commons;
 import com.caved_in.commons.player.PlayerHandler;
 import com.caved_in.teamdeathmatch.Game;
 import com.caved_in.teamdeathmatch.GameMessages;
+
 /**
  * ----------------------------------------------------------------------------
  * "THE BEER-WARE LICENSE" (Revision 42):
@@ -16,7 +17,7 @@ public class VoteMap extends Vote {
 	private String map = "";
 
 	public VoteMap(String voteCaster, String[] args) {
-		super(voteCaster,args);
+		super(voteCaster, args);
 		addYes();
 		setVoted(voteCaster);
 		this.map = args[0];

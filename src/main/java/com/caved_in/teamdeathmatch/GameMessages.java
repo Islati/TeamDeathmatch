@@ -1,6 +1,7 @@
 package com.caved_in.teamdeathmatch;
 
 import com.caved_in.teamdeathmatch.vote.Vote;
+
 /**
  * ----------------------------------------------------------------------------
  * "THE BEER-WARE LICENSE" (Revision 42):
@@ -44,10 +45,10 @@ public class GameMessages {
 	}
 
 	public static String INVALID_CHAT_COMMAND(String command) {
-		return String.format("&c%s&e is not a valid chat command, please try again.",command);
+		return String.format("&c%s&e is not a valid chat command, please try again.", command);
 	}
 
 	public static String INVALID_MAP_NAME(String mapName) {
-		return String.format("&c%s&e is not a valid map name; To view a list of all the maps, use &a/maps",mapName);
+		return String.format("&c%s&e is not a valid map name; To view a list of all the maps, use &a/maps", mapName);
 	}
 }

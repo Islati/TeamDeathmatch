@@ -14,7 +14,6 @@ import com.caved_in.teamdeathmatch.gamehandler.GameSetupHandler;
 import com.caved_in.teamdeathmatch.guns.GunHandler;
 import com.caved_in.teamdeathmatch.listeners.BukkitListeners;
 import com.caved_in.teamdeathmatch.perks.PerkHandler;
-import com.caved_in.teamdeathmatch.runnables.MessageRunnable;
 import com.caved_in.teamdeathmatch.runnables.ScoreboardRunnable;
 import com.caved_in.teamdeathmatch.runnables.StartCheckRunnable;
 import com.google.common.collect.Iterables;
@@ -30,7 +29,6 @@ import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Random;
@@ -44,7 +42,6 @@ import java.util.Random;
  * ----------------------------------------------------------------------------
  */
 public class Game extends JavaPlugin {
-	public static GameSetupHandler setupHandler;
 	public static RunnableManager runnableManager;
 
 	public static int gameStartTime = 30;
@@ -60,8 +57,7 @@ public class Game extends JavaPlugin {
 	public static GunsSQL gunsSQL;
 	public static PerksSQL perksSQL;
 
-	public static Cooldown afkCooldown = new Cooldown(10);
-	public static List<String> messages = new ArrayList<String>();
+	public static final Cooldown afkCooldown = new Cooldown(10);
 
 	public static String DATA_FOLDER;
 
@@ -75,12 +71,16 @@ public class Game extends JavaPlugin {
 
 	public static Configuration configuration;
 
-	private static Serializer serializer = new Persister();
+	private static final Serializer serializer = new Persister();
 
 	@Override
 	public void onEnable() {
 		if (!getDataFolder().exists()) {
-			getDataFolder().mkdirs();
+			if (getDataFolder().mkdirs()) {
+				Commons.messageConsole("Created default data-folder for Team-Deathmatch");
+			} else {
+				Commons.messageConsole("Failed to create default data-folder for Team-Deathmatch!");
+			}
 		}
 
 		//Get the location of our data folder
@@ -92,11 +92,10 @@ public class Game extends JavaPlugin {
 		SQL_CONFIG_FILE = DATA_FOLDER + "Database.xml";
 		PERKS_FOLDER = DATA_FOLDER + "Perks/";
 		//Init our config
-		initConfig();
-		//Initialize the configuration
 		configuration = new Configuration().init();
+		initConfig();
+		//Load out database classes
 		SqlConfiguration sqlConfiguration = configuration.getSqlConfiguration();
-		//Load out sql shit
 		loadoutSQL = new LoadoutSQL(sqlConfiguration);
 		gunsSQL = new GunsSQL(sqlConfiguration);
 		perksSQL = new PerksSQL(sqlConfiguration);
@@ -105,16 +104,11 @@ public class Game extends JavaPlugin {
 		gunHandler = new GunHandler();
 		crackShotAPI = new CSUtility();
 		worldList = new DataHandler("plugins/Team-Deathmatch/Worldlist.txt");
-		//(Re)load our messages
-		reloadMessages();
-		setupHandler = new GameSetupHandler();
 		runnableManager = new RunnableManager(this);
 		rotateMap(false);
 		new CommandRegister(this);
 		new BukkitListeners(this);
 		//new Voting(this);
-		runnableManager.registerSynchRepeatTask("MessageReminder", new MessageRunnable(), 6000, 6000);
-		//runnableManager.RegisterSynchRepeatTask("SpeedBoost", new SpeedRunnable(), 20L, 40L);
 		runnableManager.registerSynchRepeatTask("ScoreboardRunnable", new ScoreboardRunnable(), 400, 40);
 
 		for (Player player : Bukkit.getOnlinePlayers()) {
@@ -122,7 +116,6 @@ public class Game extends JavaPlugin {
 			FakeboardHandler.loadPlayer(playerName);
 			if (!player.getWorld().getName().equalsIgnoreCase(Game.gameMap)) {
 				player.teleport(Bukkit.getWorld(Game.gameMap).getSpawnLocation());
-				//TDMGame.Console(event.getPlayer().getName() + " joined game and wasn't in world [" + TDMGame.gameMap + "] --> Teleported to current map");
 			}
 		}
 	}
@@ -160,18 +153,28 @@ public class Game extends JavaPlugin {
 
 			if (!perksDirectory.exists()) {
 				if (perksDirectory.mkdirs()) {
-					getPersister().write(new XmlPerk(), new File(PERKS_FOLDER + "Nothing.xml"));
+					Commons.messageConsole("Created the perks data folder for TeamDeathmatch");
 				} else {
 					Commons.messageConsole("Error making the perks folder");
 				}
 			}
 
+			File nothingPerkFile = new File(PERKS_FOLDER + "Nothing.xml");
+			if (!nothingPerkFile.exists()) {
+				getPersister().write(new XmlPerk(), new File(PERKS_FOLDER + "Nothing.xml"));
+				Commons.messageConsole("Created 'Nothing' perk in perks folder");
+			}
+
+			//Check for the perks folder, and load all perks found
 			if (perksDirectory.exists()) {
-				Collection<File> perkFiles = FileUtils.listFiles(new File(PERKS_FOLDER), null, false);
+				//Load all the files in the perks folder
+				Collection<File> perkFiles = FileUtils.listFiles(perksDirectory, null, false);
 				try {
 					for (File perkFile : perkFiles) {
+						//Try and parse the file as a perk
 						XmlPerk perk = getPersister().read(XmlPerk.class, perkFile);
 						if (perk != null) {
+							//Initialize the perk and add it to our roster
 							PerkHandler.initializePerk(perk.getPerk());
 							Commons.messageConsole("Initialized the perk " + perk.getPerkName() + " from file " + perkFile.getName());
 						}
@@ -188,10 +191,6 @@ public class Game extends JavaPlugin {
 
 	public static boolean isValidMap(String mapName) {
 		return Iterables.contains(worldList.getContentsAsList(), mapName);
-	}
-
-	public static void reloadMessages() {
-		messages = new DataHandler("plugins/Team-Deathmatch/Messages.txt").getContentsAsList();
 	}
 
 	public static void cleanActiveMap() {
@@ -224,11 +223,7 @@ public class Game extends JavaPlugin {
 	}
 
 	public static void givePlayerTunnelsXP(Player player, double amount) {
-		givePlayerTunnelsXP(player, amount, false);
-	}
-
-	public static void givePlayerTunnelsXP(Player player, double amount, boolean isSilent) {
-		givePlayerTunnelsXP(player.getName(), amount, isSilent);
+		givePlayerTunnelsXP(player.getName(), amount, false);
 	}
 
 	public static void givePlayerTunnelsXP(String playerName, double amount, boolean isSilent) {

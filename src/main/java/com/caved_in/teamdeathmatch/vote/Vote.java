@@ -2,6 +2,7 @@ package com.caved_in.teamdeathmatch.vote;
 
 import java.util.HashSet;
 import java.util.Set;
+
 /**
  * ----------------------------------------------------------------------------
  * "THE BEER-WARE LICENSE" (Revision 42):
@@ -13,14 +14,16 @@ import java.util.Set;
 public abstract class Vote implements IVote {
 
 	private String voteCaster;
+	private String[] args;
 
 	private int yesVotes = 0;
 	private int noVotes = 0;
 
 	private Set<String> alreadyVoted = new HashSet<>();
 
-	public Vote(String voteCaster,String[] args) {
+	public Vote(String voteCaster, String[] args) {
 		this.voteCaster = voteCaster;
+		this.args = args;
 	}
 
 	@Override

@@ -6,6 +6,7 @@ import org.bukkit.entity.Player;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+
 /**
  * ----------------------------------------------------------------------------
  * "THE BEER-WARE LICENSE" (Revision 42):
@@ -22,8 +23,9 @@ public class Team {
 	private int teamScore = 0;
 
 	public Team(TeamType teamType) {
-		this.team = team;
+		this.team = teamType;
 	}
+
 	@Override
 	public String toString() {
 		return team.toString();

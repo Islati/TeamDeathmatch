@@ -2,6 +2,7 @@ package com.caved_in.teamdeathmatch.perks;
 
 import org.bukkit.potion.PotionEffect;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -15,7 +16,7 @@ import java.util.Set;
 public interface IPerk {
 	public String getPerkName();
 
-	public String[] getPerkDescription();
+	public List<String> getPerkDescription();
 
 	public Set<PotionEffect> getEffects();
 

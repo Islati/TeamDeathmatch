@@ -5,6 +5,7 @@ import com.caved_in.teamdeathmatch.TeamType;
 import com.caved_in.teamdeathmatch.config.WorldSpawns;
 import com.caved_in.teamdeathmatch.fakeboard.FakeboardHandler;
 import org.bukkit.entity.Player;
+
 /**
  * ----------------------------------------------------------------------------
  * "THE BEER-WARE LICENSE" (Revision 42):

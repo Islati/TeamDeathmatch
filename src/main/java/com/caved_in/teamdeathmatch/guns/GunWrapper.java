@@ -2,6 +2,7 @@ package com.caved_in.teamdeathmatch.guns;
 
 import com.caved_in.teamdeathmatch.Game;
 import org.bukkit.inventory.ItemStack;
+
 /**
  * ----------------------------------------------------------------------------
  * "THE BEER-WARE LICENSE" (Revision 42):

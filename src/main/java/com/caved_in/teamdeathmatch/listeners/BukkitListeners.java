@@ -1,5 +1,6 @@
 package com.caved_in.teamdeathmatch.listeners;
 
+import com.caved_in.commons.Commons;
 import com.caved_in.commons.items.ItemHandler;
 import com.caved_in.commons.player.PlayerHandler;
 import com.caved_in.commons.threading.executors.BukkitExecutors;
@@ -42,15 +43,13 @@ import static org.bukkit.util.Java15Compat.Arrays_copyOfRange;
 
 public class BukkitListeners implements Listener {
 	private static final Pattern PATTERN_ON_SPACE = Pattern.compile(" ", Pattern.LITERAL);
-	private Cooldown playerCooldown = new Cooldown(2);
-	private Cooldown moveCooldown = new Cooldown(3);
-	private Cooldown respawnInvincibilityCooldown = new Cooldown(6);
-	private BukkitScheduledExecutorService sync;
-	private BukkitScheduledExecutorService async;
+	private final Cooldown playerCooldown = new Cooldown(2);
+	private final Cooldown moveCooldown = new Cooldown(3);
+	private final Cooldown respawnInvincibilityCooldown = new Cooldown(6);
+	private final BukkitScheduledExecutorService async;
 
 	public BukkitListeners(Game Plugin) {
 		Plugin.getServer().getPluginManager().registerEvents(this, Plugin);
-		sync = BukkitExecutors.newSynchronous(Plugin);
 		async = BukkitExecutors.newAsynchronous(Plugin);
 	}
 
@@ -145,9 +144,8 @@ public class BukkitListeners implements Listener {
 	@EventHandler
 	public void onRespawnEvent(PlayerRespawnEvent event) {
 		Player player = event.getPlayer();
-		GamePlayer gamePlayer = FakeboardHandler.getPlayer(player);
 		if (GameSetupHandler.isGameInProgress()) {
-			GameSetupHandler.teleportToRandomSpawn(player, gamePlayer.getTeam());
+			GameSetupHandler.teleportToRandomSpawn(player);
 		}
 		respawnInvincibilityCooldown.setOnCooldown(player.getName());
 	}
@@ -156,8 +154,7 @@ public class BukkitListeners implements Listener {
 	public void onAsyncChat(AsyncPlayerChatEvent event) {
 		String message = event.getMessage();
 		Player player = event.getPlayer();
-		String playerName = player.getName();
-		//Chat commands start with a '!' delimeter, so check if it's a chat command
+		//Chat commands start with a '!' delimiter, so check if it's a chat command
 		if (message.startsWith("!")) {
 			event.setCancelled(true);
 			String command = message;
@@ -165,23 +162,12 @@ public class BukkitListeners implements Listener {
 			if (args.length > 0) {
 				command = args[0];
 				try {
-					args = Arrays_copyOfRange(args,1,args.length);
+					args = Arrays_copyOfRange(args, 1, args.length);
 				} catch (Exception ex) {
 					ex.printStackTrace();
 				}
 			}
-//			if (message.contains(" ")) {
-//				String[] tmp = message.split(" ");
-//				if (tmp.length > 0) {
-//					try {
-//						args = new String[tmp.length - 1];
-//						System.arraycopy(tmp, 1, args, 0, tmp.length);
-//					} catch (ArrayIndexOutOfBoundsException ex) {
-//						ex.printStackTrace();
-//					}
-//				}
-//				command = message.split(" ")[0];
-//			}
+
 			command = StringUtils.remove(command, "!");
 			if (ChatCommand.isValidCommand(command)) {
 				ChatCommand chatCommand = ChatCommand.getCommand(command);
@@ -197,20 +183,9 @@ public class BukkitListeners implements Listener {
 		}
 	}
 
-	/*
-	@EventHandler(priority = EventPriority.LOWEST)
-	public void onAsyncPreJoin(AsyncPlayerPreLoginEvent event) {
-		if (event.getLoginResult() == AsyncPlayerPreLoginEvent.Result.ALLOWED) {
-			String playerName = event.getName();
-			if (TDMGame.gunsSQL.hasData(playerName)) {
-			}
-		}
-	}
-	*/
-
 	@EventHandler
 	public void onPlayerJoin(final PlayerJoinEvent event) {
-		final Player player = event.getPlayer();
+		Player player = event.getPlayer();
 		final String playerName = player.getName();
 
 		PlayerHandler.removePotionEffects(player);
@@ -224,30 +199,42 @@ public class BukkitListeners implements Listener {
 
 		Futures.addCallback(loadPlayer, new FutureCallback<Boolean>() {
 			@Override
-			public void onSuccess(Boolean playerLoaded) {
-				if (playerLoaded) {
-					if (GameSetupHandler.isGameInProgress()) {
-						GameSetupHandler.assignPlayerTeam(player);
-						GameSetupHandler.teleportToRandomSpawn(player, FakeboardHandler.getPlayerTeam(player));
-					} else {
-						if (!PlayerHandler.getWorldName(player).equalsIgnoreCase(Game.gameMap)) {
-							PlayerHandler.teleport(player, WorldHandler.getSpawn(Game.gameMap));
+			public void onSuccess(final Boolean playerLoaded) {
+				Commons.threadManager.runTaskOneTickLater(new Runnable() {
+					@Override
+					public void run() {
+						Player player = PlayerHandler.getPlayer(playerName);
+						if (playerLoaded) {
+							if (GameSetupHandler.isGameInProgress()) {
+								GameSetupHandler.assignPlayerTeam(player);
+								GameSetupHandler.teleportToRandomSpawn(player);
+							} else {
+								if (!PlayerHandler.getWorldName(player).equalsIgnoreCase(Game.gameMap)) {
+									PlayerHandler.teleport(player, WorldHandler.getSpawn(Game.gameMap));
+								}
+							}
+							PlayerHandler.clearInventory(player);
+							GameSetupHandler.givePlayerLoadoutGem(player);
+							PlayerScoreboard playerScoreboard = new PlayerScoreboard();
+							player.setScoreboard(playerScoreboard.getScoreboard());
+							FakeboardHandler.getPlayer(playerName).setPlayerScoreboard(playerScoreboard);
+						} else {
+							PlayerHandler.kickPlayer(player, GameMessages.PLAYER_DATA_LOAD_ERROR);
 						}
 					}
-					PlayerHandler.clearInventory(player);
-					GameSetupHandler.givePlayerLoadoutGem(player);
-					PlayerScoreboard playerScoreboard = new PlayerScoreboard();
-					player.setScoreboard(playerScoreboard.getScoreboard());
-					FakeboardHandler.getPlayer(playerName).setPlayerScoreboard(playerScoreboard);
-				} else {
-					PlayerHandler.kickPlayer(player, GameMessages.PLAYER_DATA_LOAD_ERROR);
-				}
+				});
 			}
 
 			@Override
 			public void onFailure(Throwable throwable) {
-				PlayerHandler.kickPlayer(player, GameMessages.PLAYER_DATA_LOAD_ERROR);
+				Commons.threadManager.runTaskOneTickLater(new Runnable() {
+					@Override
+					public void run() {
+						PlayerHandler.kickPlayer(PlayerHandler.getPlayer(playerName), GameMessages.PLAYER_DATA_LOAD_ERROR);
+					}
+				});
 				throwable.printStackTrace();
+				throwable.getCause().printStackTrace();
 			}
 		});
 	}

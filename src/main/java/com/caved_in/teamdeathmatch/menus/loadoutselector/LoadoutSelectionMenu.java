@@ -1,7 +1,7 @@
 package com.caved_in.teamdeathmatch.menus.loadoutselector;
 
 import com.caved_in.commons.items.ItemHandler;
-import com.caved_in.commons.menus.MenuHandler;
+import com.caved_in.commons.menu.MenuHandler;
 import com.caved_in.teamdeathmatch.Game;
 import com.caved_in.teamdeathmatch.fakeboard.FakeboardHandler;
 import com.caved_in.teamdeathmatch.fakeboard.GamePlayer;
@@ -13,6 +13,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.material.MaterialData;
 
 import java.util.Arrays;
+
 /**
  * ----------------------------------------------------------------------------
  * "THE BEER-WARE LICENSE" (Revision 42):

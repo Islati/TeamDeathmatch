@@ -53,13 +53,21 @@
                 <artifactId>site-maven-plugin</artifactId>
                 <version>0.9</version>
                 <configuration>
-                    <message>Maven artifacts for ${project.groupId}${project.artifactId} ${project.version}</message>  <!-- git commit message -->
-                    <noJekyll>true</noJekyll>                                  <!-- disable webpage processing -->
-                    <outputDirectory>${project.build.directory}/mvn-repo</outputDirectory> <!-- matches distribution management repository url above -->
-                    <branch>refs/heads/master</branch>                       <!-- remote branch name -->
-                    <includes><include>**/*</include></includes>
-                    <repositoryName>mvn-repo</repositoryName>      <!-- github repo name -->
-                    <repositoryOwner>TheGamersCave</repositoryOwner>    <!-- github username  -->
+                    <message>Maven artifacts for ${project.groupId}${project.artifactId} ${project.version}</message>
+                    <!-- git commit message -->
+                    <noJekyll>true</noJekyll>
+                    <!-- disable webpage processing -->
+                    <outputDirectory>${project.build.directory}/mvn-repo</outputDirectory>
+                    <!-- matches distribution management repository url above -->
+                    <branch>refs/heads/master</branch>
+                    <!-- remote branch name -->
+                    <includes>
+                        <include>**/*</include>
+                    </includes>
+                    <repositoryName>mvn-repo</repositoryName>
+                    <!-- github repo name -->
+                    <repositoryOwner>TheGamersCave</repositoryOwner>
+                    <!-- github username  -->
                     <merge>true</merge>
                 </configuration>
                 <executions>

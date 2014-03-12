@@ -4,17 +4,17 @@ package com.caved_in.teamdeathmatch.menus.loadoutselector.weaponselection.tertia
 import com.caved_in.commons.player.PlayerHandler;
 import com.caved_in.commons.player.PlayerWrapper;
 import com.caved_in.commons.utilities.StringUtil;
-import com.caved_in.teamdeathmatch.Game;
 import com.caved_in.teamdeathmatch.fakeboard.FakeboardHandler;
 import com.caved_in.teamdeathmatch.fakeboard.GamePlayer;
 import com.caved_in.teamdeathmatch.perks.Perk;
+import com.caved_in.teamdeathmatch.perks.PerkHandler;
 import me.xhawk87.PopupMenuAPI.MenuItem;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.material.MaterialData;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+
 /**
  * ----------------------------------------------------------------------------
  * "THE BEER-WARE LICENSE" (Revision 42):
@@ -37,8 +37,8 @@ public class PerkMenuItem extends MenuItem {
 		this.perkName = perk.getPerkName();
 		this.perkPurchaseCost = perk.getPurchaseCost();
 		this.loadout = loadout;
-		ArrayList<String> itemDescription = new ArrayList<String>();
-		itemDescription.addAll(Arrays.asList(perk.getPerkDescription()));
+		ArrayList<String> itemDescription = new ArrayList<>();
+		itemDescription.addAll(perk.getPerkDescription());
 		itemDescription.add("");
 		itemDescription.add(StringUtil.formatColorCodes(isPurchased ? "&aYou've unlocked this perk!" : "&bCosts " + perkPurchaseCost + " XP to unlock"));
 		this.setDescriptions(itemDescription);
@@ -54,7 +54,7 @@ public class PerkMenuItem extends MenuItem {
 		} else {
 			if (!this.hasClicked) {
 				if (this.perk.isTieredPerk()) {
-					if (!GamePlayer.hasPerk(Game.perkHandler.getPerk(perk.getPerkRequired()))) {
+					if (!GamePlayer.hasPerk(PerkHandler.getPerk(perk.getPerkRequired()))) {
 						player.sendMessage(StringUtil.formatColorCodes("&e" + perkName + " &cis a tiered perk, you need to purchase &e" + perk.getPerkRequired
 								() + "&c before you can purchase this one"));
 					} else {

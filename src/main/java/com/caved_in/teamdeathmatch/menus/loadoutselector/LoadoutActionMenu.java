@@ -2,6 +2,7 @@ package com.caved_in.teamdeathmatch.menus.loadoutselector;
 
 import me.xhawk87.PopupMenuAPI.PopupMenu;
 import org.bukkit.entity.Player;
+
 /**
  * ----------------------------------------------------------------------------
  * "THE BEER-WARE LICENSE" (Revision 42):

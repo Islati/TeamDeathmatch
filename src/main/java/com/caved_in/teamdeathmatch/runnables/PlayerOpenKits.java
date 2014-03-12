@@ -4,6 +4,7 @@ import com.caved_in.commons.Commons;
 import com.caved_in.teamdeathmatch.gamehandler.GameSetupHandler;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+
 /**
  * ----------------------------------------------------------------------------
  * "THE BEER-WARE LICENSE" (Revision 42):
@@ -17,7 +18,7 @@ public class PlayerOpenKits implements Runnable {
 	public void run() {
 		Commons.messageConsole("&eForcing players to open their loadout selection menus");
 		for (Player player : Bukkit.getOnlinePlayers()) {
-			GameSetupHandler.openLoadoutSelectionMenu(player,true);
+			GameSetupHandler.openLoadoutSelectionMenu(player, true);
 		}
 	}
 }

@@ -5,6 +5,7 @@ import com.caved_in.commons.Messages;
 import com.caved_in.commons.player.PlayerHandler;
 import com.caved_in.commons.utilities.StringUtil;
 import com.caved_in.teamdeathmatch.GameMessages;
+
 /**
  * ----------------------------------------------------------------------------
  * "THE BEER-WARE LICENSE" (Revision 42):
@@ -39,15 +40,15 @@ public class VoteKick extends Vote {
 		Commons.threadManager.runTaskOneTickLater(new Runnable() {
 			@Override
 			public void run() {
-				PlayerHandler.kickPlayer(PlayerHandler.getPlayer(playerToKick),kickReason);
-				PlayerHandler.sendMessageToAllPlayers(Messages.PLAYER_KICKED(playerToKick,kickReason));
+				PlayerHandler.kickPlayer(PlayerHandler.getPlayer(playerToKick), kickReason);
+				PlayerHandler.sendMessageToAllPlayers(Messages.PLAYER_KICKED(playerToKick, kickReason));
 			}
 		});
 	}
 
 	@Override
 	public void announce() {
-		String voteKick = GameMessages.ANNOUNCE_VOTE_PLAYER_KICK(getCaster(),playerToKick,kickReason);
+		String voteKick = GameMessages.ANNOUNCE_VOTE_PLAYER_KICK(getCaster(), playerToKick, kickReason);
 		PlayerHandler.sendMessageToAllPlayers(voteKick);
 	}
 }

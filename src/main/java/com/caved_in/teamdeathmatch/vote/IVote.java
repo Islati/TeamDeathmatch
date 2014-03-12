@@ -1,4 +1,5 @@
 package com.caved_in.teamdeathmatch.vote;
+
 /**
  * ----------------------------------------------------------------------------
  * "THE BEER-WARE LICENSE" (Revision 42):

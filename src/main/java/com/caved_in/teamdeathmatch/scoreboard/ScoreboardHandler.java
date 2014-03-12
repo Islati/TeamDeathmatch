@@ -4,6 +4,7 @@ import com.caved_in.teamdeathmatch.TeamType;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.scoreboard.*;
+
 /**
  * ----------------------------------------------------------------------------
  * "THE BEER-WARE LICENSE" (Revision 42):
@@ -13,12 +14,11 @@ import org.bukkit.scoreboard.*;
  * ----------------------------------------------------------------------------
  */
 public class ScoreboardHandler {
-	private ScoreboardManager scoreboardManager;
 	private Scoreboard scoreboard;
 	private Objective objective;
 
 	public ScoreboardHandler() {
-		scoreboardManager = Bukkit.getScoreboardManager();
+		ScoreboardManager scoreboardManager = Bukkit.getScoreboardManager();
 		scoreboard = scoreboardManager.getNewScoreboard();
 		objective = scoreboard.registerNewObjective("teamkilz", "dummy");
 		objective.setDisplaySlot(DisplaySlot.SIDEBAR);

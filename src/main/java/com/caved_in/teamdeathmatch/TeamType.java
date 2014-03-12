@@ -3,6 +3,7 @@ package com.caved_in.teamdeathmatch;
 import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.Map;
+
 /**
  * ----------------------------------------------------------------------------
  * "THE BEER-WARE LICENSE" (Revision 42):
@@ -16,7 +17,7 @@ public enum TeamType {
 	COUNTER_TERRORIST("ct", "counterterrorist", "counter_terrorist", "c_t");
 
 	private String[] teamInitials;
-	private static Map<String, TeamType> teamMap = new HashMap<String, TeamType>();
+	private static Map<String, TeamType> teamMap = new HashMap<>();
 
 	static {
 		for (TeamType teamType : EnumSet.allOf(TeamType.class)) {

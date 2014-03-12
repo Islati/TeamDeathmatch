@@ -5,6 +5,7 @@ import com.caved_in.teamdeathmatch.Game;
 import com.caved_in.teamdeathmatch.TeamType;
 import com.caved_in.teamdeathmatch.fakeboard.FakeboardHandler;
 import com.caved_in.teamdeathmatch.gamehandler.GameSetupHandler;
+
 /**
  * ----------------------------------------------------------------------------
  * "THE BEER-WARE LICENSE" (Revision 42):
@@ -14,7 +15,7 @@ import com.caved_in.teamdeathmatch.gamehandler.GameSetupHandler;
  * ----------------------------------------------------------------------------
  */
 public class GameOverRunnable implements Runnable {
-	int gameStopTicks = 12000;
+	private static final int gameStopTicks = 12000;
 	int gameCurrentTicks = 0;
 
 	@Override
