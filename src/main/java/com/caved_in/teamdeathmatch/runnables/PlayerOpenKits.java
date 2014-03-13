@@ -16,7 +16,6 @@ import org.bukkit.entity.Player;
 public class PlayerOpenKits implements Runnable {
 	@Override
 	public void run() {
-		Commons.messageConsole("&eForcing players to open their loadout selection menus");
 		for (Player player : Bukkit.getOnlinePlayers()) {
 			GameSetupHandler.openLoadoutSelectionMenu(player, true);
 		}

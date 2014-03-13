@@ -2,10 +2,12 @@ package com.caved_in.teamdeathmatch.fakeboard;
 
 import com.caved_in.commons.player.PlayerHandler;
 import com.caved_in.teamdeathmatch.TeamType;
+import com.google.common.collect.Sets;
 import org.bukkit.entity.Player;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
@@ -18,8 +20,8 @@ import java.util.Set;
  * ----------------------------------------------------------------------------
  */
 public class FakeboardHandler {
-	private static final HashMap<TeamType, Team> activeTeams = new HashMap<>();
-	private static final HashMap<String, GamePlayer> activePlayers = new HashMap<>();
+	private static final Map<TeamType, Team> activeTeams = new HashMap<>();
+	private static final Map<String, GamePlayer> activePlayers = new HashMap<>();
 
 	public static void registerTeam(TeamType team) {
 		Team newTeam = new Team(team);
@@ -110,6 +112,10 @@ public class FakeboardHandler {
 			}
 		}
 		return players;
+	}
+
+	public static Set<GamePlayer> getOnlineGameplayers() {
+		return Sets.newHashSet(activePlayers.values());
 	}
 
 	public static Team getTeam(TeamType team) {

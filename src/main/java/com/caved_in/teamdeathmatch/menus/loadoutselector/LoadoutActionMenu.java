@@ -18,5 +18,6 @@ public class LoadoutActionMenu extends PopupMenu {
 		addMenuItem(new LoadoutItem(LoadoutItem.LoadoutAction.SELECT), 0);
 		addMenuItem(new LoadoutItem(LoadoutItem.LoadoutAction.EDIT), 1);
 		openMenu(player);
+
 	}
 }

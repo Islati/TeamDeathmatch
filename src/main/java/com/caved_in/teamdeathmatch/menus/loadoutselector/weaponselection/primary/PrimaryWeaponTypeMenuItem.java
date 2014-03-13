@@ -28,7 +28,6 @@ public class PrimaryWeaponTypeMenuItem extends MenuItem {
 	@Override
 	public void onClick(Player player) {
 		this.getMenu().switchMenu(player, PrimarySelectionMenu.getMenu(PrimaryWeaponRender.getPrimaryWeapons(this.gunType, this.loadoutNumber, player)));
-		player.sendMessage(ChatColor.GREEN + "Select your primary weapon");
 	}
 
 }

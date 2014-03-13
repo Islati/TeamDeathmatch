@@ -20,14 +20,14 @@ public class PerkSelectionMenu {
 
 	public PerkSelectionMenu(int loadoutSlot, Player player) {
 		List<PerkMenuItem> perkMenuItems = PerkRender.renderPerks(loadoutSlot, player);
-		this.perkMenu = PopupMenuAPI.createMenu("Select a perk!", MenuHandler.getRows(perkMenuItems.size()));
+		perkMenu = PopupMenuAPI.createMenu("Select a perk!", MenuHandler.getRows(perkMenuItems.size()));
 		for (int I = 0; I < perkMenuItems.size(); I++) {
-			this.perkMenu.addMenuItem(perkMenuItems.get(I), I);
+			perkMenu.addMenuItem(perkMenuItems.get(I), I);
 		}
-		this.perkMenu.setExitOnClickOutside(false);
+		perkMenu.setExitOnClickOutside(false);
 	}
 
 	public PopupMenu getMenu() {
-		return this.perkMenu;
+		return perkMenu;
 	}
 }

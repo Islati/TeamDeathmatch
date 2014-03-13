@@ -48,7 +48,7 @@ public class XmlPerk {
 				   @ElementList(name = "perk_description", entry = "line", inline = true) List<String> perkDescription,
 				   @Attribute(name = "is_tiered") boolean tiered,
 				   @Attribute(name = "required_perk") String requiredPerk,
-				   @ElementList(name = "potion_effects", entry= "effect", inline = true, type = XmlPotionEffect.class) List<XmlPotionEffect> xmlPotionEffects) {
+				   @ElementList(name = "potion_effects", entry = "effect", inline = true, type = XmlPotionEffect.class) List<XmlPotionEffect> xmlPotionEffects) {
 		this.perkName = perkName;
 		this.perkCost = perkCost;
 		this.perkDescription = perkDescription;

@@ -45,7 +45,7 @@ public class PrimarySelectionItem extends MenuItem {
 	public void onClick(Player player) {
 		GamePlayer gamePlayer = FakeboardHandler.getPlayer(player);
 		//Check if its a default gun or they already purchased it
-		if (gunData.isDefaultGun() || gamePlayer.hasGun(gunID) || gunData.getGunPrice() == 0) {
+		if (gamePlayer.hasGun(gunID) || gunData.isDefaultGun() || gunData.getGunPrice() == 0) {
 			gamePlayer.getLoadout(loadoutNumber).setPrimary(gunID);
 			PlayerHandler.sendMessage(player, String.format("&aThe &e%s&a is now your primary weapon for loadout #&e%s", getText(), loadoutNumber));
 			getMenu().switchMenu(player, new LoadoutCreationMenu().getMenu(player));

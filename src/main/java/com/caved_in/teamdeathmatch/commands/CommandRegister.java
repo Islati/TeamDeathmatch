@@ -18,8 +18,6 @@ public class CommandRegister {
 		CommandController.registerCommands(Plugin, new SetteamspawnCommand());
 		CommandController.registerCommands(Plugin, new SpawnsCommand());
 		CommandController.registerCommands(Plugin, new AfkCommand());
-		CommandController.registerCommands(Plugin, new KitCommand());
-		CommandController.registerCommands(Plugin, new LoadoutCommand());
 		CommandController.registerCommands(Plugin, new MapsCommand());
 	}
 }

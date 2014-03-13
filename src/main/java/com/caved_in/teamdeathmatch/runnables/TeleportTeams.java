@@ -1,10 +1,10 @@
 package com.caved_in.teamdeathmatch.runnables;
 
+import com.caved_in.commons.player.PlayerHandler;
 import com.caved_in.teamdeathmatch.Game;
-import com.caved_in.teamdeathmatch.TeamType;
 import com.caved_in.teamdeathmatch.config.WorldSpawns;
 import com.caved_in.teamdeathmatch.fakeboard.FakeboardHandler;
-import org.bukkit.entity.Player;
+import com.caved_in.teamdeathmatch.fakeboard.GamePlayer;
 
 /**
  * ----------------------------------------------------------------------------
@@ -14,12 +14,14 @@ import org.bukkit.entity.Player;
  * this stuff is worth it, you can buy me a beer in return Brandon Curtis.
  * ----------------------------------------------------------------------------
  */
-public class TeleportCT implements Runnable {
+public class TeleportTeams implements Runnable {
+
 	@Override
 	public void run() {
 		WorldSpawns worldSpawns = Game.configuration.getSpawnConfiguration().getWorldSpawns(Game.gameMap);
-		for (Player player : FakeboardHandler.getPlayers(TeamType.COUNTER_TERRORIST)) {
-			player.teleport(worldSpawns.getRandomSpawn(TeamType.COUNTER_TERRORIST).getLocation());
+		for(GamePlayer gamePlayer : FakeboardHandler.getOnlineGameplayers()) {
+			PlayerHandler.teleport(gamePlayer.getPlayer(), worldSpawns.getRandomSpawn(gamePlayer.getTeam()).getLocation());
 		}
 	}
+
 }

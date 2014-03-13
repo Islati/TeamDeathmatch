@@ -15,8 +15,7 @@ import com.caved_in.teamdeathmatch.menus.loadoutselector.LoadoutActionMenu;
 import com.caved_in.teamdeathmatch.menus.loadoutselector.LoadoutCreationMenu;
 import com.caved_in.teamdeathmatch.menus.loadoutselector.LoadoutSelectionMenu;
 import com.caved_in.teamdeathmatch.runnables.PlayerOpenKits;
-import com.caved_in.teamdeathmatch.runnables.TeleportCT;
-import com.caved_in.teamdeathmatch.runnables.TeleportTerrorist;
+import com.caved_in.teamdeathmatch.runnables.TeleportTeams;
 import com.caved_in.worldmanager.WorldManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -47,8 +46,7 @@ public class GameSetupHandler {
 	private static boolean isForceMap = false;
 
 	//Threads to handle game setup
-	private static Runnable teleportTerrorists = new TeleportTerrorist();
-	private static Runnable teleportCounterTerrorists = new TeleportCT();
+	private static Runnable teleportTeams = new TeleportTeams();
 	private static Runnable playerOpenKits = new PlayerOpenKits();
 
 	//Blue and Red team armors
@@ -70,14 +68,6 @@ public class GameSetupHandler {
 
 	}
 
-	public static ItemStack[] getBlueTeamArmor() {
-		return blueTeamArmor;
-	}
-
-	public static ItemStack[] getRedTeamArmor() {
-		return redTeamArmor;
-	}
-
 	public static ItemStack[] getTeamArmor(TeamType teamType) {
 		switch (teamType) {
 			case TERRORIST:
@@ -90,17 +80,14 @@ public class GameSetupHandler {
 	}
 
 	public static void doSetup() {
-		//Teleport players to the spawn
-//		teleportPlayersToSpawn();
 		//Set a game in progress
 		setGameInProgress(true);
 		//Make all the teams
 		makeGameTeams();
 		//Teleport terrorists and Counter Terrorists
-		Game.runnableManager.runTaskNow(teleportTerrorists);
-		Game.runnableManager.runTaskNow(teleportCounterTerrorists);
+		Game.runnableManager.runTaskNow(teleportTeams);
 		//Make all the players open their "kits"
-		Game.runnableManager.runTaskLater(playerOpenKits, 10L);
+		Game.runnableManager.runTaskLater(playerOpenKits,15L);
 		//If we want to reset the last map
 		if (isResetLastMap()) {
 			//Get the maps name
@@ -122,8 +109,8 @@ public class GameSetupHandler {
 	private static void makeGameTeams() {
 		FakeboardHandler.registerTeam(TeamType.TERRORIST);
 		FakeboardHandler.registerTeam(TeamType.COUNTER_TERRORIST);
-		for (Player P : Bukkit.getOnlinePlayers()) {
-			assignPlayerTeam(P);
+		for (Player p : Bukkit.getOnlinePlayers()) {
+			assignPlayerTeam(p);
 		}
 	}
 
@@ -196,39 +183,24 @@ public class GameSetupHandler {
 		for (Player player : Bukkit.getOnlinePlayers()) {
 			GamePlayer gamePlayer = FakeboardHandler.getPlayer(player);
 			if (gamePlayer.getTeam() != null) {
-				Game.givePlayerTunnelsXP(player, gamePlayer.getTeam() == team ? (double) winningCash : losingCash);
+				Game.givePlayerTunnelsXP(player, gamePlayer.getTeam() == team ? winningCash : losingCash);
 			}
 		}
 	}
 
 	public static void openCreationMenu(final Player player, boolean isAfk) {
-		Commons.threadManager.runTaskOneTickLater(new Runnable() {
-			@Override
-			public void run() {
-				new LoadoutCreationMenu(player);
-			}
-		});
+		new LoadoutCreationMenu(player);
 		FakeboardHandler.getPlayer(player).setAfk(isAfk, false);
 	}
 
 	public static void openLoadoutSelectionMenu(final Player player, boolean isAfk) {
-		Commons.threadManager.runTaskOneTickLater(new Runnable() {
-			@Override
-			public void run() {
-				new LoadoutSelectionMenu(player);
-			}
-		});
-		FakeboardHandler.getPlayer(player).setAfk(isAfk);
+		new LoadoutSelectionMenu(player);
+		FakeboardHandler.getPlayer(player).setAfk(isAfk,false);
 	}
 
 	public static void openLoadoutOptionMenu(final Player player, boolean isAfk) {
-		Commons.threadManager.runTaskOneTickLater(new Runnable() {
-			@Override
-			public void run() {
-				new LoadoutActionMenu(player);
-			}
-		});
-		FakeboardHandler.getPlayer(player).setAfk(isAfk);
+		new LoadoutActionMenu(player);
+		FakeboardHandler.getPlayer(player).setAfk(isAfk,false);
 	}
 
 	public static void openLoadoutOptionMenu(Player player) {

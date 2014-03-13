@@ -56,18 +56,17 @@ public class BukkitListeners implements Listener {
 	@EventHandler
 	public void onPlayerMove(PlayerMoveEvent event) {
 		String playerName = event.getPlayer().getName();
-		GamePlayer GamePlayer = FakeboardHandler.getPlayer(playerName);
+		GamePlayer gamePlayer = FakeboardHandler.getPlayer(playerName);
 
 		if (!moveCooldown.isOnCooldown(playerName)) {
 			if (GameSetupHandler.isGameInProgress()) {
 				//TODO prevent the null check from being needed
-				if (GamePlayer != null && GamePlayer.isAfk()) {
-					GamePlayer.setAfk(false, false);
+				if (gamePlayer != null && gamePlayer.isAfk()) {
+					gamePlayer.setAfk(false, false);
 				}
 			}
 			moveCooldown.setOnCooldown(playerName);
 		}
-
 	}
 
 	@EventHandler
@@ -234,7 +233,6 @@ public class BukkitListeners implements Listener {
 					}
 				});
 				throwable.printStackTrace();
-				throwable.getCause().printStackTrace();
 			}
 		});
 	}

@@ -22,9 +22,9 @@ public class SecondaryWeaponRender {
 
 	public static List<SecondarySelectionItem> getSecondaryWeapons(GunType gunType, int loadout, Player player) {
 		List<SecondarySelectionItem> secondarySelectionItems = new ArrayList<>();
-		GamePlayer GamePlayer = FakeboardHandler.getPlayer(player);
+		GamePlayer gamePlayer = FakeboardHandler.getPlayer(player);
 		for (GunWrapper gunWrapper : Game.gunHandler.getGuns(gunType)) {
-			secondarySelectionItems.add(new SecondarySelectionItem(gunWrapper, gunWrapper.getItemStack(), loadout, GamePlayer.hasGun(gunWrapper)));
+			secondarySelectionItems.add(new SecondarySelectionItem(gunWrapper, gunWrapper.getItemStack(), loadout, gamePlayer.hasGun(gunWrapper)));
 		}
 		return secondarySelectionItems;
 	}

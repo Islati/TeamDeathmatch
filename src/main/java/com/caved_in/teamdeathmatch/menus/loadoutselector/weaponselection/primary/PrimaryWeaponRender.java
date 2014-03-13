@@ -22,9 +22,9 @@ public class PrimaryWeaponRender {
 
 	public static List<PrimarySelectionItem> getPrimaryWeapons(GunType gunType, int loadoutNumber, Player player) {
 		List<PrimarySelectionItem> primaryWeapons = new ArrayList<>();
-		GamePlayer GamePlayer = FakeboardHandler.getPlayer(player);
+		GamePlayer gamePlayer = FakeboardHandler.getPlayer(player);
 		for (GunWrapper gunWrapper : Game.gunHandler.getGuns(gunType)) {
-			primaryWeapons.add(new PrimarySelectionItem(gunWrapper, gunWrapper.getItemStack(), loadoutNumber, GamePlayer.hasGun(gunWrapper)));
+			primaryWeapons.add(new PrimarySelectionItem(gunWrapper, gunWrapper.getItemStack(), loadoutNumber, gamePlayer.hasGun(gunWrapper)));
 		}
 		return primaryWeapons;
 	}

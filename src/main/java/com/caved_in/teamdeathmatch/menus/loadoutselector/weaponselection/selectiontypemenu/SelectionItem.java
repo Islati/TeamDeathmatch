@@ -1,11 +1,12 @@
 package com.caved_in.teamdeathmatch.menus.loadoutselector.weaponselection.selectiontypemenu;
 
+import com.caved_in.commons.player.PlayerHandler;
 import com.caved_in.teamdeathmatch.Game.LoadoutSlot;
+import com.caved_in.teamdeathmatch.GameMessages;
 import com.caved_in.teamdeathmatch.menus.loadoutselector.weaponselection.primary.PrimaryWeaponTypeMenu;
 import com.caved_in.teamdeathmatch.menus.loadoutselector.weaponselection.secondary.SecondaryWeaponTypeMenu;
 import com.caved_in.teamdeathmatch.menus.loadoutselector.weaponselection.tertiary.PerkSelectionMenu;
 import me.xhawk87.PopupMenuAPI.MenuItem;
-import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.material.MaterialData;
 
@@ -18,7 +19,6 @@ import org.bukkit.material.MaterialData;
  * ----------------------------------------------------------------------------
  */
 public class SelectionItem extends MenuItem {
-
 	private LoadoutSlot loadoutSlot;
 	private int loadoutNumber = 0;
 
@@ -33,19 +33,18 @@ public class SelectionItem extends MenuItem {
 		switch (this.loadoutSlot) {
 			case Primary:
 				getMenu().switchMenu(player, new PrimaryWeaponTypeMenu(loadoutNumber).getMenu());
-				player.sendMessage(ChatColor.GREEN + "Select your primary weapon type");
+				PlayerHandler.sendMessage(player, GameMessages.SELECT_PRIMARY_WEAPON_TYPE);
 				break;
 			case Secondary:
 				getMenu().switchMenu(player, new SecondaryWeaponTypeMenu(loadoutNumber).getMenu());
-				player.sendMessage(ChatColor.GREEN + "Select your secondary weapon type");
+				PlayerHandler.sendMessage(player, GameMessages.SELECT_SECONDARY_WEAPON_TYPE);
 				break;
 			case Tertiary:
 				getMenu().switchMenu(player, new PerkSelectionMenu(loadoutNumber, player).getMenu());
-				player.sendMessage(ChatColor.GREEN + "Select your active perk");
+				PlayerHandler.sendMessage(player, GameMessages.SELECT_ACTIVE_PERK);
 				break;
 			default:
 				break;
 		}
 	}
-
 }

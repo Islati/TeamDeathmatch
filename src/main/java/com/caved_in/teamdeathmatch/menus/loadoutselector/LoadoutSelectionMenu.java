@@ -43,6 +43,7 @@ public class LoadoutSelectionMenu {
 	public LoadoutSelectionMenu(Player player) {
 		this(player.getName());
 		GameSetupHandler.givePlayerLoadoutGem(player);
+		getMenu().openMenu(player);
 	}
 
 	public PopupMenu getMenu() {

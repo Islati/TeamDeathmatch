@@ -114,7 +114,7 @@ public class Game extends JavaPlugin {
 		for (Player player : Bukkit.getOnlinePlayers()) {
 			final String playerName = player.getName();
 			FakeboardHandler.loadPlayer(playerName);
-			if (!player.getWorld().getName().equalsIgnoreCase(Game.gameMap)) {
+			if (PlayerHandler.getWorldName(player).equalsIgnoreCase(Game.gameMap)) {
 				player.teleport(Bukkit.getWorld(Game.gameMap).getSpawnLocation());
 			}
 		}

@@ -19,6 +19,9 @@ public class GameMessages {
 	public static final String VOTE_ALREADY_CASTED = "&cYou've already casted your vote";
 	public static final String VOTE_ALREADY_IN_PROGRESS = "&eSorry, but there's already a vote in progress";
 	public static final String NO_ACTIVE_VOTE = "&eThere's nothing being voted on, sorry!";
+	public static final String SELECT_PRIMARY_WEAPON_TYPE = "&aSelect your primary weapon type";
+	public static final String SELECT_SECONDARY_WEAPON_TYPE = "&aSelect your secondary weapon type";
+	public static final String SELECT_ACTIVE_PERK = "&aSelect your active perk";
 
 	public static String MAP_CHANGED(String to) {
 		return String.format("&7The map has been changed to &l%s", to);

@@ -17,8 +17,12 @@ import java.util.List;
 public class SecondarySelectionMenu {
 	public static PopupMenu getMenu(List<SecondarySelectionItem> secondarySelectionItems) {
 		PopupMenu psMenu = PopupMenuAPI.createMenu("Select a Secondary", MenuHandler.getRows(secondarySelectionItems.size()));
-		for (int I = 0; I < secondarySelectionItems.size(); I++) {
-			psMenu.addMenuItem(secondarySelectionItems.get(I), I);
+		int i = 0;
+		for (SecondarySelectionItem selectionItem : secondarySelectionItems) {
+			if (selectionItem.getIcon() == null) {
+				psMenu.addMenuItem(selectionItem, i);
+				i += 1;
+			}
 		}
 		psMenu.setExitOnClickOutside(false);
 		return psMenu;

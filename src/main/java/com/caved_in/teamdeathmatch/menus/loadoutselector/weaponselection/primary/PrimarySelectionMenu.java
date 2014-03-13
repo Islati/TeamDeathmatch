@@ -18,8 +18,12 @@ public class PrimarySelectionMenu {
 
 	public static PopupMenu getMenu(List<PrimarySelectionItem> primarySelectionItems) {
 		PopupMenu psMenu = PopupMenuAPI.createMenu("Select a Weapon", MenuHandler.getRows(primarySelectionItems.size()));
-		for (int I = 0; I < primarySelectionItems.size(); I++) {
-			psMenu.addMenuItem(primarySelectionItems.get(I), I);
+		int i = 0;
+		for(PrimarySelectionItem primarySelectionItem : primarySelectionItems) {
+			if (primarySelectionItem.getIcon() != null) {
+				psMenu.addMenuItem(primarySelectionItem, i);
+				i += 1;
+			}
 		}
 		psMenu.setExitOnClickOutside(false);
 		return psMenu;
