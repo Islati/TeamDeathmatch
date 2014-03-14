@@ -26,6 +26,7 @@ import com.google.common.util.concurrent.ListenableFuture;
 import com.shampaggon.crackshot.events.WeaponDamageEntityEvent;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.ChatColor;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -56,9 +57,9 @@ public class BukkitListeners implements Listener {
 	@EventHandler
 	public void onPlayerMove(PlayerMoveEvent event) {
 		String playerName = event.getPlayer().getName();
-		GamePlayer gamePlayer = FakeboardHandler.getPlayer(playerName);
 
 		if (!moveCooldown.isOnCooldown(playerName)) {
+			GamePlayer gamePlayer = FakeboardHandler.getPlayer(playerName);
 			if (GameSetupHandler.isGameInProgress()) {
 				//TODO prevent the null check from being needed
 				if (gamePlayer != null && gamePlayer.isAfk()) {
@@ -122,6 +123,21 @@ public class BukkitListeners implements Listener {
 	public void onEntityDamage(EntityDamageByEntityEvent event) {
 		if (!GameSetupHandler.isGameInProgress()) {
 			event.setCancelled(true);
+		} else {
+			Entity damagedEntity = event.getEntity();
+			Entity damagerEntity = event.getDamager();
+			if (damagedEntity instanceof Player) {
+				Player damagedPlayer = (Player)damagedEntity;
+				GamePlayer damagedGamePlayer = FakeboardHandler.getPlayer(damagedPlayer);
+				if (damagerEntity instanceof Player) {
+					Player damagerPlayer = (Player)damagerEntity;
+					GamePlayer damagerGamePlayer = FakeboardHandler.getPlayer(damagerPlayer);
+					damagerGamePlayer.setAfk(false,false);
+					if (damagerGamePlayer.getTeam() == damagedGamePlayer.getTeam() || damagerGamePlayer.isAfk() || damagedGamePlayer.isAfk()) {
+						event.setCancelled(true);
+					}
+				}
+			}
 		}
 	}
 
@@ -132,21 +148,12 @@ public class BukkitListeners implements Listener {
 		GamePlayer GamePlayer = FakeboardHandler.getPlayer(playerName);
 		event.setForcedRespawn(true);
 		if (GameSetupHandler.isGameInProgress()) {
-			Game.runnableManager.runTaskLater(new RestoreInventory(playerName), 20);
+			Game.runnableManager.runTaskLater(new RestoreInventory(playerName), 10);
 		}
 		respawnInvincibilityCooldown.setOnCooldown(playerName);
 		if (GamePlayer.isAfk()) {
 			GamePlayer.setAfk(false, false);
 		}
-	}
-
-	@EventHandler
-	public void onRespawnEvent(PlayerRespawnEvent event) {
-		Player player = event.getPlayer();
-		if (GameSetupHandler.isGameInProgress()) {
-			GameSetupHandler.teleportToRandomSpawn(player);
-		}
-		respawnInvincibilityCooldown.setOnCooldown(player.getName());
 	}
 
 	@EventHandler

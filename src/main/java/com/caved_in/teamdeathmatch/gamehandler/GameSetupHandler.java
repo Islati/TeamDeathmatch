@@ -87,7 +87,7 @@ public class GameSetupHandler {
 		//Teleport terrorists and Counter Terrorists
 		Game.runnableManager.runTaskNow(teleportTeams);
 		//Make all the players open their "kits"
-		Game.runnableManager.runTaskLater(playerOpenKits,15L);
+		Game.runnableManager.runTaskLater(playerOpenKits,10L);
 		//If we want to reset the last map
 		if (isResetLastMap()) {
 			//Get the maps name
@@ -194,8 +194,12 @@ public class GameSetupHandler {
 	}
 
 	public static void openLoadoutSelectionMenu(final Player player, boolean isAfk) {
-		new LoadoutSelectionMenu(player);
-		FakeboardHandler.getPlayer(player).setAfk(isAfk,false);
+		try {
+			new LoadoutSelectionMenu(player);
+			FakeboardHandler.getPlayer(player).setAfk(isAfk, false);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
 	}
 
 	public static void openLoadoutOptionMenu(final Player player, boolean isAfk) {
@@ -210,5 +214,9 @@ public class GameSetupHandler {
 	public static void teleportToRandomSpawn(Player player) {
 		WorldSpawns worldSpawns = Game.configuration.getSpawnConfiguration().getWorldSpawns(PlayerHandler.getWorldName(player));
 		PlayerHandler.teleport(player, worldSpawns.getRandomSpawn(FakeboardHandler.getPlayerTeam(player)).getLocation());
+	}
+
+	public static void teleportToRandomSpawn(Player player, TeamType teamType) {
+		PlayerHandler.teleport(player,Game.configuration.getSpawnConfiguration().getWorldSpawns(Game.gameMap).getRandomSpawn(teamType).getLocation());
 	}
 }

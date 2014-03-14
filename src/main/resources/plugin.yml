@@ -26,3 +26,5 @@ commands:
       usage: /<command>
    maps:
       usage: /<command>
+   gem:
+      usage: /<command>

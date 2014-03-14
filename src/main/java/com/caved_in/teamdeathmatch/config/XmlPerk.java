@@ -1,5 +1,6 @@
 package com.caved_in.teamdeathmatch.config;
 
+import com.caved_in.commons.utilities.StringUtil;
 import com.caved_in.teamdeathmatch.perks.Perk;
 import org.bukkit.potion.PotionEffect;
 import org.simpleframework.xml.Attribute;
@@ -7,10 +8,7 @@ import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * ----------------------------------------------------------------------------
@@ -52,6 +50,7 @@ public class XmlPerk {
 		this.perkName = perkName;
 		this.perkCost = perkCost;
 		this.perkDescription = perkDescription;
+
 		this.tiered = tiered;
 		this.requiredPerk = requiredPerk;
 		this.xmlPotionEffects = xmlPotionEffects;
@@ -69,11 +68,17 @@ public class XmlPerk {
 		for (XmlPotionEffect xmlPotionEffect : xmlPotionEffects) {
 			potionEffects.add(xmlPotionEffect.getPotionEffect());
 		}
+		List<String> description = new ArrayList<String>();
+		if (perkDescription.size() > 0) {
+			for(String line : perkDescription) {
+				description.add(StringUtil.formatColorCodes(line));
+			}
+		}
 		//Generate the perk
 		if (!isTiered()) {
-			this.perk = new Perk(perkName, perkCost, perkDescription, potionEffects);
+			this.perk = new Perk(perkName, perkCost, description, potionEffects);
 		} else {
-			this.perk = new Perk(perkName, perkCost, perkDescription, potionEffects, tiered, requiredPerk);
+			this.perk = new Perk(perkName, perkCost, description, potionEffects, tiered, requiredPerk);
 		}
 	}
 

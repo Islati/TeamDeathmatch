@@ -3,6 +3,7 @@ package com.caved_in.teamdeathmatch.fakeboard;
 import com.caved_in.commons.player.PlayerHandler;
 import com.caved_in.commons.potions.PotionHandler;
 import com.caved_in.teamdeathmatch.Game;
+import com.caved_in.teamdeathmatch.GameMessages;
 import com.caved_in.teamdeathmatch.TeamType;
 import com.caved_in.teamdeathmatch.guns.GunWrapper;
 import com.caved_in.teamdeathmatch.loadout.Loadout;
@@ -42,7 +43,7 @@ public class GamePlayer {
 	private String primaryGunID = "AK-47";
 	private String secondaryGunID = "USP45";
 
-	private PlayerScoreboard playerScoreboard;
+	private PlayerScoreboard playerScoreboard = null;
 
 	private Perk activePerk;
 
@@ -116,7 +117,18 @@ public class GamePlayer {
 	}
 
 	public void updateScoreboard() {
-		playerScoreboard.updateScoreboardData(this);
+		try {
+			playerScoreboard.updateScoreboardData(this);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			Game.runnableManager.runTaskOneTickLater(new Runnable() {
+
+				@Override
+				public void run() {
+					PlayerHandler.kickPlayer(getPlayer(), GameMessages.PLAYER_DATA_LOAD_ERROR);
+				}
+			});
+		}
 	}
 
 	public void clearScoreboard() {

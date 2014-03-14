@@ -31,7 +31,7 @@ public class RestoreInventory implements Runnable {
 		Player rPlayer = Bukkit.getPlayer(playerName);
 		if (rPlayer != null) {
 			GamePlayer gamePlayer = FakeboardHandler.getPlayer(rPlayer);
-
+			GameSetupHandler.teleportToRandomSpawn(rPlayer, gamePlayer.getTeam());
 
 			rPlayer.getInventory().setArmorContents(GameSetupHandler.getTeamArmor(gamePlayer.getTeam()));
 
