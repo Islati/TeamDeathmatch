@@ -2,8 +2,8 @@ package com.caved_in.teamdeathmatch;
 
 import com.caved_in.commons.Commons;
 import com.caved_in.commons.file.DataHandler;
-import com.caved_in.commons.player.PlayerHandler;
 import com.caved_in.commons.player.PlayerWrapper;
+import com.caved_in.commons.player.Players;
 import com.caved_in.commons.threading.RunnableManager;
 import com.caved_in.commons.time.Cooldown;
 import com.caved_in.teamdeathmatch.commands.CommandRegister;
@@ -114,7 +114,7 @@ public class Game extends JavaPlugin {
 		for (Player player : Bukkit.getOnlinePlayers()) {
 			final String playerName = player.getName();
 			FakeboardHandler.loadPlayer(playerName);
-			if (PlayerHandler.getWorldName(player).equalsIgnoreCase(Game.gameMap)) {
+			if (Players.getWorldName(player).equalsIgnoreCase(Game.gameMap)) {
 				player.teleport(Bukkit.getWorld(Game.gameMap).getSpawnLocation());
 			}
 		}
@@ -227,19 +227,19 @@ public class Game extends JavaPlugin {
 	}
 
 	public static void givePlayerTunnelsXP(String playerName, double amount, boolean isSilent) {
-		PlayerWrapper playerWrapper = PlayerHandler.getData(playerName);
+		PlayerWrapper playerWrapper = Players.getData(playerName);
 		double earnedXP = getXP(playerName, amount);
 		playerWrapper.addCurrency(earnedXP);
 		if (!isSilent) {
-			if (PlayerHandler.isOnline(playerName)) {
-				PlayerHandler.getPlayer(playerName).sendMessage(ChatColor.GREEN + "You've earned +" + ((int) earnedXP) + " XP!");
+			if (Players.isOnline(playerName)) {
+				Players.getPlayer(playerName).sendMessage(ChatColor.GREEN + "You've earned +" + ((int) earnedXP) + " XP!");
 			}
 		}
 	}
 
 	public static double getXP(String playerName, double amountAwarded) {
 		double awardedXP = amountAwarded;
-		if (Bukkit.getPlayer(playerName) != null && PlayerHandler.isPremium(playerName)) {
+		if (Bukkit.getPlayer(playerName) != null && Players.isPremium(playerName)) {
 			awardedXP = (awardedXP > 20 ? awardedXP + 20 : awardedXP * 2);
 		}
 		return awardedXP;

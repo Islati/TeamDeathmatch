@@ -1,6 +1,6 @@
 package com.caved_in.teamdeathmatch.events;
 
-import com.caved_in.commons.player.PlayerHandler;
+import com.caved_in.commons.player.Players;
 import com.caved_in.commons.player.PlayerWrapper;
 import com.caved_in.teamdeathmatch.Game;
 import com.caved_in.teamdeathmatch.fakeboard.FakeboardHandler;
@@ -63,7 +63,7 @@ public class CustomEventHandler {
 				Game.runnableManager.runTaskLater(new AssistAggregator(killedName, killerName), 5);
 			}
 		}
-		PlayerHandler.clearInventory(player);
+		Players.clearInventory(player);
 		player.setScoreboard(gamePlayerKilled.getPlayerScoreboard().getScoreboard());
 	}
 
@@ -87,18 +87,18 @@ public class CustomEventHandler {
 			GunWrapper gunData = event.getGun();
 			String gunID = gunData.getGunName();
 			//Get the wrapped player data from commons
-			PlayerWrapper playerWrapper = PlayerHandler.getData(player.getName());
+			PlayerWrapper playerWrapper = Players.getData(player.getName());
 			double playerBalance = playerWrapper.getCurrency();
 			//Check if the player has enough XP to purchase the gun
 			if (playerBalance >= gunData.getGunPrice()) {
 				playerWrapper.removeCurrency(gunData.getGunPrice());
-				PlayerHandler.updateData(playerWrapper);
+				Players.updateData(playerWrapper);
 				gamePlayer.unlockGun(gunID);
-				PlayerHandler.sendMessage(player, String.format("&bYou've unlocked the &e%s&b! You have &a%s&b Tunnels XP Remaining", gunID, (int) playerWrapper.getCurrency()));
+				Players.sendMessage(player, String.format("&bYou've unlocked the &e%s&b! You have &a%s&b Tunnels XP Remaining", gunID, (int) playerWrapper.getCurrency()));
 				gamePlayer.getLoadout(event.getLoadoutNumber()).setPrimary(gunID);
-				PlayerHandler.sendMessage(player, String.format("&aThe &e%s&a is now your primary weapon for loadout #&e%s", gunID, event.getLoadoutNumber()));
+				Players.sendMessage(player, String.format("&aThe &e%s&a is now your primary weapon for loadout #&e%s", gunID, event.getLoadoutNumber()));
 			} else {
-				PlayerHandler.sendMessage(player, "&cYou don't have enough XP to unlock this.");
+				Players.sendMessage(player, "&cYou don't have enough XP to unlock this.");
 			}
 		}
 	}
@@ -116,7 +116,7 @@ public class CustomEventHandler {
 			GamePlayer gamePlayer = event.getGamePlayer();
 			int selectedLoadout = event.getLoadout().getNumber();
 			//Clear the players inventory
-			PlayerHandler.clearInventory(player, false);
+			Players.clearInventory(player, false);
 			//Set the active loadout
 			gamePlayer.setActiveLoadout(selectedLoadout);
 			//Give them their primary and secondary weapons

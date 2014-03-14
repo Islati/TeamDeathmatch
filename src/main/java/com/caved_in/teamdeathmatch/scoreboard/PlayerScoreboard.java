@@ -1,7 +1,7 @@
 package com.caved_in.teamdeathmatch.scoreboard;
 
 import com.caved_in.commons.Commons;
-import com.caved_in.commons.player.PlayerHandler;
+import com.caved_in.commons.player.Players;
 import com.caved_in.teamdeathmatch.TeamType;
 import com.caved_in.teamdeathmatch.fakeboard.FakeboardHandler;
 import com.caved_in.teamdeathmatch.fakeboard.GamePlayer;
@@ -71,7 +71,7 @@ public class PlayerScoreboard {
 		playerKillScore.setScore(player.getPlayerScore());
 		playerDeathScore.setScore(player.getPlayerDeaths());
 		playerKillStreak.setScore(player.getKillStreak());
-		playerXPScore.setScore((int) PlayerHandler.getData(player.getName()).getCurrency());
+		playerXPScore.setScore((int) Players.getData(player.getName()).getCurrency());
 	}
 
 	public enum ScoreType {

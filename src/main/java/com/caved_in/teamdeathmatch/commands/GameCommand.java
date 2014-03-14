@@ -2,7 +2,7 @@ package com.caved_in.teamdeathmatch.commands;
 
 import com.caved_in.commons.commands.CommandController;
 import com.caved_in.commons.menu.HelpScreen;
-import com.caved_in.commons.player.PlayerHandler;
+import com.caved_in.commons.player.Players;
 import com.caved_in.teamdeathmatch.Game;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.Bukkit;
@@ -49,6 +49,6 @@ public class GameCommand {
 	public void ongameReloadCommand(CommandSender sender, String[] args) {
 		Game.gunHandler.initData();
 		Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "shot config reload");
-		PlayerHandler.sendMessage(sender, "&a[Tunnels] GunData and ShopData reloaded");
+		Players.sendMessage(sender, "&a[Tunnels] GunData and ShopData reloaded");
 	}
 }

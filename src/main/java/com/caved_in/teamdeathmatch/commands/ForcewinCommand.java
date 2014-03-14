@@ -2,7 +2,7 @@ package com.caved_in.teamdeathmatch.commands;
 
 import com.caved_in.commons.Messages;
 import com.caved_in.commons.commands.CommandController;
-import com.caved_in.commons.player.PlayerHandler;
+import com.caved_in.commons.player.Players;
 import com.caved_in.teamdeathmatch.TeamType;
 import com.caved_in.teamdeathmatch.fakeboard.FakeboardHandler;
 import org.bukkit.command.CommandSender;
@@ -36,11 +36,11 @@ public class ForcewinCommand {
 					break;
 				default:
 					//They didn't enter a valid team name, so send a list of available ones
-					PlayerHandler.sendMessage(sender, "&cThe available teams are &eT&c and &eCT");
+					Players.sendMessage(sender, "&cThe available teams are &eT&c and &eCT");
 			}
 		} else {
 			//Send them the invalid command message
-			PlayerHandler.sendMessage(sender, Messages.INVALID_COMMAND_USAGE("team (&7CT&8/&7T&e)"));
+			Players.sendMessage(sender, Messages.INVALID_COMMAND_USAGE("team (&7CT&8/&7T&e)"));
 		}
 	}
 }

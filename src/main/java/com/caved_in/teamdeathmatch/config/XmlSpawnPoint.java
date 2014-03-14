@@ -1,6 +1,6 @@
 package com.caved_in.teamdeathmatch.config;
 
-import com.caved_in.commons.location.LocationHandler;
+import com.caved_in.commons.location.Locations;
 import com.caved_in.teamdeathmatch.TeamType;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -52,7 +52,7 @@ public class XmlSpawnPoint {
 
 	public XmlSpawnPoint(TeamType teamType, Location spawnLocation) {
 		this.spawnLocation = spawnLocation;
-		int[] xyz = LocationHandler.getXYZ(spawnLocation);
+		int[] xyz = Locations.getXYZ(spawnLocation);
 		this.locX = xyz[0];
 		this.locY = xyz[1];
 		this.locZ = xyz[2];

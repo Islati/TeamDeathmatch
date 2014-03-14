@@ -2,7 +2,7 @@ package com.caved_in.teamdeathmatch.commands;
 
 import com.caved_in.commons.Messages;
 import com.caved_in.commons.commands.CommandController;
-import com.caved_in.commons.player.PlayerHandler;
+import com.caved_in.commons.player.Players;
 import com.caved_in.teamdeathmatch.Game;
 import com.caved_in.teamdeathmatch.TeamType;
 import com.caved_in.teamdeathmatch.config.TeamSpawnLocation;
@@ -24,19 +24,19 @@ public class SetteamspawnCommand {
 		if (args.length > 0) {
 			String teamName = args[0];
 			//Get the world spawns for the player issueing the command
-			String playerWorldName = PlayerHandler.getWorldName(sender);
+			String playerWorldName = Players.getWorldName(sender);
 			switch (teamName.toLowerCase()) {
 				case "t":
 				case "ct":
 					Game.configuration.getSpawnConfiguration().addSpawn(new TeamSpawnLocation(sender.getLocation(), TeamType.getTeamByInitials(teamName)));
-					PlayerHandler.sendMessage(sender, "&aSpawn point for &e" + teamName + "&a has been added for the world &e" + playerWorldName);
+					Players.sendMessage(sender, "&aSpawn point for &e" + teamName + "&a has been added for the world &e" + playerWorldName);
 					break;
 				default:
-					PlayerHandler.sendMessage(sender, "&cThe available teams are &eT&c and &eCT");
+					Players.sendMessage(sender, "&cThe available teams are &eT&c and &eCT");
 					break;
 			}
 		} else {
-			PlayerHandler.sendMessage(sender, Messages.INVALID_COMMAND_USAGE("team"));
+			Players.sendMessage(sender, Messages.INVALID_COMMAND_USAGE("team"));
 		}
 	}
 

@@ -20,5 +20,6 @@ public class CommandRegister {
 		CommandController.registerCommands(Plugin, new AfkCommand());
 		CommandController.registerCommands(Plugin, new MapsCommand());
 		CommandController.registerCommands(Plugin, new GameCommand());
+		CommandController.registerCommands(Plugin, new GemCommand());
 	}
 }

@@ -1,12 +1,12 @@
 package com.caved_in.teamdeathmatch.listeners;
 
 import com.caved_in.commons.Commons;
-import com.caved_in.commons.items.ItemHandler;
-import com.caved_in.commons.player.PlayerHandler;
+import com.caved_in.commons.item.Items;
+import com.caved_in.commons.player.Players;
 import com.caved_in.commons.threading.executors.BukkitExecutors;
 import com.caved_in.commons.threading.executors.BukkitScheduledExecutorService;
 import com.caved_in.commons.time.Cooldown;
-import com.caved_in.commons.world.WorldHandler;
+import com.caved_in.commons.world.Worlds;
 import com.caved_in.teamdeathmatch.Game;
 import com.caved_in.teamdeathmatch.GameMessages;
 import com.caved_in.teamdeathmatch.assists.AssistManager;
@@ -77,7 +77,7 @@ public class BukkitListeners implements Listener {
 		String playerName = GamePlayer.getName();
 
 		if (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) {
-			if (player.getItemInHand() != null && ItemHandler.itemNameContains(player.getItemInHand(), "Select & Edit Loadouts")) {
+			if (player.getItemInHand() != null && Items.itemNameContains(player.getItemInHand(), "Select & Edit Loadouts")) {
 				event.setCancelled(true);
 				//Open the loadout menu for the player
 				GameSetupHandler.openLoadoutOptionMenu(player);
@@ -181,10 +181,10 @@ public class BukkitListeners implements Listener {
 				if (args.length >= argsRequired) {
 					chatCommand.doCommand(player, args);
 				} else {
-					PlayerHandler.sendMessage(player, GameMessages.INSUFFICIENT_CHAT_COMMAND_ARGUMENTS(command, argsRequired));
+					Players.sendMessage(player, GameMessages.INSUFFICIENT_CHAT_COMMAND_ARGUMENTS(command, argsRequired));
 				}
 			} else {
-				PlayerHandler.sendMessage(player, GameMessages.INVALID_CHAT_COMMAND(command));
+				Players.sendMessage(player, GameMessages.INVALID_CHAT_COMMAND(command));
 			}
 		}
 	}
@@ -194,7 +194,7 @@ public class BukkitListeners implements Listener {
 		Player player = event.getPlayer();
 		final String playerName = player.getName();
 
-		PlayerHandler.removePotionEffects(player);
+		Players.removePotionEffects(player);
 
 		ListenableFuture<Boolean> loadPlayer = async.submit(new Callable<Boolean>() {
 			@Override
@@ -209,23 +209,23 @@ public class BukkitListeners implements Listener {
 				Commons.threadManager.runTaskOneTickLater(new Runnable() {
 					@Override
 					public void run() {
-						Player player = PlayerHandler.getPlayer(playerName);
+						Player player = Players.getPlayer(playerName);
 						if (playerLoaded) {
 							if (GameSetupHandler.isGameInProgress()) {
 								GameSetupHandler.assignPlayerTeam(player);
 								GameSetupHandler.teleportToRandomSpawn(player);
 							} else {
-								if (!PlayerHandler.getWorldName(player).equalsIgnoreCase(Game.gameMap)) {
-									PlayerHandler.teleport(player, WorldHandler.getSpawn(Game.gameMap));
+								if (!Players.getWorldName(player).equalsIgnoreCase(Game.gameMap)) {
+									Players.teleport(player, Worlds.getSpawn(Game.gameMap));
 								}
 							}
-							PlayerHandler.clearInventory(player);
+							Players.clearInventory(player);
 							GameSetupHandler.givePlayerLoadoutGem(player);
 							PlayerScoreboard playerScoreboard = new PlayerScoreboard();
 							player.setScoreboard(playerScoreboard.getScoreboard());
 							FakeboardHandler.getPlayer(playerName).setPlayerScoreboard(playerScoreboard);
 						} else {
-							PlayerHandler.kickPlayer(player, GameMessages.PLAYER_DATA_LOAD_ERROR);
+							Players.kickPlayer(player, GameMessages.PLAYER_DATA_LOAD_ERROR);
 						}
 					}
 				});
@@ -236,7 +236,7 @@ public class BukkitListeners implements Listener {
 				Commons.threadManager.runTaskOneTickLater(new Runnable() {
 					@Override
 					public void run() {
-						PlayerHandler.kickPlayer(PlayerHandler.getPlayer(playerName), GameMessages.PLAYER_DATA_LOAD_ERROR);
+						Players.kickPlayer(Players.getPlayer(playerName), GameMessages.PLAYER_DATA_LOAD_ERROR);
 					}
 				});
 				throwable.printStackTrace();
@@ -269,7 +269,7 @@ public class BukkitListeners implements Listener {
 	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onPlayerQuit(PlayerQuitEvent Event) {
 		Player player = Event.getPlayer();
-		PlayerHandler.clearInventory(player);
+		Players.clearInventory(player);
 		FakeboardHandler.removePlayer(player);
 	}
 }

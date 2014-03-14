@@ -1,6 +1,6 @@
 package com.caved_in.teamdeathmatch.fakeboard;
 
-import com.caved_in.commons.player.PlayerHandler;
+import com.caved_in.commons.player.Players;
 import com.caved_in.teamdeathmatch.TeamType;
 import com.google.common.collect.Sets;
 import org.bukkit.entity.Player;
@@ -56,8 +56,8 @@ public class FakeboardHandler {
 				getPlayer(player).setTeam(null);
 				resetScores(player);
 				removeFromTeam(teamEntry.getKey(), player);
-				PlayerHandler.clearInventory(player);
-				PlayerHandler.removePotionEffects(player);
+				Players.clearInventory(player);
+				Players.removePotionEffects(player);
 			}
 		}
 		activeTeams.clear();

@@ -1,6 +1,6 @@
 package com.caved_in.teamdeathmatch.runnables;
 
-import com.caved_in.commons.player.PlayerHandler;
+import com.caved_in.commons.player.Players;
 import com.caved_in.teamdeathmatch.Game;
 import com.caved_in.teamdeathmatch.config.WorldSpawns;
 import com.caved_in.teamdeathmatch.fakeboard.FakeboardHandler;
@@ -20,7 +20,7 @@ public class TeleportTeams implements Runnable {
 	public void run() {
 		WorldSpawns worldSpawns = Game.configuration.getSpawnConfiguration().getWorldSpawns(Game.gameMap);
 		for(GamePlayer gamePlayer : FakeboardHandler.getOnlineGameplayers()) {
-			PlayerHandler.teleport(gamePlayer.getPlayer(), worldSpawns.getRandomSpawn(gamePlayer.getTeam()).getLocation());
+			Players.teleport(gamePlayer.getPlayer(), worldSpawns.getRandomSpawn(gamePlayer.getTeam()).getLocation());
 		}
 	}
 

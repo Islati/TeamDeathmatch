@@ -3,8 +3,8 @@ package com.caved_in.teamdeathmatch.gamehandler;
 //Commons imports
 
 import com.caved_in.commons.Commons;
-import com.caved_in.commons.items.ItemHandler;
-import com.caved_in.commons.player.PlayerHandler;
+import com.caved_in.commons.item.Items;
+import com.caved_in.commons.player.Players;
 import com.caved_in.teamdeathmatch.Game;
 import com.caved_in.teamdeathmatch.TeamType;
 import com.caved_in.teamdeathmatch.config.WorldSpawns;
@@ -54,16 +54,16 @@ public class GameSetupHandler {
 
 	static {
 		blueTeamArmor = new ItemStack[]{
-				ItemHandler.makeLeatherItemStack(Material.LEATHER_HELMET, Color.BLUE),
-				ItemHandler.makeLeatherItemStack(Material.LEATHER_CHESTPLATE, Color.BLUE),
-				ItemHandler.makeLeatherItemStack(Material.LEATHER_LEGGINGS, Color.BLUE),
-				ItemHandler.makeLeatherItemStack(Material.LEATHER_BOOTS, Color.BLUE),
+				Items.makeLeatherItemStack(Material.LEATHER_HELMET, Color.BLUE),
+				Items.makeLeatherItemStack(Material.LEATHER_CHESTPLATE, Color.BLUE),
+				Items.makeLeatherItemStack(Material.LEATHER_LEGGINGS, Color.BLUE),
+				Items.makeLeatherItemStack(Material.LEATHER_BOOTS, Color.BLUE),
 		};
 		redTeamArmor = new ItemStack[]{
-				ItemHandler.makeLeatherItemStack(Material.LEATHER_HELMET, Color.RED),
-				ItemHandler.makeLeatherItemStack(Material.LEATHER_CHESTPLATE, Color.RED),
-				ItemHandler.makeLeatherItemStack(Material.LEATHER_LEGGINGS, Color.RED),
-				ItemHandler.makeLeatherItemStack(Material.LEATHER_BOOTS, Color.RED),
+				Items.makeLeatherItemStack(Material.LEATHER_HELMET, Color.RED),
+				Items.makeLeatherItemStack(Material.LEATHER_CHESTPLATE, Color.RED),
+				Items.makeLeatherItemStack(Material.LEATHER_LEGGINGS, Color.RED),
+				Items.makeLeatherItemStack(Material.LEATHER_BOOTS, Color.RED),
 		};
 
 	}
@@ -101,8 +101,8 @@ public class GameSetupHandler {
 	}
 
 	public static void givePlayerLoadoutGem(Player player) {
-		if (!ItemHandler.playerHasItem(player, Material.EMERALD, "Select & Edit Loadouts")) {
-			player.getInventory().setItem(8, ItemHandler.makeItemStack(Material.EMERALD, ChatColor.GREEN + "Select & Edit Loadouts"));
+		if (!Items.playerHasItem(player, Material.EMERALD, "Select & Edit Loadouts")) {
+			player.getInventory().setItem(8, Items.makeItemStack(Material.EMERALD, ChatColor.GREEN + "Select & Edit Loadouts"));
 		}
 	}
 
@@ -212,11 +212,11 @@ public class GameSetupHandler {
 	}
 
 	public static void teleportToRandomSpawn(Player player) {
-		WorldSpawns worldSpawns = Game.configuration.getSpawnConfiguration().getWorldSpawns(PlayerHandler.getWorldName(player));
-		PlayerHandler.teleport(player, worldSpawns.getRandomSpawn(FakeboardHandler.getPlayerTeam(player)).getLocation());
+		WorldSpawns worldSpawns = Game.configuration.getSpawnConfiguration().getWorldSpawns(Players.getWorldName(player));
+		Players.teleport(player, worldSpawns.getRandomSpawn(FakeboardHandler.getPlayerTeam(player)).getLocation());
 	}
 
 	public static void teleportToRandomSpawn(Player player, TeamType teamType) {
-		PlayerHandler.teleport(player,Game.configuration.getSpawnConfiguration().getWorldSpawns(Game.gameMap).getRandomSpawn(teamType).getLocation());
+		Players.teleport(player,Game.configuration.getSpawnConfiguration().getWorldSpawns(Game.gameMap).getRandomSpawn(teamType).getLocation());
 	}
 }

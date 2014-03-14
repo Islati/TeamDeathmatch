@@ -1,8 +1,9 @@
 package com.caved_in.teamdeathmatch.commands;
 
-import com.caved_in.commons.commands.CommandController;
 import com.caved_in.teamdeathmatch.gamehandler.GameSetupHandler;
 import org.bukkit.entity.Player;
+
+import static com.caved_in.commons.commands.CommandController.CommandHandler;
 
 /**
  * ----------------------------------------------------------------------------
@@ -14,7 +15,7 @@ import org.bukkit.entity.Player;
  */
 public class GemCommand {
 
-	@CommandController.CommandHandler(name = "gem", description = "Used to give yourself a loadout gem")
+	@CommandHandler(name = "gem", description = "Used to give yourself a loadout gem")
 	public void onGemCommand(Player player, String[] args) {
 		GameSetupHandler.givePlayerLoadoutGem(player);
 	}

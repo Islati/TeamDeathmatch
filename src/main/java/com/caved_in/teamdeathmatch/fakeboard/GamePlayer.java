@@ -1,7 +1,7 @@
 package com.caved_in.teamdeathmatch.fakeboard;
 
-import com.caved_in.commons.player.PlayerHandler;
-import com.caved_in.commons.potions.PotionHandler;
+import com.caved_in.commons.player.Players;
+import com.caved_in.commons.potion.Potions;
 import com.caved_in.teamdeathmatch.Game;
 import com.caved_in.teamdeathmatch.GameMessages;
 import com.caved_in.teamdeathmatch.TeamType;
@@ -125,7 +125,7 @@ public class GamePlayer {
 
 				@Override
 				public void run() {
-					PlayerHandler.kickPlayer(getPlayer(), GameMessages.PLAYER_DATA_LOAD_ERROR);
+					Players.kickPlayer(getPlayer(), GameMessages.PLAYER_DATA_LOAD_ERROR);
 				}
 			});
 		}
@@ -171,7 +171,7 @@ public class GamePlayer {
 	}
 
 	public Player getPlayer() {
-		return PlayerHandler.getPlayer(name);
+		return Players.getPlayer(name);
 	}
 
 	public int getPlayerScore() {
@@ -265,12 +265,12 @@ public class GamePlayer {
 		this.afk = isAfk;
 		Player player = getPlayer();
 		if (isAfk) {
-			PlayerHandler.addPotionEffect(player, PotionHandler.getPotionEffect(PotionEffectType.INVISIBILITY, 1, afkDuration));
+			Players.addPotionEffect(player, Potions.getPotionEffect(PotionEffectType.INVISIBILITY, 1, afkDuration));
 		} else {
 			player.removePotionEffect(PotionEffectType.INVISIBILITY);
 		}
 		if (message) {
-			PlayerHandler.sendMessage(player, "&7You are " + (isAfk ? "now" : "no longer") + " afk");
+			Players.sendMessage(player, "&7You are " + (isAfk ? "now" : "no longer") + " afk");
 
 		}
 	}

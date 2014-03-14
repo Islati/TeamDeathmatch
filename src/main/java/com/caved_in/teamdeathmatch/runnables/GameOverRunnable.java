@@ -1,6 +1,6 @@
 package com.caved_in.teamdeathmatch.runnables;
 
-import com.caved_in.commons.player.PlayerHandler;
+import com.caved_in.commons.player.Players;
 import com.caved_in.teamdeathmatch.Game;
 import com.caved_in.teamdeathmatch.TeamType;
 import com.caved_in.teamdeathmatch.fakeboard.FakeboardHandler;
@@ -21,7 +21,7 @@ public class GameOverRunnable implements Runnable {
 	@Override
 	public void run() {
 		//Check if we've got no players online
-		if (PlayerHandler.getOnlinePlayersCount() <= 0) {
+		if (Players.getOnlinePlayersCount() <= 0) {
 			//No players online? Stop the game!
 			GameSetupHandler.setGameInProgress(false);
 			gameCurrentTicks = 0;
@@ -44,7 +44,7 @@ public class GameOverRunnable implements Runnable {
 		if ((terroristScore >= 50 || counterTerroristScore >= 50) || gameTimeExpired) {
 			GameSetupHandler.setGameInProgress(false);
 			gameCurrentTicks = 0;
-			PlayerHandler.sendMessageToAllPlayers(String.format(gameTimeExpired ? "TIMES UP; &6%s WIN!" : "&6%s WIN!", terroristScore >= 50 ? "TERRORISTS" : "COUNTER TERRORISTS"));
+			Players.sendMessageToAllPlayers(String.format(gameTimeExpired ? "TIMES UP; &6%s WIN!" : "&6%s WIN!", terroristScore >= 50 ? "TERRORISTS" : "COUNTER TERRORISTS"));
 			GameSetupHandler.awardEndgamePoints(terroristScore >= 50 ? TeamType.TERRORIST : TeamType.COUNTER_TERRORIST, 75, 50);
 			Game.runnableManager.runTaskLater(new Runnable() {
 				@Override
